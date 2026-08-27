@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>JB & Sandy Show Prep • Aug 26, 2026</title>
+  <title>JB & Sandy Show Prep • Aug 27, 2026</title>
   <style>
     :root {
       --bg: #f4f6f9;
@@ -426,12 +426,88 @@
     .farm-src { font-size:0.8rem; color:#b45309; font-weight:700; margin-bottom:8px; }
     .farm-card iframe, .farm-card video, .farm-card audio { width:100%; margin:8px 0; border-radius:10px; }
     .farm-card iframe { min-height:200px; border:0; }
+
+    /* Grok Dig This sub-tabs */
+    .grok-wrap { margin-top: 4px; }
+    .grok-note {
+      background: #fff8eb;
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.86rem;
+      color: #5c4a1f;
+      margin-bottom: 14px;
+    }
+    .grok-subs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .grok-sub {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 7px 11px;
+      border-radius: 18px;
+      cursor: pointer;
+    }
+    .grok-sub:hover { border-color: var(--accent); color: var(--text); background: #fffbf0; }
+    .grok-sub.active {
+      background: linear-gradient(135deg, var(--accent), #d4920c);
+      color: #111;
+      border-color: var(--accent);
+    }
+    .grok-pane { display: none; }
+    .grok-pane.show { display: block; }
+    .grok-item { position: relative; }
+    .badge {
+      display: inline-block;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .badge-austin { background: #dcfce7; color: #166534; }
+    .badge-horn { background: #bf5700; color: #fff; }
+    .badge-fb { background: #fee2e2; color: #991b1b; }
+    .badge-hs { background: #e0e7ff; color: #3730a3; }
+    .badge-country { background: #fef3c7; color: #92400e; }
+    .badge-holly { background: #fce7f3; color: #9d174d; }
+    .badge-kicker { background: #cffafe; color: #155e75; }
+    .badge-survey { background: #ede9fe; color: #5b21b6; }
+    .badge-biz { background: #ecfccb; color: #3f6212; }
+    .sayit {
+      background: #f0fdf4;
+      border-left: 3px solid var(--green);
+      padding: 8px 12px;
+      margin-top: 8px;
+      font-size: 0.86rem;
+      border-radius: 0 8px 8px 0;
+      color: #166534;
+    }
+    .meta-line { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+    .game-grid { display: grid; gap: 10px; }
+    .game-card {
+      background: #fff;
+      border: 1px solid #eef2f6;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .game-card h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .game-when { font-size: 0.82rem; color: #b45309; font-weight: 700; }
   </style>
 </head>
 <body>
   <header>
     <h1>JB & Sandy Show Prep</h1>
-    <div class="date">Wednesday • August 26, 2026</div>
+    <div class="date">Thursday • August 27, 2026</div>
     <div class="tagline">98.1 KVET • Your All-Time Country Favorites</div>
     <div class="sausage-row">
       <img src="sausage1.jpg" alt="Ode to sausage" class="sausage-fun sm" />
@@ -5409,31 +5485,192 @@
 
   <div class="panel" id="panel-grok">
     <h2>Grok Thinks You Will Dig This</h2>
-    <p class="note" style="margin-bottom:14px;">Picked for the show: local Austin, birthdays, light entertainment. Added Aug 26. No politics.</p>
+    <div class="grok-wrap">
+      <div class="grok-note">
+        Fresh items live <strong>7 days</strong>, then move to <strong>Archive</strong>. Archive deletes at <strong>30 days from the added date</strong>.
+        No politics. Brief cards + links. Built so digital can grab a post and the board can grab a line.
+      </div>
+      <div class="grok-subs" id="grok-subs">
+        <button class="grok-sub active" data-g="all" onclick="showGrok('all')">All</button>
+        <button class="grok-sub" data-g="austin" onclick="showGrok('austin')">Austin</button>
+        <button class="grok-sub" data-g="longhorns" onclick="showGrok('longhorns')">Longhorns</button>
+        <button class="grok-sub" data-g="college" onclick="showGrok('college')">College FB</button>
+        <button class="grok-sub" data-g="hs" onclick="showGrok('hs')">High School</button>
+        <button class="grok-sub" data-g="country" onclick="showGrok('country')">Country</button>
+        <button class="grok-sub" data-g="hollywood" onclick="showGrok('hollywood')">Hollywood</button>
+        <button class="grok-sub" data-g="kickers" onclick="showGrok('kickers')">Kickers</button>
+        <button class="grok-sub" data-g="surveys" onclick="showGrok('surveys')">Surveys</button>
+        <button class="grok-sub" data-g="archive" onclick="showGrok('archive')">Archive</button>
+      </div>
 
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Scheels opens in Cedar Park</h3>
-      <p>300,000-square-foot store with 75+ specialty shops, a 65-foot Ferris wheel, saltwater aquarium, candy factory, and a T-Rex. Weekend destination bit. “Would you take the kids… or just you?”</p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Pay What You Can Day at Austin restaurants</h3>
-      <p>Four Austin restaurants joined a global pay-what-you-can day (Aug 26). Phone: “What’s the most you’d pay for a meal you loved — and the least you’d feel okay paying?”</p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Celebrity birthdays • Aug 26</h3>
-      <p>Melissa McCarthy (56), Macaulay Culkin (46), Chris Pine (46), John Mulaney (44), Brian Kelley of Florida Georgia Line (41). Easy on-air drop: Home Alone + Bridesmaids + Star Trek in one birthday list.</p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> This weekend in Austin</h3>
-      <p>Buddy Guy (90) at ACL Live Friday. Social Distortion at Moody Amphitheater Friday. House of Torment bringing Jason Voorhees this haunt season. Round Rock Express at Dell Diamond.</p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> McConaughey + Harrelson: first look at <em>Brothers</em></h3>
-      <p>Apple TV+ comedy with the Austin-favorite duo. Local hook writes itself.</p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> King’s Guard played “9 to 5” for Dolly</h3>
-      <p>Outside Buckingham Palace. Pair with the Edited Audio Dolly clips / listener tribute idea.</p>
+      <div class="grok-pane show" id="gpane-all">
+        <p class="note" style="margin-bottom:12px;">Today’s mix. Open a tab if you only want one lane.</p>
+
+        <div class="item grok-item" data-cat="austin" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-biz">Open</span> Scheels opens Saturday in Cedar Park</h3>
+          <p>300,000 sq ft next to the H-E-B Center. Ferris wheel, saltwater tank, candy factory, T-Rex, 500+ jobs. Grand opening Sat Aug 29, doors 9:30 a.m. after a 7 a.m. parking-lot party.</p>
+          <div class="sayit">On air: “Would you take the kids… or just sneak off without them?”</div>
+          <p class="meta-line">Added Aug 26 • <a href="https://cbsaustin.com/news/local/scheels-to-open-300000-square-foot-cedar-park-store-saturday" target="_blank">CBS Austin</a> • <a href="https://www.scheels.com/store/cedar-park/032" target="_blank">Scheels</a></p>
+        </div>
+        <div class="item grok-item" data-cat="austin" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-austin">Austin</span> Pay What You Can Day hit four local restaurants</h3>
+          <p>Aug 26 experiment: guests named their price. Easy phone: most you’d pay for a meal you loved vs the least you’d feel okay paying.</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+        <div class="item grok-item" data-cat="austin" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-biz">Coming</span> Cedar Park pulse: Haywire, NFM, Oriri Coffee</h3>
+          <p>CedarView keeps filling in — Haywire (Texas kitchen) on the way, Nebraska Furniture Mart / NFM also landing, Oriri Coffee targeting early 2027 at Vista Ridge. Openings, not obituaries.</p>
+          <p class="meta-line">Added Aug 27 • <a href="https://communityimpact.com/cedar-park/business/check-out-these-cedar-park-area-businesses-now-open-and-coming-soon/" target="_blank">Community Impact</a></p>
+        </div>
+        <div class="item grok-item" data-cat="austin" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-austin">Weekend</span> This weekend in Austin</h3>
+          <p>Buddy Guy (90) at ACL Live Friday. Social Distortion at Moody Friday. House of Torment bringing Jason. Express at Dell Diamond. Scheels circus Saturday in Cedar Park.</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+        <div class="item grok-item" data-cat="austin" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-austin">Local</span> Dirty Martin’s fence + CapMetro rail pause</h3>
+          <p>Someone yanked the fence at Dirty Martin’s. CapMetro rail paused for North Burnet / Uptown Station work. Phone: most Austin place that’s taken a beating lately.</p>
+          <p class="meta-line">Added Aug 26–27 • also in New Stuff</p>
+        </div>
+
+        <div class="item grok-item" data-cat="longhorns" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-horn">#5 Texas</span> Next: Texas State • Sat Sept 5 • 2:30 p.m. • ESPN</h3>
+          <p>DKR. First meeting since 1930 (when Texas State was still Southwest Texas State and LBJ was a student). Horns favored by a bus. Season is 0-0. Arch Manning era Year 2, Sark Year 6.</p>
+          <div class="sayit">On air: “Nine miles of I-35 and 96 years between games. Who’s actually nervous?”</div>
+          <p class="meta-line">Added Aug 27 • <a href="https://texaslonghorns.com/sports/football/schedule" target="_blank">Texas schedule</a> • <a href="https://www.statesman.com/sports/college/longhorns/football/article/texas-football-2026-schedule-sec-22371526.php" target="_blank">Statesman</a></p>
+        </div>
+        <div class="item grok-item" data-cat="longhorns" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-horn">Lookahead</span> After State: Ohio State in Austin</h3>
+          <p>Sat Sept 12, 6:30 p.m., ABC. No. 1 Buckeyes at DKR. Sark is 0-2 vs Ohio State (CFP semi + last year’s opener). That’s the national TV night.</p>
+          <p class="meta-line">Added Aug 27 • <a href="https://texaslonghorns.com/sports/football/schedule" target="_blank">texaslonghorns.com</a></p>
+        </div>
+        <div class="item grok-item" data-cat="longhorns" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-horn">Fans</span> Opener weekend — what fans can actually do</h3>
+          <p>Tailgates on the lot before 2:30. Bevo Blvd / stadium plaza usual pregame. Watch party dens all over town if you don’t have tickets. After: Sixth / Rainey will be a burnt-orange traffic jam. Official: check Texas Athletics for any Bevo / band / fan-fest notes the week of.</p>
+          <p class="meta-line">Added Aug 27 • <a href="https://texaslonghorns.com/" target="_blank">Texas Athletics</a></p>
+        </div>
+        <div class="item grok-item" data-cat="longhorns" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-horn">VB 1-1</span> Volleyball: beat Marquette, now Vegas</h3>
+          <p>Lost to #12 ASU 1-3, then won a 3-2 over Marquette. Next: #18 TCU Sat Aug 29, 9 p.m. CT, FS1, T-Mobile Arena. Sunday: #1 Nebraska, 2:30 p.m. CT, FOX. Home debut vs USC Wed Sept 2, 8 p.m., Gregory Gym, ESPN2.</p>
+          <div class="sayit">On air: “Football’s still a week out. Volleyball is already in a cage match with Nebraska on national TV.”</div>
+          <p class="meta-line">Added Aug 27 • <a href="https://texaslonghorns.com/sports/womens-volleyball/schedule" target="_blank">VB schedule</a></p>
+        </div>
+        <div class="item grok-item" data-cat="longhorns" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-horn">Watch list</span> Freshmen on award lists</h3>
+          <p>Three Horns named to Shaun Alexander Freshman of the Year and Earl Campbell Tyler Rose watch lists (Aug 25–26). Short drop while we wait for pads that count.</p>
+          <p class="meta-line">Added Aug 26 • <a href="https://texaslonghorns.com/sports/football/schedule" target="_blank">Texas Football</a></p>
+        </div>
+
+        <div class="item grok-item" data-cat="college" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-fb">TX schools</span> Rest of Texas — last result / next / rank</h3>
+          <div class="game-grid">
+            <div class="game-card">
+              <h4>Texas State Bobcats — unranked</h4>
+              <div class="game-when">Last: season not started (0-0) • Next: at #5 Texas, Sat Sept 5, 2:30 p.m., ESPN</div>
+              <p>Pac-12 year 1. Then UTSA in the I-35 rivalry.</p>
+            </div>
+            <div class="game-card">
+              <h4>#8 Texas A&amp;M — 0-0</h4>
+              <div class="game-when">Next: vs Missouri State, Sat Sept 5, 6 p.m. CT, ESPN, Kyle Field</div>
+              <p>Then Arizona State at home Sept 12, ABC. Texas week is Friday Nov 27.</p>
+            </div>
+            <div class="game-card">
+              <h4>#12 Texas Tech — 0-0</h4>
+              <div class="game-when">Next: vs Abilene Christian, Sat Sept 5, 6 p.m. CT, FS1</div>
+              <p>Defending Big 12 champs. Ranked game: vs #23 Houston, Fri Sept 18, FOX.</p>
+            </div>
+            <div class="game-card">
+              <h4>Baylor — unranked • 0-0</h4>
+              <div class="game-when">Next: vs Auburn, Sat Sept 5, 2:30 p.m. CT, ABC, Atlanta (Aflac Kickoff)</div>
+              <p>Lost to Auburn last year in Waco. Neutral-site rematch.</p>
+            </div>
+          </div>
+          <p class="meta-line">Added Aug 27 • scores update after kickoffs • <a href="https://www.cbssports.com/college-football/rankings/" target="_blank">AP Top 25</a></p>
+        </div>
+
+        <div class="item grok-item" data-cat="hs" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-hs">6A</span> Friday Night starts tomorrow</h3>
+          <p>Area kickoff is Aug 28. Lake Travis (Statesman preseason No. 1) at Dripping Springs, 7 p.m. Westlake opens vs Inglewood (CA) at home. The rivalry everyone actually cares about — Westlake at Lake Travis — is Oct 23, 7 p.m., Cavalier Stadium. LT beat the Chaps 31-10 last year after a long skid.</p>
+          <div class="sayit">On air: “Don’t need every box score. Need the two schools that empty the Hill Country.”</div>
+          <p class="meta-line">Added Aug 27 • <a href="https://www.laketravisfootball.com/schedules" target="_blank">Lake Travis schedule</a> • <a href="https://www.statesman.com/sports/high-school/football/article/lake-travis-football-cavaliers-2026-uil-22397413.php" target="_blank">Statesman</a></p>
+        </div>
+
+        <div class="item grok-item" data-cat="country" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-country">Albums</span> This week’s country pile</h3>
+          <p>Fri Aug 28: Little Big Town — <em>It’s A Dying Art</em>. Billy Strings — <em>So Much for Goodbyes</em> (his mom designed the cover). Zach John King debut dropped Aug 26. Next big one: Luke Bryan <em>Signs</em> and Riley Green <em>That’s Just Me</em>, both Sept 18. Ella Langley back at No. 1 with <em>Dandelion</em>.</p>
+          <p class="meta-line">Added Aug 27 • <a href="https://www.countrystandardtime.com/cdreleases.asp" target="_blank">Country Standard Time</a></p>
+        </div>
+        <div class="item grok-item" data-cat="country" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-country">Gossip-lite</span> King’s Guard played “9 to 5” for Dolly</h3>
+          <p>Outside Buckingham Palace. Pairs with the Edited Audio Dolly package and listener tributes.</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+        <div class="item grok-item" data-cat="country" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-country">Name drop</span> Stella Lefty is on the country chart</h3>
+          <p>EP <em>Is This Heaven?</em> sitting inside the Billboard Country top 10. Matches the “Brace yourself for Stella Lefty” tease already in New Stuff.</p>
+          <p class="meta-line">Added Aug 27</p>
+        </div>
+
+        <div class="item grok-item" data-cat="hollywood" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-holly">Movies</span> Friday: Coyote vs. Acme + Dog Stars</h3>
+          <p>Aug 28 wide: <em>Coyote vs. Acme</em> (the Looney Tunes lawsuit movie that almost died). Ridley Scott’s <em>The Dog Stars</em> with Jacob Elordi. Horror wild card <em>Buddy</em>. Tonight: Harry Potter and the Sorcerer’s Stone 25th-anniversary one-week rerelease.</p>
+          <p class="meta-line">Added Aug 27 • <a href="https://movieweb.com/movie-theaters-august-2026/" target="_blank">MovieWeb</a></p>
+        </div>
+        <div class="item grok-item" data-cat="hollywood" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-holly">Austin hook</span> McConaughey + Harrelson: <em>Brothers</em></h3>
+          <p>Apple TV+ comedy. First look out. Local duo, local brag.</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+        <div class="item grok-item" data-cat="hollywood" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-holly">Bdays</span> Aug 26 birthday pile</h3>
+          <p>Melissa McCarthy 56, Macaulay Culkin 46, Chris Pine 46, John Mulaney 44, Brian Kelley (FGL) 41. Home Alone + Bridesmaids + Star Trek in one list.</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+
+        <div class="item grok-item" data-cat="kickers" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-kicker">Kicker</span> A store with a Ferris wheel and a T-Rex</h3>
+          <p>End the hour on Scheels. “In Cedar Park you can buy hiking boots, ride a Ferris wheel, and stare at a dinosaur without leaving the building.” Get out.</p>
+          <p class="meta-line">Added Aug 27</p>
+        </div>
+        <div class="item grok-item" data-cat="kickers" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-kicker">Kicker</span> What thieves actually do with stolen art</h3>
+          <p>Already in New Stuff. Still a clean last-block “wait, where does it go?”</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+        <div class="item grok-item" data-cat="kickers" data-added="2026-08-23">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-kicker">Kicker</span> White-sneaker stomping ritual</h3>
+          <p>New shoes get stomped. Fresh haircut gets a slap on the neck. Middle school law. Callers will fight.</p>
+          <p class="meta-line">Added Aug 23 • still inside 7-day window if you count from New Stuff; stamped here Aug 27 for this board</p>
+        </div>
+
+        <div class="item grok-item" data-cat="surveys" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-survey">Survey</span> 76% of Austinites live near a park</h3>
+          <p>ParkScore #47, up 7 spots. Soft local pride, not a lecture.</p>
+          <p class="meta-line">Added Aug 26 • also in Local Austin tab</p>
+        </div>
+        <div class="item grok-item" data-cat="surveys" data-added="2026-08-26">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-survey">Survey</span> Austin 28th in the U.S. for staycations</h3>
+          <p>Phone: best staycation inside 30 minutes of your driveway.</p>
+          <p class="meta-line">Added Aug 26</p>
+        </div>
+        <div class="item grok-item" data-cat="surveys" data-added="2026-08-27">
+          <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <span class="badge badge-survey">UT</span> 100,000 undergrad applications</h3>
+          <p>About 9,000 more than last year. “Was getting in harder when you applied, or does it just feel that way?”</p>
+          <p class="meta-line">Added Aug 26–27 • also in New Stuff</p>
+        </div>
+      </div>
+
+      <div class="grok-pane" id="gpane-austin"></div>
+      <div class="grok-pane" id="gpane-longhorns"></div>
+      <div class="grok-pane" id="gpane-college"></div>
+      <div class="grok-pane" id="gpane-hs"></div>
+      <div class="grok-pane" id="gpane-country"></div>
+      <div class="grok-pane" id="gpane-hollywood"></div>
+      <div class="grok-pane" id="gpane-kickers"></div>
+      <div class="grok-pane" id="gpane-surveys"></div>
+      <div class="grok-pane" id="gpane-archive">
+        <p class="note">Nothing archived yet. Items added Aug 26–27 stay live until Sept 2–3, then land here until day 30.</p>
+      </div>
     </div>
   </div>
 
@@ -5734,6 +5971,52 @@
         setTimeout(() => { status.style.display = 'none'; }, 2000);
       });
     }
+
+    function showGrok(id) {
+      document.querySelectorAll('.grok-pane').forEach(p => p.classList.remove('show'));
+      document.querySelectorAll('.grok-sub').forEach(b => b.classList.remove('active'));
+      const pane = document.getElementById('gpane-' + id);
+      const btn = document.querySelector('.grok-sub[data-g="' + id + '"]');
+      if (pane) pane.classList.add('show');
+      if (btn) btn.classList.add('active');
+    }
+    function applyGrokAging() {
+      const today = new Date(2026, 7, 27);
+      const allPane = document.getElementById('gpane-all');
+      const arch = document.getElementById('gpane-archive');
+      if (!allPane) return;
+      const items = Array.from(allPane.querySelectorAll('.grok-item'));
+      items.forEach(item => {
+        const cat = item.getAttribute('data-cat');
+        const added = item.getAttribute('data-added');
+        const dest = document.getElementById('gpane-' + cat);
+        let age = 0;
+        if (added) {
+          const d = new Date(added + 'T12:00:00');
+          age = Math.floor((today - d) / 86400000);
+        }
+        if (age >= 30) { item.remove(); return; }
+        if (age >= 7) {
+          if (arch) {
+            const clone = item.cloneNode(true);
+            const note = document.createElement('p');
+            note.className = 'moved-note';
+            note.textContent = 'Archived • added ' + added;
+            clone.appendChild(note);
+            arch.appendChild(clone);
+          }
+          item.remove();
+          return;
+        }
+        if (dest) dest.appendChild(item.cloneNode(true));
+      });
+      if (arch && arch.querySelector('.grok-item')) {
+        const n = arch.querySelector(':scope > .note');
+        if (n) n.remove();
+      }
+    }
+    document.addEventListener('DOMContentLoaded', applyGrokAging);
+
     function copyLink(url, btn) {
       navigator.clipboard.writeText(url).then(() => {
         const original = btn.textContent;
