@@ -130,65 +130,83 @@
       justify-content: center;
       margin-bottom: 16px;
     }
-    .tab-btn-new {
-      background: #fff;
-      border: 2px solid var(--green);
-      color: #15803d;
-      font-size: 1.15rem;
-      font-weight: 800;
-      padding: 15px 36px;
-      border-radius: 32px;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      transition: all 0.2s ease;
-      min-width: 230px;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(34,197,94,0.18);
-    }
-    .tab-btn-new:hover {
-      background: var(--green-soft);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(34,197,94,0.25);
-    }
-    .tab-btn-new.active {
-      background: var(--green);
-      color: #fff;
-      border-color: var(--green);
-      box-shadow: 0 10px 28px rgba(34,197,94,0.35);
-    }
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-      justify-content: center;
-    }
+
     .tab-btn {
-      background: #fff;
-      border: 1px solid var(--border);
-      color: var(--muted);
+      background: linear-gradient(135deg, #1e4f8f 0%, #3b82f6 55%, #60a5fa 100%);
+      border: 1px solid #1d4ed8;
+      color: #fff;
       font-size: 0.84rem;
       font-weight: 600;
       padding: 9px 14px;
       border-radius: 22px;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.15s ease;
-      box-shadow: 0 2px 8px rgba(26,35,50,0.04);
+      transition: all 0.18s ease;
+      box-shadow: 0 3px 10px rgba(30,79,143,0.25);
     }
     .tab-btn:hover {
-      border-color: var(--accent);
-      color: var(--text);
-      background: #fffbf0;
+      background: linear-gradient(135deg, #9a3412 0%, #c2410c 45%, #ea580c 100%);
+      border-color: #9a3412;
+      color: #fff;
       transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(194,65,12,0.35);
     }
     .tab-btn.active {
-      background: linear-gradient(135deg, var(--accent), #d4920c);
-      color: #111;
-      border-color: var(--accent);
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: #fff;
+      border-color: #1e3a8a;
       font-weight: 700;
-      box-shadow: 0 4px 14px rgba(232,160,32,0.3);
+      box-shadow: 0 4px 14px rgba(37,99,235,0.4);
     }
+    .tab-btn-new {
+      background: linear-gradient(90deg, #ef4444, #facc15, #ef4444);
+      background-size: 200% 100%;
+      animation: newstuff-flash 1.4s linear infinite;
+      border: 2px solid #b91c1c;
+      color: #111;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 15px 36px;
+      border-radius: 32px;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      min-width: 230px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(239,68,68,0.35);
+    }
+    .tab-btn-new:hover, .tab-btn-new.active {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+    }
+    @keyframes newstuff-flash {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .new-subtabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 12px 0 16px;
+    }
+    .new-subtab {
+      background: linear-gradient(135deg, #1e4f8f, #3b82f6);
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 8px 16px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+    .new-subtab:hover {
+      background: linear-gradient(135deg, #9a3412, #ea580c);
+    }
+    .new-subtab.active {
+      box-shadow: 0 0 0 3px rgba(250,204,21,0.55);
+    }
+    .new-bucket { display: none; }
+    .new-bucket.active { display: block; }
     .added-date {
       font-size: 0.75rem;
       color: #16a34a;
@@ -466,15 +484,20 @@
 
   <!-- NEW STUFF PANEL -->
   <div class="panel active" id="panel-new">
-    <h2 style="color:#15803d;">★ New Stuff</h2>
+    <h2 style="color:#b91c1c;">★ New Stuff</h2>
     <div class="new-stuff-note">
-      Items stay here for <strong>7 days</strong>, then automatically move to the permanent section that fits best.<br>
-      Dates show when each item was added.
+      Last 3 calendar days stay up front. Older than 3 days is behind the second button.
+      After <strong>7 days</strong>, items move to the permanent tab.
+    </div>
+    <div class="new-subtabs">
+      <button class="new-subtab active" type="button" onclick="showNewBucket('recent')">Last 3 days</button>
+      <button class="new-subtab" type="button" onclick="showNewBucket('older')">New Stuff Older Than 3 Days</button>
     </div>
     <div style="text-align:center;">
       <img src="sausage2.jpg" alt="Sausage stack" class="sausage-fun md" />
       <div class="sausage-caption">Official site mascot energy</div>
     </div>
+    <div class="new-bucket active" id="new-recent">
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Parents drinking at youth sports <span class="added-date">Added Aug 28 PM</span></h3>
       <p>Fall sports are ramping up. Don’t make it only about alcohol. Ask: “What behavior is completely normal at adult sports but inappropriate at a kid’s game?” Drinking, heckling, coaching from the stands, booing officials, dressing like it’s the Super Bowl, screaming at an 11-year-old. Callers will have stories.</p>
@@ -499,8 +522,6 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Scheels Cedar Park opens Saturday — with a Ferris wheel <span class="added-date">Added Aug 28 PM</span></h3>
       <p>300,000 sq ft sporting-goods palace with a 65-ft indoor Ferris wheel, 16,000-gallon aquarium, candy store and café. Grand opening starts 7 a.m. with giveaways and skydivers. “Are we going for the gear or just to ride the Ferris wheel inside a store?”</p>
     </div>
-
-
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Longhorn Football Guides For Everyone <span class="added-date">Added Aug 28</span></h3>
       <p>Season is almost here. “What’s the one Longhorn take you will die on?” Perfect for Friday energy and callers who think they could coach.</p>
@@ -529,7 +550,6 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Hotel San Jose documentary <span class="added-date">Added Aug 28</span></h3>
       <p>Cool local look at an Austin landmark. Date-night / local-pride recommendation that isn’t another bar tip.</p>
     </div>
-
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Woman looks out the window with her dog and gossips <span class="added-date">Added Aug 28</span></h3>
       <p>Pure visual bit. “What’s the most Austin version of neighborhood watch?” Link in Audio & Video.</p>
@@ -550,7 +570,6 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Tricia tries to figure out what JB & Sandy are talking about <span class="added-date">Added Aug 28</span></h3>
       <p>Recurring cast bit. Whenever the conversation goes sideways, cut to Tricia’s reaction / attempt to catch up.</p>
     </div>
-
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Ella Langley in the record books <span class="added-date">Added Aug 27</span></h3>
       <p>Country rising star hitting milestones. Great for music talk + “who is the next one that is about to explode?” Link in Google Doc.</p>
@@ -607,7 +626,6 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Favorite childhood song — Devil Went Down to Georgia <span class="added-date">Added Aug 27</span></h3>
       <p>Host shares, then “what song still lives rent-free from when you were 10?”</p>
     </div>
-
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Girls and keychains <span class="added-date">Added Aug 26</span></h3>
       <p>Short bit / observation — girls and keychains.</p>
@@ -632,7 +650,8 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> 6th Street veteran hat <span class="added-date">Added Aug 26</span></h3>
       <p>Local visual / story note.</p>
     </div>
-
+    </div>
+    <div class="new-bucket" id="new-older">
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Mystery abandoned Jeep + Joe Miles / Spazmatics <span class="added-date">Added Aug 25</span></h3>
       <p>Mystery Jeep sitting in front of the house for at least 6 months. Sleuthing points to Joe Miles of the Spazmatics cover band — possibly stolen and dumped. Local detective story / call-out potential.</p>
@@ -641,7 +660,6 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “The Day We Called In With Our Industry Secrets” <span class="added-date">Added Aug 25</span></h3>
       <p>Strong phone topic: “Tell us one harmless secret about your profession that customers don’t know.” Restaurant workers, mechanics, car salespeople, hotel employees, teachers, bartenders, realtors, airline employees, HVAC techs. Keep it light / non-confidential. Follow-up: “Does knowing this save us money, time—or just make us uncomfortable?”</p>
     </div>
-
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Little Nishi sushi expanding to brick-and-mortar <span class="added-date">Added Aug 24</span></h3>
       <p>JB’s little sushi trailer / food truck Little Nishi is becoming Nishi on Southern Oaks Drive. Softshell tempura, hand rolls, sashimi and more. Local food story.</p>
@@ -662,7 +680,6 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “Let’s Rank Em” <span class="added-date">Added Aug 24</span></h3>
       <p>Format idea: discuss and rank different things. Flexible recurring bit.</p>
     </div>
-
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> JB now has AC in the garage <span class="added-date">Added Aug 23</span></h3>
       <p>Cast update — JB’s garage is finally cooled.</p>
@@ -690,6 +707,7 @@
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “This is my kind of parenting.” <span class="added-date">Added Aug 23</span></h3>
       <p>Short reaction / drop note.</p>
+    </div>
     </div>
   </div>
 
@@ -5877,6 +5895,15 @@
   </footer>
 
   <script>
+
+    function showNewBucket(which) {
+      document.querySelectorAll('.new-bucket').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.new-subtab').forEach(el => el.classList.remove('active'));
+      const bucket = document.getElementById('new-' + which);
+      if (bucket) bucket.classList.add('active');
+      const btn = document.querySelector('.new-subtab[onclick*="' + which + '"]');
+      if (btn) btn.classList.add('active');
+    }
     function showTab(id) {
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
