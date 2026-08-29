@@ -7,489 +7,222 @@
 <title>JB &amp; Sandy Show Prep • Aug 29, 2026</title>
 <style>
     :root {
-      --bg: #f4f6f9;
-      --card: #ffffff;
-      --accent: #e8a020;
-      --accent2: #ff6b4a;
-      --green: #22c55e;
-      --green-soft: #dcfce7;
-      --text: #1a2332;
-      --muted: #6b7c8f;
-      --border: #e5eaf0;
-      --shadow: 0 10px 30px rgba(26, 35, 50, 0.08);
-      --shadow-hover: 0 14px 36px rgba(26, 35, 50, 0.12);
+      --ink: #1c2430;
+      --navy: #24344d;
+      --orange: #c45c26;
+      --orange-d: #9a4318;
+      --cream: #f6f1e8;
+      --paper: #fffdf8;
+      --line: #e4d9c8;
+      --muted: #6d6458;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background:
-        radial-gradient(ellipse 90% 60% at 50% -15%, rgba(232,160,32,0.14), transparent 55%),
-        radial-gradient(ellipse 50% 40% at 100% 10%, rgba(255,107,74,0.08), transparent 45%),
-        radial-gradient(ellipse 45% 35% at 0% 30%, rgba(34,197,94,0.07), transparent 40%),
-        var(--bg);
-      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--ink);
       line-height: 1.55;
-      padding: 20px 14px 60px;
-      max-width: 920px;
+      padding: 0 0 60px;
+    }
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 18px 10px;
+    }
+    .topbar-inner {
+      max-width: 1080px;
       margin: 0 auto;
-      min-height: 100vh;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 22px;
-      padding: 24px 18px 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--green));
-    }
-    header h1 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #1a2332;
-      letter-spacing: -0.03em;
-    }
-    header .date {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-top: 6px;
-      font-weight: 500;
-    }
-    header .tagline {
-      font-size: 0.78rem;
-      color: var(--accent2);
-      margin-top: 8px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .sausage-fun {
-      display: block;
-      margin: 12px auto;
-      border-radius: 14px;
-      box-shadow: 0 8px 22px rgba(26,35,50,0.12);
-      object-fit: cover;
-      border: 3px solid #fff;
-    }
-    .sausage-fun.sm { max-width: 130px; max-height: 130px; }
-    .sausage-fun.md { max-width: 200px; max-height: 160px; }
-    .sausage-fun.lg { max-width: 300px; max-height: 200px; width: 100%; }
-    .sausage-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin: 14px 0 4px;
-    }
-    .sausage-caption {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 4px;
-      margin-bottom: 10px;
-    }
-    .copy-all-wrap {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-    .copy-all-btn {
-      background: linear-gradient(135deg, var(--accent), #d4920c);
-      color: #111;
-      border: none;
-      font-size: 0.92rem;
-      font-weight: 700;
-      padding: 12px 26px;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(232,160,32,0.28);
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .copy-all-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(232,160,32,0.35);
-    }
-    .copy-status {
-      display: none;
-      font-size: 0.85rem;
-      color: var(--green);
-      margin-top: 8px;
-      font-weight: 600;
-    }
-    .tabs-new-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-
-    .tab-btn {
-      background: linear-gradient(135deg, #1e4f8f 0%, #3b82f6 55%, #60a5fa 100%);
-      border: 1px solid #1d4ed8;
-      color: #fff;
-      font-size: 0.84rem;
-      font-weight: 600;
-      padding: 9px 14px;
-      border-radius: 22px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.18s ease;
-      box-shadow: 0 3px 10px rgba(30,79,143,0.25);
-    }
-    .tab-btn:hover {
-      background: linear-gradient(135deg, #9a3412 0%, #c2410c 45%, #ea580c 100%);
-      border-color: #9a3412;
-      color: #fff;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(194,65,12,0.35);
-    }
-    .tab-btn.active {
-      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-      color: #fff;
-      border-color: #1e3a8a;
-      font-weight: 700;
-      box-shadow: 0 4px 14px rgba(37,99,235,0.4);
-    }
-    .tab-btn-new {
-      background: linear-gradient(90deg, #ef4444, #facc15, #ef4444);
-      background-size: 200% 100%;
-      animation: newstuff-flash 1.4s linear infinite;
-      border: 2px solid #b91c1c;
-      color: #111;
-      font-size: 1.15rem;
-      font-weight: 800;
-      padding: 15px 36px;
-      border-radius: 32px;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-      min-width: 230px;
-      text-align: center;
-      box-shadow: 0 8px 24px rgba(239,68,68,0.35);
-    }
-    .tab-btn-new:hover, .tab-btn-new.active {
-      filter: brightness(1.05);
-      transform: translateY(-2px);
-    }
-    @keyframes newstuff-flash {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    .new-subtabs {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 12px 0 16px;
-    }
-    .new-subtab {
-      background: linear-gradient(135deg, #1e4f8f, #3b82f6);
-      color: #fff;
-      border: none;
-      border-radius: 18px;
-      padding: 8px 16px;
-      font-weight: 700;
-      font-size: 0.82rem;
-      cursor: pointer;
-    }
-    .new-subtab:hover {
-      background: linear-gradient(135deg, #9a3412, #ea580c);
-    }
-    .new-subtab.active {
-      box-shadow: 0 0 0 3px rgba(250,204,21,0.55);
-    }
-    .new-bucket { display: none; }
-    .new-bucket.active { display: block; }
-    a.more-here {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: #1d4ed8;
-      text-decoration: none;
-    }
-    a.more-here:hover { color: #c2410c; text-decoration: underline; }
-    .added-date {
-      font-size: 0.75rem;
-      color: #16a34a;
-      font-weight: 600;
-      margin-left: 6px;
-      white-space: nowrap;
-    }
-    .moved-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 4px;
-    }
-    .new-stuff-note {
-      background: var(--green-soft);
-      border-left: 4px solid var(--green);
-      padding: 12px 16px;
-      border-radius: 0 12px 12px 0;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-      color: #166534;
-      box-shadow: 0 2px 10px rgba(34,197,94,0.08);
-    }
-    .panel {
-      display: none;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 22px 18px 24px;
-      box-shadow: var(--shadow);
-    }
-    .panel.active { display: block; animation: fadeIn 0.25s ease; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .panel h2 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #1a2332;
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-      letter-spacing: -0.01em;
-    }
-    .item {
-      margin-bottom: 14px;
-      padding: 12px 14px;
-      border-bottom: none;
-      position: relative;
-      background: #f8fafc;
-      border-radius: 12px;
-      border: 1px solid #eef2f6;
-      transition: box-shadow 0.15s, transform 0.15s;
-    }
-    .item:hover {
-      box-shadow: 0 4px 14px rgba(26,35,50,0.06);
-      transform: translateY(-1px);
-    }
-    .item:last-child { margin-bottom: 0; }
-    .item h3 {
-      font-size: 0.95rem;
-      color: #1a2332;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-weight: 700;
-      flex-wrap: wrap;
-    }
-    .item p, .item li {
-      font-size: 0.92rem;
-      color: #334155;
-    }
-    ul { padding-left: 1.15em; margin-top: 4px; }
-    li { margin-bottom: 5px; }
-    a { color: #2563eb; text-decoration: none; word-break: break-all; }
-    a:hover { text-decoration: underline; }
-    .note {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 6px;
-    }
-    .suggestion {
-      background: #fff8eb;
-      border-left: 3px solid var(--accent);
-      padding: 10px 14px;
-      margin-top: 10px;
-      font-size: 0.88rem;
-      border-radius: 0 10px 10px 0;
-      color: #5c4a1f;
-    }
-    .copy-icon {
-      cursor: pointer;
-      font-size: 0.95rem;
-      opacity: 0.75;
-      flex-shrink: 0;
-      line-height: 1.3;
-    }
-    .copy-icon:hover { opacity: 1; }
-    .link-copy {
-      background: #fff;
-      border: 1px solid var(--border);
-      color: #b45309;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-left: 6px;
-      vertical-align: middle;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-    .link-copy:hover { background: #fff8eb; border-color: var(--accent); }
-    .link-copy.copied {
-      background: var(--accent);
-      color: #111;
-      border-color: var(--accent);
-    }
-    footer {
-      text-align: center;
-      margin-top: 28px;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-    /* How-to box inside Audio tab — override any leftover dark inline styles */
-    .howto-box {
-      background: #f0fdf4 !important;
-      border: 1px solid #bbf7d0 !important;
-      border-radius: 14px !important;
-      padding: 16px !important;
-    }
-    .howto-box h3 { color: #15803d !important; }
-
-    /* Minute To Win It expandable weeks */
-    .m2w-week {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 8px rgba(26,35,50,0.04);
-      overflow: hidden;
-    }
-    .m2w-week > summary {
-      list-style: none;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      font-weight: 700;
-      color: #1a2332;
-      user-select: none;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .m2w-week > summary::-webkit-details-marker { display: none; }
-    .m2w-week > summary::before {
-      content: "▸";
-      color: var(--accent);
-      margin-right: 8px;
-      font-size: 0.9rem;
+    .brand {
+      font-family: Georgia, serif;
+      color: var(--navy);
+      line-height: 1.05;
     }
-    .m2w-week[open] > summary::before { content: "▾"; }
-    .m2w-week > summary:hover { background: #f8fafc; }
-    .m2w-name { flex: 1; }
-    .m2w-dl {
+    .brand strong { display: block; font-size: 1.55rem; letter-spacing: 0.02em; }
+    .brand span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); font-weight: 700; }
+    .top-links { display: flex; gap: 16px; flex-wrap: wrap; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 0.88rem; }
+    .top-links a, .top-links button {
+      background: none; border: none; color: var(--navy); cursor: pointer; font-weight: 600; text-decoration: none; padding: 4px 0;
+    }
+    .top-links a:hover, .top-links button:hover, .top-links .on { color: var(--orange); border-bottom: 2px solid var(--orange); }
+    .subbar {
       background: #fff;
-      border: 1px solid var(--border);
-      color: #b45309;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 8px;
-      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding: 8px 18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .subbar-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .subbar button {
+      background: none; border: none; cursor: pointer; color: var(--navy); font-weight: 600; font-size: 0.82rem;
+    }
+    .subbar button:hover { color: var(--orange); }
+    .date-chip { color: var(--orange); font-weight: 800; letter-spacing: 0.04em; }
+    .hero {
+      max-width: 1080px; margin: 0 auto; padding: 12px 18px 6px;
+      display: flex; gap: 8px; overflow: hidden;
+    }
+    .hero img {
+      height: 92px; width: 160px; object-fit: cover; border-radius: 4px; flex: 0 0 auto;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 8px 18px 20px; }
+    .search-row { display: flex; justify-content: flex-end; margin: 8px 0 12px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .search-row input {
+      border: 1px solid var(--line); border-radius: 20px; padding: 8px 14px; min-width: 220px; font-size: 0.9rem;
+    }
+    .pills {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .pill {
+      background: #fff;
+      border: 1px solid #c9bba6;
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 7px 13px;
+      border-radius: 18px;
+      cursor: pointer;
       white-space: nowrap;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .m2w-dl:hover { background: #fff8eb; border-color: var(--accent); text-decoration: none; }
-    .m2w-body {
-      padding: 4px 14px 16px;
-      border-top: 1px solid var(--border);
-      background: #fafbfc;
+    .pill:hover { border-color: var(--orange); color: var(--orange); }
+    .pill.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
     }
-    .m2w-day {
-      margin-top: 14px;
-      padding-top: 8px;
+    .copy-all-wrap { text-align: right; margin: 0 0 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .copy-all-btn {
+      background: var(--orange); color: #fff; border: none; font-weight: 700;
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.82rem;
     }
-    .m2w-day h4 {
-      font-size: 1rem;
-      color: #15803d;
-      margin-bottom: 8px;
+    .copy-status { display: none; color: var(--orange); font-weight: 700; font-size: 0.85rem; margin-top: 6px; }
+    .panel {
+      display: none;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 20px 24px;
+    }
+    .panel.active { display: block; }
+    .panel h2 {
+      font-size: 1.35rem;
+      color: var(--navy);
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
       font-weight: 800;
     }
-    .m2w-q {
-      margin-bottom: 12px;
-      padding: 10px 12px;
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid #eef2f6;
-      font-size: 0.92rem;
-      color: #334155;
+    .item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
     }
-    .m2w-q strong { color: #1a2332; display: block; margin-bottom: 4px; }
-    .m2w-choice { padding-left: 8px; color: #475569; }
-    .m2w-a {
-      margin-top: 6px;
-      color: #15803d;
-      font-weight: 700;
+    .item:last-child { border-bottom: none; }
+    .item h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .item p, .item li { font-size: 0.95rem; }
+    .item ul { padding-left: 1.2em; }
+    .added-date { font-size: 0.75rem; color: var(--orange); font-weight: 700; margin-left: 6px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .note, .moved-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 4px; }
+    .new-stuff-note {
+      background: #f3e6d8; border-left: 4px solid var(--orange);
+      padding: 10px 14px; margin-bottom: 14px; font-size: 0.9rem; color: #5a3b24;
     }
-    .audio-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 8px rgba(26,35,50,0.04);
+    .new-subtabs { display: flex; gap: 8px; margin: 0 0 14px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .new-subtab {
+      background: #fff; border: 1px solid #c9bba6; border-radius: 16px;
+      padding: 6px 12px; font-size: 0.78rem; font-weight: 700; cursor: pointer; color: var(--navy);
     }
-    .audio-card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-      color: #1a2332;
+    .new-subtab.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .new-bucket { display: none; }
+    .new-bucket.active { display: block; }
+    a.more-here {
+      display: inline-block; margin-top: 6px; font-size: 0.86rem; font-weight: 800;
+      color: var(--orange); text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    .audio-card audio {
-      width: 100%;
-      margin: 6px 0 8px;
+    a.more-here:hover { text-decoration: underline; }
+    .copy-icon { cursor: pointer; margin-right: 6px; }
+    .sausage-fun { display: block; margin: 10px auto; border-radius: 8px; max-width: 220px; }
+    .sausage-caption { text-align: center; font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+    audio { width: 100%; margin: 8px 0; }
+    .audio-card, .farm-card {
+      border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 10px 0; background: #fff;
     }
-    .audio-card .m2w-dl { display: inline-block; }
+    .m2w-dl, .link-copy {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem; margin-left: 6px;
+    }
+    footer {
+      text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-    .farm-card { background:#fff; border:1px solid var(--border); border-radius:18px; padding:18px 18px 14px; margin-bottom:16px; box-shadow:0 8px 24px rgba(26,35,50,0.06); }
-    .farm-card h4 { font-size:1.2rem; margin:4px 0 12px; color:#1a2332; letter-spacing:-0.02em; }
-    .farm-label { font-size:0.72rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; color:#b45309; margin-bottom:6px; }
-    .farm-row { margin-bottom:10px; }
-    .farm-row strong { display:block; color:#b45309; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:3px; }
-    .farm-src { font-size:0.8rem; color:#b45309; font-weight:700; margin-bottom:8px; }
-    .farm-card iframe, .farm-card video, .farm-card audio { width:100%; margin:8px 0; border-radius:10px; }
-    .farm-card iframe { min-height:200px; border:0; }
-  </style>
+    .m2w-q { margin: 10px 0 2px; }
+    .m2w-a { color: var(--muted); margin-bottom: 10px; }
+    .farm-src { font-size: 0.78rem; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .farm-row { margin: 6px 0; font-size: 0.92rem; }
+    .howto-box { background: #fff; }
+    .item.hide-search { display: none !important; }
+
+</style>
 </head>
 <body>
-<header>
-<h1>JB &amp; Sandy Show Prep</h1>
-<div class="date">Saturday • August 29, 2026</div>
-<div class="tagline">98.1 KVET • Your All-Time Country Favorites</div>
-<div class="sausage-row">
-<img alt="Ode to sausage" class="sausage-fun sm" src="sausage1.jpg"/>
-</div>
-</header>
-<div class="copy-all-wrap">
-<button class="copy-all-btn" onclick="copyAllNotes()">Copy all notes</button>
-<div class="copy-status" id="copy-status">Copied to clipboard!</div>
-</div>
-<!-- NEW STUFF tab — large, centered, distinct color -->
-<div class="tabs-new-wrap">
-<button class="tab-btn-new active" data-tab="new" onclick="showTab('new')">★ New Stuff</button>
-</div>
-<div class="tabs" id="main-tabs">
-<button class="tab-btn" data-tab="audio" onclick="showTab('audio')">Audio &amp; Video</button>
-<button class="tab-btn" data-tab="local" onclick="showTab('local')">Local Austin &amp; Texas</button>
-<button class="tab-btn" data-tab="caller" onclick="showTab('caller')">Caller Topics &amp; Bits</button>
-<button class="tab-btn" data-tab="records" onclick="showTab('records')">Book of Records</button>
-<button class="tab-btn" data-tab="personal" onclick="showTab('personal')">Personal / Cast</button>
-<button class="tab-btn" data-tab="scams" onclick="showTab('scams')">Scams &amp; Warnings</button>
-<button class="tab-btn" data-tab="music" onclick="showTab('music')">Music / Song Ideas</button>
-<button class="tab-btn" data-tab="kvet" onclick="showTab('kvet')">KVET / Show Bits</button>
-<button class="tab-btn" data-tab="m2w" onclick="showTab('m2w')">Minute To Win It</button>
-<button class="tab-btn" data-tab="audioedits" onclick="showTab('audioedits')">Edited Audio</button>
-<button class="tab-btn" data-tab="archive" onclick="showTab('archive')">Audio Archive</button>
-<button class="tab-btn" data-tab="lastlaugh" onclick="showTab('lastlaugh')">Last Laugh</button>
-<button class="tab-btn" data-tab="grok" onclick="showTab('grok')">Grok Thinks You Will Dig This</button>
-<button class="tab-btn" data-tab="farmed" onclick="showTab('farmed')">Farmed From Others</button>
-</div>
-<!-- NEW STUFF PANEL -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><strong>JB &amp; SANDY</strong><span>Show Prep • 98.1 KVET</span></div>
+      <div class="top-links">
+        <button class="on" type="button" onclick="showTab('new')">Today's Prep</button>
+        <button type="button" onclick="showTab('audioedits')">Today's Audio</button>
+        <button type="button" onclick="showTab('lastlaugh')">Last Laugh</button>
+        <button type="button" onclick="document.getElementById('q').focus()">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="subbar">
+    <div class="subbar-inner">
+      <span class="date-chip">SAT • AUG 29, 2026</span>
+      <button type="button" onclick="showTab('local')">Local</button>
+      <button type="button" onclick="showTab('grok')">Grok Finds</button>
+      <button type="button" onclick="showTab('farmed')">Farmed</button>
+      <button type="button" onclick="showTab('audio')">Audio &amp; Video</button>
+      <button type="button" onclick="showTab('m2w')">Minute To Win It</button>
+    </div>
+  </div>
+  <div class="hero">
+    <img src="sausage1.jpg" alt="">
+    <img src="sausage2.jpg" alt="">
+    <img src="sausage3.jpg" alt="">
+  </div>
+  <div class="wrap">
+    <div class="search-row"><input id="q" placeholder="Search prep…" oninput="filterPrep(this.value)"></div>
+    <div class="pills" id="main-tabs">
+      <button class="pill active" data-tab="new" onclick="showTab('new')">New Stuff</button>
+      <button class="pill" data-tab="local" onclick="showTab('local')">Local Austin &amp; Texas</button>
+      <button class="pill" data-tab="caller" onclick="showTab('caller')">Caller Topics &amp; Bits</button>
+      <button class="pill" data-tab="grok" onclick="showTab('grok')">Grok Thinks You Will Dig This</button>
+      <button class="pill" data-tab="farmed" onclick="showTab('farmed')">Farmed From Others</button>
+      <button class="pill" data-tab="audio" onclick="showTab('audio')">Audio &amp; Video</button>
+      <button class="pill" data-tab="audioedits" onclick="showTab('audioedits')">Edited Audio</button>
+      <button class="pill" data-tab="lastlaugh" onclick="showTab('lastlaugh')">Last Laugh</button>
+      <button class="pill" data-tab="archive" onclick="showTab('archive')">Audio Archive</button>
+      <button class="pill" data-tab="records" onclick="showTab('records')">Book of Records</button>
+      <button class="pill" data-tab="personal" onclick="showTab('personal')">Personal / Cast</button>
+      <button class="pill" data-tab="scams" onclick="showTab('scams')">Scams &amp; Warnings</button>
+      <button class="pill" data-tab="music" onclick="showTab('music')">Music / Song Ideas</button>
+      <button class="pill" data-tab="kvet" onclick="showTab('kvet')">KVET / Show Bits</button>
+      <button class="pill" data-tab="m2w" onclick="showTab('m2w')">Minute To Win It</button>
+    </div>
+    <div class="copy-all-wrap">
+      <button class="copy-all-btn" onclick="copyAllNotes()">Copy all notes</button>
+      <div class="copy-status" id="copy-status">Copied to clipboard!</div>
+    </div>
 <div class="panel active" id="panel-new">
 <h2 style="color:#b91c1c;">★ New Stuff</h2>
 <div class="new-stuff-note">
@@ -5677,6 +5410,7 @@
 <img alt="Sausage race" class="sausage-fun lg" src="sausage3.jpg"/>
 <div class="sausage-caption">How about ode to sausage?</div>
 </div>
+</div>
 <footer>
     JB &amp; Sandy • 98.1 KVET<br/>
     Click any tab • No login • Copy icons next to sections
@@ -5693,13 +5427,19 @@
     }
     function showTab(id) {
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-btn-new').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
       const panel = document.getElementById('panel-' + id);
       if (panel) panel.classList.add('active');
-      const btn = document.querySelector('.tab-btn[data-tab="' + id + '"], .tab-btn-new[data-tab="' + id + '"]');
+      const btn = document.querySelector('.pill[data-tab="' + id + '"]');
       if (btn) btn.classList.add('active');
       if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function filterPrep(q) {
+      q = (q || '').toLowerCase();
+      document.querySelectorAll('.item, .audio-card, .farm-card').forEach(el => {
+        const hit = !q || el.innerText.toLowerCase().includes(q);
+        el.classList.toggle('hide-search', !hit);
+      });
     }
     function copyItem(el) {
       const item = el.closest('.item');
