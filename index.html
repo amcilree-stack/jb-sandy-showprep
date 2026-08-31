@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
-<title>JB &amp; Sandy Show Prep • Aug 30, 2026</title>
+<title>JB &amp; Sandy Show Prep • Aug 31, 2026</title>
 <style>
     :root {
       --ink: #1c2430;
@@ -171,73 +171,6 @@
     .howto-box { background: #fff; }
     .item.hide-search { display: none !important; }
 
-    .hk-toolbar { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; margin: 0 0 12px; }
-    .hk-folders, .hk-pages, .hk-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .hk-pages { margin: 0 0 14px; }
-    .hk-tab {
-      background: #fff; border: 1px solid #c9bba6; color: var(--navy);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.82rem; font-weight: 700; padding: 7px 13px; border-radius: 18px; cursor: pointer;
-    }
-    .hk-tab:hover { border-color: var(--orange); color: var(--orange); }
-    .hk-tab.on { background: var(--navy); border-color: var(--navy); color: #fff; }
-    .hk-ghost, .hk-danger, .hk-edit-toggle, .hk-assign {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.78rem; font-weight: 700; cursor: pointer; border-radius: 16px; padding: 6px 12px;
-    }
-    .hk-ghost, .hk-edit-toggle {
-      background: #fff; border: 1px solid #c9bba6; color: var(--navy);
-    }
-    .hk-edit-toggle.on { background: var(--orange); border-color: var(--orange); color: #fff; }
-    .hk-danger { background: #fff; border: 1px solid #c45c26; color: var(--orange); }
-    .hk-editbar {
-      display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-end;
-      background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 0 0 12px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 0.82rem;
-    }
-    .hk-editbar label, .hk-assign-box label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; color: var(--navy); }
-    .hk-editbar input, .hk-assign-box input, .hk-assign-box select {
-      border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; min-width: 90px; font-weight: 600;
-    }
-    .hk-grid { display: grid; gap: 8px; margin: 8px 0 6px; min-height: 100px; }
-    .hk-pad {
-      position: relative; min-height: 92px; background: #fff; border: 2px solid var(--navy);
-      border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 14px 28px 12px 10px; user-select: none;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-weight: 800; color: var(--navy); font-size: 0.92rem; line-height: 1.2;
-    }
-    .hk-pad:not(.empty):hover { border-color: var(--orange); }
-    .hk-pad:not(.empty):active { transform: scale(0.98); }
-    .hk-pad.empty { border-style: dashed; border-color: #c9bba6; color: var(--muted); font-weight: 600; cursor: default; }
-    .hk-pad.playing { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 0 0 3px rgba(196,92,38,0.28); }
-    .hk-pad.playing.fading { opacity: 0.82; box-shadow: 0 0 0 3px rgba(196,92,38,0.14); }
-    .hk-pad.drop-over, .hk-dragging .hk-pad.empty {
-      border-color: var(--orange); border-style: solid; background: #fff6ee;
-      box-shadow: 0 0 0 3px rgba(196,92,38,0.22);
-    }
-    .hk-name { pointer-events: none; }
-    .hk-local {
-      position: absolute; left: 6px; bottom: 5px; font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.02em; color: inherit; opacity: 0.72; pointer-events: none;
-    }
-    .hk-status { margin: 0 0 8px; min-height: 1.2em; }
-    .hk-dl {
-      position: absolute; top: 4px; right: 6px; font-size: 0.78rem; font-weight: 800;
-      color: inherit; text-decoration: none; opacity: 0.7; padding: 2px 4px;
-    }
-    .hk-dl:hover { opacity: 1; text-decoration: none; }
-    .hk-assign {
-      position: absolute; bottom: 6px; right: 6px; background: var(--navy); color: #fff; border: none;
-      padding: 3px 8px; border-radius: 10px; font-size: 0.68rem;
-    }
-    .hk-assign-box {
-      margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 14px;
-      display: grid; gap: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    .hk-assign-box h3 { color: var(--navy); font-size: 1rem; }
-    .hk-assign-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-
 </style>
 </head>
 <body>
@@ -247,7 +180,6 @@
 <div class="top-links">
 <button class="on" onclick="showTab('new')" type="button">Today's Prep</button>
 <button onclick="showTab('audioedits')" type="button">Today's Audio</button>
-<button data-tab="hotkeys" onclick="showTab('hotkeys')" type="button">Hotkeys</button>
 <button onclick="showTab('lastlaugh')" type="button">Last Laugh</button>
 <button onclick="document.getElementById('q').focus()" type="button">Search</button>
 </div>
@@ -255,7 +187,7 @@
 </div>
 <div class="subbar">
 <div class="subbar-inner">
-<span class="date-chip">SUN • AUG 30, 2026</span>
+<span class="date-chip">MON • AUG 31, 2026</span>
 <button onclick="showTab('local')" type="button">Local</button>
 <button onclick="showTab('grok')" type="button">Grok Finds</button>
 <button onclick="showTab('farmed')" type="button">Farmed</button>
@@ -278,7 +210,6 @@
 <button class="pill" data-tab="farmed" onclick="showTab('farmed')">Farmed From Others</button>
 <button class="pill" data-tab="audio" onclick="showTab('audio')">Audio &amp; Video</button>
 <button class="pill" data-tab="audioedits" onclick="showTab('audioedits')">Edited Audio</button>
-<button class="pill" data-tab="hotkeys" onclick="showTab('hotkeys')">Hotkeys</button>
 <button class="pill" data-tab="lastlaugh" onclick="showTab('lastlaugh')">Last Laugh</button>
 <button class="pill" data-tab="archive" onclick="showTab('archive')">Audio Archive</button>
 <button class="pill" data-tab="records" onclick="showTab('records')">Book of Records</button>
@@ -305,18 +236,21 @@
 <div class="new-bucket active" id="new-recent">
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 air traffic controller audio <span class="added-date">Added Aug 30</span></h3>
-      <p>Anniversary tape, not a bit. Controllers in real time as the planes go off course. Use only as a sober drop if the show marks the day. Treat it with care.</p>
-      <p><a class="more-here" href="https://www.911memorial.org/" target="_blank" rel="noopener">More here →</a></p>
+      <p>FAA / NORAD air-traffic audio from that morning. Tribute drop only.</p>
+      <p><a class="more-here" href="https://www.instagram.com/reel/DcY88RiiG_o/?igsh=MXgxeGJ0NzA2dWJ2cg==" target="_blank" rel="noopener">Instagram source →</a><br>
+      <a class="more-here" href="https://www.youtube.com/watch?v=DYBhgEm3j7A" target="_blank" rel="noopener">Listen here → ATC audio</a></p>
     </div>
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail from a passenger <span class="added-date">Added Aug 30</span></h3>
-      <p>Second anniversary audio. Passenger messages home. Same rule: tribute only, no jokes around it.</p>
-      <p><a class="more-here" href="https://www.911memorial.org/" target="_blank" rel="noopener">More here →</a></p>
+      <p>Betty Ong, flight attendant on American 11, calling the airline from the plane. Tribute only.</p>
+      <p><a class="more-here" href="https://www.instagram.com/reel/DcFmlMCRGab/?igsh=ODhrbHhrd3B5Z3Zm" target="_blank" rel="noopener">Instagram source →</a><br>
+      <a class="more-here" href="https://www.youtube.com/watch?v=_m9_HVdIeQM" target="_blank" rel="noopener">Listen here → Betty Ong call</a></p>
     </div>
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail #2 <span class="added-date">Added Aug 30</span></h3>
-      <p>Third piece of that package. If you air one, have the other two ready so you’re not hunting on the morning of the 11th.</p>
-      <p><a class="more-here" href="https://www.911memorial.org/" target="_blank" rel="noopener">More here →</a></p>
+      <p>CeeCee Lyles, flight attendant on United 93, voicemail to her husband. Tribute only.</p>
+      <p><a class="more-here" href="https://www.instagram.com/reel/Da2-WwqxdhX/?igsh=aXJpZzA3cG96cmFq" target="_blank" rel="noopener">Instagram source →</a><br>
+      <a class="more-here" href="https://www.youtube.com/watch?v=e4n0EQD7b30" target="_blank" rel="noopener">Listen here → CeeCee Lyles voicemail</a></p>
     </div>
 <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Longhorn Scottie Scheffler wins Tour Championship <span class="added-date">Added Aug 30</span></h3>
@@ -5206,129 +5140,147 @@
 </div>
 <div class="panel" id="panel-grok">
 <h2>Grok Thinks You Will Dig This</h2>
-<p class="note" style="margin-bottom:14px;">Picked for the show: local Austin/Central Texas, birthdays, light entertainment. Refreshed <strong>Aug 30 PM</strong>. No politics. <strong>More here →</strong> opens the full story.</p>
+<p class="note" style="margin-bottom:14px;">Picked for the show: local Austin/Central Texas, birthdays, light entertainment. Refreshed <strong>Aug 31 AM</strong>. No politics. <strong>More here →</strong> opens the full story.</p>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Austin Chronicle Hot Sauce Festival is TODAY</h3>
-<p>Radio/East, 3–9 p.m. ~25 makers, competition, People’s Choice, live music, food trucks. Classic end-of-summer Austin tradition. “What’s the hottest sauce you’ve ever tried… and did you regret it?”</p>
-<p><a class="more-here" href="https://www.austinchronicle.com/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Maria Bamford wraps Cap City tonight</h3>
-<p>Comedy legend last show of the run. Pure “if you can still get in, go” energy. Soft phone: “Best live comedy moment you’ve ever witnessed?”</p>
-<p><a class="more-here" href="https://capcitycomedy.com/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Scheels Cedar Park — Ferris wheel still spinning</h3>
-<p>Day 2/3 of the new store. 65-ft indoor Ferris wheel, aquarium, arcade, candy. Who went this weekend and what was the most “only in Texas” thing you saw?</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Black Veil Brides at Emo’s tonight</h3>
+<p>Hard-rock night on East Riverside. High-energy show if that lane is your thing. Soft drop: “When was the last time you went to a concert on a Monday… and was it worth it?”</p>
+<p><a class="more-here" href="https://www.emosaustin.com/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Blue Monday at Antone’s — Soul Man Sam</h3>
+<p>Classic Antone’s blues/soul night. Low-key, great room, perfect “I needed this after the weekend” energy.</p>
+<p><a class="more-here" href="https://www.antonesnightclub.com/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Scheels Cedar Park still the shiny new toy</h3>
+<p>Indoor Ferris wheel, aquarium, arcade — the new store is still the conversation. Who went over the weekend and what’s the one thing you’ll go back for?</p>
 <p><a class="more-here" href="https://communityimpact.com/cedar-park/business/scheels-holds-ribbon-cutting-ahead-of-aug-29-opening/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Loop 360 main lanes now open</h3>
-<p>TxDOT opened one lane each direction on the Westlake/Cedar segment — stay left to bypass the old signals. Local traffic relief (and “finally”) for 360 regulars.</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Loop 360 main lanes open — use them</h3>
+<p>One lane each way open on the Westlake/Cedar segment. Stay left to skip the old signals. Local traffic win that still needs the word out.</p>
 <p><a class="more-here" href="https://www.txdot.gov/loop360/projects/westlake-drive-cedar-street.html" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Oita Japan Summer Festival at the Long Center today</h3>
-<p>Sister-city celebration — food, performances, tea ceremony, calligraphy, marketplace. Family-friendly Sunday energy. 11 a.m.–5 p.m.</p>
-<p><a class="more-here" href="https://thelongcenter.org/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Austin FC snags dramatic stoppage-time win</h3>
-<p>Svatok’s late goal gives Verde a road win at Portland. Classic “never count them out” energy for the Monday watercooler.</p>
-<p><a class="more-here" href="https://www.statesman.com/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Celebrity birthdays • Aug 30</h3>
-<p>Cameron Diaz (54), Bebe Rexha (37), Warren Buffett (96), Lewis Black (78), Michael Chiklis (63), Andy Roddick, Lisa Ling. Easy drops + “which birthday would make the best surprise guest?”</p>
-<p><a class="more-here" href="https://www.famousbirthdays.com/august30.html" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Still hot — upper 90s / triple digits hanging on</h3>
-<p>Another sunny, hot Sunday. Heat index still in the mix. “What’s your personal heat threshold before you cancel outdoor plans?”</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Celebrity birthdays • Aug 31</h3>
+<p>Richard Gere (77), Van Morrison (81), Chris Tucker (55), Debbie Gibson (56), Jalen Brunson (30), Itzhak Perlman, Gina Schock (Go-Go’s). Easy drops + “which one would be the most fun guest?”</p>
+<p><a class="more-here" href="https://www.famousbirthdays.com/august31.html" rel="noopener" target="_blank">More here →</a></p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Still cooking — upper 90s / near 100°</h3>
+<p>Mostly sunny, heat index still in play. Monday feels like an extension of the weekend heat. “What’s your personal heat threshold before you cancel outdoor plans?”</p>
 <p><a class="more-here" href="https://www.kxan.com/weather/" rel="noopener" target="_blank">More here →</a></p>
-</div></div>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Labor Day weekend is next — start the plan talk</h3>
+<p>Monday Sept 7 is the holiday. Bat Fest, pool parties, Austin Restaurant Weeks still running. Soft phone: “What’s the actual plan vs. the plan you’ll end up doing?”</p>
+<p><a class="more-here" href="https://www.austintexas.org/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Westlake win + Scheffler FedEx Cup still the sports chat</h3>
+<p>Chaparrals open with a thriller, Longhorn Scottie takes the Tour Championship and passes Tiger on the money list. Local pride double-dip for the Monday desk.</p>
+<p><a class="more-here" href="https://www.pgatour.com/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+</div>
 <div class="panel" id="panel-farmed">
 <h2>Farmed From Others</h2>
 <p class="note" style="margin-bottom:14px;">
       Monday = Joe Show Tampa only. Wednesday = Mojo Detroit only. Thursday = Hey Morton San Diego only.
       Any day = Smiley (Indy), Daly Migs (Seattle), Valentine (LA), On Air with Ryan Seacrest (LA), similar friend-cast / iHeart mornings.
       NEVER Bobby Bones, Jubal, Beat Migs/Beat JB, or Battle of the Burbs. Do not copy scripts.
-      Sunday PM set — 10 fresh cards (any-day / Monday-friendly).
+      Monday AM set — 10 fresh cards (Joe + any-day).
     </p>
-
-
-
-
-
-
-
-
-
 
 <div class="farm-card">
 <div class="farm-src">Joe Show (Tampa) • Monday</div>
-<h4>The group chat that went sideways</h4>
-<div class="farm-row"><strong>Where it came from</strong> Classic friend-cast Monday opener that surfaces chaos fast.</div>
-<div class="farm-row"><strong>How they ran it</strong> Hosts read (or paraphrase) a group-chat disaster, then ask for the worst group-chat story of the week.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Family chat, work Slack, neighborhood group, fantasy football. “What was the message that made the whole chat go silent… or explode?” Perfect post-weekend debrief.</div>
+<h4>The weekend story that still needs processing</h4>
+<div class="farm-row"><strong>Where it came from</strong> Classic Monday debrief that gets the room talking fast.</div>
+<div class="farm-row"><strong>How they ran it</strong> Hosts each drop one unfinished weekend story, then open phones for the one that still has people shaking their head.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Hot Sauce Fest aftermath, Scheels trip that went longer than planned, Westlake game energy, that one group chat that never cooled off. “What are you still thinking about from the weekend?”</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
+<div class="farm-src">Joe Show (Tampa) • Monday</div>
+<h4>Rate your Monday readiness 1–10</h4>
+<div class="farm-row"><strong>Where it came from</strong> Simple energy-check that surfaces honest (and funny) answers.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast rates themselves, explains why, then takes calls for the lowest and highest scores.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> After a hot, busy weekend. “What’s dragging your score down or propping it up?” Coffee, traffic, leftover festival energy all fair game.</div>
+<p class="note">Recommend: none — pure talk / phones bit.</p>
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Smiley Morning Show (Indy) • Any day</div>
-<h4>The thing you bought and immediately regretted</h4>
-<div class="farm-row"><strong>Where it came from</strong> Impulse-buy confession that works every market.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast owns their recent buyer’s remorse, then opens phones for the “why did I think I needed this?” stories.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Amazon late-night, Scheels opening weekend, garage-sale score that turned out broken. “What’s still in the bag / box / trunk because you can’t admit the mistake?”</div>
+<h4>The thing you said you’d never do… and then did</h4>
+<div class="farm-row"><strong>Where it came from</strong> Soft confession bit that works every market.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast owns a recent “I said never” moment, then invites callers to match it.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Standing in a hot-sauce line, riding an indoor Ferris wheel at a sporting-goods store, texting the group chat at 1 a.m. “What broke you?”</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Daly Migs (Seattle) / friend-cast • Any day</div>
-<h4>What are you pretending not to notice?</h4>
-<div class="farm-row"><strong>Where it came from</strong> Light avoidance bit that gets real laughs.</div>
-<div class="farm-row"><strong>How they ran it</strong> Hosts confess the little things they are ignoring (check-engine light, overflowing laundry, that text), then invite callers.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> The weird noise the car is making, the plant that’s clearly dead, the fridge science experiment. Soft phone gold.</div>
+<h4>What’s still in the car / bag / fridge from the weekend?</h4>
+<div class="farm-row"><strong>Where it came from</strong> Physical leftover bit that paints funny pictures.</div>
+<div class="farm-row"><strong>How they ran it</strong> Hosts inventory their own leftovers, then open lines for the weirdest items still riding shotgun.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Festival wristband, Scheels receipt, half-eaten something, sunscreen that never got used. Instant visual + phone topic.</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Valentine in the Morning (LA) • Any day</div>
-<h4>The small kindness that made your whole day</h4>
+<h4>The compliment that actually landed</h4>
 <div class="farm-row"><strong>Where it came from</strong> Warm, sticky phone topic that balances the show.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast shares one tiny unexpected kindness, then asks listeners for theirs.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Someone let you merge, paid for the coffee behind them, texted “you got this.” Keep it light and local-feeling.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast shares one recent compliment that stuck, then asks listeners for theirs.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Stranger at the store, coworker, kid, spouse. Keep it light and local-feeling. “Who made your weekend better without trying?”</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">On Air with Ryan Seacrest (LA) • Any day</div>
-<h4>Monday motivation (or lack thereof)</h4>
-<div class="farm-row"><strong>Where it came from</strong> Universal Monday energy check.</div>
-<div class="farm-row"><strong>How they ran it</strong> Hosts rate their own Monday readiness 1–10, then take calls for the most honest “I’m not ready” stories.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> After a hot weekend of festivals and football. “What’s the one thing that would make Monday feel less Monday?”</div>
+<h4>One small thing that would make this week better</h4>
+<div class="farm-row"><strong>Where it came from</strong> Forward-looking Monday motivation without the lecture.</div>
+<div class="farm-row"><strong>How they ran it</strong> Hosts each name one realistic win for the week, then take calls for the most doable ideas.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> AC fixed, early bedtime, one less meeting, actually using the new Loop 360 lanes. Practical and human.</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Smiley Morning Show (Indy) • Any day</div>
-<h4>The rule you made up for your house</h4>
+<h4>House rule that exists only in your house</h4>
 <div class="farm-row"><strong>Where it came from</strong> Household-policy bit that reveals funny family dynamics.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast lists their own ridiculous house rules, then asks for listener ones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> No shoes on the couch, remote-control hierarchy, “whoever cooks doesn’t clean.” Instant phone topic.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast lists their own ridiculous rules, then asks for listener ones.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Remote hierarchy, shoe policy, “whoever cooks doesn’t clean,” the sacred chair. Instant phone topic.</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Daly Migs (Seattle) • Any day</div>
-<h4>What did the weather ruin (or save) this weekend?</h4>
-<div class="farm-row"><strong>Where it came from</strong> Weather-adjacent weekend recap that stays light.</div>
-<div class="farm-row"><strong>How they ran it</strong> Hosts own their weather-adjusted plans, then open lines.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Hot Sauce Fest in the heat, lake day that got too hot, Scheels indoor escape. “Did the heat win or did you win?”</div>
+<h4>What are you pretending isn’t broken / dead / overdue?</h4>
+<div class="farm-row"><strong>Where it came from</strong> Light avoidance bit that always gets laughs.</div>
+<div class="farm-row"><strong>How they ran it</strong> Hosts confess the little things they’re ignoring, then invite callers.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Check-engine light, plant that’s clearly toast, fridge science project, that text you still haven’t answered. Soft phone gold.</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
-<div class="farm-src">Hey Morton (San Diego) • Thursday (can run any day)</div>
-<h4>The food order that went completely wrong</h4>
-<div class="farm-row"><strong>Where it came from</strong> Food-fail bit that always delivers stories.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast shares their worst recent order fail, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Wrong spice level, missing the side, drive-thru mix-up, “I ordered mild and got nuclear.” Great with Hot Sauce Fest still in the air.</div>
-<p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Valentine / friend-cast • Any day</div>
-<h4>Who in your life is the designated “fixer”?</h4>
+<h4>Who is the designated “handler” in your group?</h4>
 <div class="farm-row"><strong>Where it came from</strong> Relationship / friend-role bit that gets confessions.</div>
-<div class="farm-row"><strong>How they ran it</strong> Hosts identify their own fixer (or admit they are the fixer), then ask callers.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> The friend who always has the tool, the sibling who solves drama, the spouse who handles the spiders. Light and relatable.</div>
+<div class="farm-row"><strong>How they ran it</strong> Hosts identify their own handler (or admit they are one), then ask callers.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> The friend who always has the tool, the sibling who solves drama, the spouse who deals with spiders or customer service. Light and relatable.</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div><div class="farm-card">
+</div>
+
+<div class="farm-card">
 <div class="farm-src">Joe Show (Tampa) / closer style • Monday</div>
-<h4>The most Austin thing you witnessed this weekend</h4>
+<h4>Most Austin thing you saw or did this weekend</h4>
 <div class="farm-row"><strong>Where it came from</strong> Local-flavor closer that plants the flag.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast nominates their own “only in this city” moment, then takes one or two caller stories.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Hot Sauce Fest line, Scheels Ferris wheel selfie, Westlake Friday-night energy, someone still wearing winter boots in 100°. Perfect Sunday/Monday bridge.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast nominates their own “only here” moment, then takes one or two caller stories.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Hot Sauce Fest line in the heat, Scheels Ferris wheel selfie, Westlake Friday-night energy, someone still in winter boots at 100°. Perfect Monday bridge.</div>
 <p class="note">Recommend: none — pure talk / phones bit.</p>
-</div></div>
+</div>
+</div>
 <div class="panel" id="panel-audioedits">
 <h2>Edited Audio</h2>
 <p class="note" style="margin-bottom:14px;">
@@ -5348,15 +5300,6 @@
 </audio>
 <a class="m2w-dl" download="showprep_monologue_bits.mp3" href="edited-audio/showprep_monologue_bits.mp3">Download</a>
 </div>
-</div>
-<div class="panel" id="panel-hotkeys">
-<h2>Hotkeys</h2>
-<p class="note" style="margin-bottom:14px;">
-      Cart wall — click a pad to fire it. Click again to fade it out (~3 seconds). Click a third time to cut. More than one pad can play at once.
-      Drag an mp3 from your computer onto a pad (or an empty square) to load it. That drop stays in <strong>this browser only</strong> — it does not upload or publish the file to the shared site.
-      Shared clips are the ones already in <strong>edited-audio/</strong>.
-    </p>
-<div id="hotkeys-app">Loading board…</div>
 </div>
 <div class="panel" id="panel-archive">
 <h2>Audio Archive</h2>
@@ -5671,7 +5614,7 @@
     }
     function filterPrep(q) {
       q = (q || '').toLowerCase();
-      document.querySelectorAll('.item, .audio-card, .farm-card, .hk-pad').forEach(el => {
+      document.querySelectorAll('.item, .audio-card, .farm-card').forEach(el => {
         const hit = !q || el.innerText.toLowerCase().includes(q);
         el.classList.toggle('hide-search', !hit);
       });
@@ -5711,6 +5654,5 @@
       });
     }
   </script>
-<script src="hotkeys.js"></script>
 </body>
 </html>
