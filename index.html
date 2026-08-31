@@ -169,6 +169,36 @@
     .farm-src { font-size: 0.78rem; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     .farm-row { margin: 6px 0; font-size: 0.92rem; }
     .howto-box { background: #fff; }
+
+    .hk-toolbar { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; margin:0 0 12px; }
+    .hk-folders, .hk-pages, .hk-tools { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .hk-pages { margin:0 0 14px; }
+    .hk-tab, .hk-ghost, .hk-edit-toggle {
+      background:#fff; border:1px solid #c9bba6; color:var(--navy); border-radius:16px;
+      padding:6px 12px; font-size:0.78rem; font-weight:700; cursor:pointer;
+    }
+    .hk-tab:hover { border-color:var(--orange); color:var(--orange); }
+    .hk-tab.on { background:var(--navy); border-color:var(--navy); color:#fff; }
+    .hk-edit-toggle.on { background:var(--orange); border-color:var(--orange); color:#fff; }
+    .hk-danger { background:#fff; border:1px solid #c45c26; color:var(--orange); border-radius:16px; padding:6px 12px; font-weight:700; cursor:pointer; }
+    .hk-editbar, .hk-assign-box { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 12px; }
+    .hk-editbar label, .hk-assign-box label { display:flex; flex-direction:column; gap:4px; font-weight:700; color:var(--navy); font-size:0.78rem; }
+    .hk-editbar input, .hk-assign-box input, .hk-assign-box select { padding:6px 8px; border:1px solid #c9bba6; border-radius:8px; }
+    .hk-grid { display:grid; gap:8px; margin:8px 0 6px; min-height:100px; }
+    .hk-pad {
+      min-height:72px; border:2px solid #c9bba6; border-radius:10px; background:#fff;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:8px; font-weight:800; cursor:pointer; color:var(--navy); position:relative;
+    }
+    .hk-pad:not(.empty):hover { border-color:var(--orange); }
+    .hk-pad.empty { border-style:dashed; color:var(--muted); font-weight:600; cursor:default; }
+    .hk-pad.playing { background:var(--orange); border-color:var(--orange); color:#fff; }
+    .hk-pad.playing.fading { opacity:0.82; }
+    .hk-pad.drop-over { outline:3px dashed var(--orange); }
+    .hk-local { position:absolute; top:4px; right:6px; font-size:0.65rem; opacity:0.8; }
+    .hk-status { margin:0 0 8px; min-height:1.2em; font-size:0.85rem; color:var(--muted); }
+    .hk-assign-box h3 { color:var(--navy); font-size:1rem; }
+
     .item.hide-search { display: none !important; }
 
 </style>
@@ -205,6 +235,7 @@
 <div class="pills" id="main-tabs">
 <button class="pill active" data-tab="new" onclick="showTab('new')">New Stuff</button>
       <button class="pill" data-tab="sept11" onclick="showTab('sept11')">Sept 11</button>
+      <button class="pill" data-tab="hotkeys" onclick="showTab('hotkeys')">Hotkeys</button>
 <button class="pill" data-tab="local" onclick="showTab('local')">Local Austin &amp; Texas</button>
 <button class="pill" data-tab="caller" onclick="showTab('caller')">Caller Topics &amp; Bits</button>
 <button class="pill" data-tab="grok" onclick="showTab('grok')">Grok Thinks You Will Dig This</button>
@@ -303,6 +334,16 @@
       <p><a class="more-here" href="https://www.instagram.com/reel/Da2-WwqxdhX/?igsh=aXJpZzA3cG96cmFq" target="_blank" rel="noopener">Instagram source →</a><br>
       <a class="more-here" href="https://www.youtube.com/watch?v=e4n0EQD7b30" target="_blank" rel="noopener">Listen here → CeeCee Lyles voicemail</a></p>
     </div>
+  </div>
+
+  
+  <div class="panel" id="panel-hotkeys">
+    <h2>Hotkeys</h2>
+    <p class="note" style="margin-bottom:14px;">
+      Cart wall — click a pad to fire it. Click again to fade it out (~3 seconds). Click a third time to cut.
+      Drag an mp3 onto a pad to load it. Drops stay in this browser only.
+    </p>
+    <div id="hotkeys-app">Loading board…</div>
   </div>
 
   <div class="panel" id="panel-audio">
@@ -5622,7 +5663,7 @@
     }
     function filterPrep(q) {
       q = (q || '').toLowerCase();
-      document.querySelectorAll('.item, .audio-card, .farm-card').forEach(el => {
+      document.querySelectorAll('.item, .audio-card, .farm-card, .hk-pad').forEach(el => {
         const hit = !q || el.innerText.toLowerCase().includes(q);
         el.classList.toggle('hide-search', !hit);
       });
@@ -5662,5 +5703,6 @@
       });
     }
   </script>
+<script src="hotkeys.js"></script>
 </body>
 </html>
