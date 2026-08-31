@@ -1,10 +1,14 @@
 /* JB & Sandy Hotkeys / cart wall. Board + clip list load from hotkeys/*.json.
    Staff customizations (new pages, grid size, pad assignments) stay in this browser
-   so a new clip can land on a pad without editing index.html. */
+   so a new clip can land on a pad without editing index.html.
+   Drag an mp3 onto a pad to play it here. Local drops live in IndexedDB on this
+   computer only — they are not published to the shared GitHub Pages site. */
 (function () {
   var STORAGE_KEY = 'jb-sandy-hotkeys-board';
   var BOARD_URL = 'hotkeys/board.json';
   var LIBRARY_URL = 'hotkeys/library.json';
+  var DB_NAME = 'jb-sandy-hotkeys';
+  var DB_STORE = 'clips';
 
   var FALLBACK_BOARD = {
     folders: [
@@ -36,6 +40,9 @@
   var assignIndex = null;
   var players = {};
   var playing = {};
+  var localUrls = {};
+  var statusMsg = '';
+  var dbPromise = null;
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -45,13 +52,28 @@
       .replace(/"/g, '&quot;');
   }
 
+  function isLocalSrc(src) {
+    return String(src || '').indexOf('local:') === 0;
+  }
+
+  function localId(src) {
+    return String(src || '').slice(6);
+  }
+
   function clipUrl(src) {
+    if (!src || isLocalSrc(src) || String(src).indexOf('blob:') === 0) return src || '';
     return encodeURI(src);
   }
 
   function fileName(src) {
     var parts = String(src || '').split('/');
     return parts[parts.length - 1] || src;
+  }
+
+  function prettyName(file) {
+    var raw = String(file || 'Clip').replace(/^.*[\\/]/, '');
+    var base = raw.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    return base || raw || 'Clip';
   }
 
   function uid(prefix) {
@@ -73,6 +95,7 @@
   function normalizeBoard(data) {
     var raw = data && data.folders ? data : FALLBACK_BOARD;
     return {
+      touched: !!raw.touched,
       folders: (raw.folders || []).map(function (folder) {
         return {
           id: folder.id || uid('f'),
@@ -97,16 +120,20 @@
      so a new shipped pad (and flattened names) replace the old dummy board
      instead of staying stuck in localStorage. */
   function isShippedDefaultBoard(data) {
-    if (!data || !data.folders || data.folders.length !== 1) return false;
+    if (!data || data.touched) return false;
+    if (!data.folders || data.folders.length !== 1) return false;
     var folder = data.folders[0];
     if (!folder || !folder.pages || folder.pages.length !== 1) return false;
     var pads = folder.pages[0].pads || [];
+    var filled = 0;
     var i;
     for (i = 0; i < pads.length; i++) {
       var src = pads[i] && pads[i].src;
-      if (src && !DEFAULT_PAD_SRCS[src]) return false;
+      if (!src) continue;
+      filled += 1;
+      if (!DEFAULT_PAD_SRCS[src]) return false;
     }
-    return true;
+    return filled <= 3;
   }
 
   function currentFolder() {
@@ -129,6 +156,7 @@
 
   function persist() {
     try {
+      if (board) board.touched = true;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(board));
     } catch (err) { /* ignore quota / private mode */ }
   }
@@ -147,17 +175,143 @@
     return folderId + '/' + pageId + '/' + index;
   }
 
-  function getPlayer(index, src) {
+  function setStatus(msg) {
+    statusMsg = msg || '';
+    var el = $('hk-status');
+    if (el) el.textContent = statusMsg;
+  }
+
+  function openDb() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise(function (resolve, reject) {
+      if (!window.indexedDB) {
+        reject(new Error('IndexedDB is not available'));
+        return;
+      }
+      var req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = function () {
+        var db = req.result;
+        if (!db.objectStoreNames.contains(DB_STORE)) {
+          db.createObjectStore(DB_STORE, { keyPath: 'id' });
+        }
+      };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error); };
+    });
+    return dbPromise;
+  }
+
+  function idbPut(rec) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(DB_STORE, 'readwrite');
+        tx.oncomplete = function () { resolve(rec); };
+        tx.onerror = function () { reject(tx.error); };
+        tx.objectStore(DB_STORE).put(rec);
+      });
+    });
+  }
+
+  function idbGet(id) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(DB_STORE, 'readonly');
+        var req = tx.objectStore(DB_STORE).get(id);
+        req.onsuccess = function () { resolve(req.result || null); };
+        req.onerror = function () { reject(req.error); };
+      });
+    });
+  }
+
+  function idbDelete(id) {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(DB_STORE, 'readwrite');
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+        tx.objectStore(DB_STORE).delete(id);
+      });
+    }).catch(function () { /* ignore */ });
+  }
+
+  function idbClear() {
+    return openDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(DB_STORE, 'readwrite');
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+        tx.objectStore(DB_STORE).clear();
+      });
+    }).catch(function () { /* ignore */ });
+  }
+
+  function revokeLocalUrl(src) {
+    if (localUrls[src]) {
+      try { URL.revokeObjectURL(localUrls[src]); } catch (err) { /* ignore */ }
+      delete localUrls[src];
+    }
+  }
+
+  function srcStillUsed(src, exceptKey) {
+    if (!board || !src) return false;
+    var f, p, i, key;
+    for (f = 0; f < board.folders.length; f++) {
+      var folder = board.folders[f];
+      for (p = 0; p < folder.pages.length; p++) {
+        var page = folder.pages[p];
+        var pads = page.pads || [];
+        for (i = 0; i < pads.length; i++) {
+          key = folder.id + '/' + page.id + '/' + i;
+          if (exceptKey && key === exceptKey) continue;
+          if (pads[i] && pads[i].src === src) return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  function releasePadMedia(index, src) {
+    var key = playerKey(index);
+    if (players[key]) {
+      try {
+        players[key].audio.pause();
+        players[key].audio.src = '';
+      } catch (err) { /* ignore */ }
+      delete players[key];
+    }
+    playing[key] = false;
+    if (isLocalSrc(src) && !srcStillUsed(src, key)) {
+      revokeLocalUrl(src);
+      idbDelete(localId(src));
+    }
+  }
+
+  function resolveUrl(src) {
+    if (!src) return Promise.resolve('');
+    if (String(src).indexOf('blob:') === 0) return Promise.resolve(src);
+    if (!isLocalSrc(src)) return Promise.resolve(clipUrl(src));
+    if (localUrls[src]) return Promise.resolve(localUrls[src]);
+    return idbGet(localId(src)).then(function (rec) {
+      if (!rec || !rec.blob) throw new Error('That dropped file is no longer on this computer.');
+      localUrls[src] = URL.createObjectURL(rec.blob);
+      return localUrls[src];
+    });
+  }
+
+  function getPlayer(index, src, url) {
     var key = playerKey(index);
     var rec = players[key];
-    if (rec && rec.src === src) return rec.audio;
+    if (rec && rec.src === src && rec.audio) {
+      if (url && rec.audio.getAttribute('src') !== url) rec.audio.src = url;
+      return rec.audio;
+    }
     if (rec) {
       rec.audio.pause();
       rec.audio.src = '';
     }
     var audio = new Audio();
     audio.preload = 'none';
-    audio.src = clipUrl(src);
+    audio.src = url || clipUrl(src);
     audio.addEventListener('play', function () {
       playing[key] = true;
       paintPlaying();
@@ -192,10 +346,14 @@
     if (!page) return;
     var pad = padCell(page, index);
     if (!pad.src) return;
-    var audio = getPlayer(index, pad.src);
-    try { audio.currentTime = 0; } catch (err) { /* ignore seek before load */ }
-    var start = audio.play();
-    if (start && start.catch) start.catch(function () { /* autoplay / missing file */ });
+    resolveUrl(pad.src).then(function (url) {
+      var audio = getPlayer(index, pad.src, url);
+      try { audio.currentTime = 0; } catch (err) { /* ignore seek before load */ }
+      var start = audio.play();
+      if (start && start.catch) start.catch(function () { /* autoplay / missing file */ });
+    }).catch(function (err) {
+      setStatus(err && err.message ? err.message : 'Could not play that pad.');
+    });
   }
 
   function stopAll() {
@@ -211,6 +369,187 @@
 
   function $(id) {
     return document.getElementById(id);
+  }
+
+  function isAudioFile(file) {
+    if (!file || !file.name) return false;
+    if (file.type && file.type.indexOf('audio/') === 0) return true;
+    return /\.(mp3|wav|m4a|aac|ogg|oga|flac|mp4|mpeg|mpg|aif|aiff)$/i.test(file.name);
+  }
+
+  function looksLikeFileDrag(ev) {
+    var types = ev.dataTransfer && ev.dataTransfer.types;
+    if (!types) return false;
+    var i;
+    for (i = 0; i < types.length; i++) {
+      if (types[i] === 'Files' || types[i] === 'application/x-moz-file') return true;
+    }
+    return false;
+  }
+
+  function matchLibraryClip(name) {
+    var base = String(name || '').replace(/^.*[\\/]/, '').toLowerCase();
+    if (!base) return null;
+    var i, clip, fn;
+    for (i = 0; i < library.length; i++) {
+      clip = library[i];
+      fn = fileName(clip.src).toLowerCase();
+      if (fn === base) return clip;
+    }
+    return null;
+  }
+
+  function probeSitePath(name) {
+    var base = String(name || '').replace(/^.*[\\/]/, '');
+    var paths = ['edited-audio/' + base, 'edited-audio/archive/' + base];
+    return Promise.all(paths.map(function (path) {
+      return fetch(encodeURI(path), { method: 'HEAD', cache: 'no-store' }).then(function (res) {
+        return res.ok ? path : null;
+      }).catch(function () { return null; });
+    })).then(function (hits) {
+      var path = hits.filter(Boolean)[0];
+      return path ? { name: prettyName(base), src: path } : null;
+    });
+  }
+
+  function findSiteClip(fileNameStr) {
+    var clip = matchLibraryClip(fileNameStr);
+    if (clip) return Promise.resolve(clip);
+    return probeSitePath(fileNameStr);
+  }
+
+  function firstEmptyIndex(page, start) {
+    var total = page.rows * page.cols;
+    var i;
+    for (i = start || 0; i < total; i++) {
+      if (!padCell(page, i).src) return i;
+    }
+    return -1;
+  }
+
+  function writePad(index, name, src) {
+    var page = currentPage();
+    if (!page) return null;
+    var prev = padCell(page, index);
+    if (prev.src && prev.src !== src) releasePadMedia(index, prev.src);
+    var pad = ensurePad(page, index);
+    pad.name = name;
+    pad.src = src;
+    persist();
+    return pad;
+  }
+
+  function assignLocalFile(index, file, shouldPlay) {
+    var id = uid('c');
+    var src = 'local:' + id;
+    var name = prettyName(file.name);
+    var url = URL.createObjectURL(file);
+    localUrls[src] = url;
+    writePad(index, name, src);
+    idbPut({
+      id: id,
+      name: name,
+      fileName: file.name,
+      type: file.type || 'audio/mpeg',
+      blob: file,
+      addedAt: Date.now()
+    }).catch(function () {
+      setStatus('Playing now, but this browser could not save the file for next time.');
+    });
+    render();
+    setStatus(name + ' — on this computer only. Not uploaded to the shared site.');
+    if (shouldPlay) playPad(index);
+  }
+
+  function assignOneFile(index, file, shouldPlay) {
+    return findSiteClip(file.name).then(function (site) {
+      if (site) {
+        writePad(index, site.name, site.src);
+        render();
+        setStatus(site.name + ' — using the shared site file.');
+        if (shouldPlay) playPad(index);
+        return;
+      }
+      assignLocalFile(index, file, shouldPlay);
+    });
+  }
+
+  function assignFiles(startIndex, files, replaceFirst) {
+    var page = currentPage();
+    if (!page || !files.length) return Promise.resolve();
+    var jobs = [];
+    var i;
+    var idx = startIndex;
+    for (i = 0; i < files.length; i++) {
+      if (i === 0 && replaceFirst && startIndex >= 0) {
+        idx = startIndex;
+      } else {
+        idx = firstEmptyIndex(page, i === 0 ? (startIndex >= 0 ? startIndex : 0) : idx + 1);
+        if (idx < 0) {
+          if (i === 0) setStatus('No empty pad. Drop onto a specific pad to replace it.');
+          break;
+        }
+      }
+      jobs.push({ index: idx, file: files[i], play: i === 0 });
+    }
+    var chain = Promise.resolve();
+    jobs.forEach(function (job) {
+      chain = chain.then(function () { return assignOneFile(job.index, job.file, job.play); });
+    });
+    return chain;
+  }
+
+  function filesFromDrop(ev) {
+    var list = ev.dataTransfer && ev.dataTransfer.files;
+    if (!list || !list.length) return [];
+    return Array.prototype.filter.call(list, isAudioFile);
+  }
+
+  function handleDrop(ev, mount) {
+    if (!looksLikeFileDrag(ev) && !(ev.dataTransfer && ev.dataTransfer.files && ev.dataTransfer.files.length)) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    clearDropOver(mount);
+    var files = filesFromDrop(ev);
+    if (!files.length) {
+      setStatus('Drop an audio file (mp3, wav, m4a…).');
+      return;
+    }
+    var pad = ev.target.closest && ev.target.closest('.hk-pad');
+    var start = pad ? parseInt(pad.getAttribute('data-index'), 10) : -1;
+    loadLibrary().then(function () {
+      return assignFiles(isNaN(start) ? -1 : start, files, !!pad);
+    });
+  }
+
+  function clearDropOver(mount) {
+    if (!mount) return;
+    mount.classList.remove('hk-dragging');
+    mount.querySelectorAll('.drop-over').forEach(function (el) { el.classList.remove('drop-over'); });
+  }
+
+  function bindDrops(mount) {
+    mount.ondragenter = function (ev) {
+      if (!looksLikeFileDrag(ev)) return;
+      ev.preventDefault();
+      mount.classList.add('hk-dragging');
+    };
+    mount.ondragover = function (ev) {
+      if (!looksLikeFileDrag(ev)) return;
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = 'copy';
+      var pad = ev.target.closest && ev.target.closest('.hk-pad');
+      mount.querySelectorAll('.hk-pad.drop-over').forEach(function (el) {
+        if (el !== pad) el.classList.remove('drop-over');
+      });
+      if (pad) pad.classList.add('drop-over');
+    };
+    mount.ondragleave = function (ev) {
+      if (!mount.contains(ev.relatedTarget)) clearDropOver(mount);
+    };
+    mount.ondrop = function (ev) {
+      handleDrop(ev, mount);
+    };
   }
 
   function render() {
@@ -266,7 +605,7 @@
         html += '<button type="button" class="hk-danger" data-act="del-folder">Delete folder</button>';
       }
       html += '</div>';
-      html += '<p class="note">Drop an mp3 in <strong>edited-audio/</strong>, add it to <strong>hotkeys/library.json</strong>, then assign it on a pad. Or type the file path on the pad. No index.html edit. This browser remembers your board; Copy board JSON if you want the shared site default updated.</p>';
+      html += '<p class="note">Drag an mp3 onto a pad anytime — Edit is not required. Dropped files stay in this browser; they are not published. To share a clip with everyone, put the mp3 in <strong>edited-audio/</strong> and add it to <strong>hotkeys/library.json</strong>. This browser remembers your board; Copy board JSON if you want the shared site default updated (local: pads will not work on other computers).</p>';
     }
 
     if (!page) {
@@ -282,12 +621,18 @@
     for (i = 0; i < total; i++) {
       var pad = padCell(page, i);
       var loaded = !!(pad.src && pad.name || pad.src);
-      var label = pad.name || (pad.src ? fileName(pad.src) : 'Empty');
+      var local = isLocalSrc(pad.src);
+      var label = pad.name || (pad.src ? prettyName(fileName(pad.src)) : 'Drop mp3');
       var key = playerKey(i);
       html += '<div class="hk-pad' + (loaded ? '' : ' empty') + (playing[key] ? ' playing' : '') + '" data-act="pad" data-index="' + i + '" role="button" tabindex="0">';
       html += '<span class="hk-name">' + esc(label) + '</span>';
-      if (pad.src) {
+      if (pad.src && !local) {
         html += '<a class="hk-dl" download="' + esc(fileName(pad.src)) + '" href="' + esc(clipUrl(pad.src)) + '" title="Download mp3">↓</a>';
+      } else if (pad.src && local && localUrls[pad.src]) {
+        html += '<a class="hk-dl" download="' + esc((pad.name || 'clip') + '.mp3') + '" href="' + esc(localUrls[pad.src]) + '" title="Download this computer’s copy">↓</a>';
+      }
+      if (local) {
+        html += '<span class="hk-local">this computer</span>';
       }
       if (editing) {
         html += '<button type="button" class="hk-assign" data-act="assign" data-index="' + i + '">Assign</button>';
@@ -295,6 +640,7 @@
       html += '</div>';
     }
     html += '</div>';
+    html += '<p class="note hk-status" id="hk-status">' + esc(statusMsg || 'Drag an mp3 onto a pad or an empty square. Drops stay on this computer.') + '</p>';
 
     if (assignIndex != null) {
       html += renderAssign(page, assignIndex);
@@ -315,7 +661,7 @@
     html += '<h3>Assign pad ' + (index + 1) + '</h3>';
     html += '<label>Name <input id="hk-pad-name" type="text" value="' + esc(pad.name) + '" placeholder="On-air label"></label>';
     html += '<label>Clip from library <select id="hk-pad-lib">' + opts + '</select></label>';
-    html += '<label>Or file path <input id="hk-pad-src" type="text" value="' + esc(pad.src) + '" placeholder="edited-audio/new-clip.mp3"></label>';
+    html += '<label>Or file path <input id="hk-pad-src" type="text" value="' + esc(isLocalSrc(pad.src) ? '' : pad.src) + '" placeholder="edited-audio/new-clip.mp3"></label>';
     html += '<div class="hk-assign-actions">';
     html += '<button type="button" class="copy-all-btn" data-act="save-assign">Save pad</button>';
     html += '<button type="button" class="hk-ghost" data-act="clear-assign">Clear pad</button>';
@@ -401,6 +747,8 @@
         if (nameField && clip) nameField.value = clip.name;
       };
     }
+
+    bindDrops(mount);
   }
 
   function applyMeta() {
@@ -467,7 +815,7 @@
   function saveAssign() {
     var page = currentPage();
     if (!page || assignIndex == null) return;
-    var pad = ensurePad(page, assignIndex);
+    var prev = padCell(page, assignIndex);
     var nameField = $('hk-pad-name');
     var srcField = $('hk-pad-src');
     var lib = $('hk-pad-lib');
@@ -477,6 +825,8 @@
       var clip = library.filter(function (c) { return c.src === src; })[0];
       name = clip ? clip.name : fileName(src);
     }
+    if (prev.src && prev.src !== src) releasePadMedia(assignIndex, prev.src);
+    var pad = ensurePad(page, assignIndex);
     pad.name = name;
     pad.src = src;
     assignIndex = null;
@@ -488,14 +838,9 @@
     var page = currentPage();
     if (!page || assignIndex == null) return;
     var pad = ensurePad(page, assignIndex);
+    releasePadMedia(assignIndex, pad.src);
     pad.name = '';
     pad.src = '';
-    var key = playerKey(assignIndex);
-    if (players[key]) {
-      players[key].audio.pause();
-      delete players[key];
-    }
-    playing[key] = false;
     assignIndex = null;
     persist();
     render();
@@ -503,9 +848,10 @@
 
   function exportBoard() {
     var text = JSON.stringify(board, null, 2);
+    var note = 'Board JSON copied. Paste it into hotkeys/board.json to make this the shared site default. Pads that say “this computer” (local:…) will not play for anyone else.';
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
-        window.alert('Board JSON copied. Paste it into hotkeys/board.json to make this the shared site default.');
+        window.alert(note);
       }).catch(function () {
         window.prompt('Copy this board JSON', text);
       });
@@ -515,11 +861,13 @@
   }
 
   function resetBoard() {
-    if (!window.confirm('Throw away this browser’s hotkey edits and reload the site default?')) return;
+    if (!window.confirm('Throw away this browser’s hotkey edits and local drops, and reload the site default?')) return;
     try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* ignore */ }
+    Object.keys(localUrls).forEach(revokeLocalUrl);
     assignIndex = null;
     editing = true;
-    fetchBoard(true);
+    statusMsg = '';
+    idbClear().then(function () { fetchBoard(true); }, function () { fetchBoard(true); });
   }
 
   function fetchJson(url) {
