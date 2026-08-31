@@ -640,7 +640,7 @@
       html += '</div>';
     }
     html += '</div>';
-    html += '<p class="note hk-status" id="hk-status">' + esc(statusMsg || 'Drag an mp3 onto a pad or an empty square. Drops stay on this computer.') + '</p>';
+    html += '<p class="note hk-status" id="hk-status">' + esc(statusMsg || 'Drag an mp3 onto a pad or an empty square. Dropped files stay on this computer.') + '</p>';
 
     if (assignIndex != null) {
       html += renderAssign(page, assignIndex);
