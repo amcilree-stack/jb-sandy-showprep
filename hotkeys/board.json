@@ -1,12 +1,12 @@
 {
   "folders": [
     {
-      "id": "farmed-audio",
-      "name": "Farmed Audio",
+      "id": "hotkeys",
+      "name": "Hotkeys",
       "pages": [
         {
-          "id": "drops",
-          "name": "Drops",
+          "id": "pads",
+          "name": "Pads",
           "rows": 4,
           "cols": 4,
           "pads": [
@@ -17,6 +17,10 @@
             {
               "name": "Monologue Bits",
               "src": "edited-audio/showprep_monologue_bits.mp3"
+            },
+            {
+              "name": "Harrison Ford Cookie Monster",
+              "src": "edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3"
             }
           ]
         }

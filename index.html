@@ -5626,11 +5626,13 @@
 <script>
 
     function showNewBucket(which) {
-      document.querySelectorAll('.new-bucket').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.new-subtab').forEach(el => el.classList.remove('active'));
+      const panel = document.getElementById('panel-new');
+      if (!panel) return;
+      panel.querySelectorAll('.new-bucket').forEach(el => el.classList.remove('active'));
+      panel.querySelectorAll('.new-subtab').forEach(el => el.classList.remove('active'));
       const bucket = document.getElementById('new-' + which);
       if (bucket) bucket.classList.add('active');
-      const btn = document.querySelector('.new-subtab[onclick*="' + which + '"]');
+      const btn = panel.querySelector('.new-subtab[onclick*="' + which + '"]');
       if (btn) btn.classList.add('active');
     }
     function showTab(id) {

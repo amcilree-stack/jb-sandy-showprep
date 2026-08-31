@@ -9,17 +9,18 @@
   var FALLBACK_BOARD = {
     folders: [
       {
-        id: 'farmed-audio',
-        name: 'Farmed Audio',
+        id: 'hotkeys',
+        name: 'Hotkeys',
         pages: [
           {
-            id: 'drops',
-            name: 'Drops',
+            id: 'pads',
+            name: 'Pads',
             rows: 4,
             cols: 4,
             pads: [
               { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
-              { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' }
+              { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
+              { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
             ]
           }
         ]
@@ -63,17 +64,23 @@
     return Math.max(min, Math.min(max, n));
   }
 
+  var DEFAULT_PAD_SRCS = {
+    'edited-audio/band on Lake.mp3': true,
+    'edited-audio/showprep_monologue_bits.mp3': true,
+    'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true
+  };
+
   function normalizeBoard(data) {
     var raw = data && data.folders ? data : FALLBACK_BOARD;
     return {
       folders: (raw.folders || []).map(function (folder) {
         return {
           id: folder.id || uid('f'),
-          name: folder.name || 'Folder',
+          name: folder.name || 'Hotkeys',
           pages: (folder.pages || []).map(function (page) {
             return {
               id: page.id || uid('p'),
-              name: page.name || 'Page',
+              name: page.name || 'Pads',
               rows: clamp(page.rows == null ? 4 : page.rows, 1, 8),
               cols: clamp(page.cols == null ? 4 : page.cols, 1, 10),
               pads: (page.pads || []).map(function (pad) {
@@ -84,6 +91,22 @@
         };
       })
     };
+  }
+
+  /* Site default is one folder + one page. Treat that as "not customized"
+     so a new shipped pad (and flattened names) replace the old dummy board
+     instead of staying stuck in localStorage. */
+  function isShippedDefaultBoard(data) {
+    if (!data || !data.folders || data.folders.length !== 1) return false;
+    var folder = data.folders[0];
+    if (!folder || !folder.pages || folder.pages.length !== 1) return false;
+    var pads = folder.pages[0].pads || [];
+    var i;
+    for (i = 0; i < pads.length; i++) {
+      var src = pads[i] && pads[i].src;
+      if (src && !DEFAULT_PAD_SRCS[src]) return false;
+    }
+    return true;
   }
 
   function currentFolder() {
@@ -197,13 +220,18 @@
     var page = currentPage();
     var html = '';
 
+    var showFolderTabs = editing || board.folders.length > 1;
+    var showPageTabs = !!(folder && (editing || folder.pages.length > 1));
+
     html += '<div class="hk-toolbar">';
-    html += '<div class="hk-folders" role="tablist" aria-label="Hotkey folders">';
-    board.folders.forEach(function (f) {
-      html += '<button type="button" class="hk-tab' + (f.id === folderId ? ' on' : '') + '" data-act="folder" data-id="' + esc(f.id) + '">' + esc(f.name) + '</button>';
-    });
-    if (editing) {
-      html += '<button type="button" class="hk-ghost" data-act="add-folder">+ Folder</button>';
+    html += '<div class="hk-folders"' + (showFolderTabs ? ' role="tablist" aria-label="Hotkey folders"' : '') + '>';
+    if (showFolderTabs) {
+      board.folders.forEach(function (f) {
+        html += '<button type="button" class="hk-tab' + (f.id === folderId ? ' on' : '') + '" data-act="folder" data-id="' + esc(f.id) + '">' + esc(f.name) + '</button>';
+      });
+      if (editing) {
+        html += '<button type="button" class="hk-ghost" data-act="add-folder">+ Folder</button>';
+      }
     }
     html += '</div>';
     html += '<div class="hk-tools">';
@@ -211,10 +239,10 @@
     html += '<button type="button" class="hk-edit-toggle' + (editing ? ' on' : '') + '" data-act="edit">' + (editing ? 'Done editing' : 'Edit board') + '</button>';
     html += '</div></div>';
 
-    if (folder) {
+    if (showPageTabs) {
       html += '<div class="hk-pages" role="tablist" aria-label="Pages in ' + esc(folder.name) + '">';
       folder.pages.forEach(function (p) {
-        html += '<button type="button" class="new-subtab' + (p.id === pageId ? ' active' : '') + '" data-act="page" data-id="' + esc(p.id) + '">' + esc(p.name) + '</button>';
+        html += '<button type="button" class="hk-tab' + (p.id === pageId ? ' on' : '') + '" data-act="page" data-id="' + esc(p.id) + '">' + esc(p.name) + '</button>';
       });
       if (editing) {
         html += '<button type="button" class="hk-ghost" data-act="add-page">+ Page</button>';
@@ -397,7 +425,7 @@
     var folder = { id: uid('f'), name: name.trim(), pages: [] };
     board.folders.push(folder);
     folderId = folder.id;
-    addPage('Drops');
+    addPage('Pads');
   }
 
   function addPage(presetName) {
@@ -508,7 +536,8 @@
       if (!library.length) {
         library = [
           { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
-          { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' }
+          { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
+          { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
         ];
       }
     });
@@ -519,7 +548,7 @@
     if (!forceRemote) {
       try { local = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (err) { local = null; }
     }
-    if (local && local.folders && local.folders.length) {
+    if (local && local.folders && local.folders.length && !isShippedDefaultBoard(local)) {
       board = normalizeBoard(local);
       selectDefaults();
       render();
