@@ -1,0 +1,6 @@
+# BASIC_AUTH_USERS is set in the Netlify dashboard (env vars), not in git.
+# Site-wide Basic-Auth is written into published _headers at deploy time.
+
+[build]
+  command = "node scripts/apply-basic-auth.js"
+  publish = "."
