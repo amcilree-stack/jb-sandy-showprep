@@ -204,6 +204,7 @@
 <div class="search-row"><input id="q" oninput="filterPrep(this.value)" placeholder="Search prep…"/></div>
 <div class="pills" id="main-tabs">
 <button class="pill active" data-tab="new" onclick="showTab('new')">New Stuff</button>
+      <button class="pill" data-tab="sept11" onclick="showTab('sept11')">Sept 11</button>
 <button class="pill" data-tab="local" onclick="showTab('local')">Local Austin &amp; Texas</button>
 <button class="pill" data-tab="caller" onclick="showTab('caller')">Caller Topics &amp; Bits</button>
 <button class="pill" data-tab="grok" onclick="showTab('grok')">Grok Thinks You Will Dig This</button>
@@ -224,34 +225,17 @@
 <div class="copy-status" id="copy-status">Copied to clipboard!</div>
 </div>
 <div class="panel active" id="panel-new">
-<h2>★ New Stuff</h2>
-<div class="new-stuff-note">
+    <h2>★ New Stuff</h2>
+    <div class="new-stuff-note">
       The 5 newest ideas sit here. Everything else in the 7-day window is under <strong>More Brilliant Ideas</strong>.
-      After 7 days, items move to the permanent tab.
+      After 7 days, items move to the permanent tab. Sept 11 / 9/11 items go to the Sept 11 tab.
     </div>
-<div class="new-subtabs">
-<button class="new-subtab active" onclick="showNewBucket('recent')" type="button">Newest 5</button>
-<button class="new-subtab" onclick="showNewBucket('older')" type="button">More Brilliant Ideas</button>
-</div>
-<div class="new-bucket active" id="new-recent">
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 air traffic controller audio <span class="added-date">Added Aug 30</span></h3>
-      <p>FAA / NORAD air-traffic audio from that morning. Tribute drop only.</p>
-      <p><a class="more-here" href="https://www.instagram.com/reel/DcY88RiiG_o/?igsh=MXgxeGJ0NzA2dWJ2cg==" target="_blank" rel="noopener">Instagram source →</a><br>
-      <a class="more-here" href="https://www.youtube.com/watch?v=DYBhgEm3j7A" target="_blank" rel="noopener">Listen here → ATC audio</a></p>
+    <div class="new-subtabs">
+      <button class="new-subtab active" type="button" onclick="showNewBucket('recent')">Newest 5</button>
+      <button class="new-subtab" type="button" onclick="showNewBucket('older')">More Brilliant Ideas</button>
     </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail from a passenger <span class="added-date">Added Aug 30</span></h3>
-      <p>Betty Ong, flight attendant on American 11, calling the airline from the plane. Tribute only.</p>
-      <p><a class="more-here" href="https://www.instagram.com/reel/DcFmlMCRGab/?igsh=ODhrbHhrd3B5Z3Zm" target="_blank" rel="noopener">Instagram source →</a><br>
-      <a class="more-here" href="https://www.youtube.com/watch?v=_m9_HVdIeQM" target="_blank" rel="noopener">Listen here → Betty Ong call</a></p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail #2 <span class="added-date">Added Aug 30</span></h3>
-      <p>CeeCee Lyles, flight attendant on United 93, voicemail to her husband. Tribute only.</p>
-      <p><a class="more-here" href="https://www.instagram.com/reel/Da2-WwqxdhX/?igsh=aXJpZzA3cG96cmFq" target="_blank" rel="noopener">Instagram source →</a><br>
-      <a class="more-here" href="https://www.youtube.com/watch?v=e4n0EQD7b30" target="_blank" rel="noopener">Listen here → CeeCee Lyles voicemail</a></p>
-    </div>
+
+    <div class="new-bucket active" id="new-recent">
 <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Longhorn Scottie Scheffler wins Tour Championship <span class="added-date">Added Aug 30</span></h3>
       <p>Texas guy, second FedEx Cup in three years. Overcame a two-shot deficit Sunday at East Lake. Phone: “Is Scottie the most boring superstar in sports, or is that the compliment?” Easy local pride drop.</p>
@@ -262,11 +246,6 @@
 <p>Chaparrals open the 2026 season with a thriller at Chaparral Stadium, rallying past California power Inglewood. QB Patton Jones (first career start) accounted for three TDs. Classic Friday-night energy + Texas vs. California bragging rights. Phone: “Best high-school football memory or most dramatic comeback you’ve ever seen?”</p>
 <p><a class="more-here" href="https://texashsfootball.com/westlake-storms-back-to-beat-inglewood-in-33-26-thriller/" rel="noopener" target="_blank">More here →</a></p>
 </div>
-    <p style="text-align:center;margin:18px 0 6px;">
-      <button class="new-subtab" type="button" onclick="showNewBucket('older')">More Brilliant Ideas</button>
-    </p>
-    </div>
-    <div class="new-bucket" id="new-older">
 <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Huge model train expo at Palmer Events Center <span class="added-date">Added Aug 30</span></h3>
       <p>Austin Train Show all weekend — 25,000 sq ft, Lego railroad, kiddie express. “Did you go, or do you still have the box of trains from your dad in the garage?”</p>
@@ -281,8 +260,12 @@
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> How was Chris’ Urban Cowboy event? <span class="added-date">Added Aug 30</span></h3>
       <p>Cast / listener recap. Who went, what did they wear, was it more honky-tonk or more costume party?</p>
     </div>
-
-    <div class="item">
+    <p style="text-align:center;margin:18px 0 6px;">
+      <button class="new-subtab" type="button" onclick="showNewBucket('older')">More Brilliant Ideas</button>
+    </p>
+    </div>
+    <div class="new-bucket" id="new-older">
+<div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Poll: does anyone love Bigfoot like Tricia does? <span class="added-date">Added Aug 30</span></h3>
       <p>Tricia’s hill to die on. Board / social poll, then calls from believers vs “it’s a guy in a suit.” Keep it fun, not a lecture.</p>
     </div>
@@ -295,9 +278,34 @@
 <div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Strange Texas high school mascots <span class="added-date">Added Aug 29</span></h3><p>There is a competition for everything, and Texas high school mascots deliver. Rank the weirdest ones you’ve seen or go to school with. Instant caller phone topic with photos.</p></div>
 <div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> H-E-B vs Buc-ee’s brisket sandwich war <span class="added-date">Added Aug 29</span></h3><p>The eternal Texas debate just got specific. Who actually has the better brisket sandwich right now? Take sides, bring receipts, and let callers settle it.</p></div>
 <div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Moving company that employs musicians and creatives <span class="added-date">Added Aug 29</span></h3><p>“These are the last people I want moving my stuff.” Funny observation about a local mover staffed by artists. Cast confessions of the worst move ever + “would you hire the band?”</p></div>
-</div>
-</div>
-<div class="panel" id="panel-audio">
+    </div>
+  </div>
+
+
+  <div class="panel" id="panel-sept11">
+    <h2>Sept 11</h2>
+    <p class="note">Anything from the Google Doc labeled Sept 11 or 9/11 lives here. Tribute audio, not bits.</p>
+<div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 air traffic controller audio <span class="added-date">Added Aug 30</span></h3>
+      <p>FAA / NORAD air-traffic audio from that morning. Tribute drop only.</p>
+      <p><a class="more-here" href="https://www.instagram.com/reel/DcY88RiiG_o/?igsh=MXgxeGJ0NzA2dWJ2cg==" target="_blank" rel="noopener">Instagram source →</a><br>
+      <a class="more-here" href="https://www.youtube.com/watch?v=DYBhgEm3j7A" target="_blank" rel="noopener">Listen here → ATC audio</a></p>
+    </div>
+<div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail from a passenger <span class="added-date">Added Aug 30</span></h3>
+      <p>Betty Ong, flight attendant on American 11, calling the airline from the plane. Tribute only.</p>
+      <p><a class="more-here" href="https://www.instagram.com/reel/DcFmlMCRGab/?igsh=ODhrbHhrd3B5Z3Zm" target="_blank" rel="noopener">Instagram source →</a><br>
+      <a class="more-here" href="https://www.youtube.com/watch?v=_m9_HVdIeQM" target="_blank" rel="noopener">Listen here → Betty Ong call</a></p>
+    </div>
+<div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail #2 <span class="added-date">Added Aug 30</span></h3>
+      <p>CeeCee Lyles, flight attendant on United 93, voicemail to her husband. Tribute only.</p>
+      <p><a class="more-here" href="https://www.instagram.com/reel/Da2-WwqxdhX/?igsh=aXJpZzA3cG96cmFq" target="_blank" rel="noopener">Instagram source →</a><br>
+      <a class="more-here" href="https://www.youtube.com/watch?v=e4n0EQD7b30" target="_blank" rel="noopener">Listen here → CeeCee Lyles voicemail</a></p>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-audio">
 <h2>Audio &amp; Video Links</h2>
 <!-- How it works -->
 <div class="item howto-box">
