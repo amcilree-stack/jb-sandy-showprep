@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "id": "farmed-audio",
+      "name": "Farmed Audio",
+      "pages": [
+        {
+          "id": "drops",
+          "name": "Drops",
+          "rows": 4,
+          "cols": 4,
+          "pads": [
+            {
+              "name": "Band on Lake",
+              "src": "edited-audio/band on Lake.mp3"
+            },
+            {
+              "name": "Monologue Bits",
+              "src": "edited-audio/showprep_monologue_bits.mp3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
