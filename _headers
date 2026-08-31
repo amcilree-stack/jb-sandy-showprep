@@ -1,0 +1,3 @@
+# BASIC_AUTH_USERS is set in the Netlify dashboard (env vars), not in git.
+# scripts/apply-basic-auth.js appends a site-wide Basic-Auth rule at deploy time
+# when that variable is present. Do not commit usernames or passwords here.
