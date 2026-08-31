@@ -171,72 +171,6 @@
     .howto-box { background: #fff; }
     .item.hide-search { display: none !important; }
 
-    .hk-toolbar { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; margin: 0 0 12px; }
-    .hk-folders, .hk-pages, .hk-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .hk-pages { margin: 0 0 14px; }
-    .hk-tab {
-      background: #fff; border: 1px solid #c9bba6; color: var(--navy);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.82rem; font-weight: 700; padding: 7px 13px; border-radius: 18px; cursor: pointer;
-    }
-    .hk-tab:hover { border-color: var(--orange); color: var(--orange); }
-    .hk-tab.on { background: var(--navy); border-color: var(--navy); color: #fff; }
-    .hk-ghost, .hk-danger, .hk-edit-toggle, .hk-assign {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.78rem; font-weight: 700; cursor: pointer; border-radius: 16px; padding: 6px 12px;
-    }
-    .hk-ghost, .hk-edit-toggle {
-      background: #fff; border: 1px solid #c9bba6; color: var(--navy);
-    }
-    .hk-edit-toggle.on { background: var(--orange); border-color: var(--orange); color: #fff; }
-    .hk-danger { background: #fff; border: 1px solid #c45c26; color: var(--orange); }
-    .hk-editbar {
-      display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-end;
-      background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 0 0 12px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 0.82rem;
-    }
-    .hk-editbar label, .hk-assign-box label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; color: var(--navy); }
-    .hk-editbar input, .hk-assign-box input, .hk-assign-box select {
-      border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; min-width: 90px; font-weight: 600;
-    }
-    .hk-grid { display: grid; gap: 8px; margin: 8px 0 6px; min-height: 100px; }
-    .hk-pad {
-      position: relative; min-height: 92px; background: #fff; border: 2px solid var(--navy);
-      border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 14px 28px 12px 10px; user-select: none;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-weight: 800; color: var(--navy); font-size: 0.92rem; line-height: 1.2;
-    }
-    .hk-pad:not(.empty):hover { border-color: var(--orange); }
-    .hk-pad:not(.empty):active { transform: scale(0.98); }
-    .hk-pad.empty { border-style: dashed; border-color: #c9bba6; color: var(--muted); font-weight: 600; cursor: default; }
-    .hk-pad.playing { background: var(--orange); border-color: var(--orange); color: #fff; box-shadow: 0 0 0 3px rgba(196,92,38,0.28); }
-    .hk-pad.drop-over, .hk-dragging .hk-pad.empty {
-      border-color: var(--orange); border-style: solid; background: #fff6ee;
-      box-shadow: 0 0 0 3px rgba(196,92,38,0.22);
-    }
-    .hk-name { pointer-events: none; }
-    .hk-local {
-      position: absolute; left: 6px; bottom: 5px; font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.02em; color: inherit; opacity: 0.72; pointer-events: none;
-    }
-    .hk-status { margin: 0 0 8px; min-height: 1.2em; }
-    .hk-dl {
-      position: absolute; top: 4px; right: 6px; font-size: 0.78rem; font-weight: 800;
-      color: inherit; text-decoration: none; opacity: 0.7; padding: 2px 4px;
-    }
-    .hk-dl:hover { opacity: 1; text-decoration: none; }
-    .hk-assign {
-      position: absolute; bottom: 6px; right: 6px; background: var(--navy); color: #fff; border: none;
-      padding: 3px 8px; border-radius: 10px; font-size: 0.68rem;
-    }
-    .hk-assign-box {
-      margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 14px;
-      display: grid; gap: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    .hk-assign-box h3 { color: var(--navy); font-size: 1rem; }
-    .hk-assign-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-
 </style>
 </head>
 <body>
@@ -244,10 +178,9 @@
 <div class="topbar-inner">
 <div class="brand"><strong>JB &amp; SANDY</strong><span>Show Prep • 98.1 KVET</span></div>
 <div class="top-links">
-<button class="on" data-tab="new" onclick="showTab('new')" type="button">Today's Prep</button>
-<button data-tab="audioedits" onclick="showTab('audioedits')" type="button">Today's Audio</button>
-<button data-tab="hotkeys" onclick="showTab('hotkeys')" type="button">Hotkeys</button>
-<button data-tab="lastlaugh" onclick="showTab('lastlaugh')" type="button">Last Laugh</button>
+<button class="on" onclick="showTab('new')" type="button">Today's Prep</button>
+<button onclick="showTab('audioedits')" type="button">Today's Audio</button>
+<button onclick="showTab('lastlaugh')" type="button">Last Laugh</button>
 <button onclick="document.getElementById('q').focus()" type="button">Search</button>
 </div>
 </div>
@@ -277,7 +210,6 @@
 <button class="pill" data-tab="farmed" onclick="showTab('farmed')">Farmed From Others</button>
 <button class="pill" data-tab="audio" onclick="showTab('audio')">Audio &amp; Video</button>
 <button class="pill" data-tab="audioedits" onclick="showTab('audioedits')">Edited Audio</button>
-<button class="pill" data-tab="hotkeys" onclick="showTab('hotkeys')">Hotkeys</button>
 <button class="pill" data-tab="lastlaugh" onclick="showTab('lastlaugh')">Last Laugh</button>
 <button class="pill" data-tab="archive" onclick="showTab('archive')">Audio Archive</button>
 <button class="pill" data-tab="records" onclick="showTab('records')">Book of Records</button>
@@ -303,6 +235,21 @@
 </div>
 <div class="new-bucket active" id="new-recent">
     <div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 air traffic controller audio <span class="added-date">Added Aug 30</span></h3>
+      <p>Anniversary tape, not a bit. Controllers in real time as the planes go off course. Use only as a sober drop if the show marks the day. Treat it with care.</p>
+      <p><a class="more-here" href="https://www.911memorial.org/" target="_blank" rel="noopener">More here →</a></p>
+    </div>
+    <div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail from a passenger <span class="added-date">Added Aug 30</span></h3>
+      <p>Second anniversary audio. Passenger messages home. Same rule: tribute only, no jokes around it.</p>
+      <p><a class="more-here" href="https://www.911memorial.org/" target="_blank" rel="noopener">More here →</a></p>
+    </div>
+    <div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 voicemail #2 <span class="added-date">Added Aug 30</span></h3>
+      <p>Third piece of that package. If you air one, have the other two ready so you’re not hunting on the morning of the 11th.</p>
+      <p><a class="more-here" href="https://www.911memorial.org/" target="_blank" rel="noopener">More here →</a></p>
+    </div>
+<div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Longhorn Scottie Scheffler wins Tour Championship <span class="added-date">Added Aug 30</span></h3>
       <p>Texas guy, second FedEx Cup in three years. Overcame a two-shot deficit Sunday at East Lake. Phone: “Is Scottie the most boring superstar in sports, or is that the compliment?” Easy local pride drop.</p>
       <p><a class="more-here" href="https://www.cbssports.com/golf/news/tour-championship-leaderboard-2026-live-updates-fedex-cup-playoffs-round-4/live/" target="_blank" rel="noopener">More here →</a></p>
@@ -312,25 +259,26 @@
 <p>Chaparrals open the 2026 season with a thriller at Chaparral Stadium, rallying past California power Inglewood. QB Patton Jones (first career start) accounted for three TDs. Classic Friday-night energy + Texas vs. California bragging rights. Phone: “Best high-school football memory or most dramatic comeback you’ve ever seen?”</p>
 <p><a class="more-here" href="https://texashsfootball.com/westlake-storms-back-to-beat-inglewood-in-33-26-thriller/" rel="noopener" target="_blank">More here →</a></p>
 </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Huge model train expo at Palmer Events Center <span class="added-date">Added Aug 30</span></h3>
-      <p>Austin Train Show all weekend — 25,000 sq ft, Lego railroad, kiddie express. “Did you go, or do you still have the box of trains from your dad in the garage?”</p>
-      <p><a class="more-here" href="https://do512.com/events/2026/8/29/austin-train-show-tickets" target="_blank" rel="noopener">More here →</a></p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Le Garage. Did anyone clean up? <span class="added-date">Added Aug 30</span></h3>
-      <p>Twice-a-year blowout at Palmer Events Center, 140+ local brands. Monday-after phone: “What did you actually buy, and do you regret it in the daylight?”</p>
-      <p><a class="more-here" href="https://legaragesale.net/" target="_blank" rel="noopener">More here →</a></p>
-    </div>
-    <div class="item">
-      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> How was Chris’ Urban Cowboy event? <span class="added-date">Added Aug 30</span></h3>
-      <p>Cast / listener recap. Who went, what did they wear, was it more honky-tonk or more costume party?</p>
-    </div>
     <p style="text-align:center;margin:18px 0 6px;">
       <button class="new-subtab" type="button" onclick="showNewBucket('older')">More Brilliant Ideas</button>
     </p>
     </div>
     <div class="new-bucket" id="new-older">
+<div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Huge model train expo at Palmer Events Center <span class="added-date">Added Aug 30</span></h3>
+      <p>Austin Train Show all weekend — 25,000 sq ft, Lego railroad, kiddie express. “Did you go, or do you still have the box of trains from your dad in the garage?”</p>
+      <p><a class="more-here" href="https://do512.com/events/2026/8/29/austin-train-show-tickets" target="_blank" rel="noopener">More here →</a></p>
+    </div>
+<div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Le Garage. Did anyone clean up? <span class="added-date">Added Aug 30</span></h3>
+      <p>Twice-a-year blowout at Palmer Events Center, 140+ local brands. Monday-after phone: “What did you actually buy, and do you regret it in the daylight?”</p>
+      <p><a class="more-here" href="https://legaragesale.net/" target="_blank" rel="noopener">More here →</a></p>
+    </div>
+<div class="item">
+      <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> How was Chris’ Urban Cowboy event? <span class="added-date">Added Aug 30</span></h3>
+      <p>Cast / listener recap. Who went, what did they wear, was it more honky-tonk or more costume party?</p>
+    </div>
+
     <div class="item">
       <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Poll: does anyone love Bigfoot like Tricia does? <span class="added-date">Added Aug 30</span></h3>
       <p>Tricia’s hill to die on. Board / social poll, then calls from believers vs “it’s a guy in a suit.” Keep it fun, not a lecture.</p>
@@ -5332,15 +5280,6 @@
 <a class="m2w-dl" download="showprep_monologue_bits.mp3" href="edited-audio/showprep_monologue_bits.mp3">Download</a>
 </div>
 </div>
-<div class="panel" id="panel-hotkeys">
-<h2>Hotkeys</h2>
-<p class="note" style="margin-bottom:14px;">
-      Cart wall — click a pad and it fires. Click again restarts that cut. More than one pad can play at once.
-      Drag an mp3 from your computer onto a pad (or an empty square) to load it. That drop stays in <strong>this browser only</strong> — it does not upload or publish the file to the shared site.
-      Shared clips are the ones already in <strong>edited-audio/</strong>.
-    </p>
-<div id="hotkeys-app">Loading board…</div>
-</div>
 <div class="panel" id="panel-archive">
 <h2>Audio Archive</h2>
 <p class="note" style="margin-bottom:14px;">
@@ -5636,21 +5575,16 @@
 <script>
 
     function showNewBucket(which) {
-      const panel = document.getElementById('panel-new');
-      if (!panel) return;
-      panel.querySelectorAll('.new-bucket').forEach(el => el.classList.remove('active'));
-      panel.querySelectorAll('.new-subtab').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.new-bucket').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.new-subtab').forEach(el => el.classList.remove('active'));
       const bucket = document.getElementById('new-' + which);
       if (bucket) bucket.classList.add('active');
-      const btn = panel.querySelector('.new-subtab[onclick*="' + which + '"]');
+      const btn = document.querySelector('.new-subtab[onclick*="' + which + '"]');
       if (btn) btn.classList.add('active');
     }
     function showTab(id) {
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.top-links button[data-tab]').forEach(b => {
-        b.classList.toggle('on', b.getAttribute('data-tab') === id);
-      });
       const panel = document.getElementById('panel-' + id);
       if (panel) panel.classList.add('active');
       const btn = document.querySelector('.pill[data-tab="' + id + '"]');
@@ -5659,7 +5593,7 @@
     }
     function filterPrep(q) {
       q = (q || '').toLowerCase();
-      document.querySelectorAll('.item, .audio-card, .farm-card, .hk-pad').forEach(el => {
+      document.querySelectorAll('.item, .audio-card, .farm-card').forEach(el => {
         const hit = !q || el.innerText.toLowerCase().includes(q);
         el.classList.toggle('hide-search', !hit);
       });
@@ -5699,6 +5633,5 @@
       });
     }
   </script>
-<script src="hotkeys.js"></script>
 </body>
 </html>
