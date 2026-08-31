@@ -433,6 +433,8 @@
       cancelFade(key);
       try { audio.volume = 1; } catch (err) { /* ignore */ }
       try { audio.currentTime = 0; } catch (err) { /* ignore seek before load */ }
+      playing[key] = true;
+      paintPlaying();
       var start = audio.play();
       if (start && start.catch) start.catch(function () { /* autoplay / missing file */ });
     }).catch(function (err) {
@@ -1000,6 +1002,24 @@
     if (!mount) return;
     Promise.all([fetchBoard(false), loadLibrary()]);
   }
+
+  window.__hotkeysPadState = function (index) {
+    var key = playerKey(index);
+    var audio = players[key] && players[key].audio;
+    return {
+      exists: !!audio,
+      fading: !!fades[key],
+      lit: !!playing[key] || !!fades[key],
+      paused: audio ? audio.paused : null,
+      ended: audio ? audio.ended : null,
+      volume: audio ? audio.volume : null,
+      currentTime: audio ? audio.currentTime : null
+    };
+  };
+
+  window.__hotkeysAssignFile = function (index, file, play) {
+    return assignOneFile(index, file, !!play);
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
