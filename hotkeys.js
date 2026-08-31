@@ -24,7 +24,17 @@
             pads: [
               { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
               { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
-              { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
+              { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' },
+              { name: 'Band Lake Austin 1', src: 'edited-audio/Band-Lake-Austin-1.mp3' },
+              { name: 'Band Lake Austin 2', src: 'edited-audio/Band-Lake-Austin-2.mp3' },
+              { name: 'Custom Jingle Guy', src: 'edited-audio/Custom-Jingle-Guy.mp3' },
+              { name: 'Your Bananas', src: 'edited-audio/Your-Bananas.mp3' },
+              { name: 'Adult Swim-Up Bar ATX', src: 'edited-audio/Adult-Swim-Up-Bar-ATX.mp3' },
+              { name: 'Does This Work Mosquitoes', src: 'edited-audio/Does-This-Work-Mosquitoes.mp3' },
+              { name: 'Woman Window Dog Gossips', src: 'edited-audio/Woman-Window-Dog-Gossips.mp3' },
+              { name: 'What Do You Want For Dinner', src: 'edited-audio/What-Do-You-Want-For-Dinner.mp3' },
+              { name: 'Fastest Kid Alive', src: 'edited-audio/Fastest-Kid-Alive.mp3' },
+              { name: 'Fav Thing Right Now', src: 'edited-audio/Fav-Thing-Right-Now.mp3' }
             ]
           }
         ]
@@ -91,7 +101,17 @@
   var DEFAULT_PAD_SRCS = {
     'edited-audio/band on Lake.mp3': true,
     'edited-audio/showprep_monologue_bits.mp3': true,
-    'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true
+    'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true,
+    'edited-audio/Band-Lake-Austin-1.mp3': true,
+    'edited-audio/Band-Lake-Austin-2.mp3': true,
+    'edited-audio/Custom-Jingle-Guy.mp3': true,
+    'edited-audio/Your-Bananas.mp3': true,
+    'edited-audio/Adult-Swim-Up-Bar-ATX.mp3': true,
+    'edited-audio/Does-This-Work-Mosquitoes.mp3': true,
+    'edited-audio/Woman-Window-Dog-Gossips.mp3': true,
+    'edited-audio/What-Do-You-Want-For-Dinner.mp3': true,
+    'edited-audio/Fastest-Kid-Alive.mp3': true,
+    'edited-audio/Fav-Thing-Right-Now.mp3': true
   };
 
   function normalizeBoard(data) {
@@ -135,7 +155,7 @@
       filled += 1;
       if (!DEFAULT_PAD_SRCS[src]) return false;
     }
-    return filled <= 3;
+    return filled <= 13;
   }
 
   function currentFolder() {
@@ -969,7 +989,17 @@
         library = [
           { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
           { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
-          { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
+          { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' },
+          { name: 'Band Lake Austin 1', src: 'edited-audio/Band-Lake-Austin-1.mp3' },
+          { name: 'Band Lake Austin 2', src: 'edited-audio/Band-Lake-Austin-2.mp3' },
+          { name: 'Custom Jingle Guy', src: 'edited-audio/Custom-Jingle-Guy.mp3' },
+          { name: 'Your Bananas', src: 'edited-audio/Your-Bananas.mp3' },
+          { name: 'Adult Swim-Up Bar ATX', src: 'edited-audio/Adult-Swim-Up-Bar-ATX.mp3' },
+          { name: 'Does This Work Mosquitoes', src: 'edited-audio/Does-This-Work-Mosquitoes.mp3' },
+          { name: 'Woman Window Dog Gossips', src: 'edited-audio/Woman-Window-Dog-Gossips.mp3' },
+          { name: 'What Do You Want For Dinner', src: 'edited-audio/What-Do-You-Want-For-Dinner.mp3' },
+          { name: 'Fastest Kid Alive', src: 'edited-audio/Fastest-Kid-Alive.mp3' },
+          { name: 'Fav Thing Right Now', src: 'edited-audio/Fav-Thing-Right-Now.mp3' }
         ];
       }
     });
