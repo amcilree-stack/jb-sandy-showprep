@@ -40,6 +40,8 @@
   var assignIndex = null;
   var players = {};
   var playing = {};
+  var fades = {};
+  var FADE_MS = 3000;
   var localUrls = {};
   var statusMsg = '';
   var dbPromise = null;
@@ -270,13 +272,61 @@
     return false;
   }
 
+  function cancelFade(key) {
+    var fade = fades[key];
+    if (fade && fade.raf) {
+      try { cancelAnimationFrame(fade.raf); } catch (err) { /* ignore */ }
+    }
+    delete fades[key];
+  }
+
+  /* Cosine ease: no initial dip, full 3s radio-cart fade to silence. */
+  function fadeGain(t) {
+    if (t <= 0) return 1;
+    if (t >= 1) return 0;
+    return 0.5 * (1 + Math.cos(Math.PI * t));
+  }
+
+  function hardStop(key, audio) {
+    cancelFade(key);
+    if (audio) {
+      try {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = 1;
+      } catch (err) { /* ignore */ }
+    }
+    playing[key] = false;
+    paintPlaying();
+  }
+
+  function startFade(key, audio) {
+    cancelFade(key);
+    if (!audio) return;
+    var from = audio.volume > 0 ? audio.volume : 1;
+    var started = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    var fade = { raf: 0, started: started, from: from };
+    fades[key] = fade;
+    paintPlaying();
+
+    function tick(now) {
+      if (fades[key] !== fade) return;
+      var t = (now - fade.started) / FADE_MS;
+      if (t >= 1 || audio.ended || audio.paused) {
+        hardStop(key, audio);
+        return;
+      }
+      try { audio.volume = fade.from * fadeGain(t); } catch (err) { /* ignore */ }
+      fade.raf = requestAnimationFrame(tick);
+    }
+    fade.raf = requestAnimationFrame(tick);
+  }
+
   function releasePadMedia(index, src) {
     var key = playerKey(index);
     if (players[key]) {
-      try {
-        players[key].audio.pause();
-        players[key].audio.src = '';
-      } catch (err) { /* ignore */ }
+      hardStop(key, players[key].audio);
+      try { players[key].audio.src = ''; } catch (err) { /* ignore */ }
       delete players[key];
     }
     playing[key] = false;
@@ -305,26 +355,30 @@
       if (url && rec.audio.getAttribute('src') !== url) rec.audio.src = url;
       return rec.audio;
     }
+    cancelFade(key);
     if (rec) {
       rec.audio.pause();
       rec.audio.src = '';
     }
     var audio = new Audio();
     audio.preload = 'none';
+    audio.volume = 1;
     audio.src = url || clipUrl(src);
     audio.addEventListener('play', function () {
+      if (fades[key]) return;
       playing[key] = true;
       paintPlaying();
     });
     audio.addEventListener('playing', function () {
+      if (fades[key]) return;
       playing[key] = true;
       paintPlaying();
     });
     audio.addEventListener('ended', function () {
-      playing[key] = false;
-      paintPlaying();
+      hardStop(key, audio);
     });
     audio.addEventListener('pause', function () {
+      if (fades[key]) return;
       if (audio.ended || audio.currentTime === 0) playing[key] = false;
       paintPlaying();
     });
@@ -337,17 +391,47 @@
     if (!root) return;
     root.querySelectorAll('.hk-pad').forEach(function (el) {
       var key = playerKey(el.getAttribute('data-index'));
-      el.classList.toggle('playing', !!playing[key]);
+      var on = !!playing[key] || !!fades[key];
+      el.classList.toggle('playing', on);
+      el.classList.toggle('fading', !!fades[key]);
     });
   }
 
+  function isPadPlaying(key, audio) {
+    return !!(audio && !audio.paused && !audio.ended);
+  }
+
+  function isPadFading(key, audio) {
+    if (fades[key]) return true;
+    return !!(audio && !audio.paused && !audio.ended && audio.volume < 0.999);
+  }
+
+  /* Click cycle: play from start → slow fade (~3s) → immediate cut → play. */
   function playPad(index) {
     var page = currentPage();
     if (!page) return;
     var pad = padCell(page, index);
     if (!pad.src) return;
+    var key = playerKey(index);
+    var rec = players[key];
+    var audio = rec && rec.audio;
+
+    if (isPadFading(key, audio)) {
+      hardStop(key, audio);
+      return;
+    }
+    if (isPadPlaying(key, audio)) {
+      startFade(key, audio);
+      return;
+    }
+
     resolveUrl(pad.src).then(function (url) {
-      var audio = getPlayer(index, pad.src, url);
+      var next = players[playerKey(index)];
+      var live = next && next.audio;
+      if (isPadFading(playerKey(index), live) || isPadPlaying(playerKey(index), live)) return;
+      audio = getPlayer(index, pad.src, url);
+      cancelFade(key);
+      try { audio.volume = 1; } catch (err) { /* ignore */ }
       try { audio.currentTime = 0; } catch (err) { /* ignore seek before load */ }
       var start = audio.play();
       if (start && start.catch) start.catch(function () { /* autoplay / missing file */ });
@@ -358,12 +442,9 @@
 
   function stopAll() {
     Object.keys(players).forEach(function (key) {
-      try {
-        players[key].audio.pause();
-        players[key].audio.currentTime = 0;
-      } catch (err) { /* ignore */ }
-      playing[key] = false;
+      hardStop(key, players[key].audio);
     });
+    Object.keys(fades).forEach(function (key) { cancelFade(key); });
     paintPlaying();
   }
 
@@ -624,7 +705,7 @@
       var local = isLocalSrc(pad.src);
       var label = pad.name || (pad.src ? prettyName(fileName(pad.src)) : 'Drop mp3');
       var key = playerKey(i);
-      html += '<div class="hk-pad' + (loaded ? '' : ' empty') + (playing[key] ? ' playing' : '') + '" data-act="pad" data-index="' + i + '" role="button" tabindex="0">';
+      html += '<div class="hk-pad' + (loaded ? '' : ' empty') + ((playing[key] || fades[key]) ? ' playing' : '') + (fades[key] ? ' fading' : '') + '" data-act="pad" data-index="' + i + '" role="button" tabindex="0">';
       html += '<span class="hk-name">' + esc(label) + '</span>';
       if (pad.src && !local) {
         html += '<a class="hk-dl" download="' + esc(fileName(pad.src)) + '" href="' + esc(clipUrl(pad.src)) + '" title="Download mp3">↓</a>';
@@ -648,6 +729,7 @@
 
     mount.innerHTML = html;
     bindChrome(mount);
+    paintPlaying();
   }
 
   function renderAssign(page, index) {
