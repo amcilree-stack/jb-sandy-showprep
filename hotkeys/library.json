@@ -1,0 +1,24 @@
+{
+  "note": "Drop an mp3 in edited-audio/ (or edited-audio/archive/), add it here, then assign it on a Hotkeys pad. No index.html edit needed.",
+  "clips": [
+    { "name": "Band on Lake", "src": "edited-audio/band on Lake.mp3" },
+    { "name": "Monologue Bits", "src": "edited-audio/showprep_monologue_bits.mp3" },
+    { "name": "Dolly 9-5 Clip", "src": "edited-audio/archive/Dolly 9-5 Clip.mp3" },
+    { "name": "Dolly Ender Jolene", "src": "edited-audio/archive/Dolly Ender Jolene.mp3" },
+    { "name": "Dolly Ender Coat of Many Colors", "src": "edited-audio/archive/Dolly Ender Coat of Many Colors.mp3" },
+    { "name": "Dolly Imagination Library", "src": "edited-audio/archive/Dolly Imagination Library.mp3" },
+    { "name": "Dolly John Rich American Original", "src": "edited-audio/archive/Dolly John Rich American Original.mp3" },
+    { "name": "Dolly on 9-5 What it means to her", "src": "edited-audio/archive/Dolly on 9-5 What it means to her.mp3" },
+    { "name": "Dolly On Her Positive Attitude", "src": "edited-audio/archive/Dolly On Her Positive Attitude.mp3" },
+    { "name": "Dolly on Her Rock Star Album", "src": "edited-audio/archive/Dolly on Her Rock Star Album.mp3" },
+    { "name": "Dolly on Taylors song writing", "src": "edited-audio/archive/Dolly on Taylors song writing.mp3" },
+    { "name": "Dolly Recent Hospital Visit", "src": "edited-audio/archive/Dolly Recent Hospital Visit.mp3" },
+    { "name": "Dolly Loved Show Business", "src": "edited-audio/archive/Dolly_Loved_Show_Business.mp3" },
+    { "name": "Dolly My Life Meant Something", "src": "edited-audio/archive/Dolly_My Life Meant Something.mp3" },
+    { "name": "Dolly Live TV I Will Always Love You", "src": "edited-audio/archive/Dolly Live TV I Will Always Love You.mp3" },
+    { "name": "Dolly Jolene Full", "src": "edited-audio/archive/Dolly_Jolene_Full.mp3" },
+    { "name": "Full Dolly Tribute Piece", "src": "edited-audio/archive/Full Dolly Tribute Piece.mp3" },
+    { "name": "iHeart Tribute Long Form", "src": "edited-audio/archive/iHeart Tribute Long Form.mp3" },
+    { "name": "Dolly On With Johnny Carson", "src": "edited-audio/archive/Dolly On With Johnny Caron.mp3" }
+  ]
+}
