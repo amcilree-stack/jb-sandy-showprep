@@ -19,30 +19,12 @@
           {
             id: 'pads',
             name: 'Pads',
-            rows: 5,
-            cols: 5,
+            rows: 4,
+            cols: 4,
             pads: [
               { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
               { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
-              { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' },
-              { name: 'Band Lake Austin 1', src: 'edited-audio/Band-Lake-Austin-1.mp3' },
-              { name: 'Band Lake Austin 2', src: 'edited-audio/Band-Lake-Austin-2.mp3' },
-              { name: 'Custom Jingle Guy', src: 'edited-audio/Custom-Jingle-Guy.mp3' },
-              { name: 'Your Bananas', src: 'edited-audio/Your-Bananas.mp3' },
-              { name: 'Adult Swim-Up Bar ATX', src: 'edited-audio/Adult-Swim-Up-Bar-ATX.mp3' },
-              { name: 'Does This Work Mosquitoes', src: 'edited-audio/Does-This-Work-Mosquitoes.mp3' },
-              { name: 'Woman Window Dog Gossips', src: 'edited-audio/Woman-Window-Dog-Gossips.mp3' },
-              { name: 'What Do You Want For Dinner', src: 'edited-audio/What-Do-You-Want-For-Dinner.mp3' },
-              { name: 'Fastest Kid Alive', src: 'edited-audio/Fastest-Kid-Alive.mp3' },
-              { name: 'Fav Thing Right Now', src: 'edited-audio/Fav-Thing-Right-Now.mp3' },
-              { name: 'Kevin Bacon is great', src: 'edited-audio/Kevin-Bacon-Is-Great.mp3' },
-              { name: 'Let em tell you something Linda', src: 'edited-audio/Let-Em-Tell-You-Something-Linda.mp3' },
-              { name: 'Sept 11 mom talks about the sun', src: 'edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3' },
-              { name: 'Australian Sept 11 news report', src: 'edited-audio/Australian-Sept-11-News-Report.mp3' },
-              { name: 'Sept 11 emergency calls', src: 'edited-audio/Sept-11-Emergency-Calls.mp3' },
-              { name: 'Sept 11 air traffic controller audio', src: 'edited-audio/Sept-11-Air-Traffic-Controller.mp3' },
-              { name: 'Sept 11 voicemail from a passenger', src: 'edited-audio/Sept-11-Voicemail-Betty-Ong.mp3' },
-              { name: 'Sept 11 voicemail #2', src: 'edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3' }
+              { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
             ]
           }
         ]
@@ -109,25 +91,7 @@
   var DEFAULT_PAD_SRCS = {
     'edited-audio/band on Lake.mp3': true,
     'edited-audio/showprep_monologue_bits.mp3': true,
-    'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true,
-    'edited-audio/Band-Lake-Austin-1.mp3': true,
-    'edited-audio/Band-Lake-Austin-2.mp3': true,
-    'edited-audio/Custom-Jingle-Guy.mp3': true,
-    'edited-audio/Your-Bananas.mp3': true,
-    'edited-audio/Adult-Swim-Up-Bar-ATX.mp3': true,
-    'edited-audio/Does-This-Work-Mosquitoes.mp3': true,
-    'edited-audio/Woman-Window-Dog-Gossips.mp3': true,
-    'edited-audio/What-Do-You-Want-For-Dinner.mp3': true,
-    'edited-audio/Fastest-Kid-Alive.mp3': true,
-    'edited-audio/Fav-Thing-Right-Now.mp3': true,
-    'edited-audio/Kevin-Bacon-Is-Great.mp3': true,
-    'edited-audio/Let-Em-Tell-You-Something-Linda.mp3': true,
-    'edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3': true,
-    'edited-audio/Australian-Sept-11-News-Report.mp3': true,
-    'edited-audio/Sept-11-Emergency-Calls.mp3': true,
-    'edited-audio/Sept-11-Air-Traffic-Controller.mp3': true,
-    'edited-audio/Sept-11-Voicemail-Betty-Ong.mp3': true,
-    'edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3': true
+    'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true
   };
 
   function normalizeBoard(data) {
@@ -171,7 +135,7 @@
       filled += 1;
       if (!DEFAULT_PAD_SRCS[src]) return false;
     }
-    return filled <= 21;
+    return filled <= 3;
   }
 
   function currentFolder() {
@@ -1005,25 +969,7 @@
         library = [
           { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
           { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
-          { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' },
-          { name: 'Band Lake Austin 1', src: 'edited-audio/Band-Lake-Austin-1.mp3' },
-          { name: 'Band Lake Austin 2', src: 'edited-audio/Band-Lake-Austin-2.mp3' },
-          { name: 'Custom Jingle Guy', src: 'edited-audio/Custom-Jingle-Guy.mp3' },
-          { name: 'Your Bananas', src: 'edited-audio/Your-Bananas.mp3' },
-          { name: 'Adult Swim-Up Bar ATX', src: 'edited-audio/Adult-Swim-Up-Bar-ATX.mp3' },
-          { name: 'Does This Work Mosquitoes', src: 'edited-audio/Does-This-Work-Mosquitoes.mp3' },
-          { name: 'Woman Window Dog Gossips', src: 'edited-audio/Woman-Window-Dog-Gossips.mp3' },
-          { name: 'What Do You Want For Dinner', src: 'edited-audio/What-Do-You-Want-For-Dinner.mp3' },
-          { name: 'Fastest Kid Alive', src: 'edited-audio/Fastest-Kid-Alive.mp3' },
-          { name: 'Fav Thing Right Now', src: 'edited-audio/Fav-Thing-Right-Now.mp3' },
-          { name: 'Kevin Bacon is great', src: 'edited-audio/Kevin-Bacon-Is-Great.mp3' },
-          { name: 'Let em tell you something Linda', src: 'edited-audio/Let-Em-Tell-You-Something-Linda.mp3' },
-          { name: 'Sept 11 mom talks about the sun', src: 'edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3' },
-          { name: 'Australian Sept 11 news report', src: 'edited-audio/Australian-Sept-11-News-Report.mp3' },
-          { name: 'Sept 11 emergency calls', src: 'edited-audio/Sept-11-Emergency-Calls.mp3' },
-          { name: 'Sept 11 air traffic controller audio', src: 'edited-audio/Sept-11-Air-Traffic-Controller.mp3' },
-          { name: 'Sept 11 voicemail from a passenger', src: 'edited-audio/Sept-11-Voicemail-Betty-Ong.mp3' },
-          { name: 'Sept 11 voicemail #2', src: 'edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3' }
+          { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
         ];
       }
     });
@@ -1056,6 +1002,29 @@
     if (!mount) return;
     Promise.all([fetchBoard(false), loadLibrary()]);
   }
+
+
+  window.JBSandyHotkeys = {
+    addClip: function (name, src) {
+      if (!board) return 'Open Hotkeys once so the board can load, then try again.';
+      var folder = board.folders.filter(function (f) { return f.id === folderId; })[0] || board.folders[0];
+      var page = (folder.pages || []).filter(function (pg) { return pg.id === pageId; })[0] || folder.pages[0];
+      if (!page) return 'No Hotkeys page found.';
+      page.pads = page.pads || [];
+      var slots = (page.rows || 5) * (page.cols || 5);
+      while (page.pads.length < slots) page.pads.push({ name: '', src: '' });
+      var idx = -1;
+      for (var i = 0; i < page.pads.length; i++) {
+        if (!page.pads[i] || !page.pads[i].src) { idx = i; break; }
+      }
+      if (idx < 0) return 'Hotkeys board is full. Clear a pad first.';
+      page.pads[idx] = { name: name || prettyName(src), src: src };
+      board.touched = true;
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(board)); } catch (e) {}
+      render();
+      return 'Parked “' + (name || prettyName(src)) + '” on pad ' + (idx + 1) + '.';
+    }
+  };
 
   window.__hotkeysPadState = function (index) {
     var key = playerKey(index);

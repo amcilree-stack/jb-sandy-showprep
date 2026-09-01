@@ -201,6 +201,12 @@
 
     .item.hide-search { display: none !important; }
 
+
+    .audio-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+    .hk-send { background:var(--navy); color:#fff; border:0; border-radius:16px; padding:6px 12px; font-weight:700; cursor:pointer; font-size:0.78rem; }
+    .hk-send:hover { background:var(--orange); }
+    .audio-card.hide-bucket { display:none !important; }
+
 </style>
 </head>
 <body>
@@ -5550,197 +5556,374 @@
 <div class="panel" id="panel-audioedits">
 <h2>Edited Audio</h2>
 <p class="note" style="margin-bottom:14px;">
-      Current working clips (21 files). Dolly package also lives in Audio Archive. Click play or download.
+      Inner tabs sort the clips. <strong>Add to Hotkeys</strong> parks that clip on the next empty pad in this browser (same board the staff already uses). Files themselves stay here.
     </p>
-<div class="audio-card">
-<h3>Adult-Swim-Up-Bar-ATX.mp3</h3>
+<div class="new-subtabs" id="audio-subtabs">
+  <button class="new-subtab active" type="button" onclick="showAudioBucket('all')">All</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('sept11')">Sept 11</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('dolly')">Dolly Parton</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('longhorns')">Texas Longhorns</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('lastlaugh')">Last Laugh</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('bits')">Bits</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('bumper')">Bumper</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('replay')">Replay</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('tribute')">Tribute</button>
+  <button class="new-subtab" type="button" onclick="showAudioBucket('funny')">Funny</button>
+</div>
+<p class="hk-status" id="audio-hk-status"></p>
+<div id="edited-audio-grid">
+<div class="audio-card" data-buckets="all funny">
+<h3>Adult Swim Up Bar ATX</h3>
 <audio controls="" preload="none"><source src="edited-audio/Adult-Swim-Up-Bar-ATX.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Adult-Swim-Up-Bar-ATX.mp3" href="edited-audio/Adult-Swim-Up-Bar-ATX.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Adult Swim Up Bar ATX','edited-audio/Adult-Swim-Up-Bar-ATX.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Australian-Sept-11-News-Report.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all sept11">
+<h3>Australian Sept 11 News Report</h3>
 <audio controls="" preload="none"><source src="edited-audio/Australian-Sept-11-News-Report.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Australian-Sept-11-News-Report.mp3" href="edited-audio/Australian-Sept-11-News-Report.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Australian Sept 11 News Report','edited-audio/Australian-Sept-11-News-Report.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>band on Lake.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all">
+<h3>band on Lake</h3>
 <audio controls="" preload="none"><source src="edited-audio/band%20on%20Lake.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="band on Lake.mp3" href="edited-audio/band%20on%20Lake.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('band on Lake','edited-audio/band on Lake.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Band-Lake-Austin-1.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all">
+<h3>Band Lake Austin 1</h3>
 <audio controls="" preload="none"><source src="edited-audio/Band-Lake-Austin-1.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Band-Lake-Austin-1.mp3" href="edited-audio/Band-Lake-Austin-1.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Band Lake Austin 1','edited-audio/Band-Lake-Austin-1.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Band-Lake-Austin-2.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all">
+<h3>Band Lake Austin 2</h3>
 <audio controls="" preload="none"><source src="edited-audio/Band-Lake-Austin-2.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Band-Lake-Austin-2.mp3" href="edited-audio/Band-Lake-Austin-2.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Band Lake Austin 2','edited-audio/Band-Lake-Austin-2.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Custom-Jingle-Guy.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all bits">
+<h3>Custom Jingle Guy</h3>
 <audio controls="" preload="none"><source src="edited-audio/Custom-Jingle-Guy.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Custom-Jingle-Guy.mp3" href="edited-audio/Custom-Jingle-Guy.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Custom Jingle Guy','edited-audio/Custom-Jingle-Guy.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Does-This-Work-Mosquitoes.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Does This Work Mosquitoes</h3>
 <audio controls="" preload="none"><source src="edited-audio/Does-This-Work-Mosquitoes.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Does-This-Work-Mosquitoes.mp3" href="edited-audio/Does-This-Work-Mosquitoes.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Does This Work Mosquitoes','edited-audio/Does-This-Work-Mosquitoes.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Fastest-Kid-Alive.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Fastest-Kid-Alive.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Fastest-Kid-Alive.mp3" href="edited-audio/Fastest-Kid-Alive.mp3">Download</a>
 </div>
-<div class="audio-card">
-<h3>Fav-Thing-Right-Now.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Fav-Thing-Right-Now.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Fav-Thing-Right-Now.mp3" href="edited-audio/Fav-Thing-Right-Now.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Harrison-Ford-Cookie-Monster-Raiders.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Harrison-Ford-Cookie-Monster-Raiders.mp3" href="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Kevin-Bacon-Is-Great.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Kevin-Bacon-Is-Great.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Kevin-Bacon-Is-Great.mp3" href="edited-audio/Kevin-Bacon-Is-Great.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Let-Em-Tell-You-Something-Linda.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Let-Em-Tell-You-Something-Linda.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Let-Em-Tell-You-Something-Linda.mp3" href="edited-audio/Let-Em-Tell-You-Something-Linda.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Sept-11-Air-Traffic-Controller.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Air-Traffic-Controller.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Sept-11-Air-Traffic-Controller.mp3" href="edited-audio/Sept-11-Air-Traffic-Controller.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Sept-11-Emergency-Calls.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Emergency-Calls.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Sept-11-Emergency-Calls.mp3" href="edited-audio/Sept-11-Emergency-Calls.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Sept-11-Mom-Talks-About-The-Sun.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Sept-11-Mom-Talks-About-The-Sun.mp3" href="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Sept-11-Voicemail-2-CeeCee-Lyles.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Sept-11-Voicemail-2-CeeCee-Lyles.mp3" href="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Sept-11-Voicemail-Betty-Ong.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Sept-11-Voicemail-Betty-Ong.mp3" href="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>showprep_monologue_bits.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/showprep_monologue_bits.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="showprep_monologue_bits.mp3" href="edited-audio/showprep_monologue_bits.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>What-Do-You-Want-For-Dinner.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/What-Do-You-Want-For-Dinner.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="What-Do-You-Want-For-Dinner.mp3" href="edited-audio/What-Do-You-Want-For-Dinner.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Woman-Window-Dog-Gossips.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Woman-Window-Dog-Gossips.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Woman-Window-Dog-Gossips.mp3" href="edited-audio/Woman-Window-Dog-Gossips.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Your-Bananas.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/Your-Bananas.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Your-Bananas.mp3" href="edited-audio/Your-Bananas.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Dolly 9-5 Clip.mp3</h3>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly 9 5 Clip</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%209-5%20Clip.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly 9-5 Clip.mp3" href="edited-audio/archive/Dolly%209-5%20Clip.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly 9 5 Clip','edited-audio/archive/Dolly 9-5 Clip.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly Ender Coat of Many Colors.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Ender Coat of Many Colors</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly Ender Coat of Many Colors.mp3" href="edited-audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Ender Coat of Many Colors','edited-audio/archive/Dolly Ender Coat of Many Colors.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly Ender Jolene.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Ender Jolene</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Ender%20Jolene.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly Ender Jolene.mp3" href="edited-audio/archive/Dolly%20Ender%20Jolene.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Ender Jolene','edited-audio/archive/Dolly Ender Jolene.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly Imagination Library.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Imagination Library</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Imagination%20Library.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly Imagination Library.mp3" href="edited-audio/archive/Dolly%20Imagination%20Library.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Imagination Library','edited-audio/archive/Dolly Imagination Library.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly John Rich American Original.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly John Rich American Original</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20John%20Rich%20American%20Original.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly John Rich American Original.mp3" href="edited-audio/archive/Dolly%20John%20Rich%20American%20Original.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly John Rich American Original','edited-audio/archive/Dolly John Rich American Original.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly Live TV I Will Always Love You.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Live TV I Will Always Love You</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly Live TV I Will Always Love You.mp3" href="edited-audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Live TV I Will Always Love You','edited-audio/archive/Dolly Live TV I Will Always Love You.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly On Her Positive Attitude.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Dolly On Her Positive Attitude.mp3" href="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3">Download</a>
 </div>
-<div class="audio-card">
-<h3>Dolly On With Johnny Caron.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Dolly On With Johnny Caron.mp3" href="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Dolly Recent Hospital Visit.mp3</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3" type="audio/mpeg"/></audio>
-<a class="m2w-dl" download="Dolly Recent Hospital Visit.mp3" href="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3">Download</a>
-</div>
-<div class="audio-card">
-<h3>Dolly on 9-5 What it means to her.mp3</h3>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly on 9 5 What it means to her</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly on 9-5 What it means to her.mp3" href="edited-audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on 9 5 What it means to her','edited-audio/archive/Dolly on 9-5 What it means to her.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly on Her Rock Star Album.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly On Her Positive Attitude</h3>
+<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly On Her Positive Attitude.mp3" href="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly On Her Positive Attitude','edited-audio/archive/Dolly On Her Positive Attitude.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly on Her Rock Star Album</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly on Her Rock Star Album.mp3" href="edited-audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on Her Rock Star Album','edited-audio/archive/Dolly on Her Rock Star Album.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly on Taylors song writing.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly on Taylors song writing</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly on Taylors song writing.mp3" href="edited-audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on Taylors song writing','edited-audio/archive/Dolly on Taylors song writing.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly_Jolene_Full.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly On With Johnny Caron</h3>
+<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly On With Johnny Caron.mp3" href="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly On With Johnny Caron','edited-audio/archive/Dolly On With Johnny Caron.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Recent Hospital Visit</h3>
+<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly Recent Hospital Visit.mp3" href="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Recent Hospital Visit','edited-audio/archive/Dolly Recent Hospital Visit.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute John Mayer I Will Always Love You</h3>
+<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute John Mayer I Will Always Love You','edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute Jon Batiste I Will Always Love You</h3>
+<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Jon Batiste I Will Always Love You','edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute Stapleton I Will Always Love You</h3>
+<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Stapleton I Will Always Love You','edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute Zac Brown Real Life Angel</h3>
+<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3" href="edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Zac Brown Real Life Angel','edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Jolene Full</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly_Jolene_Full.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly_Jolene_Full.mp3" href="edited-audio/archive/Dolly_Jolene_Full.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Jolene Full','edited-audio/archive/Dolly_Jolene_Full.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly_Loved_Show_Business.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Loved Show Business</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly_Loved_Show_Business.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly_Loved_Show_Business.mp3" href="edited-audio/archive/Dolly_Loved_Show_Business.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Loved Show Business','edited-audio/archive/Dolly_Loved_Show_Business.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Dolly_My Life Meant Something.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly My Life Meant Something</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Dolly_My%20Life%20Meant%20Something.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Dolly_My Life Meant Something.mp3" href="edited-audio/archive/Dolly_My%20Life%20Meant%20Something.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly My Life Meant Something','edited-audio/archive/Dolly_My Life Meant Something.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>Full Dolly Tribute Piece.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Fastest Kid Alive</h3>
+<audio controls="" preload="none"><source src="edited-audio/Fastest-Kid-Alive.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Fastest-Kid-Alive.mp3" href="edited-audio/Fastest-Kid-Alive.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Fastest Kid Alive','edited-audio/Fastest-Kid-Alive.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Fav Thing Right Now</h3>
+<audio controls="" preload="none"><source src="edited-audio/Fav-Thing-Right-Now.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Fav-Thing-Right-Now.mp3" href="edited-audio/Fav-Thing-Right-Now.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Fav Thing Right Now','edited-audio/Fav-Thing-Right-Now.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Full Dolly Tribute Piece</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/Full%20Dolly%20Tribute%20Piece.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="Full Dolly Tribute Piece.mp3" href="edited-audio/archive/Full%20Dolly%20Tribute%20Piece.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Full Dolly Tribute Piece','edited-audio/archive/Full Dolly Tribute Piece.mp3')">Add to Hotkeys</button>
 </div>
-<div class="audio-card">
-<h3>iHeart Tribute Long Form.mp3</h3>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Harrison Ford Cookie Monster Raiders</h3>
+<audio controls="" preload="none"><source src="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Harrison-Ford-Cookie-Monster-Raiders.mp3" href="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Harrison Ford Cookie Monster Raiders','edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all tribute">
+<h3>iHeart Tribute Long Form</h3>
 <audio controls="" preload="none"><source src="edited-audio/archive/iHeart%20Tribute%20Long%20Form.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
 <a class="m2w-dl" download="iHeart Tribute Long Form.mp3" href="edited-audio/archive/iHeart%20Tribute%20Long%20Form.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('iHeart Tribute Long Form','edited-audio/archive/iHeart Tribute Long Form.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Kevin Bacon Is Great</h3>
+<audio controls="" preload="none"><source src="edited-audio/Kevin-Bacon-Is-Great.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Kevin-Bacon-Is-Great.mp3" href="edited-audio/Kevin-Bacon-Is-Great.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Kevin Bacon Is Great','edited-audio/Kevin-Bacon-Is-Great.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Let Em Tell You Something Linda</h3>
+<audio controls="" preload="none"><source src="edited-audio/Let-Em-Tell-You-Something-Linda.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Let-Em-Tell-You-Something-Linda.mp3" href="edited-audio/Let-Em-Tell-You-Something-Linda.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Let Em Tell You Something Linda','edited-audio/Let-Em-Tell-You-Something-Linda.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all longhorns">
+<h3>Longhorns FNL Coach Taylor Joy To This Game</h3>
+<audio controls="" preload="none"><source src="edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3" href="edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns FNL Coach Taylor Joy To This Game','edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all replay">
+<h3>Replay Bigfoot Baby Tricia Hook</h3>
+<audio controls="" preload="none"><source src="edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Replay-Bigfoot-Baby-Tricia-Hook.mp3" href="edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Replay Bigfoot Baby Tricia Hook','edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11">
+<h3>Sept 11 Air Traffic Controller</h3>
+<audio controls="" preload="none"><source src="edited-audio/Sept-11-Air-Traffic-Controller.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Sept-11-Air-Traffic-Controller.mp3" href="edited-audio/Sept-11-Air-Traffic-Controller.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Air Traffic Controller','edited-audio/Sept-11-Air-Traffic-Controller.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11">
+<h3>Sept 11 Emergency Calls</h3>
+<audio controls="" preload="none"><source src="edited-audio/Sept-11-Emergency-Calls.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Sept-11-Emergency-Calls.mp3" href="edited-audio/Sept-11-Emergency-Calls.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Emergency Calls','edited-audio/Sept-11-Emergency-Calls.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11">
+<h3>Sept 11 Mom Talks About The Sun</h3>
+<audio controls="" preload="none"><source src="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Sept-11-Mom-Talks-About-The-Sun.mp3" href="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Mom Talks About The Sun','edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11">
+<h3>Sept 11 Voicemail 2 CeeCee Lyles</h3>
+<audio controls="" preload="none"><source src="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Sept-11-Voicemail-2-CeeCee-Lyles.mp3" href="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Voicemail 2 CeeCee Lyles','edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11">
+<h3>Sept 11 Voicemail Betty Ong</h3>
+<audio controls="" preload="none"><source src="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Sept-11-Voicemail-Betty-Ong.mp3" href="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Voicemail Betty Ong','edited-audio/Sept-11-Voicemail-Betty-Ong.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all bits">
+<h3>showprep monologue bits</h3>
+<audio controls="" preload="none"><source src="edited-audio/showprep_monologue_bits.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="showprep_monologue_bits.mp3" href="edited-audio/showprep_monologue_bits.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('showprep monologue bits','edited-audio/showprep_monologue_bits.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>What Do You Want For Dinner</h3>
+<audio controls="" preload="none"><source src="edited-audio/What-Do-You-Want-For-Dinner.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="What-Do-You-Want-For-Dinner.mp3" href="edited-audio/What-Do-You-Want-For-Dinner.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('What Do You Want For Dinner','edited-audio/What-Do-You-Want-For-Dinner.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Woman Window Dog Gossips</h3>
+<audio controls="" preload="none"><source src="edited-audio/Woman-Window-Dog-Gossips.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Woman-Window-Dog-Gossips.mp3" href="edited-audio/Woman-Window-Dog-Gossips.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Woman Window Dog Gossips','edited-audio/Woman-Window-Dog-Gossips.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Your Bananas</h3>
+<audio controls="" preload="none"><source src="edited-audio/Your-Bananas.mp3" type="audio/mpeg"/></audio>
+<div class="audio-actions">
+<a class="m2w-dl" download="Your-Bananas.mp3" href="edited-audio/Your-Bananas.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Your Bananas','edited-audio/Your-Bananas.mp3')">Add to Hotkeys</button>
+</div>
+</div>
 </div>
 </div>
 
@@ -6097,6 +6280,52 @@
       });
     }
   </script>
+<script>
+function showAudioBucket(id){
+  document.querySelectorAll('#audio-subtabs .new-subtab').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('onclick').indexOf("'"+id+"'")>=0);
+  });
+  document.querySelectorAll('#edited-audio-grid .audio-card').forEach(function(card){
+    var buckets = (card.getAttribute('data-buckets')||'').split(/\s+/);
+    card.classList.toggle('hide-bucket', id!=='all' && buckets.indexOf(id)<0);
+  });
+}
+function addClipToHotkeys(name, src){
+  var status = document.getElementById('audio-hk-status');
+  if (window.JBSandyHotkeys && window.JBSandyHotkeys.addClip){
+    var msg = window.JBSandyHotkeys.addClip(name, src);
+    if (status) status.textContent = msg;
+    return;
+  }
+  try {
+    var key = 'jb-sandy-hotkeys-board';
+    var raw = localStorage.getItem(key);
+    var board = raw ? JSON.parse(raw) : null;
+    if (!board || !board.folders || !board.folders[0]) {
+      if (status) status.textContent = 'Open the Hotkeys tab once so the board loads, then try again.';
+      return;
+    }
+    var page = board.folders[0].pages[0];
+    page.pads = page.pads || [];
+    var slots = (page.rows||5)*(page.cols||5);
+    var idx = page.pads.findIndex(function(p){ return !p || !p.src; });
+    if (idx < 0){
+      if (page.pads.length < slots) { idx = page.pads.length; page.pads.push({name:name, src:src}); }
+    } else {
+      page.pads[idx] = {name:name, src:src};
+    }
+    if (idx < 0){
+      if (status) status.textContent = 'Hotkeys board is full. Clear a pad first.';
+      return;
+    }
+    board.touched = true;
+    localStorage.setItem(key, JSON.stringify(board));
+    if (status) status.textContent = 'Parked “'+name+'” on Hotkeys pad '+(idx+1)+'. Open Hotkeys to fire it.';
+  } catch (e) {
+    if (status) status.textContent = 'Could not add to Hotkeys.';
+  }
+}
+</script>
 <script src="hotkeys.js"></script>
 </body>
 </html>
