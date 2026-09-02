@@ -247,6 +247,7 @@
 <button class="pill" data-tab="grok" onclick="showTab('grok')">Grok Thinks You Will Dig This</button>
 <button class="pill" data-tab="farmed" onclick="showTab('farmed')">Farmed From Others</button>
 <button class="pill" data-tab="audio" onclick="showTab('audio')">Audio &amp; Video</button>
+<button class="pill" data-tab="jobs" onclick="showTab('jobs')">Jobs Completed</button>
 <button class="pill" data-tab="audioedits" onclick="showTab('audioedits')">Edited Audio</button>
 <button class="pill" data-tab="lastlaugh" onclick="showTab('lastlaugh')">Last Laugh</button>
 <button class="pill" data-tab="archive" onclick="showTab('archive')">Audio Archive</button>
@@ -483,6 +484,16 @@
       Drag an mp3 onto a pad to load it. Drops stay in this browser only.
     </p>
     <div id="hotkeys-app">Loading board…</div>
+  </div>
+
+  
+  <div class="panel" id="panel-jobs">
+    <h2>Jobs Completed</h2>
+    <p class="note">Same log as the box on Edited Audio.</p>
+    <div class="job-row"><strong>Aug 31, 10:03 PM</strong> — Longhorns Eyes of Texas / Hook em / Sark / tailgate / mariachi / bumper<br><span class="muted">From: Attached in chat · Lives: Edited Audio → Texas Longhorns</span></div>
+<div class="job-row"><strong>Aug 31, 9:48 PM</strong> — Dolly tributes (Stapleton, Mayer, Batiste, Zac Brown)<br><span class="muted">From: Attached in chat · Lives: Edited Audio → Dolly / Tribute</span></div>
+<div class="job-row"><strong>Aug 31, 9:48 PM</strong> — Coach Taylor FNL + Bigfoot baby replay<br><span class="muted">From: Attached in chat · Lives: Longhorns / Replay + Funny</span></div>
+<div class="job-row"><strong>Aug 31</strong> — Kevin Bacon, Linda, Harrison/Cookie, Sept 11 package, Lake Austin band<br><span class="muted">From: YouTube / Facebook / Instagram + extract · Lives: Funny / Sept 11 / Bits</span></div>
   </div>
 
   <div class="panel" id="panel-audio">
@@ -5588,11 +5599,17 @@
 
 <div class="panel" id="panel-audioedits">
 <h2>Edited Audio</h2>
-<p class="note" style="margin-bottom:14px;">
-      Inner tabs sort the clips. <strong>Add to Hotkeys</strong> parks that clip on the next empty pad in this browser (same board the staff already uses). Files themselves stay here.
-    </p>
+<div class="jobs-box" id="jobs-box">
+  <h3>Jobs Completed</h3>
+  <p class="note">Audio pulled from links or attachments, and where it lives now. Newest first.</p>
+  <div class="job-row"><strong>Aug 31, 10:03 PM</strong> — Longhorns Eyes of Texas / Hook em / Sark / tailgate / mariachi / bumper<br><span class="muted">From: Attached in chat · Lives: Edited Audio → Texas Longhorns</span></div>
+<div class="job-row"><strong>Aug 31, 9:48 PM</strong> — Dolly tributes (Stapleton, Mayer, Batiste, Zac Brown)<br><span class="muted">From: Attached in chat · Lives: Edited Audio → Dolly / Tribute</span></div>
+<div class="job-row"><strong>Aug 31, 9:48 PM</strong> — Coach Taylor FNL + Bigfoot baby replay<br><span class="muted">From: Attached in chat · Lives: Longhorns / Replay + Funny</span></div>
+<div class="job-row"><strong>Aug 31</strong> — Kevin Bacon, Linda, Harrison/Cookie, Sept 11 package, Lake Austin band<br><span class="muted">From: YouTube / Facebook / Instagram + extract · Lives: Funny / Sept 11 / Bits</span></div>
+</div>
+<p class="note">Front shows the 5 newest clips. After 48 hours they move into the category tabs.</p>
 <div class="new-subtabs" id="audio-subtabs">
-  <button class="new-subtab active" type="button" onclick="showAudioBucket('all')">All</button>
+  <button class="new-subtab active" type="button" onclick="showAudioBucket('front')">Newest 5</button>
   <button class="new-subtab" type="button" onclick="showAudioBucket('sept11')">Sept 11</button>
   <button class="new-subtab" type="button" onclick="showAudioBucket('dolly')">Dolly Parton</button>
   <button class="new-subtab" type="button" onclick="showAudioBucket('longhorns')">Texas Longhorns</button>
@@ -5604,417 +5621,576 @@
   <button class="new-subtab" type="button" onclick="showAudioBucket('funny')">Funny</button>
 </div>
 <p class="hk-status" id="audio-hk-status"></p>
-<div id="edited-audio-grid">
-<div class="audio-card" data-buckets="all funny">
-<h3>Adult Swim Up Bar ATX</h3>
-<audio controls="" preload="none"><source src="edited-audio/Adult-Swim-Up-Bar-ATX.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Adult-Swim-Up-Bar-ATX.mp3" href="edited-audio/Adult-Swim-Up-Bar-ATX.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Adult Swim Up Bar ATX','edited-audio/Adult-Swim-Up-Bar-ATX.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all sept11">
-<h3>Australian Sept 11 News Report</h3>
-<audio controls="" preload="none"><source src="edited-audio/Australian-Sept-11-News-Report.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Australian-Sept-11-News-Report.mp3" href="edited-audio/Australian-Sept-11-News-Report.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Australian Sept 11 News Report','edited-audio/Australian-Sept-11-News-Report.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all">
-<h3>band on Lake</h3>
-<audio controls="" preload="none"><source src="edited-audio/band%20on%20Lake.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="band on Lake.mp3" href="edited-audio/band%20on%20Lake.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('band on Lake','edited-audio/band on Lake.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all">
-<h3>Band Lake Austin 1</h3>
-<audio controls="" preload="none"><source src="edited-audio/Band-Lake-Austin-1.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Band-Lake-Austin-1.mp3" href="edited-audio/Band-Lake-Austin-1.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Band Lake Austin 1','edited-audio/Band-Lake-Austin-1.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all">
-<h3>Band Lake Austin 2</h3>
-<audio controls="" preload="none"><source src="edited-audio/Band-Lake-Austin-2.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Band-Lake-Austin-2.mp3" href="edited-audio/Band-Lake-Austin-2.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Band Lake Austin 2','edited-audio/Band-Lake-Austin-2.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all bits">
-<h3>Custom Jingle Guy</h3>
-<audio controls="" preload="none"><source src="edited-audio/Custom-Jingle-Guy.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Custom-Jingle-Guy.mp3" href="edited-audio/Custom-Jingle-Guy.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Custom Jingle Guy','edited-audio/Custom-Jingle-Guy.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Does This Work Mosquitoes</h3>
-<audio controls="" preload="none"><source src="edited-audio/Does-This-Work-Mosquitoes.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Does-This-Work-Mosquitoes.mp3" href="edited-audio/Does-This-Work-Mosquitoes.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Does This Work Mosquitoes','edited-audio/Does-This-Work-Mosquitoes.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly 9 5 Clip</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%209-5%20Clip.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly 9-5 Clip.mp3" href="edited-audio/archive/Dolly%209-5%20Clip.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly 9 5 Clip','edited-audio/archive/Dolly 9-5 Clip.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Ender Coat of Many Colors</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly Ender Coat of Many Colors.mp3" href="edited-audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Ender Coat of Many Colors','edited-audio/archive/Dolly Ender Coat of Many Colors.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Ender Jolene</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Ender%20Jolene.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly Ender Jolene.mp3" href="edited-audio/archive/Dolly%20Ender%20Jolene.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Ender Jolene','edited-audio/archive/Dolly Ender Jolene.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Imagination Library</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Imagination%20Library.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly Imagination Library.mp3" href="edited-audio/archive/Dolly%20Imagination%20Library.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Imagination Library','edited-audio/archive/Dolly Imagination Library.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly John Rich American Original</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20John%20Rich%20American%20Original.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly John Rich American Original.mp3" href="edited-audio/archive/Dolly%20John%20Rich%20American%20Original.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly John Rich American Original','edited-audio/archive/Dolly John Rich American Original.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Live TV I Will Always Love You</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly Live TV I Will Always Love You.mp3" href="edited-audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Live TV I Will Always Love You','edited-audio/archive/Dolly Live TV I Will Always Love You.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly on 9 5 What it means to her</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly on 9-5 What it means to her.mp3" href="edited-audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on 9 5 What it means to her','edited-audio/archive/Dolly on 9-5 What it means to her.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly On Her Positive Attitude</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly On Her Positive Attitude.mp3" href="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly On Her Positive Attitude','edited-audio/archive/Dolly On Her Positive Attitude.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly on Her Rock Star Album</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly on Her Rock Star Album.mp3" href="edited-audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on Her Rock Star Album','edited-audio/archive/Dolly on Her Rock Star Album.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly on Taylors song writing</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly on Taylors song writing.mp3" href="edited-audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on Taylors song writing','edited-audio/archive/Dolly on Taylors song writing.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly On With Johnny Caron</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly On With Johnny Caron.mp3" href="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly On With Johnny Caron','edited-audio/archive/Dolly On With Johnny Caron.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Recent Hospital Visit</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly Recent Hospital Visit.mp3" href="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Recent Hospital Visit','edited-audio/archive/Dolly Recent Hospital Visit.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly tribute">
-<h3>Dolly Tribute John Mayer I Will Always Love You</h3>
-<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute John Mayer I Will Always Love You','edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly tribute">
-<h3>Dolly Tribute Jon Batiste I Will Always Love You</h3>
-<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Jon Batiste I Will Always Love You','edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly tribute">
-<h3>Dolly Tribute Stapleton I Will Always Love You</h3>
-<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Stapleton I Will Always Love You','edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly tribute">
-<h3>Dolly Tribute Zac Brown Real Life Angel</h3>
-<audio controls="" preload="none"><source src="edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3" href="edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Zac Brown Real Life Angel','edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Jolene Full</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly_Jolene_Full.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly_Jolene_Full.mp3" href="edited-audio/archive/Dolly_Jolene_Full.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Jolene Full','edited-audio/archive/Dolly_Jolene_Full.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly Loved Show Business</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly_Loved_Show_Business.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly_Loved_Show_Business.mp3" href="edited-audio/archive/Dolly_Loved_Show_Business.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Loved Show Business','edited-audio/archive/Dolly_Loved_Show_Business.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly">
-<h3>Dolly My Life Meant Something</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Dolly_My%20Life%20Meant%20Something.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Dolly_My Life Meant Something.mp3" href="edited-audio/archive/Dolly_My%20Life%20Meant%20Something.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly My Life Meant Something','edited-audio/archive/Dolly_My Life Meant Something.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Fastest Kid Alive</h3>
-<audio controls="" preload="none"><source src="edited-audio/Fastest-Kid-Alive.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Fastest-Kid-Alive.mp3" href="edited-audio/Fastest-Kid-Alive.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Fastest Kid Alive','edited-audio/Fastest-Kid-Alive.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Fav Thing Right Now</h3>
-<audio controls="" preload="none"><source src="edited-audio/Fav-Thing-Right-Now.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Fav-Thing-Right-Now.mp3" href="edited-audio/Fav-Thing-Right-Now.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Fav Thing Right Now','edited-audio/Fav-Thing-Right-Now.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all dolly tribute">
-<h3>Full Dolly Tribute Piece</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/Full%20Dolly%20Tribute%20Piece.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Full Dolly Tribute Piece.mp3" href="edited-audio/archive/Full%20Dolly%20Tribute%20Piece.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Full Dolly Tribute Piece','edited-audio/archive/Full Dolly Tribute Piece.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Harrison Ford Cookie Monster Raiders</h3>
-<audio controls="" preload="none"><source src="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Harrison-Ford-Cookie-Monster-Raiders.mp3" href="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Harrison Ford Cookie Monster Raiders','edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all tribute">
-<h3>iHeart Tribute Long Form</h3>
-<audio controls="" preload="none"><source src="edited-audio/archive/iHeart%20Tribute%20Long%20Form.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="iHeart Tribute Long Form.mp3" href="edited-audio/archive/iHeart%20Tribute%20Long%20Form.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('iHeart Tribute Long Form','edited-audio/archive/iHeart Tribute Long Form.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Kevin Bacon Is Great</h3>
-<audio controls="" preload="none"><source src="edited-audio/Kevin-Bacon-Is-Great.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Kevin-Bacon-Is-Great.mp3" href="edited-audio/Kevin-Bacon-Is-Great.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Kevin Bacon Is Great','edited-audio/Kevin-Bacon-Is-Great.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Let Em Tell You Something Linda</h3>
-<audio controls="" preload="none"><source src="edited-audio/Let-Em-Tell-You-Something-Linda.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Let-Em-Tell-You-Something-Linda.mp3" href="edited-audio/Let-Em-Tell-You-Something-Linda.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Let Em Tell You Something Linda','edited-audio/Let-Em-Tell-You-Something-Linda.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns Deep In The Heart Mariachi</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Deep-In-The-Heart-Mariachi.mp3" type="audio/mpeg"/></audio>
+<div id="edited-audio-front">
+<div class="audio-card" data-buckets="all longhorns bumper">
+<h3>Longhorns Deep In The Heart Mariachi <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Deep-In-The-Heart-Mariachi.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Deep in the Heart of Texas, mariachi instrumental.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio / music bed</p>
+<p class="clip-meta"><strong>Outcue:</strong> Trumpet button.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Deep-In-The-Heart-Mariachi.mp3" href="edited-audio/Longhorns-Deep-In-The-Heart-Mariachi.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Deep In The Heart Mariachi','edited-audio/Longhorns-Deep-In-The-Heart-Mariachi.mp3')">Add to Hotkeys</button>
 </div>
 </div>
 <div class="audio-card" data-buckets="all longhorns bumper">
-<h3>Longhorns Eyes Of Texas 13 Bumper</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Eyes-Of-Texas-13-Bumper.mp3" type="audio/mpeg"/></audio>
+<h3>Longhorns Eyes Of Texas 13 Bumper <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Eyes-Of-Texas-13-Bumper.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Eyes of Texas :13 bumper.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio bumper</p>
+<p class="clip-meta"><strong>Outcue:</strong> Band hit / out.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Eyes-Of-Texas-13-Bumper.mp3" href="edited-audio/Longhorns-Eyes-Of-Texas-13-Bumper.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Eyes Of Texas 13 Bumper','edited-audio/Longhorns-Eyes-Of-Texas-13-Bumper.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns Eyes Of Texas LHMB</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Eyes-Of-Texas-LHMB.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all longhorns bumper">
+<h3>Longhorns Eyes Of Texas LHMB <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Eyes-Of-Texas-LHMB.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Eyes of Texas instrumental, Longhorn band.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio / LHMB</p>
+<p class="clip-meta"><strong>Outcue:</strong> Band cadence out.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Eyes-Of-Texas-LHMB.mp3" href="edited-audio/Longhorns-Eyes-Of-Texas-LHMB.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Eyes Of Texas LHMB','edited-audio/Longhorns-Eyes-Of-Texas-LHMB.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns FNL Coach Taylor Joy To This Game</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3" href="edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns FNL Coach Taylor Joy To This Game','edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns Hook Em Cowboy Troy</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Hook-Em-Cowboy-Troy.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all longhorns bumper">
+<h3>Longhorns Hook Em Cowboy Troy <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Hook-Em-Cowboy-Troy.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Cowboy Troy hook-em repeat.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio / music</p>
+<p class="clip-meta"><strong>Outcue:</strong> “Hook, hook ’em horns!”</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Hook-Em-Cowboy-Troy.mp3" href="edited-audio/Longhorns-Hook-Em-Cowboy-Troy.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Hook Em Cowboy Troy','edited-audio/Longhorns-Hook-Em-Cowboy-Troy.mp3')">Add to Hotkeys</button>
 </div>
 </div>
 <div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns Sark Arch SEC Media Days</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Sark-Arch-SEC-Media-Days.mp3" type="audio/mpeg"/></audio>
+<h3>Longhorns Sark Arch SEC Media Days <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Sark-Arch-SEC-Media-Days.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Sark + Arch at SEC Media Days, July 24 2026. Arch: it got fun when we started winning.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / SEC</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…when we started winning.”</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Sark-Arch-SEC-Media-Days.mp3" href="edited-audio/Longhorns-Sark-Arch-SEC-Media-Days.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Sark Arch SEC Media Days','edited-audio/Longhorns-Sark-Arch-SEC-Media-Days.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns Sweeper Airstream Margarita</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Sweeper-Airstream-Margarita.mp3" type="audio/mpeg"/></audio>
+    <p style="text-align:center;margin:18px 0 6px;">
+      <button class="new-subtab" type="button" onclick="showAudioBucket('longhorns')">Audio library</button>
+    </p>
+</div>
+<div id="edited-audio-grid" hidden>
+<div class="audio-card" data-buckets="all longhorns bumper">
+<h3>Longhorns Sweeper Airstream Margarita <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Sweeper-Airstream-Margarita.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Sweeper: Airstream / margarita / hook ’em.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio sweeper</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…blow your horns off.”</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Sweeper-Airstream-Margarita.mp3" href="edited-audio/Longhorns-Sweeper-Airstream-Margarita.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Sweeper Airstream Margarita','edited-audio/Longhorns-Sweeper-Airstream-Margarita.mp3')">Add to Hotkeys</button>
 </div>
 </div>
 <div class="audio-card" data-buckets="all longhorns">
-<h3>Longhorns Tailgating 40 Acres</h3>
-<audio controls="" preload="none"><source src="edited-audio/Longhorns-Tailgating-40-Acres.mp3" type="audio/mpeg"/></audio>
+<h3>Longhorns Tailgating 40 Acres <span class="added-date">Added Aug 31, 10:03 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-Tailgating-40-Acres.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Fan on 40 Acres tailgating — food, girls, beer.</p>
+<p class="clip-meta"><strong>Source:</strong> Fan tape / social</p>
+<p class="clip-meta"><strong>Outcue:</strong> “Let’s go!”</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Longhorns-Tailgating-40-Acres.mp3" href="edited-audio/Longhorns-Tailgating-40-Acres.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns Tailgating 40 Acres','edited-audio/Longhorns-Tailgating-40-Acres.mp3')">Add to Hotkeys</button>
 </div>
 </div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute John Mayer I Will Always Love You <span class="added-date">Added Aug 31, 9:48 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> John Mayer tribute pass at I Will Always Love You. Instrumental-forward.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio tribute package</p>
+<p class="clip-meta"><strong>Outcue:</strong> Guitar resolve.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute John Mayer I Will Always Love You','edited-audio/Dolly-Tribute-John-Mayer-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute Jon Batiste I Will Always Love You <span class="added-date">Added Aug 31, 9:48 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Jon Batiste: “And now we’ll always love you.”</p>
+<p class="clip-meta"><strong>Source:</strong> Studio tribute package</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…always love you.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Jon Batiste I Will Always Love You','edited-audio/Dolly-Tribute-Jon-Batiste-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute Stapleton I Will Always Love You <span class="added-date">Added Aug 31, 9:48 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Chris Stapleton tribute vocal — I Will Always Love You.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio tribute package</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…I will always love you.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3" href="edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Stapleton I Will Always Love You','edited-audio/Dolly-Tribute-Stapleton-I-Will-Always-Love-You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Tribute Zac Brown Real Life Angel <span class="added-date">Added Aug 31, 9:48 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Zac Brown: real-life angel, then the Kendra joke.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio tribute package</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…you don’t have to worry anymore.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3" href="edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Tribute Zac Brown Real Life Angel','edited-audio/Dolly-Tribute-Zac-Brown-Real-Life-Angel.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all longhorns bits">
+<h3>Longhorns FNL Coach Taylor Joy To This Game <span class="added-date">Added Aug 31, 9:48 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Coach Taylor: there’s a joy to this game. Friday Night Lights.</p>
+<p class="clip-meta"><strong>Source:</strong> TV / FNL</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…you’re gonna look and—” mid-thought (clip ends hot).</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3" href="edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Longhorns FNL Coach Taylor Joy To This Game','edited-audio/Longhorns-FNL-Coach-Taylor-Joy-To-This-Game.mp3')">Add to Hotkeys</button>
+</div>
+</div>
 <div class="audio-card" data-buckets="all replay funny">
-<h3>Replay Bigfoot Baby Tricia Hook</h3>
-<audio controls="" preload="none"><source src="edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3" type="audio/mpeg"/></audio>
+<h3>Replay Bigfoot Baby Tricia Hook <span class="added-date">Added Aug 31, 9:48 PM</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Replay: Bigfoot baby spotted + Tricia hook.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio replay</p>
+<p class="clip-meta"><strong>Outcue:</strong> Song hook out.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Replay-Bigfoot-Baby-Tricia-Hook.mp3" href="edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Replay Bigfoot Baby Tricia Hook','edited-audio/Replay-Bigfoot-Baby-Tricia-Hook.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all sept11">
-<h3>Sept 11 Air Traffic Controller</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Air-Traffic-Controller.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all funny">
+<h3>Adult Swim Up Bar ATX <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Adult-Swim-Up-Bar-ATX.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Funny Austin clip about a swim-up bar.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / social</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…swim-up bar.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Adult-Swim-Up-Bar-ATX.mp3" href="edited-audio/Adult-Swim-Up-Bar-ATX.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Adult Swim Up Bar ATX','edited-audio/Adult-Swim-Up-Bar-ATX.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11 tribute">
+<h3>Australian Sept 11 News Report <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Australian-Sept-11-News-Report.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Australian TV report from Sept 11. Tribute only.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube</p>
+<p class="clip-meta"><strong>Outcue:</strong> End of the news reader line.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Australian-Sept-11-News-Report.mp3" href="edited-audio/Australian-Sept-11-News-Report.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Australian Sept 11 News Report','edited-audio/Australian-Sept-11-News-Report.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all bits">
+<h3>Band Lake Austin 1 <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Band-Lake-Austin-1.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Longer Lake Austin band grab.</p>
+<p class="clip-meta"><strong>Source:</strong> Instagram / studio grab</p>
+<p class="clip-meta"><strong>Outcue:</strong> Band continues under the lake bed.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Band-Lake-Austin-1.mp3" href="edited-audio/Band-Lake-Austin-1.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Band Lake Austin 1','edited-audio/Band-Lake-Austin-1.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all bits">
+<h3>Band Lake Austin 2 <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Band-Lake-Austin-2.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Second Lake Austin band grab.</p>
+<p class="clip-meta"><strong>Source:</strong> Instagram / studio grab</p>
+<p class="clip-meta"><strong>Outcue:</strong> Music out.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Band-Lake-Austin-2.mp3" href="edited-audio/Band-Lake-Austin-2.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Band Lake Austin 2','edited-audio/Band-Lake-Austin-2.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all bits funny">
+<h3>Custom Jingle Guy <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Custom-Jingle-Guy.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> The custom-jingle guy bit.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / social</p>
+<p class="clip-meta"><strong>Outcue:</strong> Jingle resolve.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Custom-Jingle-Guy.mp3" href="edited-audio/Custom-Jingle-Guy.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Custom Jingle Guy','edited-audio/Custom-Jingle-Guy.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Does This Work Mosquitoes <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Does-This-Work-Mosquitoes.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Does-this-work mosquito gadget bit.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / TikTok</p>
+<p class="clip-meta"><strong>Outcue:</strong> Punch on whether it works.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Does-This-Work-Mosquitoes.mp3" href="edited-audio/Does-This-Work-Mosquitoes.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Does This Work Mosquitoes','edited-audio/Does-This-Work-Mosquitoes.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly 9 5 Clip <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%209-5%20Clip.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly on 9 to 5.</p>
+<p class="clip-meta"><strong>Source:</strong> TV / archive</p>
+<p class="clip-meta"><strong>Outcue:</strong> Title line / applause.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly 9-5 Clip.mp3" href="edited-audio/archive/Dolly%209-5%20Clip.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly 9 5 Clip','edited-audio/archive/Dolly 9-5 Clip.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Ender Coat of Many Colors <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Coat of Many Colors ender.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio / archive</p>
+<p class="clip-meta"><strong>Outcue:</strong> Last lyric into button.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly Ender Coat of Many Colors.mp3" href="edited-audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Ender Coat of Many Colors','edited-audio/archive/Dolly Ender Coat of Many Colors.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Ender Jolene <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20Ender%20Jolene.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Jolene ender.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio / archive</p>
+<p class="clip-meta"><strong>Outcue:</strong> “Jolene.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly Ender Jolene.mp3" href="edited-audio/archive/Dolly%20Ender%20Jolene.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Ender Jolene','edited-audio/archive/Dolly Ender Jolene.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Imagination Library <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20Imagination%20Library.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly on Imagination Library.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview / archive</p>
+<p class="clip-meta"><strong>Outcue:</strong> Library / kids line.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly Imagination Library.mp3" href="edited-audio/archive/Dolly%20Imagination%20Library.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Imagination Library','edited-audio/archive/Dolly Imagination Library.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly John Rich American Original <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20John%20Rich%20American%20Original.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> John Rich on Dolly as an American original.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Praise button.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly John Rich American Original.mp3" href="edited-audio/archive/Dolly%20John%20Rich%20American%20Original.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly John Rich American Original','edited-audio/archive/Dolly John Rich American Original.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Live TV I Will Always Love You <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Live TV I Will Always Love You.</p>
+<p class="clip-meta"><strong>Source:</strong> TV / archive</p>
+<p class="clip-meta"><strong>Outcue:</strong> “…I will always love you.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly Live TV I Will Always Love You.mp3" href="edited-audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Live TV I Will Always Love You','edited-audio/archive/Dolly Live TV I Will Always Love You.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly On Her Positive Attitude <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly on staying positive.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Attitude line.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly On Her Positive Attitude.mp3" href="edited-audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly On Her Positive Attitude','edited-audio/archive/Dolly On Her Positive Attitude.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly On With Johnny Caron <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly with Johnny Carson. Long sit.</p>
+<p class="clip-meta"><strong>Source:</strong> TV archive / Carson</p>
+<p class="clip-meta"><strong>Outcue:</strong> Carson sting / applause.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly On With Johnny Caron.mp3" href="edited-audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly On With Johnny Caron','edited-audio/archive/Dolly On With Johnny Caron.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Recent Hospital Visit <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly hospital-visit remarks.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview / news</p>
+<p class="clip-meta"><strong>Outcue:</strong> Careful out — newsy.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly Recent Hospital Visit.mp3" href="edited-audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Recent Hospital Visit','edited-audio/archive/Dolly Recent Hospital Visit.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly on 9 5 What it means to her <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> What 9 to 5 meant to her.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Meaning line.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly on 9-5 What it means to her.mp3" href="edited-audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on 9 5 What it means to her','edited-audio/archive/Dolly on 9-5 What it means to her.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly on Her Rock Star Album <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly on the rock-star album.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Album plug / laugh.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly on Her Rock Star Album.mp3" href="edited-audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on Her Rock Star Album','edited-audio/archive/Dolly on Her Rock Star Album.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly on Taylors song writing <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly on Taylor’s writing.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Writer compliment.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly on Taylors song writing.mp3" href="edited-audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly on Taylors song writing','edited-audio/archive/Dolly on Taylors song writing.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly Jolene Full <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly_Jolene_Full.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Fuller Jolene piece.</p>
+<p class="clip-meta"><strong>Source:</strong> Archive</p>
+<p class="clip-meta"><strong>Outcue:</strong> “Jolene.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly_Jolene_Full.mp3" href="edited-audio/archive/Dolly_Jolene_Full.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Jolene Full','edited-audio/archive/Dolly_Jolene_Full.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly">
+<h3>Dolly Loved Show Business <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly_Loved_Show_Business.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Dolly on loving show business.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Show-business line.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly_Loved_Show_Business.mp3" href="edited-audio/archive/Dolly_Loved_Show_Business.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly Loved Show Business','edited-audio/archive/Dolly_Loved_Show_Business.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Dolly My Life Meant Something <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Dolly_My%20Life%20Meant%20Something.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> “My life meant something.” Short.</p>
+<p class="clip-meta"><strong>Source:</strong> Interview</p>
+<p class="clip-meta"><strong>Outcue:</strong> Title line.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Dolly_My Life Meant Something.mp3" href="edited-audio/archive/Dolly_My%20Life%20Meant%20Something.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Dolly My Life Meant Something','edited-audio/archive/Dolly_My Life Meant Something.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Fastest Kid Alive <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Fastest-Kid-Alive.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Fastest kid alive clip.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / TikTok</p>
+<p class="clip-meta"><strong>Outcue:</strong> Kid / announcer button.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Fastest-Kid-Alive.mp3" href="edited-audio/Fastest-Kid-Alive.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Fastest Kid Alive','edited-audio/Fastest-Kid-Alive.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all bits funny">
+<h3>Fav Thing Right Now <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Fav-Thing-Right-Now.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Favorite thing right now.</p>
+<p class="clip-meta"><strong>Source:</strong> Social / studio</p>
+<p class="clip-meta"><strong>Outcue:</strong> Title answer.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Fav-Thing-Right-Now.mp3" href="edited-audio/Fav-Thing-Right-Now.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Fav Thing Right Now','edited-audio/Fav-Thing-Right-Now.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>Full Dolly Tribute Piece <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/Full%20Dolly%20Tribute%20Piece.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Long-form Dolly tribute piece.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio package</p>
+<p class="clip-meta"><strong>Outcue:</strong> Tribute resolve.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Full Dolly Tribute Piece.mp3" href="edited-audio/archive/Full%20Dolly%20Tribute%20Piece.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Full Dolly Tribute Piece','edited-audio/archive/Full Dolly Tribute Piece.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Harrison Ford Cookie Monster Raiders <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Harrison Ford and Cookie Monster num-numming Raiders.</p>
+<p class="clip-meta"><strong>Source:</strong> Facebook</p>
+<p class="clip-meta"><strong>Outcue:</strong> Raiders theme under “num num.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Harrison-Ford-Cookie-Monster-Raiders.mp3" href="edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Harrison Ford Cookie Monster Raiders','edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny">
+<h3>Kevin Bacon Is Great <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Kevin-Bacon-Is-Great.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Kevin Bacon is great short.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube</p>
+<p class="clip-meta"><strong>Outcue:</strong> Bacon punch.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Kevin-Bacon-Is-Great.mp3" href="edited-audio/Kevin-Bacon-Is-Great.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Kevin Bacon Is Great','edited-audio/Kevin-Bacon-Is-Great.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all funny bits">
+<h3>Let Em Tell You Something Linda <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Let-Em-Tell-You-Something-Linda.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Let em tell you something, Linda.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube</p>
+<p class="clip-meta"><strong>Outcue:</strong> “Linda.”</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="Let-Em-Tell-You-Something-Linda.mp3" href="edited-audio/Let-Em-Tell-You-Something-Linda.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('Let Em Tell You Something Linda','edited-audio/Let-Em-Tell-You-Something-Linda.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all sept11 tribute">
+<h3>Sept 11 Air Traffic Controller <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Sept-11-Air-Traffic-Controller.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> ATC audio from Sept 11. Long file — spot before you air. Tribute only.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / Instagram source</p>
+<p class="clip-meta"><strong>Outcue:</strong> Controller traffic; do not hot-hit.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Sept-11-Air-Traffic-Controller.mp3" href="edited-audio/Sept-11-Air-Traffic-Controller.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Air Traffic Controller','edited-audio/Sept-11-Air-Traffic-Controller.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all sept11">
-<h3>Sept 11 Emergency Calls</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Emergency-Calls.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all sept11 tribute">
+<h3>Sept 11 Emergency Calls <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Sept-11-Emergency-Calls.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Sept 11 emergency-call montage. Tribute only.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube</p>
+<p class="clip-meta"><strong>Outcue:</strong> Last caller / dispatch.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Sept-11-Emergency-Calls.mp3" href="edited-audio/Sept-11-Emergency-Calls.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Emergency Calls','edited-audio/Sept-11-Emergency-Calls.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all sept11">
-<h3>Sept 11 Mom Talks About The Sun</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all sept11 tribute">
+<h3>Sept 11 Mom Talks About The Sun <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Mom talking about the sun that morning. Tribute only.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube</p>
+<p class="clip-meta"><strong>Outcue:</strong> Her last line on the sun.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Sept-11-Mom-Talks-About-The-Sun.mp3" href="edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Mom Talks About The Sun','edited-audio/Sept-11-Mom-Talks-About-The-Sun.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all sept11">
-<h3>Sept 11 Voicemail 2 CeeCee Lyles</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all sept11 tribute">
+<h3>Sept 11 Voicemail 2 CeeCee Lyles <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> CeeCee Lyles voicemail. Tribute only.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / Instagram</p>
+<p class="clip-meta"><strong>Outcue:</strong> End of the message.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Sept-11-Voicemail-2-CeeCee-Lyles.mp3" href="edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Voicemail 2 CeeCee Lyles','edited-audio/Sept-11-Voicemail-2-CeeCee-Lyles.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all sept11">
-<h3>Sept 11 Voicemail Betty Ong</h3>
-<audio controls="" preload="none"><source src="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all sept11 tribute">
+<h3>Sept 11 Voicemail Betty Ong <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Betty Ong voicemail. Tribute only.</p>
+<p class="clip-meta"><strong>Source:</strong> YouTube / Instagram</p>
+<p class="clip-meta"><strong>Outcue:</strong> End of the message.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Sept-11-Voicemail-Betty-Ong.mp3" href="edited-audio/Sept-11-Voicemail-Betty-Ong.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Sept 11 Voicemail Betty Ong','edited-audio/Sept-11-Voicemail-Betty-Ong.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all bits">
-<h3>showprep monologue bits</h3>
-<audio controls="" preload="none"><source src="edited-audio/showprep_monologue_bits.mp3" type="audio/mpeg"/></audio>
-<div class="audio-actions">
-<a class="m2w-dl" download="showprep_monologue_bits.mp3" href="edited-audio/showprep_monologue_bits.mp3">Download</a>
-<button type="button" class="hk-send" onclick="addClipToHotkeys('showprep monologue bits','edited-audio/showprep_monologue_bits.mp3')">Add to Hotkeys</button>
-</div>
-</div>
-<div class="audio-card" data-buckets="all funny">
-<h3>What Do You Want For Dinner</h3>
-<audio controls="" preload="none"><source src="edited-audio/What-Do-You-Want-For-Dinner.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all funny bits">
+<h3>What Do You Want For Dinner <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/What-Do-You-Want-For-Dinner.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> What do you want for dinner fight.</p>
+<p class="clip-meta"><strong>Source:</strong> Social</p>
+<p class="clip-meta"><strong>Outcue:</strong> Dinner punch.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="What-Do-You-Want-For-Dinner.mp3" href="edited-audio/What-Do-You-Want-For-Dinner.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('What Do You Want For Dinner','edited-audio/What-Do-You-Want-For-Dinner.mp3')">Add to Hotkeys</button>
 </div>
 </div>
 <div class="audio-card" data-buckets="all funny">
-<h3>Woman Window Dog Gossips</h3>
-<audio controls="" preload="none"><source src="edited-audio/Woman-Window-Dog-Gossips.mp3" type="audio/mpeg"/></audio>
+<h3>Woman Window Dog Gossips <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Woman-Window-Dog-Gossips.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Woman / window / dog gossip clip.</p>
+<p class="clip-meta"><strong>Source:</strong> Social</p>
+<p class="clip-meta"><strong>Outcue:</strong> Gossip button.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Woman-Window-Dog-Gossips.mp3" href="edited-audio/Woman-Window-Dog-Gossips.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Woman Window Dog Gossips','edited-audio/Woman-Window-Dog-Gossips.mp3')">Add to Hotkeys</button>
 </div>
 </div>
-<div class="audio-card" data-buckets="all funny">
-<h3>Your Bananas</h3>
-<audio controls="" preload="none"><source src="edited-audio/Your-Bananas.mp3" type="audio/mpeg"/></audio>
+<div class="audio-card" data-buckets="all funny bits">
+<h3>Your Bananas <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/Your-Bananas.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Your bananas bit.</p>
+<p class="clip-meta"><strong>Source:</strong> Social</p>
+<p class="clip-meta"><strong>Outcue:</strong> Banana punch.</p>
 <div class="audio-actions">
 <a class="m2w-dl" download="Your-Bananas.mp3" href="edited-audio/Your-Bananas.mp3">Download</a>
 <button type="button" class="hk-send" onclick="addClipToHotkeys('Your Bananas','edited-audio/Your-Bananas.mp3')">Add to Hotkeys</button>
 </div>
 </div>
+<div class="audio-card" data-buckets="all bits funny">
+<h3>band on Lake <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/band%20on%20Lake.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Band playing out on Lake Austin.</p>
+<p class="clip-meta"><strong>Source:</strong> Instagram / studio grab</p>
+<p class="clip-meta"><strong>Outcue:</strong> Music hits and crowd wash.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="band on Lake.mp3" href="edited-audio/band%20on%20Lake.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('band on Lake','edited-audio/band on Lake.mp3')">Add to Hotkeys</button>
 </div>
 </div>
+<div class="audio-card" data-buckets="all dolly tribute">
+<h3>iHeart Tribute Long Form <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/archive/iHeart%20Tribute%20Long%20Form.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> iHeart long-form Dolly tribute.</p>
+<p class="clip-meta"><strong>Source:</strong> iHeart / studio</p>
+<p class="clip-meta"><strong>Outcue:</strong> Tribute resolve.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="iHeart Tribute Long Form.mp3" href="edited-audio/archive/iHeart%20Tribute%20Long%20Form.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('iHeart Tribute Long Form','edited-audio/archive/iHeart Tribute Long Form.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+<div class="audio-card" data-buckets="all bits">
+<h3>showprep monologue bits <span class="added-date">Added Aug 31 or earlier</span></h3>
+<audio class="cowboys-player" controls preload="none"><source src="edited-audio/showprep_monologue_bits.mp3" type="audio/mpeg"/></audio>
+<p class="clip-meta"><strong>What it is:</strong> Monologue bits bed / pack.</p>
+<p class="clip-meta"><strong>Source:</strong> Studio</p>
+<p class="clip-meta"><strong>Outcue:</strong> Last joke button.</p>
+<div class="audio-actions">
+<a class="m2w-dl" download="showprep_monologue_bits.mp3" href="edited-audio/showprep_monologue_bits.mp3">Download</a>
+<button type="button" class="hk-send" onclick="addClipToHotkeys('showprep monologue bits','edited-audio/showprep_monologue_bits.mp3')">Add to Hotkeys</button>
+</div>
+</div>
+</div>
+</div>
+
 <div class="panel" id="panel-archive">
 <h2>Audio Archive</h2>
 <p class="note" style="margin-bottom:14px;">
@@ -6370,12 +6546,22 @@
   </script>
 <script>
 function showAudioBucket(id){
+  var front = document.getElementById('edited-audio-front');
+  var grid = document.getElementById('edited-audio-grid');
   document.querySelectorAll('#audio-subtabs .new-subtab').forEach(function(b){
-    b.classList.toggle('active', b.getAttribute('onclick').indexOf("'"+id+"'")>=0);
+    var oc = b.getAttribute('onclick') || '';
+    b.classList.toggle('active', oc.indexOf("'" + id + "'") >= 0);
   });
+  if (id === 'front'){
+    if (front) front.hidden = false;
+    if (grid) grid.hidden = true;
+    return;
+  }
+  if (front) front.hidden = true;
+  if (grid) grid.hidden = false;
   document.querySelectorAll('#edited-audio-grid .audio-card').forEach(function(card){
-    var buckets = (card.getAttribute('data-buckets')||'').split(/\s+/);
-    card.classList.toggle('hide-bucket', id!=='all' && buckets.indexOf(id)<0);
+    var buckets = (card.getAttribute('data-buckets') || '').split(/\s+/);
+    card.classList.toggle('hide-bucket', buckets.indexOf(id) < 0);
   });
 }
 function addClipToHotkeys(name, src){
