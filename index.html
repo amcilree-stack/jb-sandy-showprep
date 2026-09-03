@@ -229,9 +229,74 @@
     }
     .job-row .ok { color: #0a7a32; font-weight: 800; margin-right: 6px; }
 
+
+    #emergency-overlay {
+      position: fixed; inset: 0; z-index: 4000;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 3vh 4vw 0; pointer-events: none;
+    }
+    #emergency-overlay.hidden { display: none; }
+    #emergency-card {
+      pointer-events: auto;
+      width: min(920px, 92vw);
+      height: 50vh; max-height: 50vh;
+      overflow: auto;
+      margin-top: 2vh;
+      background: linear-gradient(180deg, #c8102e 0%, #8b0000 55%, #5a0000 100%);
+      border: 4px solid #000;
+      color: #fff;
+      padding: 18px 22px 16px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+      transition: opacity .6s ease, filter .6s ease;
+    }
+    #emergency-overlay.is-dim #emergency-card { opacity: .82; filter: brightness(.92); }
+    #emergency-card h2 {
+      margin: 0 0 4px; color: #fff; font-size: 1.55rem; letter-spacing: .02em;
+      text-align: center;
+    }
+    #emergency-stamp { text-align: center; color: #ffd6d6; font-size: .8rem; margin: 0 0 12px; }
+    #emergency-card ol { margin: 0; padding-left: 22px; }
+    #emergency-card li { margin: 0 0 8px; }
+    #emergency-card a {
+      color: #fff; text-decoration: underline; text-underline-offset: 2px;
+      font-weight: 700;
+    }
+    #emergency-card .why { font-weight: 400; opacity: .92; }
+    #emergency-close {
+      display: block; margin: 10px auto 0;
+      background: #000; color: #fff; border: 2px solid #fff;
+      padding: 8px 18px; font-weight: 800; cursor: pointer; border-radius: 4px;
+    }
+    .pill[data-tab="emergency"] {
+      background: var(--cream, #f6f1e8); color: var(--navy, #1b2a4a);
+      border: 2px solid var(--navy, #1b2a4a);
+    }
+
 </style>
 </head>
 <body>
+
+<div id="emergency-overlay" class="hidden" aria-hidden="true">
+  <div id="emergency-card" role="dialog" aria-label="In Case of Emergency">
+    <h2>In Case of Emergency, Do this.</h2>
+    <p id="emergency-stamp">Emergency updated Wed Sep 2, 8:29 PM</p>
+    <ol>
+<li><a href="#" data-jump="audioedits">Bat Fest — bats take off (audio)</a> — Wild Kingdom-style clip of the colony leaving the bridge at sunset. <a href="#" data-jump="audioedits">Open this on the site →</a></li>
+<li><a href="#" data-jump="audioedits">Eyes of Texas :13 bumper (audio)</a> — Longhorn band bumper. Evergreen sting. <a href="#" data-jump="audioedits">Open this on the site →</a></li>
+<li><a href="#" data-jump="local">Bat Fest 2026 — Saturday 3–11, Congress Bridge</a> — 20th year. $15 advance. Bats don’t publish a set time. <a href="#" data-jump="local">Open this on the site →</a></li>
+<li><a href="#" data-jump="local">Possible dinosaur tracks on Brushy Creek in Hutto</a> — Pair with the Jurassic bed. <a href="#" data-jump="local">Open this on the site →</a></li>
+<li><a href="#" data-jump="farmed">What valuable thing did you accidentally throw away?</a> — Cash, jewelry, tickets, keys. Best calls went through the trash. <a href="#" data-jump="farmed">Open this on the site →</a></li>
+<li><a href="#" data-jump="new">Aggie man caves for sale</a> — Texas phone. Would you buy one. <a href="#" data-jump="new">Open this on the site →</a></li>
+<li><a href="#" data-jump="caller">What was the exact moment you knew…?</a> — Quit the job, relationship over, wrong car, doomed vacation. <a href="#" data-jump="caller">Open this on the site →</a></li>
+<li><a href="#" data-jump="caller">Task that takes two minutes that you avoid for days</a> — Dishwasher, Amazon return, lightbulb, voicemails. <a href="#" data-jump="caller">Open this on the site →</a></li>
+<li><a href="#" data-jump="grok">Today’s birthdays: Keanu, Salma, Harmon, Bradshaw</a> — Soft open from the Grok tab. <a href="#" data-jump="grok">Open this on the site →</a></li>
+<li><a href="#" data-jump="kvet">Who is the best roller skater on the show?</a> — Standing KVET bit. <a href="#" data-jump="kvet">Open this on the site →</a></li>
+    </ol>
+    <button type="button" id="emergency-close">Close</button>
+  </div>
+</div>
+<script type="application/json" id="emergency-used-json">{"updated": "2026-09-02T20:29:00-05:00", "used": [{"id": "20260902-batfest-takeoff", "retired": "2026-09-17"}, {"id": "20260902-eyes-bumper", "retired": "2026-09-17"}, {"id": "20260902-batfest-local", "retired": "2026-09-17"}, {"id": "20260902-hutto-tracks", "retired": "2026-09-17"}, {"id": "20260902-throwaway", "retired": "2026-09-17"}, {"id": "20260902-aggie-cave", "retired": "2026-09-17"}, {"id": "20260902-moment-knew", "retired": "2026-09-17"}, {"id": "20260902-two-min", "retired": "2026-09-17"}, {"id": "20260902-birthdays", "retired": "2026-09-17"}, {"id": "20260902-skater", "retired": "2026-09-17"}]}</script>
+
 <div class="topbar">
 <div class="topbar-inner">
 <div class="brand"><strong>JB &amp; SANDY</strong><span>Show Prep • 98.1 KVET</span></div>
@@ -284,7 +349,25 @@
 <button class="copy-all-btn" onclick="copyAllNotes()">Copy all notes</button>
 <div class="copy-status" id="copy-status">Copied to clipboard!</div>
 </div>
-<div class="panel active" id="panel-new">
+
+  <div class="panel" id="panel-emergency">
+    <h2>EMERGENCY</h2>
+    <p class="note">Same 10 as the open-page board. Emergency updated <strong>Wed Sep 2, 8:29 PM</strong>. Rotates after 24 hours on a token update. Items stay out of the board for 15 days.</p>
+    <ol>
+<li><a href="#" data-jump="audioedits">Bat Fest — bats take off (audio)</a> — Wild Kingdom-style clip of the colony leaving the bridge at sunset. <a href="#" data-jump="audioedits">Open this on the site →</a></li>
+<li><a href="#" data-jump="audioedits">Eyes of Texas :13 bumper (audio)</a> — Longhorn band bumper. Evergreen sting. <a href="#" data-jump="audioedits">Open this on the site →</a></li>
+<li><a href="#" data-jump="local">Bat Fest 2026 — Saturday 3–11, Congress Bridge</a> — 20th year. $15 advance. Bats don’t publish a set time. <a href="#" data-jump="local">Open this on the site →</a></li>
+<li><a href="#" data-jump="local">Possible dinosaur tracks on Brushy Creek in Hutto</a> — Pair with the Jurassic bed. <a href="#" data-jump="local">Open this on the site →</a></li>
+<li><a href="#" data-jump="farmed">What valuable thing did you accidentally throw away?</a> — Cash, jewelry, tickets, keys. Best calls went through the trash. <a href="#" data-jump="farmed">Open this on the site →</a></li>
+<li><a href="#" data-jump="new">Aggie man caves for sale</a> — Texas phone. Would you buy one. <a href="#" data-jump="new">Open this on the site →</a></li>
+<li><a href="#" data-jump="caller">What was the exact moment you knew…?</a> — Quit the job, relationship over, wrong car, doomed vacation. <a href="#" data-jump="caller">Open this on the site →</a></li>
+<li><a href="#" data-jump="caller">Task that takes two minutes that you avoid for days</a> — Dishwasher, Amazon return, lightbulb, voicemails. <a href="#" data-jump="caller">Open this on the site →</a></li>
+<li><a href="#" data-jump="grok">Today’s birthdays: Keanu, Salma, Harmon, Bradshaw</a> — Soft open from the Grok tab. <a href="#" data-jump="grok">Open this on the site →</a></li>
+<li><a href="#" data-jump="kvet">Who is the best roller skater on the show?</a> — Standing KVET bit. <a href="#" data-jump="kvet">Open this on the site →</a></li>
+    </ol>
+  </div>
+
+  <div class="panel active" id="panel-new">
     <h2>★ New Stuff</h2>
     <div class="new-stuff-note">
       The 5 newest ideas sit here. Everything else in the 7-day window is under <strong>More Brilliant Ideas</strong>.
@@ -6738,6 +6821,39 @@ function showLocalBucket(id){
   if (now) now.hidden = (id !== 'now');
   if (arch) arch.hidden = (id !== 'archive');
 }
+
+
+(function(){
+  var overlay = document.getElementById('emergency-overlay');
+  var closeBtn = document.getElementById('emergency-close');
+  if (!overlay) return;
+  var today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Chicago' });
+  var seen = null;
+  try { seen = localStorage.getItem('jb-sandy-emergency-seen'); } catch (e) {}
+  if (seen !== today) {
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    setTimeout(function(){ overlay.classList.add('is-dim'); }, 10000);
+  }
+  function dismiss(){
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+    try { localStorage.setItem('jb-sandy-emergency-seen', today); } catch (e) {}
+  }
+  if (closeBtn) closeBtn.addEventListener('click', dismiss);
+  function jump(tab){
+    dismiss();
+    if (typeof showTab === 'function') showTab(tab);
+    var btn = document.querySelector('.pill[data-tab="'+tab+'"]');
+    if (btn) btn.scrollIntoView({block:'nearest'});
+  }
+  document.querySelectorAll('#emergency-overlay a[data-jump], #panel-emergency a[data-jump]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
+      jump(a.getAttribute('data-jump'));
+    });
+  });
+})();
 
 function showAudioBucket(id){
   var front = document.getElementById('edited-audio-front');
