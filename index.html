@@ -272,6 +272,17 @@
       border: 2px solid var(--navy, #1b2a4a);
     }
 
+
+    .pill-emergency {
+      background: linear-gradient(180deg, #c8102e, #8b0000) !important;
+      color: #fff !important;
+      border: 2px solid #000 !important;
+      font-weight: 800;
+    }
+    .pill-emergency.active {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+    }
+
 </style>
 </head>
 <body>
@@ -326,6 +337,7 @@
 <div class="wrap">
 <div class="search-row"><input id="q" oninput="filterPrep(this.value)" placeholder="Search prep…"/></div>
 <div class="pills" id="main-tabs">
+<button class="pill pill-emergency" data-tab="emergency" onclick="showTab('emergency')">EMERGENCY</button>
 <button class="pill active" data-tab="new" onclick="showTab('new')">New Stuff</button>
       <button class="pill" data-tab="sept11" onclick="showTab('sept11')">Sept 11</button>
       <button class="pill" data-tab="hotkeys" onclick="showTab('hotkeys')">Hotkeys</button>
