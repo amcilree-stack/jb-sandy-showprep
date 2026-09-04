@@ -6883,6 +6883,15 @@ function showLocalBucket(id){
     });
   });
 })();
+document.addEventListener('click', function(ev){
+  var a = ev.target.closest && ev.target.closest('a[data-jump]');
+  if (!a) return;
+  ev.preventDefault();
+  var tab = a.getAttribute('data-jump');
+  if (typeof showTab === 'function') showTab(tab);
+  var panel = document.getElementById('panel-' + tab);
+  if (panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+});
 
 function showAudioBucket(id){
   var front = document.getElementById('edited-audio-front');
