@@ -283,29 +283,62 @@
       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
     }
 
+
+    .nav5 { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
+    .nav5 .navbtn {
+      background: var(--navy); color:#fff; border:0; border-radius:8px;
+      padding:12px 18px; font-weight:800; font-size:0.95rem; cursor:pointer;
+      min-height:44px;
+    }
+    .nav5 .navbtn:hover { background: var(--orange); }
+    .nav5 .navbtn.active { background: var(--orange); }
+    .nav5 .navbtn.red { background:#c8102e; }
+    .more-wrap { position:relative; }
+    .more-menu {
+      display:none; position:absolute; left:0; top:110%; z-index:20;
+      background:#fff; border:1px solid #c9bba6; border-radius:8px;
+      padding:8px; min-width:220px; box-shadow:0 8px 24px rgba(0,0,0,.12);
+    }
+    .more-wrap.open .more-menu { display:block; }
+    .more-menu button {
+      display:block; width:100%; text-align:left; background:#fff; border:0;
+      padding:8px 10px; cursor:pointer; font-weight:600; color:var(--navy);
+    }
+    .more-menu button:hover { background:#f6f1e8; }
+    .today-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (max-width:800px){ .today-grid { grid-template-columns:1fr; } }
+    .today-box {
+      background:#fff; border:1px solid #c9bba6; border-radius:8px; padding:12px 14px;
+    }
+    .today-box h3 { margin:0 0 8px; color:var(--navy); }
+    .today-box.news { border-left:6px solid var(--orange); }
+    .today-box.do { border-left:6px solid #c8102e; }
+    .today-box li { margin:0 0 8px; }
+    #emergency-overlay { display:none !important; }
+
 </style>
 </head>
 <body>
 <div aria-hidden="true" class="hidden" id="emergency-overlay">
 <div aria-label="In Case of Emergency" id="emergency-card" role="dialog">
 <h2>In Case of Emergency, Do this.</h2>
-<p id="emergency-stamp">Emergency updated Fri Sep 4, 5:55 AM</p>
+<p id="emergency-stamp">Emergency updated Fri Sep 4, 4:00 AM</p>
 <ol>
-<li><a data-jump="grok" href="#">Sturgill Simpson / Johnny Blue Skies tonight at Moody</a> — Friday country night before the stacked Saturday. <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="grok" href="#">Beyoncé turns 45</a> — Soft birthday open + Cowboy Carter / Texas flex. <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Coach pre-game pep talk for the radio show</a> — Cast locker-room speeches, then phones. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Golden Girls Kitchen pop-up in Austin</a> — Through Nov. 8 at Wanderlust. Blanche or Dorothy? <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Austin Restaurant Weeks through Sept 13</a> — Prix-fixe + Food Bank. Last-call dining. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="grok" href="#">Saturday stack: Bat Fest + UT vs Texas State + COTA + Austin FC</a> — Which one are you actually doing? <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">The Labor Day plan that sounded better last Tuesday</a> — Ambition vs. heat, traffic, and a couch. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Round Rock Express tonight at Dell Diamond</a> — vs. Oklahoma City. Cheap Friday baseball. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="grok" href="#">Country birthday: Granger Smith</a> — Pair with Beyoncé. Texas country vs. Cowboy Carter. <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">What are you bringing that nobody asked you to bring?</a> — Cooler, extra chair, cousin, dog, attitude. <a data-jump="new" href="#">Open this on the site →</a></li>
+<li><a data-jump="audioedits" href="#">Bat Fest — bats take off (audio)</a> — Wild Kingdom-style clip of the colony leaving the bridge at sunset. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="audioedits" href="#">Eyes of Texas :13 bumper (audio)</a> — Longhorn band bumper. Evergreen sting. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Bat Fest 2026 — Saturday 3–11, Congress Bridge</a> — 20th year. $15 advance. Bats don’t publish a set time. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Possible dinosaur tracks on Brushy Creek in Hutto</a> — Pair with the Jurassic bed. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="farmed" href="#">What valuable thing did you accidentally throw away?</a> — Cash, jewelry, tickets, keys. Best calls went through the trash. <a data-jump="farmed" href="#">Open this on the site →</a></li>
+<li><a data-jump="new" href="#">Aggie man caves for sale</a> — Texas phone. Would you buy one. <a data-jump="new" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">What was the exact moment you knew…?</a> — Quit the job, relationship over, wrong car, doomed vacation. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">Task that takes two minutes that you avoid for days</a> — Dishwasher, Amazon return, lightbulb, voicemails. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="grok" href="#">Today’s birthdays: Keanu, Salma, Harmon, Bradshaw</a> — Soft open from the Grok tab. <a data-jump="grok" href="#">Open this on the site →</a></li>
+<li><a data-jump="kvet" href="#">Who is the best roller skater on the show?</a> — Standing KVET bit. <a data-jump="kvet" href="#">Open this on the site →</a></li>
 </ol>
 <button id="emergency-close" type="button">Close</button>
 </div>
 </div>
-<script id="emergency-used-json" type="application/json">{"updated": "2026-09-04T05:55:00-05:00", "used": [{"id": "20260902-batfest-takeoff", "retired": "2026-09-17"}, {"id": "20260902-eyes-bumper", "retired": "2026-09-17"}, {"id": "20260902-batfest-local", "retired": "2026-09-17"}, {"id": "20260902-hutto-tracks", "retired": "2026-09-17"}, {"id": "20260902-throwaway", "retired": "2026-09-17"}, {"id": "20260902-aggie-cave", "retired": "2026-09-17"}, {"id": "20260902-moment-knew", "retired": "2026-09-17"}, {"id": "20260902-two-min", "retired": "2026-09-17"}, {"id": "20260902-birthdays", "retired": "2026-09-17"}, {"id": "20260902-skater", "retired": "2026-09-17"}, {"id": "20260904-sturgill", "retired": "2026-09-19"}, {"id": "20260904-beyonce", "retired": "2026-09-19"}, {"id": "20260904-pep-talk", "retired": "2026-09-19"}, {"id": "20260904-golden-girls", "retired": "2026-09-19"}, {"id": "20260904-arw", "retired": "2026-09-19"}, {"id": "20260904-sat-stack", "retired": "2026-09-19"}, {"id": "20260904-weekend-lie", "retired": "2026-09-19"}, {"id": "20260904-express", "retired": "2026-09-19"}, {"id": "20260904-granger", "retired": "2026-09-19"}, {"id": "20260904-overpack", "retired": "2026-09-19"}]}</script>
+<script id="emergency-used-json" type="application/json">{"updated": "2026-09-02T20:29:00-05:00", "used": [{"id": "20260902-batfest-takeoff", "retired": "2026-09-17"}, {"id": "20260902-eyes-bumper", "retired": "2026-09-17"}, {"id": "20260902-batfest-local", "retired": "2026-09-17"}, {"id": "20260902-hutto-tracks", "retired": "2026-09-17"}, {"id": "20260902-throwaway", "retired": "2026-09-17"}, {"id": "20260902-aggie-cave", "retired": "2026-09-17"}, {"id": "20260902-moment-knew", "retired": "2026-09-17"}, {"id": "20260902-two-min", "retired": "2026-09-17"}, {"id": "20260902-birthdays", "retired": "2026-09-17"}, {"id": "20260902-skater", "retired": "2026-09-17"}]}</script>
 <div class="topbar">
 <div class="topbar-inner">
 <div class="brand"><strong>JB &amp; SANDY</strong><span>Show Prep • 98.1 KVET</span></div>
@@ -334,48 +367,102 @@
 </div>
 <div class="wrap">
 <div class="search-row"><input id="q" oninput="filterPrep(this.value)" placeholder="Search prep…"/></div>
-<div class="pills" id="main-tabs">
-<button class="pill pill-emergency" data-tab="emergency" onclick="showTab('emergency')">EMERGENCY</button>
-<button class="pill active" data-tab="new" onclick="showTab('new')">New Stuff</button>
-<button class="pill" data-tab="sept11" onclick="showTab('sept11')">Sept 11</button>
-<button class="pill" data-tab="hotkeys" onclick="showTab('hotkeys')">Hotkeys</button>
-<button class="pill" data-tab="local" onclick="showTab('local')">Local Austin &amp; Texas</button>
-<button class="pill" data-tab="caller" onclick="showTab('caller')">Caller Topics &amp; Bits</button>
-<button class="pill" data-tab="grok" onclick="showTab('grok')">Grok Thinks You Will Dig This</button>
-<button class="pill" data-tab="farmed" onclick="showTab('farmed')">Farmed From Others</button>
-<button class="pill" data-tab="audio" onclick="showTab('audio')">Audio &amp; Video</button>
-<button class="pill" data-tab="jobs" onclick="showTab('jobs')">Jobs Completed</button>
-<button class="pill" data-tab="audioedits" onclick="showTab('audioedits')">Edited Audio</button>
-<button class="pill" data-tab="lastlaugh" onclick="showTab('lastlaugh')">Last Laugh</button>
-<button class="pill" data-tab="archive" onclick="showTab('archive')">Audio Archive</button>
-<button class="pill" data-tab="records" onclick="showTab('records')">Book of Records</button>
-<button class="pill" data-tab="personal" onclick="showTab('personal')">Personal / Cast</button>
-<button class="pill" data-tab="scams" onclick="showTab('scams')">Scams &amp; Warnings</button>
-<button class="pill" data-tab="music" onclick="showTab('music')">Music / Song Ideas</button>
-<button class="pill" data-tab="kvet" onclick="showTab('kvet')">KVET / Show Bits</button>
-<button class="pill" data-tab="m2w" onclick="showTab('m2w')">Minute To Win It</button>
+
+<div class="nav5" id="main-nav">
+  <button class="navbtn active" type="button" onclick="showTab('today')">TODAY</button>
+  <button class="navbtn" type="button" onclick="showTab('local')">Local</button>
+  <button class="navbtn" type="button" onclick="showTab('audioedits')">Audio</button>
+  <button class="navbtn" type="button" onclick="showTab('caller')">Bits</button>
+  <button class="navbtn" type="button" onclick="showTab('farmed')">Farmed</button>
+  <div class="more-wrap" id="more-wrap">
+    <button class="navbtn" type="button" onclick="toggleMore()">More</button>
+    <div class="more-menu" id="more-menu">
+      <button type="button" onclick="showTab('new')">New Stuff</button>
+      <button type="button" onclick="showTab('grok')">Grok Finds</button>
+      <button type="button" onclick="showTab('hotkeys')">Hotkeys</button>
+      <button type="button" onclick="showTab('lastlaugh')">Last Laugh</button>
+      <button type="button" onclick="showTab('m2w')">Minute To Win It</button>
+      <button type="button" onclick="showTab('jobs')">Jobs Completed</button>
+      <button type="button" onclick="showTab('audio')">Audio &amp; Video links</button>
+      <button type="button" onclick="showTab('archive')">Audio Archive</button>
+      <button type="button" onclick="showTab('sept11')">Sept 11</button>
+      <button type="button" onclick="showTab('records')">Book of Records</button>
+      <button type="button" onclick="showTab('kvet')">KVET / Show Bits</button>
+      <button type="button" onclick="showTab('personal')">Personal / Cast</button>
+      <button type="button" onclick="showTab('scams')">Scams</button>
+      <button type="button" onclick="showTab('music')">Music</button>
+      <button type="button" onclick="showTab('emergency')">Emergency list</button>
+    </div>
+  </div>
 </div>
+
 <div class="copy-all-wrap">
 <button class="copy-all-btn" onclick="copyAllNotes()">Copy all notes</button>
 <div class="copy-status" id="copy-status">Copied to clipboard!</div>
 </div>
 <div class="panel" id="panel-emergency">
 <h2>EMERGENCY</h2>
-<p class="note">Same 10 as the open-page board. Emergency updated <strong>Fri Sep 4, 5:55 AM</strong>. Rotates after 24 hours on a token update. Items stay out of the board for 15 days.</p>
+<p class="note">Same 10 as the open-page board. Emergency updated <strong>Fri Sep 4, 4:00 AM</strong>. Rotates after 24 hours on a token update. Items stay out of the board for 15 days.</p>
 <ol>
-<li><a data-jump="grok" href="#">Sturgill Simpson / Johnny Blue Skies tonight at Moody</a> — Friday country night before the stacked Saturday. <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="grok" href="#">Beyoncé turns 45</a> — Soft birthday open + Cowboy Carter / Texas flex. <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Coach pre-game pep talk for the radio show</a> — Cast locker-room speeches, then phones. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Golden Girls Kitchen pop-up in Austin</a> — Through Nov. 8 at Wanderlust. Blanche or Dorothy? <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Austin Restaurant Weeks through Sept 13</a> — Prix-fixe + Food Bank. Last-call dining. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="grok" href="#">Saturday stack: Bat Fest + UT vs Texas State + COTA + Austin FC</a> — Which one are you actually doing? <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">The Labor Day plan that sounded better last Tuesday</a> — Ambition vs. heat, traffic, and a couch. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">Round Rock Express tonight at Dell Diamond</a> — vs. Oklahoma City. Cheap Friday baseball. <a data-jump="new" href="#">Open this on the site →</a></li>
-<li><a data-jump="grok" href="#">Country birthday: Granger Smith</a> — Pair with Beyoncé. Texas country vs. Cowboy Carter. <a data-jump="grok" href="#">Open this on the site →</a></li>
-<li><a data-jump="new" href="#">What are you bringing that nobody asked you to bring?</a> — Cooler, extra chair, cousin, dog, attitude. <a data-jump="new" href="#">Open this on the site →</a></li>
+<li><a data-jump="audioedits" href="#">Bat Fest — bats take off (audio)</a> — Wild Kingdom-style clip of the colony leaving the bridge at sunset. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="audioedits" href="#">Eyes of Texas :13 bumper (audio)</a> — Longhorn band bumper. Evergreen sting. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Bat Fest 2026 — Saturday 3–11, Congress Bridge</a> — 20th year. $15 advance. Bats don’t publish a set time. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Possible dinosaur tracks on Brushy Creek in Hutto</a> — Pair with the Jurassic bed. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="farmed" href="#">What valuable thing did you accidentally throw away?</a> — Cash, jewelry, tickets, keys. Best calls went through the trash. <a data-jump="farmed" href="#">Open this on the site →</a></li>
+<li><a data-jump="new" href="#">Aggie man caves for sale</a> — Texas phone. Would you buy one. <a data-jump="new" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">What was the exact moment you knew…?</a> — Quit the job, relationship over, wrong car, doomed vacation. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">Task that takes two minutes that you avoid for days</a> — Dishwasher, Amazon return, lightbulb, voicemails. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="grok" href="#">Today’s birthdays: Keanu, Salma, Harmon, Bradshaw</a> — Soft open from the Grok tab. <a data-jump="grok" href="#">Open this on the site →</a></li>
+<li><a data-jump="kvet" href="#">Who is the best roller skater on the show?</a> — Standing KVET bit. <a data-jump="kvet" href="#">Open this on the site →</a></li>
 </ol>
 </div>
-<div class="panel active" id="panel-new">
+
+  <div class="panel active" id="panel-today">
+    <h2>TODAY • Friday Sep 4</h2>
+    <p class="note">Current news from the News Doc + the 10 to hit first. Everything else is under Local, Audio, Bits, Farmed, or More.</p>
+    <div class="today-grid">
+      <div class="today-box news">
+        <h3>Current news</h3>
+        <ol>
+          <li><strong>ABIA this weekend.</strong> 35,000 departing. They want 2.5–3 hours early. Phone: how early is too early?</li>
+          <li><strong>Tesla Cybercabs in Austin.</strong> 45 no-steering-wheel cabs + East Austin block party tonight.</li>
+          <li><strong>Bat Fest Saturday.</strong> Congress Bridge, 3–11. 1.5 million bats. Play the takeoff clip.</li>
+          <li><strong>Little Nishi going brick-and-mortar</strong> in October. JB’s sushi truck story.</li>
+          <li><strong>This weekend pile-up:</strong> Shred Fest, Austin Tattoo Invitational, Final Fantasy XIV con.</li>
+          <li><strong>Austin Restaurant Weeks</strong> through Sep 13. Golden Girls Kitchen pop-up through Nov 8 on I-35.</li>
+          <li><strong>Friday night scores:</strong> McCallum 48–0 Travis. Cedar Park 68–7 SA Clark. Brenham 59–9 East View.</li>
+          <li><strong>Annoying-celebrity poll.</strong> Kim K and Charlie Sheen topping a list. Who makes you change the station?</li>
+        </ol>
+        <p class="note">Source: Today/News Google Doc • Sep 4</p>
+      </div>
+      <div class="today-box do">
+        <h3>Do this first</h3>
+        <ol>
+          <li><a href="#" data-jump="audioedits">Bat Fest takeoff audio</a> — colony leaves the bridge.</li>
+          <li><a href="#" data-jump="audioedits">Eyes of Texas bumper</a> — evergreen sting.</li>
+          <li><a href="#" data-jump="caller">Coach pre-game pep talk</a> — each host does one for the show.</li>
+          <li><a href="#" data-jump="new">JB’s oral-steroid energy warning</a> — Ideas Doc, new today.</li>
+          <li><a href="#" data-jump="new">Drew Lynch cobblestones / Europe</a> — Ideas Doc.</li>
+          <li><a href="#" data-jump="local">Bat Fest Saturday logistics</a> — $15, no published bat time.</li>
+          <li><a href="#" data-jump="farmed">What did you throw away?</a> — still the best phone.</li>
+          <li><a href="#" data-jump="kvet">Best roller skater on the show</a> — standing bit.</li>
+        </ol>
+        <p class="note">Emergency list moved onto TODAY so it does not cover the page.</p>
+      </div>
+    </div>
+    <div class="today-box" style="margin-top:14px;">
+      <h3>Newest from the Ideas Doc</h3>
+      <ul>
+        <li>We each do a coach pre-game pep talk for the radio show.</li>
+        <li>JB’s doctor said an oral steroid might give him too much energy.</li>
+        <li>Drew Lynch walking Euro cobblestones — take on traveling to Europe.</li>
+        <li>Southern phrases that came from old Scotland. What?</li>
+        <li>Golden Girls Kitchen pop-up + Restaurant Weeks through Sep 13.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-new">
 <h2>★ New Stuff</h2>
 <div class="new-stuff-note">
       The 5 newest ideas sit here. Everything else in the 7-day window is under <strong>More Brilliant Ideas</strong>.
@@ -386,42 +473,30 @@
 <button class="new-subtab" onclick="showNewBucket('older')" type="button">More Brilliant Ideas</button>
 </div>
 <div class="new-bucket active" id="new-recent">
-&lt;&gt;&lt;&gt;<div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> The Labor Day plan that sounded better last Tuesday <span class="added-date">Added Sep 4 AM</span></h3>
-<p>Everybody mapped a perfect long weekend on Tuesday. Friday morning is when the heat, traffic, tickets, and “do we really want to leave the house?” hit. Phone: “What did you commit to that you are already trying to get out of?” Best calls are the honest downgrades: concert becomes patio, patio becomes couch, couch becomes leftovers.</p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sturgill Simpson / Johnny Blue Skies tonight at Moody <span class="added-date">Added Sep 4 AM</span></h3>
-<p>Mutiny for the Masses tour, Friday night at Moody Center. Tomorrow is Bat Fest + UT vs Texas State + COTA + Austin FC. Soft open: “Are you doing the country show tonight, or saving your energy for the Saturday pile-up?” Easy local + music hour.</p>
-<p><a class="more-here" href="https://www.moodycenteratx.com/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Beyoncé turns 45 today <span class="added-date">Added Sep 4 AM</span></h3>
-<p>Also Damon Wayans (66), country singer Granger Smith, Wes Bentley, Whitney Cummings. Texas-friendly open: “Birthday playlist — Cowboy Carter, a Granger Smith truck song, or whatever your kids actually play in the car?” Keep it light. No politics.</p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> What are you bringing that nobody asked you to bring? <span class="added-date">Added Sep 4 AM</span></h3>
-<p>Holiday-weekend classic. Extra cooler, folding chairs for 12, a cousin, a dog, a Bluetooth speaker, a lecture about parking. Then phones: “What’s the one thing you always overpack — and has it ever actually saved the day?”</p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Round Rock Express tonight at Dell Diamond <span class="added-date">Added Sep 4 AM</span></h3>
-<p>Express vs. Oklahoma City Comets, 7:05. Cheap Friday baseball while downtown is already bracing for Saturday. “Ballpark, Moody, or stay in the AC and pretend you had a plan?”</p>
-<p><a class="more-here" href="https://www.milb.com/round-rock" rel="noopener" target="_blank">More here →</a></p>
-</div></div>
-<div class="new-bucket" id="new-older"><div class="item">
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Oral steroid might give him too much energy <span class="added-date">Added Sep 4</span></h3>
+<p>JB’s doctor told him an oral steroid might give him too much energy. Instant cast bit: “Is that a warning or a recommendation?” Soft phone: “What’s the one medication side-effect that actually sounded like a feature?” Keep it light and first-person.</p>
+</div>
+<div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Coach pre-game pep talk for the radio show <span class="added-date">Added Sep 3 PM</span></h3>
 <p>We each do a coach pre-game pep talk for the radio show. Cast delivers their version of a locker-room speech aimed at the morning show — energy, focus, “this is our house,” etc. Then phones: “What’s the best (or worst) pep talk you’ve ever gotten before a big day?” Pure radio bit energy.</p>
-</div><div class="item">
+</div>
+<div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Golden Girls Kitchen pop-up in Austin <span class="added-date">Added Sep 3 PM</span></h3>
 <p>Immersive dining experience at Wanderlust (610 N. Interstate Hwy 35) through Nov. 8. Sophia’s Lasagna Al Forno, Blanche’s Georgia-Style Cookie, cheesecake, signature cocktails, photo ops. Are you more Blanche or Dorothy? Perfect soft phone + local weekend plan.</p>
 <p><a class="more-here" href="https://bucketlisters.com/experience/the-golden-girls-kitchen-atx" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
+</div>
+<div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Austin Restaurant Weeks through Sept 13 <span class="added-date">Added Sep 3 PM</span></h3>
 <p>Two-week prix-fixe dining event. Specially priced lunches, dinners, and drinks at dozens of spots (L’oca D’oro, Bambino, Jupiter Supper Club, Texas French Bread and more). Portion of each meal goes to the Central Texas Food Bank. “Where are you taking someone (or yourself) before it ends?”</p>
 <p><a class="more-here" href="https://www.austinrestaurantweeks.org/" rel="noopener" target="_blank">More here →</a></p>
-</div><div class="item">
+</div>
+<div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> What valuable thing did you accidentally throw away? <span class="added-date">Added Sep 2 PM</span></h3>
 <p>Cash in an envelope, jewelry, tickets, keys, kid’s homework, leftovers with something hidden inside. Then ask: “Did you actually go through the trash to get it back?” The physical recovery stories will be the best calls.</p>
-</div><div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Aggie man caves for sale <span class="added-date">Added Sep 2 PM</span></h3>
-<p>Texas A&amp;M fan caves / man-cave packages and listings popping up. Perfect Longhorn vs Aggie ribbing: “Would you actually buy one, or is this just another reason to keep the maroon out of Travis County?”</p>
-</div><div class="item">
+</div>
+</div>
+<div class="new-bucket" id="new-older"><div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> PPV fight between two humanoid robots <span class="added-date">Added Sep 2 PM</span></h3>
 <p>“I would buy a PPV fight between two humanoid robots.” Instant phone topic: would you pay to watch robots fight, or is this the moment sports finally jumps the shark?</p>
 </div><div class="item">
@@ -430,7 +505,11 @@
 </div><div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Book of records: engaged the most times <span class="added-date">Added Sep 2 PM</span></h3>
 <p>Someone chasing (or holding) a record for most engagements. Soft open: “How many times is too many? What’s the most times you’ve been engaged… or watched someone else do it?”</p>
-</div>&lt;&gt;&lt;&gt;&lt;&gt;
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Aggie man caves for sale <span class="added-date">Added Sep 2 PM</span></h3>
+<p>Texas A&amp;M fan caves / man-cave packages and listings popping up. Perfect Longhorn vs Aggie ribbing: “Would you actually buy one, or is this just another reason to keep the maroon out of Travis County?”</p>
+</div>
 <div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sark on NFL players coming back to college <span class="added-date">Added Sep 2</span></h3>
 <p>Second Sark clip — Facebook cut. Pair with the SEC Media Days audio already in Edited Audio.</p>
@@ -5532,26 +5611,27 @@
 <h2>Grok Thinks You Will Dig This</h2>
 <p class="note" style="margin-bottom:14px;">Picked for the show: local Austin/Central Texas, birthdays, light entertainment. Refreshed <strong>Sep 4 AM</strong>. No politics. <strong>More here →</strong> opens the full story.</p>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Today’s birthdays: Beyoncé 45, Granger Smith, Damon Wayans 66</h3>
-<p>Also Wes Bentley, Whitney Cummings, Mark Ronson. Soft open: “Cowboy Carter, a Granger Smith truck song, or the In Living Color guy at the cookout?” Keep it birthday-board simple.</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Beyoncé turns 45 today</h3>
+<p>Also Damon Wayans (65), Mike Piazza (58), Khandi Alexander (69). Soft open: “Birthday party playlist — Queen B, a Hall of Fame catcher, or the guy who made ‘In Living Color’?”</p>
 </div>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Friday: high ~95–96, heat index ~101–104, 30% showers</h3>
-<p>Cloudy early, then mostly sunny. Spotty storms possible, not a washout. Saturday hotter near 99 with heat index up to 106. Phone: “Is a 30% chance enough to cancel the patio, or are we all just looking for an excuse?”</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Still hot — high ~93°, storm chances ~50%</h3>
+<p>Cloudy morning, partly cloudy later, slight chance of storms. Weekend still mid-to-upper 90s with heat index near 105. Phone: “Patio with a fan, Scheels AC + Ferris wheel, or stay home and pretend Labor Day is already here?”</p>
 <p><a class="more-here" href="https://forecast.weather.gov/MapClick.php?CityName=Austin&amp;state=TX&amp;site=EWX" rel="noopener" target="_blank">More here →</a></p>
 </div>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sturgill Simpson / Johnny Blue Skies tonight at Moody</h3>
-<p>Friday country night before the Saturday pile-up. “Moody tonight, bats tomorrow, or both and you’ll sleep in October?”</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Johnny Blue Skies (Sturgill Simpson) tonight at Moody Center</h3>
+<p>Tour opener for Mutiny for the Masses. No opener, marathon set energy. “Tickets already, or watching from the patio with the AC on blast?”</p>
 <p><a class="more-here" href="https://www.moodycenteratx.com/" rel="noopener" target="_blank">More here →</a></p>
 </div>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Round Rock Express vs. Oklahoma City tonight</h3>
-<p>7:05 at Dell Diamond. Cheap seats, Friday baseball, no downtown parking war. Good alternative to Moody or “we’ll just see how we feel.”</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Lone Star Le Mans practice starts today at COTA</h3>
+<p>FIA World Endurance Championship Fri–Sun. Hypercars and GT3s. Practice sessions today, race Sunday. “Are you going for the cars, the people-watching, or just the air-conditioned suite?”</p>
+<p><a class="more-here" href="https://circuitoftheamericas.com/" rel="noopener" target="_blank">More here →</a></p>
 </div>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Labor Day stack: Bat Fest + UT vs Texas State + Lone Star Le Mans + Austin FC</h3>
-<p>Saturday Sep 5 is stacked: 20th Bat Fest at the bridge, Longhorns host Texas State, endurance racing at COTA, Austin FC vs San Jose at Q2. Classic “which one are you actually doing?” phone topic.</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Labor Day stack tomorrow: Bat Fest + UT vs Texas State + Austin FC + Le Mans</h3>
+<p>Saturday is stacked — 20th Bat Fest (3–11, Congress Bridge, $15), Longhorns host Texas State, Austin FC vs San Jose at Q2, endurance racing continues at COTA. Classic “which one are you actually doing?” phone topic.</p>
 </div>
 <div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Golden Girls Kitchen pop-up still running through Nov 8</h3>
@@ -5559,235 +5639,105 @@
 <p><a class="more-here" href="https://bucketlisters.com/experience/the-golden-girls-kitchen-atx" rel="noopener" target="_blank">More here →</a></p>
 </div>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Austin Restaurant Weeks ends Sunday Sep 13</h3>
-<p>Prix-fixe menus and drinks at dozens of spots; portion benefits Central Texas Food Bank. Good last-call local dining story before Labor Day weekend fully hits.</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Austin Restaurant Weeks through Sept 13</h3>
+<p>Prix-fixe menus and drinks at dozens of spots; portion benefits Central Texas Food Bank. Good last-call local dining story before the long weekend fully hits.</p>
 <p><a class="more-here" href="https://www.austinrestaurantweeks.org/" rel="noopener" target="_blank">More here →</a></p>
-</div>
-<div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sturgill Simpson / Johnny Blue Skies Friday at Moody</h3>
-<p>Big country night right after Koe. Labor Day weekend music is loaded. “Which Moody show are you actually going to?”</p>
 </div>
 <div class="item">
 <h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Brandi Carlile with The Head and The Heart Sunday at Moody</h3>
 <p>Sunday closer of the holiday stack. Soft “last big show of the long weekend” energy.</p>
 </div>
 <div class="item">
-<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Nonpoint + Spineshank + Hed PE tonight at Come and Take It Live</h3>
-<p>Hard-rock option if country isn’t your lane. Local live-music depth on a Thursday before the holiday.</p>
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Tomorrow’s birthdays: Michael Keaton turns 74</h3>
+<p>Also Werner Herzog, Al Stewart. Soft open for Saturday: “Batman, a documentary legend, or the guy who sang ‘Year of the Cat’?”</p>
 </div>
-
-
-
-
-
-
-
-
-
-
-
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Bat Fest is the most Austin thing on the calendar</h3>
+<p>1.5 million bats + live music on the bridge. Nature still runs the schedule. “In Austin, even the headliner doesn’t know what time the show starts.”</p>
+<p><a class="more-here" href="https://www.batfest.com/" rel="noopener" target="_blank">More here →</a></p>
+</div>
 </div>
 <div class="panel" id="panel-farmed">
 <h2>Farmed From Others</h2>
-<p class="note" style="margin-bottom:14px;">Thursday PM set — 25 cards. Hey Morton San Diego today. No Bobby Bones, no Jubal.</p>
+<p class="note" style="margin-bottom:14px;">Friday AM set — 10 cards. Any-day shows (Smiley, Daly, Valentine, Seacrest, Miguel-style). No Bobby Bones, no Jubal.</p>
 <div class="farm-card">
-<div class="farm-src">Hey Morton (San Diego) • Thursday</div>
-<h4>The group chat that went too far</h4>
-<div class="farm-row"><strong>Where it came from</strong> Morton loves the family-text pile-on.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast reads one thread, phones try to beat it.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Austin: tailgate planning, Bat Fest parking, school group chat.</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Hey Morton (San Diego) • Thursday</div>
-<h4>Food that ruined the night</h4>
-<div class="farm-row"><strong>Where it came from</strong> His comfort zone.</div>
-<div class="farm-row"><strong>How they ran it</strong> One order that wrecked the evening.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Restaurant Weeks prix fixe vs the drive-thru you actually wanted.</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Hey Morton (San Diego) • Thursday</div>
-<h4>Who in the house is already Friday</h4>
-<div class="farm-row"><strong>Where it came from</strong> Energy check.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast votes. Callers rat out a roommate.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Who in the house is already Friday</div>
+<div class="farm-src">Smiley Morning Show (Indy)</div>
+<h4>The thing you bought on impulse that actually worked</h4>
+<div class="farm-row"><strong>Where it came from</strong> Classic Smiley phone bit — impulse purchases that paid off.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast confesses first, then callers try to top the best “I can’t believe this worked” story.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Austin twist: last-minute Bat Fest tickets, a random Restaurant Weeks reservation, or the weird kitchen gadget from Scheels.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">Smiley Morning Show (Indy)</div>
-<h4>Golden Girls Kitchen — Blanche or Dorothy?</h4>
-<div class="farm-row"><strong>Where it came from</strong> Pop-up through Nov 8 on I-35.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Golden Girls Kitchen — Blanche or Dorothy?</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Smiley Morning Show (Indy)</div>
-<h4>Restaurant Weeks through Sept 13</h4>
-<div class="farm-row"><strong>Where it came from</strong> Which spot is worth the prix fixe?</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Restaurant Weeks through Sept 13</div>
+<h4>House rule that only exists in your house</h4>
+<div class="farm-row"><strong>Where it came from</strong> Family / roommate rules that make no sense to outsiders.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast shares one weird rule, phones pile on.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> “No shoes past the doormat after Bat Fest,” “the remote belongs to whoever is standing,” or “you have to say Hook ’Em before the first sip.”</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">Daly Migs (Seattle)</div>
-<h4>Weather app vs the porch</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Weather app vs the porch</div>
+<h4>The old way that still beats the new way</h4>
+<div class="farm-row"><strong>Where it came from</strong> Daly loves the “we used to do it better” phone.</div>
+<div class="farm-row"><strong>How they ran it</strong> One example from the cast, then callers defend their outdated method.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Paper map to COTA, calling the restaurant instead of the app, or watching the bats from the Statesman lot the old way.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">Daly Migs (Seattle)</div>
-<h4>The box on the porch you forgot you ordered</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> The box on the porch you forgot you ordered</div>
+<h4>Pretending not to notice something that is clearly broken</h4>
+<div class="farm-row"><strong>Where it came from</strong> Classic avoidance bit.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast admits the thing they’ve been ignoring; phones rat themselves out.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> The check-engine light, the AC that only works on one side, or the group chat that went silent after Labor Day plans fell apart.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">Valentine (LA)</div>
-<h4>Rewrite the text before you send it</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Rewrite the text before you send it</div>
+<h4>The compliment that still lives rent-free</h4>
+<div class="farm-row"><strong>Where it came from</strong> Soft positive phone that always works.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast shares one, then open phones.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> “Someone told me I looked like I belonged at the Moody Center” or “a stranger said my parking spot at Bat Fest was elite.”</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">Valentine (LA)</div>
-<h4>Thermostat fight, Thursday edition</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Thermostat fight, Thursday edition</div>
+<h4>The fixer in your life</h4>
+<div class="farm-row"><strong>Where it came from</strong> Who always has the solution (or thinks they do).</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast nominates, callers defend their person.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> The friend who always knows a back way around downtown, the one with the extra tickets, or the person who can get a table during Restaurant Weeks.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">On Air with Ryan Seacrest</div>
-<h4>Song of the almost-weekend</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Song of the almost-weekend</div>
+<h4>Small win that made the week</h4>
+<div class="farm-row"><strong>Where it came from</strong> Seacrest-style positivity open.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones for the tiniest victory.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Found shade at the bridge, got the last $15 Bat Fest ticket, or the AC finally cooled the car before you hit I-35.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
 <div class="farm-src">On Air with Ryan Seacrest</div>
-<h4>Coach pep talk — each host does one</h4>
-<div class="farm-row"><strong>Where it came from</strong> Doc bit. Radio-show locker room.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Coach pep talk — each host does one</div>
+<h4>Song that is living rent-free right now</h4>
+<div class="farm-row"><strong>Where it came from</strong> Music phone that fits any day.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast names one, callers try to top it.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Whatever is stuck from Johnny Blue Skies prep, Bat Fest lineup, or the one Longhorn fight song you can’t shake.</div>
+<p class="note">Recommend: Longhorns Eyes of Texas bumper or Bat Fest takeoff.</p>
+</div>
+<div class="farm-card">
+<div class="farm-src">Miguel &amp; Holly style / friend-cast</div>
+<h4>The food order that ruined (or saved) the night</h4>
+<div class="farm-row"><strong>Where it came from</strong> Food-order confession staple.</div>
+<div class="farm-row"><strong>How they ran it</strong> One story from the cast, phones compete.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Restaurant Weeks prix-fixe that was perfect… or the drive-thru you got after because you were still hungry.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 <div class="farm-card">
-<div class="farm-src">Miguel &amp; Holly</div>
-<h4>Who is canceling Saturday already?</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Who is canceling Saturday already?</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Miguel &amp; Holly</div>
-<h4>Leftovers still winning</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Leftovers still winning</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Dwyer &amp; Michaels</div>
-<h4>Rock fact vs your high-school year</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Rock fact vs your high-school year</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Heidi &amp; Frank (KLOS)</div>
-<h4>Classic-song argument before coffee</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Classic-song argument before coffee</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Kidd Kraddick</div>
-<h4>Kid quote from last night</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Kid quote from last night</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Kidd Kraddick</div>
-<h4>House rule that already failed</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> House rule that already failed</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">KIIS Australia style</div>
-<h4>Too-honest caller, cleaned up</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Too-honest caller, cleaned up</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>Bat Fest Saturday packing list</h4>
-<div class="farm-row"><strong>Where it came from</strong> Play the takeoff clip.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Bat Fest Saturday packing list</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>Ohio State week — Eyes of Texas bumper</h4>
-<div class="farm-row"><strong>Where it came from</strong> Evergreen sting.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Ohio State week — Eyes of Texas bumper</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>Sark / Arch into phones</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Sark / Arch into phones</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>Hutto dinosaur tracks + Jurassic bed</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Hutto dinosaur tracks + Jurassic bed</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>What valuable thing did you throw away?</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> What valuable thing did you throw away?</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>Aggie man caves — would you buy one?</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Aggie man caves — would you buy one?</div>
-<p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
-</div>
-<div class="farm-card">
-<div class="farm-src">Any-day</div>
-<h4>Best roller skater on the show + Arboretum</h4>
-<div class="farm-row"><strong>Where it came from</strong> Friend-cast staple.</div>
-<div class="farm-row"><strong>How they ran it</strong> Cast first, then phones.</div>
-<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Best roller skater on the show + Arboretum</div>
+<div class="farm-src">Any-day closer</div>
+<h4>Most Austin thing you’ve done this week</h4>
+<div class="farm-row"><strong>Where it came from</strong> Local pride closer that always works on this show.</div>
+<div class="farm-row"><strong>How they ran it</strong> Cast offers one, phones try to out-Austin each other.</div>
+<div class="farm-row"><strong>JB &amp; Sandy / Austin version</strong> Watched practice at COTA, argued about Bat Fest parking, or planned an entire Saturday around which bridge the bats might leave from.</div>
 <p class="note">Recommend: Bat Fest takeoff or Eyes of Texas bumper.</p>
 </div>
 </div>
@@ -6794,9 +6744,21 @@
       const btn = document.querySelector('.new-subtab[onclick*="' + which + '"]');
       if (btn) btn.classList.add('active');
     }
-    function showTab(id) {
+    
+function toggleMore(){
+  var w=document.getElementById('more-wrap');
+  if(w) w.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  var w=document.getElementById('more-wrap');
+  if(w && !w.contains(e.target)) w.classList.remove('open');
+});
+
+function showTab(id) {
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.navbtn').forEach(b => b.classList.remove('active'));
+      var more=document.getElementById('more-wrap'); if(more) more.classList.remove('open');
       const panel = document.getElementById('panel-' + id);
       if (panel) panel.classList.add('active');
       const btn = document.querySelector('.pill[data-tab="' + id + '"]');
@@ -6867,7 +6829,7 @@ function showLocalBucket(id){
   var seen = null;
   try { seen = localStorage.getItem('jb-sandy-emergency-seen'); } catch (e) {}
   if (seen !== today) {
-    overlay.classList.remove('hidden');
+    /* overlay retired — TODAY page instead */
     overlay.setAttribute('aria-hidden', 'false');
     setTimeout(function(){ overlay.classList.add('is-dim'); }, 10000);
   }
