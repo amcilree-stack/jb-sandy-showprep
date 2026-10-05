@@ -2,3 +2,4 @@
 preview-*.png
 node_modules/
 __pycache__/
+publish-run-*.log
