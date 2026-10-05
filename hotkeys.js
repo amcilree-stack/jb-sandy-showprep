@@ -22,9 +22,9 @@
             rows: 4,
             cols: 4,
             pads: [
-              { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
-              { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
-              { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
+              { name: 'Band on Lake', src: 'audio/band on Lake.mp3' },
+              { name: 'Monologue Bits', src: 'audio/showprep_monologue_bits.mp3' },
+              { name: 'Harrison Ford Cookie Monster', src: 'audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
             ]
           }
         ]
@@ -89,9 +89,9 @@
   }
 
   var DEFAULT_PAD_SRCS = {
-    'edited-audio/band on Lake.mp3': true,
-    'edited-audio/showprep_monologue_bits.mp3': true,
-    'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true
+    'audio/band on Lake.mp3': true,
+    'audio/showprep_monologue_bits.mp3': true,
+    'audio/Harrison-Ford-Cookie-Monster-Raiders.mp3': true
   };
 
   function normalizeBoard(data) {
@@ -109,7 +109,8 @@
               rows: clamp(page.rows == null ? 4 : page.rows, 1, 8),
               cols: clamp(page.cols == null ? 4 : page.cols, 1, 10),
               pads: (page.pads || []).map(function (pad) {
-                return { name: pad.name || '', src: pad.src || '' };
+                /* clips moved from edited-audio/ to audio/ in the Oct 2026 redesign */
+                return { name: pad.name || '', src: String(pad.src || '').replace(/^edited-audio\//, 'audio/') };
               })
             };
           })
@@ -484,7 +485,7 @@
 
   function probeSitePath(name) {
     var base = String(name || '').replace(/^.*[\\/]/, '');
-    var paths = ['edited-audio/' + base, 'edited-audio/archive/' + base];
+    var paths = ['audio/' + base, 'audio/archive/' + base];
     return Promise.all(paths.map(function (path) {
       return fetch(encodeURI(path), { method: 'HEAD', cache: 'no-store' }).then(function (res) {
         return res.ok ? path : null;
@@ -688,7 +689,7 @@
         html += '<button type="button" class="hk-danger" data-act="del-folder">Delete folder</button>';
       }
       html += '</div>';
-      html += '<p class="note">Drag an mp3 onto a pad anytime — Edit is not required. Dropped files stay in this browser; they are not published. To share a clip with everyone, put the mp3 in <strong>edited-audio/</strong> and add it to <strong>hotkeys/library.json</strong>. This browser remembers your board; Copy board JSON if you want the shared site default updated (local: pads will not work on other computers).</p>';
+      html += '<p class="note">Drag an mp3 onto a pad anytime — Edit is not required. Dropped files stay in this browser; they are not published. To share a clip with everyone, put the mp3 in <strong>audio/</strong> and add it to <strong>hotkeys/library.json</strong>. This browser remembers your board; Copy board JSON if you want the shared site default updated (local: pads will not work on other computers).</p>';
     }
 
     if (!page) {
@@ -745,7 +746,7 @@
     html += '<h3>Assign pad ' + (index + 1) + '</h3>';
     html += '<label>Name <input id="hk-pad-name" type="text" value="' + esc(pad.name) + '" placeholder="On-air label"></label>';
     html += '<label>Clip from library <select id="hk-pad-lib">' + opts + '</select></label>';
-    html += '<label>Or file path <input id="hk-pad-src" type="text" value="' + esc(isLocalSrc(pad.src) ? '' : pad.src) + '" placeholder="edited-audio/new-clip.mp3"></label>';
+    html += '<label>Or file path <input id="hk-pad-src" type="text" value="' + esc(isLocalSrc(pad.src) ? '' : pad.src) + '" placeholder="audio/new-clip.mp3"></label>';
     html += '<div class="hk-assign-actions">';
     html += '<button type="button" class="copy-all-btn" data-act="save-assign">Save pad</button>';
     html += '<button type="button" class="hk-ghost" data-act="clear-assign">Clear pad</button>';
@@ -967,9 +968,9 @@
     }).catch(function () {
       if (!library.length) {
         library = [
-          { name: 'Band on Lake', src: 'edited-audio/band on Lake.mp3' },
-          { name: 'Monologue Bits', src: 'edited-audio/showprep_monologue_bits.mp3' },
-          { name: 'Harrison Ford Cookie Monster', src: 'edited-audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
+          { name: 'Band on Lake', src: 'audio/band on Lake.mp3' },
+          { name: 'Monologue Bits', src: 'audio/showprep_monologue_bits.mp3' },
+          { name: 'Harrison Ford Cookie Monster', src: 'audio/Harrison-Ford-Cookie-Monster-Raiders.mp3' }
         ];
       }
     });

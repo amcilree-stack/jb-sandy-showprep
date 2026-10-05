@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<base href="/">
+<meta name="robots" content="noindex">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+<title>JB & Sandy Show Prep • Sun Oct 4, 2026</title>
+<style>
+    :root {
+      --ink: #1c2430;
+      --navy: #24344d;
+      --orange: #c45c26;
+      --orange-d: #9a4318;
+      --cream: #f6f1e8;
+      --paper: #fffdf8;
+      --line: #e4d9c8;
+      --muted: #6d6458;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.55;
+      padding: 0 0 60px;
+    }
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 8px 18px 6px;
+    }
+    .topbar-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-family: Georgia, serif;
+      color: var(--navy);
+      line-height: 1.05;
+    }
+    .brand strong { display: block; font-size: 1.55rem; letter-spacing: 0.02em; }
+    .brand span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); font-weight: 700; }
+    .top-links { display: flex; gap: 16px; flex-wrap: wrap; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 0.88rem; }
+    .top-links a, .top-links button {
+      background: none; border: none; color: var(--navy); cursor: pointer; font-weight: 600; text-decoration: none; padding: 4px 0;
+    }
+    .top-links a:hover, .top-links button:hover, .top-links .on { color: var(--orange); border-bottom: 2px solid var(--orange); }
+    .subbar {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 8px 18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .subbar-inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .subbar button {
+      background: none; border: none; cursor: pointer; color: var(--navy); font-weight: 600; font-size: 0.82rem;
+    }
+    .subbar button:hover { color: var(--orange); }
+    .date-chip { color: var(--orange); font-weight: 800; letter-spacing: 0.04em; }
+    .hero {
+      max-width: 1080px; margin: 0 auto; padding: 12px 18px 6px;
+      display: flex; gap: 8px; overflow: hidden;
+    }
+    .hero img {
+      height: 92px; width: 160px; object-fit: cover; border-radius: 4px; flex: 0 0 auto;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 4px 18px 20px; }
+    .search-row { display: flex; justify-content: flex-end; margin: 4px 0 8px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .search-row input {
+      border: 1px solid var(--line); border-radius: 20px; padding: 8px 14px; min-width: 220px; font-size: 0.9rem;
+    }
+    .pills {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .pill {
+      background: #fff;
+      border: 1px solid #c9bba6;
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 7px 13px;
+      border-radius: 18px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .pill:hover { border-color: var(--orange); color: var(--orange); }
+    .pill.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+    .copy-all-wrap { text-align: right; margin: 0 0 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .copy-all-btn {
+      background: var(--orange); color: #fff; border: none; font-weight: 700;
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.82rem;
+    }
+    .copy-status { display: none; color: var(--orange); font-weight: 700; font-size: 0.85rem; margin-top: 6px; }
+    .panel {
+      display: none;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 20px 24px;
+    }
+    .panel.active { display: block; }
+    .panel h2 {
+      font-size: 1.35rem;
+      color: var(--navy);
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+    .item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .item:last-child { border-bottom: none; }
+    .item h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 6px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .item p, .item li { font-size: 0.95rem; }
+    .item ul { padding-left: 1.2em; }
+    .added-date { font-size: 0.75rem; color: var(--orange); font-weight: 700; margin-left: 6px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .note, .moved-note { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-top: 4px; }
+    .new-stuff-note {
+      background: #f3e6d8; border-left: 4px solid var(--orange);
+      padding: 10px 14px; margin-bottom: 14px; font-size: 0.9rem; color: #5a3b24;
+    }
+    .new-subtabs { display: flex; gap: 8px; margin: 0 0 14px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .new-subtab {
+      background: #fff; border: 1px solid #c9bba6; border-radius: 16px;
+      padding: 6px 12px; font-size: 0.78rem; font-weight: 700; cursor: pointer; color: var(--navy);
+    }
+    .new-subtab.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .new-bucket { display: none; }
+    .new-bucket.active { display: block; }
+    a.more-here {
+      display: inline-block; margin-top: 6px; font-size: 0.86rem; font-weight: 800;
+      color: var(--orange); text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a.more-here:hover { text-decoration: underline; }
+    .copy-icon { cursor: pointer; margin-right: 6px; }
+    .sausage-fun { display: block; margin: 10px auto; border-radius: 8px; max-width: 220px; }
+    .sausage-caption { text-align: center; font-size: 0.75rem; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+    audio { width: 100%; margin: 8px 0; }
+    .audio-card, .farm-card {
+      border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin: 10px 0; background: #fff;
+    }
+    .m2w-dl, .link-copy {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem; margin-left: 6px;
+    }
+    footer {
+      text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .m2w-q { margin: 10px 0 2px; }
+    .m2w-a { color: var(--muted); margin-bottom: 10px; }
+    .farm-src { font-size: 0.78rem; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .farm-row { margin: 6px 0; font-size: 0.92rem; }
+    .howto-box { background: #fff; }
+
+    .hk-toolbar { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; margin:0 0 12px; }
+    .hk-folders, .hk-pages, .hk-tools { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .hk-pages { margin:0 0 14px; }
+    .hk-tab, .hk-ghost, .hk-edit-toggle {
+      background:#fff; border:1px solid #c9bba6; color:var(--navy); border-radius:16px;
+      padding:6px 12px; font-size:0.78rem; font-weight:700; cursor:pointer;
+    }
+    .hk-tab:hover { border-color:var(--orange); color:var(--orange); }
+    .hk-tab.on { background:var(--navy); border-color:var(--navy); color:#fff; }
+    .hk-edit-toggle.on { background:var(--orange); border-color:var(--orange); color:#fff; }
+    .hk-danger { background:#fff; border:1px solid #c45c26; color:var(--orange); border-radius:16px; padding:6px 12px; font-weight:700; cursor:pointer; }
+    .hk-editbar, .hk-assign-box { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 12px; }
+    .hk-editbar label, .hk-assign-box label { display:flex; flex-direction:column; gap:4px; font-weight:700; color:var(--navy); font-size:0.78rem; }
+    .hk-editbar input, .hk-assign-box input, .hk-assign-box select { padding:6px 8px; border:1px solid #c9bba6; border-radius:8px; }
+    .hk-grid { display:grid; gap:8px; margin:8px 0 6px; min-height:100px; }
+    .hk-pad {
+      min-height:72px; border:2px solid #c9bba6; border-radius:10px; background:#fff;
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:8px; font-weight:800; cursor:pointer; color:var(--navy); position:relative;
+    }
+    .hk-pad:not(.empty):hover { border-color:var(--orange); }
+    .hk-pad.empty { border-style:dashed; color:var(--muted); font-weight:600; cursor:default; }
+    .hk-pad.playing { background:var(--orange); border-color:var(--orange); color:#fff; }
+    .hk-pad.playing.fading { opacity:0.82; }
+    .hk-pad.drop-over { outline:3px dashed var(--orange); }
+    .hk-local { position:absolute; top:4px; right:6px; font-size:0.65rem; opacity:0.8; }
+    .hk-status { margin:0 0 8px; min-height:1.2em; font-size:0.85rem; color:var(--muted); }
+    .hk-assign-box h3 { color:var(--navy); font-size:1rem; }
+
+    .item.hide-search { display: none !important; }
+
+
+    .audio-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+    .hk-send { background:var(--navy); color:#fff; border:0; border-radius:16px; padding:6px 12px; font-weight:700; cursor:pointer; font-size:0.78rem; }
+    .hk-send:hover { background:var(--orange); }
+    .audio-card.hide-bucket { display:none !important; }
+
+
+    .clip-stack { width: 12.5%; min-width: 168px; max-width: 220px; margin: 8px 0 12px; }
+    .clip-desc-box {
+      background: #041E42; color: #fff; padding: 8px 10px;
+      border-radius: 6px 6px 0 0; font-size: 0.75rem; line-height: 1.35;
+      border: 2px solid #869397;
+    }
+    .clip-desc-box strong { color: #869397; }
+    audio.cowboys-player {
+      width: 100%; height: 28px; margin: 0;
+      accent-color: #003594;
+      background: #003594;
+      border: 2px solid #869397; border-top: 0;
+      border-radius: 0 0 6px 6px;
+    }
+    .player-shell {
+      background: #003594; padding: 4px 6px 6px;
+      border: 2px solid #869397; border-top: 0;
+      border-radius: 0 0 6px 6px;
+    }
+    .job-row .ok { color: #0a7a32; font-weight: 800; margin-right: 6px; }
+
+
+    #emergency-overlay {
+      position: fixed; inset: 0; z-index: 4000;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 3vh 4vw 0; pointer-events: none;
+    }
+    #emergency-overlay.hidden, #emergency-overlay.hidden * { display: none !important; }
+    #emergency-card {
+      pointer-events: auto;
+      width: min(920px, 92vw);
+      height: 50vh; max-height: 50vh;
+      overflow: auto;
+      margin-top: 2vh;
+      background: linear-gradient(180deg, #c8102e 0%, #8b0000 55%, #5a0000 100%);
+      border: 4px solid #000;
+      color: #fff;
+      padding: 18px 22px 16px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.45);
+      transition: opacity .6s ease, filter .6s ease;
+    }
+    #emergency-overlay.is-dim #emergency-card { opacity: .82; filter: brightness(.92); }
+    #emergency-card h2 {
+      margin: 0 0 4px; color: #fff; font-size: 1.55rem; letter-spacing: .02em;
+      text-align: center;
+    }
+    #emergency-stamp { text-align: center; color: #ffd6d6; font-size: .8rem; margin: 0 0 12px; }
+    #emergency-card ol { margin: 0; padding-left: 22px; }
+    #emergency-card li { margin: 0 0 8px; }
+    #emergency-card a {
+      color: #fff; text-decoration: underline; text-underline-offset: 2px;
+      font-weight: 700;
+    }
+    #emergency-card .why { font-weight: 400; opacity: .92; }
+    #emergency-close {
+      display: block; margin: 10px auto 0;
+      background: #000; color: #fff; border: 2px solid #fff;
+      padding: 8px 18px; font-weight: 800; cursor: pointer; border-radius: 4px;
+    }
+    .pill[data-tab="emergency"] {
+      background: var(--cream, #f6f1e8); color: var(--navy, #1b2a4a);
+      border: 2px solid var(--navy, #1b2a4a);
+    }
+
+
+    .pill-emergency {
+      background: linear-gradient(180deg, #c8102e, #8b0000) !important;
+      color: #fff !important;
+      border: 2px solid #000 !important;
+      font-weight: 800;
+    }
+    .pill-emergency.active {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+    }
+
+
+    .nav5 { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
+    .nav5 .navbtn {
+      background: var(--navy); color:#fff; border:0; border-radius:8px;
+      padding:12px 18px; font-weight:800; font-size:0.95rem; cursor:pointer;
+      min-height:44px;
+    }
+    .nav5 .navbtn:hover { background: var(--orange); }
+    .nav5 .navbtn.active { background: var(--orange); }
+    .nav5 .navbtn.red { background:#c8102e; }
+    .more-wrap { position:relative; }
+    .more-menu {
+      display:none; position:absolute; left:0; top:110%; z-index:20;
+      background:#fff; border:1px solid #c9bba6; border-radius:8px;
+      padding:8px; min-width:220px; box-shadow:0 8px 24px rgba(0,0,0,.12);
+    }
+    .more-wrap.open .more-menu { display:block; }
+    .more-menu button {
+      display:block; width:100%; text-align:left; background:#fff; border:0;
+      padding:8px 10px; cursor:pointer; font-weight:600; color:var(--navy);
+    }
+    .more-menu button:hover { background:#f6f1e8; }
+    .today-ideas { margin:0 0 14px; }
+    .today-ideas .today-box { border-left:6px solid var(--navy); }
+    .today-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (max-width:800px){ .today-grid { grid-template-columns:1fr; } }
+    .today-box {
+      background:#fff; border:1px solid #c9bba6; border-radius:8px; padding:12px 14px;
+    }
+    .today-box h3 { margin:0 0 8px; color:var(--navy); }
+    .today-box.news { border-left:6px solid var(--orange); }
+    .today-box.do { border-left:6px solid #c8102e; }
+    .today-box li { margin:0 0 8px; }
+    #emergency-overlay { display:none !important; }
+
+
+    .today-box ol, .today-box ul {
+      padding-left: 1.6em;
+      margin: 0 0 0 12px;
+      list-style-position: outside;
+    }
+    .today-box.news, .today-box.do { padding-left: 22px; }
+    .today-bottom { display:grid; grid-template-columns: 1.4fr 1fr; gap:14px; margin-top:14px; }
+    @media (max-width:800px){ .today-bottom { grid-template-columns:1fr; } }
+    .horns-box {
+      background: #C45C26;
+      color: #fff;
+      border-radius: 8px;
+      padding: 16px 18px;
+      min-height: 160px;
+    }
+    .horns-box h3 { color:#fff; margin:0 0 10px; }
+    .horns-box p { margin:0 0 6px; color:#fff; font-size:0.98rem; }
+    .horns-box .kick { font-size:1.15rem; font-weight:800; }
+
+
+    details.m2w-week { margin: 10px 0; background:#fff; border:1px solid #c9bba6; border-radius:8px; padding:8px 12px; }
+    details.m2w-week > summary { cursor:pointer; font-weight:700; list-style:revert; }
+    .m2w-body { display:block; padding:8px 4px 4px; }
+    details.m2w-week:not([open]) .m2w-body { display:none; }
+    .m2w-day { margin: 12px 0; }
+    .m2w-day h4 { margin: 8px 0 4px; color: var(--navy); }
+    .m2w-now { background:#fff; border:2px solid var(--orange); border-radius:8px; padding:14px 16px; margin:0 0 18px; }
+
+</style>
+</head>
+<body>
+<div aria-hidden="true" class="hidden" id="emergency-overlay">
+<div aria-label="In Case of Emergency" id="emergency-card" role="dialog">
+<h2>In Case of Emergency, Do this.</h2>
+<p id="emergency-stamp">Emergency updated Fri Sep 4, 4:00 AM</p>
+<ol>
+<li><a data-jump="audioedits" href="#">Bat Fest — bats take off (audio)</a> — Wild Kingdom-style clip of the colony leaving the bridge at sunset. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="audioedits" href="#">Eyes of Texas :13 bumper (audio)</a> — Longhorn band bumper. Evergreen sting. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Bat Fest 2026 — Saturday 3–11, Congress Bridge</a> — 20th year. $15 advance. Bats don’t publish a set time. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Possible dinosaur tracks on Brushy Creek in Hutto</a> — Pair with the Jurassic bed. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="farmed" href="#">What valuable thing did you accidentally throw away?</a> — Cash, jewelry, tickets, keys. Best calls went through the trash. <a data-jump="farmed" href="#">Open this on the site →</a></li>
+<li><a data-jump="new" href="#">Aggie man caves for sale</a> — Texas phone. Would you buy one. <a data-jump="new" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">What was the exact moment you knew…?</a> — Quit the job, relationship over, wrong car, doomed vacation. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">Task that takes two minutes that you avoid for days</a> — Dishwasher, Amazon return, lightbulb, voicemails. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="grok" href="#">Today’s birthdays: Gloria Gaynor, Chrissie Hynde, Corbin Bernsen, Leslie Jones</a> — Soft open from the Grok tab. <a data-jump="grok" href="#">Open this on the site →</a></li>
+<li><a data-jump="kvet" href="#">Who is the best roller skater on the show?</a> — Standing KVET bit. <a data-jump="kvet" href="#">Open this on the site →</a></li>
+</ol>
+<button id="emergency-close" type="button">Close</button>
+</div>
+</div>
+<script id="emergency-used-json" type="application/json">{"updated": "2026-09-02T20:29:00-05:00", "used": [{"id": "20260902-batfest-takeoff", "retired": "2026-09-17"}, {"id": "20260902-eyes-bumper", "retired": "2026-09-17"}, {"id": "20260902-batfest-local", "retired": "2026-09-17"}, {"id": "20260902-hutto-tracks", "retired": "2026-09-17"}, {"id": "20260902-throwaway", "retired": "2026-09-17"}, {"id": "20260902-aggie-cave", "retired": "2026-09-17"}, {"id": "20260902-moment-knew", "retired": "2026-09-17"}, {"id": "20260902-two-min", "retired": "2026-09-17"}, {"id": "20260902-birthdays", "retired": "2026-09-17"}, {"id": "20260902-skater", "retired": "2026-09-17"}]}</script>
+<div class="topbar">
+<div class="topbar-inner">
+<div class="brand"><strong>JB &amp; SANDY</strong><span>Show Prep • 98.1 KVET</span></div>
+<div class="top-links">
+<button class="on" onclick="showTab('new')" type="button">Today's Prep</button>
+<button onclick="showTab('audioedits')" type="button">Today's Audio</button>
+<button onclick="showTab('lastlaugh')" type="button">Last Laugh</button>
+<button onclick="document.getElementById('q').focus()" type="button">Search</button>
+</div>
+</div>
+</div>
+<div class="subbar">
+<div class="subbar-inner">
+<span class="date-chip">SUN • OCT 4, 2026</span>
+<button onclick="showTab('local')" type="button">Local</button>
+<button onclick="showTab('grok')" type="button">Grok Finds</button>
+<button onclick="showTab('farmed')" type="button">Farmed</button>
+<button onclick="showTab('audio')" type="button">Audio &amp; Video</button>
+<button onclick="showTab('m2w')" type="button">Minute To Win It</button>
+</div>
+</div>
+<div class="wrap">
+<div class="search-row"><input id="q" oninput="filterPrep(this.value)" placeholder="Search prep…"/></div>
+<div class="nav5" id="main-nav">
+<button class="navbtn active" onclick="showTab('today')" type="button">TODAY</button>
+<button class="navbtn" onclick="showTab('local')" type="button">Local</button>
+<button class="navbtn" onclick="showTab('audioedits')" type="button">Audio</button>
+<button class="navbtn" onclick="showTab('caller')" type="button">Bits</button>
+<button class="navbtn" onclick="showTab('farmed')" type="button">Farmed</button>
+<button class="navbtn" onclick="showTab('sept11')" type="button">Sept 11</button>
+<button class="navbtn" onclick="showTab('m2w')" type="button">Minute To Win It</button>
+<div class="more-wrap" id="more-wrap">
+<button class="navbtn" onclick="toggleMore()" type="button">More</button>
+<div class="more-menu" id="more-menu">
+<button onclick="showTab('new')" type="button">New Stuff</button>
+<button onclick="showTab('grok')" type="button">Grok Finds</button>
+<button onclick="showTab('hotkeys')" type="button">Hotkeys</button>
+<button onclick="showTab('lastlaugh')" type="button">Last Laugh</button>
+<button onclick="showTab('m2w')" type="button">Minute To Win It</button>
+<button onclick="showTab('jobs')" type="button">Jobs Completed</button>
+<button onclick="showTab('audio')" type="button">Audio &amp; Video links</button>
+<button onclick="showTab('archive')" type="button">Audio Archive</button>
+<button onclick="showTab('sept11')" type="button">Sept 11</button>
+<button onclick="showTab('records')" type="button">Book of Records</button>
+<button onclick="showTab('kvet')" type="button">KVET / Show Bits</button>
+<button onclick="showTab('personal')" type="button">Personal / Cast</button>
+<button onclick="showTab('scams')" type="button">Scams</button>
+<button onclick="showTab('music')" type="button">Music</button>
+<button onclick="showTab('emergency')" type="button">Emergency list</button>
+</div>
+</div>
+</div>
+<div class="copy-all-wrap">
+<button class="copy-all-btn" onclick="copyAllNotes()">Copy all notes</button>
+<div class="copy-status" id="copy-status">Copied to clipboard!</div>
+</div>
+<div class="panel" id="panel-emergency">
+<h2>EMERGENCY</h2>
+<p class="note">Same 10 as the open-page board. Emergency updated <strong>Fri Sep 4, 4:00 AM</strong>. Rotates after 24 hours on a token update. Items stay out of the board for 15 days.</p>
+<ol>
+<li><a data-jump="audioedits" href="#">Bat Fest — bats take off (audio)</a> — Wild Kingdom-style clip of the colony leaving the bridge at sunset. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="audioedits" href="#">Eyes of Texas :13 bumper (audio)</a> — Longhorn band bumper. Evergreen sting. <a data-jump="audioedits" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Bat Fest 2026 — Saturday 3–11, Congress Bridge</a> — 20th year. $15 advance. Bats don’t publish a set time. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="local" href="#">Possible dinosaur tracks on Brushy Creek in Hutto</a> — Pair with the Jurassic bed. <a data-jump="local" href="#">Open this on the site →</a></li>
+<li><a data-jump="farmed" href="#">What valuable thing did you accidentally throw away?</a> — Cash, jewelry, tickets, keys. Best calls went through the trash. <a data-jump="farmed" href="#">Open this on the site →</a></li>
+<li><a data-jump="new" href="#">Aggie man caves for sale</a> — Texas phone. Would you buy one. <a data-jump="new" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">What was the exact moment you knew…?</a> — Quit the job, relationship over, wrong car, doomed vacation. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="caller" href="#">Task that takes two minutes that you avoid for days</a> — Dishwasher, Amazon return, lightbulb, voicemails. <a data-jump="caller" href="#">Open this on the site →</a></li>
+<li><a data-jump="grok" href="#">Today’s birthdays: Gloria Gaynor, Chrissie Hynde, Corbin Bernsen, Leslie Jones</a> — Soft open from the Grok tab. <a data-jump="grok" href="#">Open this on the site →</a></li>
+<li><a data-jump="kvet" href="#">Who is the best roller skater on the show?</a> — Standing KVET bit. <a data-jump="kvet" href="#">Open this on the site →</a></li>
+</ol>
+</div>
+<div class="panel active" id="panel-today">
+<h2>TODAY • Sunday, Oct 4</h2>
+<p class="note">Late morning update, Sun Oct 4 ~7 AM. Google Doc still starts with the sheets poll (already Newest 5). No brand-new items. No 7-day moves (oldest in the window is Sep 28; those leave tomorrow). ACL Weekend One closes today: Twenty One Pilots vs. The xx at 8:30. High near 82–83, 40% morning showers. M2W stays on the Oct 5–9 packet.</p>
+<div class="horns-box" style="margin:12px 0 16px"><h3>Next Longhorns game</h3>
+<p class="kick">Saturday, Oct 10 • 2:30 p.m. CT</p>
+<p><strong>Texas vs Oklahoma</strong></p>
+<p>Cotton Bowl, Dallas — Red River</p>
+<p>TV: ABC</p>
+<p style="margin-top:8px;opacity:.9;font-size:.85rem">Last out: Texas 20, Tennessee 17. Horns 4-0. Bye this week.</p>
+</div>
+<p class="note">Sun Oct 4, 7 AM Doc check. Still no brand-new items (sheets poll, Jeep people, Trail of Lights, raccoon, mundane hypnotize all already in New Stuff). No 7-day moves (oldest Added is Sep 28; leave tomorrow). Oct 2 moved-notes already cleaned.</p>
+<div class="today-ideas"><div class="today-box"><h3>Newest from the Ideas Doc</h3>
+<ul>
+<li>Washing sheets — how long do you wait?</li>
+<li>Jeep people audio description</li>
+<li>What mundane activity hypnotizes you?</li>
+<li>Trail of Lights tickets already on sale</li>
+<li>That is not your pet (raccoon / wild animal)</li>
+</ul>
+<p class="note"><a data-jump="new" href="#">Open New Stuff →</a></p>
+</div></div>
+<div class="today-grid">
+<div class="today-box news"><h3>Current news</h3><ol>
+<li><strong>ACL Sunday: Twenty One Pilots vs. The xx.</strong> Both headline at 8:30 p.m. at Zilker. Also on the day: Parcels, Blood Orange, SOFI TUKKER, The War on Drugs, Geese, Stella Lefty. Hulu/Disney+ stream from 3:35 p.m. CT if the boots did not survive Saturday.</li>
+<li><strong>ACL Nights if the park is enough mud.</strong> Ryan Beatty at Scoot Inn 5 p.m., Suki Waterhouse at Emo’s 9 p.m., Rochelle Jordan at Antone’s 10 p.m.</li>
+<li><strong>Sunday weather:</strong> high near 83, 40% chance of showers before 1 p.m., slight storm chance 1–4. North-northeast 10, gusts to 25. Monday looks sunny, mid-80s.</li>
+<li><strong>Not the park:</strong> No. 8 Texas volleyball vs Alabama, noon, Gregory Gym (SECN+). Monster Truck Wars at the Expo Center. Trail of Lights tickets are already on sale (Dec 10–23).</li>
+<li><strong>Longhorns bye.</strong> Next is Red River, Oct 10, 2:30 p.m. CT, ABC. Texas 4-0 after the 20-17 at Tennessee.</li>
+</ol></div>
+<div class="today-box"><h3>On the board</h3>
+<ul>
+<li><a data-jump="grok" href="#">Grok: ACL Sunday, Silverstone 50, noon volleyball</a></li>
+<li><a data-jump="farmed" href="#">Fresh Sunday late-morning farmed cards</a></li>
+<li><a data-jump="new" href="#">Newest 5 still leads with washing sheets</a></li>
+<li><a data-jump="m2w" href="#">M2W — packet Oct 5–9 (rotated today)</a></li>
+</ul>
+</div>
+</div>
+<div class="panel" id="panel-new">
+<h2>★ New Stuff</h2>
+<div class="new-stuff-note">
+      Front = newest 5. Rest of the 7-day window is under <strong>More Brilliant Ideas</strong>.
+      After 7 days items leave New Stuff. Older ideas live in each tab’s Archive bin.
+</div>
+<div class="new-buckets">
+<div class="bucket" id="newest5">
+<h3>Newest 5</h3>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>How long do you go between washing sheets?</strong>
+<span class="added">Added Oct 3 PM</span>
+<p>Doc poll: sheets and towels are supposed to be every one to two weeks. A Sleep Advisor study put the average closer to 24 days (25 for pillowcases). A UK look at single men found a majority waiting about four months. About 5 percent of people wash them once or twice a year. Phone: honest number, then whether the guest-room sheets are a different story. Keep it light.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Jeep people audio description</strong>
+<span class="added">Added Oct 2</span>
+<p>Doc note, as written: “Jeep people audio description.” Cast bit or short phone: describe a Jeep person without saying the word Jeep — doors off, the wave, the duck on the dash, the spare tire cover. Listeners finish the picture.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>What mundane activity hypnotizes you?</strong>
+<span class="added">Added Oct 2</span>
+<p>WIVK’s Joey got stuck watching construction equipment grade dirt and compared it to a Zamboni. Austin version: tortilla machines, car washes, baggage belts, lawn robots, pressure washing, boats launching. Phone: “How long have you stood there watching?”</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Trail of Lights tickets already on sale</strong>
+<span class="added">Added Oct 1 PM</span>
+<p>62nd Austin Trail of Lights (H-E-B) is Dec 10–23 at Zilker. Tickets are up now. Free nights: Dec 10–11 and 13–17. Paid nights are $8 (kids under 12 free). Platinum and ZIP passes too. Phone: buying holiday tickets in October — organized, or unhinged? And do you do the free night or pay to skip the line? <a class="more-here" href="https://austin.culturemap.com/news/entertainment/trail-of-lights-2026-tickets/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>That is not your pet</strong>
+<span class="added">Added Oct 1 PM</span>
+<p>Doc note from a Wednesday show: “Can a raccoon be domesticated?” Austin version: “That Is Not Your Pet.” Callers with a raccoon, squirrel, deer, fox, armadillo, possum, or duck that started visiting and now acts like family. Keep it light — the animal that moved in, not a how-to.</p>
+</div>
+</div>
+<div class="bucket" id="more-brilliant">
+<h3>More Brilliant Ideas</h3>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Colin Simmons “simulating the restroom” penalty</strong>
+<span class="added">Added Sep 30 PM</span>
+<p>After one of his five sacks at Tennessee, Texas DE Colin Simmons got flagged for “simulating using the restroom.” Ref announced it on national TV. Sark: not the death penalty, but “that’s not who we are.” Phone: dumbest celebration you’ve ever seen — or done — and did it actually cost something?</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Landry is a better 17-year-old than me</strong>
+<span class="added">Added Sep 30 PM</span>
+<p>Cast line from the Doc: “Landry is a better 17-year-old than me…. That’s not saying much.” Soft phone: who in your house is already better at adulting than you were at that age? Or the skill a teenager quietly runs circles around you on.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Sell us on being single</strong>
+<span class="added">Added Sep 30 PM</span>
+<p>Reverses the usual dating-show negativity. Austin version: “The Single Life Tourism Board.” Callers get 20 seconds to pitch solo living; JB and Sandy pick the official spokesperson. Keep it light — sleep, remote, no calendar negotiations, the whole bed.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Lammes Candies is coming back</strong>
+<span class="added">Added Sep 29 PM</span>
+<p>Legendary Austin candy shop (Texas Chewie pralines, Longhorns, Sherbet Mints) closed this spring after 141 years. New partners (Delightful Development Co.) have the brand back — holiday pre-orders open now, nationwide shipping Nov 1. Soft phone: favorite Lammes memory, or “what dead Austin brand would you bring back next?”</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>67% of gym memberships sit unused</strong>
+<span class="added">Added Sep 29 AM</span>
+<p>Call if you still pay for a gym you barely use. Why keep it — guilt, January energy, the towel, or “I might go Thursday”?</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>The problem people immediately try to solve</strong>
+<span class="added">Added Sep 29 AM</span>
+<p>Back pain, insomnia, weight, allergies, parenting, being single. Callers name the thing that makes everyone a doctor, then the advice they’ve heard at least 100 times.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>JB &amp; Sandy Wake-Up Service</strong>
+<span class="added">Added Sep 29 AM</span>
+<p>Parents secretly give three facts about the sleeping kid — embarrassing nickname, unfinished chore, why they have to get up. Call live and see how long before the kid realizes they’re on the radio. Weekly benchmark energy.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>They Sent Me an Uber</strong>
+<span class="added">Added Sep 28 PM</span>
+<p>Mojo asked about being driven somewhere by a date, employer, or friend — then put in an Uber for the return trip. Sharper phone: “What happened that made someone order you an Uber and send you away?” The receipt is the modern version of being thrown out.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Dogs &amp; cats are obsessed with Netflix Sealook</strong>
+<span class="added">Added Sep 28 PM</span>
+<p>Viral clips of pets glued to the wordless Korean seal cartoon. Colors and movement apparently hit the spectrum dogs and cats can see. Phone: has your pet ever watched TV like that? What show (or YouTube) freezes them?</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Taylor needs names for its cemetery robot mowers</strong>
+<span class="added">Added Sep 28 PM</span>
+<p>City of Taylor deployed two autonomous lawn-mowing robots at the City Cemetery and is asking the public to name the pair. Soft phone: best robot names, or “what would you name the machines that keep the graves looking sharp?”</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Cotaland is open</strong>
+<span class="added">Added Sep 28 AM</span>
+<p>Austin’s new theme park at Circuit of the Americas opened Sep 26. Texas-only tilt coaster Circuit Breaker, Palindrome infinity coaster, family rides, food. Soft phone: first-day report, which ride are you most scared of, or “would you do a theme-park day at COTA?”</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Rollerblading meetups are a thing — JB witnessed</strong>
+<span class="added">Added Sep 28 AM</span>
+<p>Adult rollerblade / inline groups rolling around town. Phone: ever joined a random adult sports meetup? Skate, bike, pickleball, run club — what’s the weirdest group activity you’ve actually done?</p>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel" id="panel-jobs">
+<h2>Jobs Completed</h2>
+<p class="note">Same log as the box on Edited Audio.</p>
+<div class="job-row"><span class="ok">✓</span><strong>Sep 2, 8:08 PM</strong> — Sept 11 news report as it happened<br/>
+<span class="muted">YouTube Short · Filed: Edited Audio Newest 5 → Sept 11 / Tribute · Extracted: yes (file on site)</span></div>
+<div class="job-row"><span class="ok">✓</span><strong>Sep 2, 8:08 PM</strong> — Bat Fest takeoff, maternity colony, JL-D Kimmel bats, Jurassic bed, Batman ’89 bed<br/>
+<span class="muted">Attached in chat · Filed: Newest 5 + Bits/Funny/Bumper · Extracted: no (files attached)</span></div>
+<div class="job-row"><span class="ok">✓</span><strong>Aug 31, 10:03 PM</strong> — Longhorns package<br/>
+<span class="muted">Attached in chat · Lives: Texas Longhorns · Extracted: no</span></div>
+<div class="job-row"><span class="ok">✓</span><strong>Aug 31, 9:48 PM</strong> — Dolly tributes + Coach Taylor + Bigfoot replay<br/>
+<span class="muted">Attached in chat · Lives: Dolly / Tribute / Replay · Extracted: no</span></div>
+</div>
+<div class="panel" id="panel-audio">
+<h2>Audio &amp; Video Links</h2>
+<!-- How it works -->
+<div class="item howto-box">
+<h3 style="margin-bottom:8px;">How to get audio from these videos</h3>
+<p style="font-size:0.92rem; margin-bottom:12px;">
+        Use the <strong>JB &amp; Sandy Audio Extractor</strong> on your computer (Windows or Mac).
+      </p>
+<p style="text-align:center; margin-bottom:14px;">
+<a download="" href="JB_Sandy_Audio_Extractor.zip" style="display:inline-block; background:#22c55e; color:#fff; font-weight:700; font-size:0.95rem;
+                  padding:12px 22px; border-radius:12px; text-decoration:none; box-shadow:0 4px 14px rgba(34,197,94,0.3);">
+          ↓ Download Audio Extractor (Mac &amp; Windows)
+        </a>
+</p>
+<ol style="padding-left:1.3em; font-size:0.92rem; line-height:1.55;">
+<li>Download the zip above and unzip it.</li>
+<li><strong>Mac:</strong> Double-click <strong>Start_Mac.command</strong> (right-click → Open the first time if macOS blocks it).</li>
+<li><strong>Windows:</strong> Double-click <strong>Start_Windows.bat</strong>.</li>
+<li>Click the <strong>Copy</strong> button next to any link below.</li>
+<li>Paste the link into the Audio Extractor and click <strong>Extract Audio</strong>.</li>
+<li>Download the MP3 when it’s ready.</li>
+</ol>
+<p class="note" style="margin-top:10px;">
+<strong>Platform reliability:</strong><br/>
+        ✅ YouTube – works best<br/>
+        ⚠️ Instagram &amp; Facebook – hit or miss (they block a lot)<br/>
+        ✅ TikTok &amp; X – usually good
+      </p>
+<p class="note" style="margin-top:6px;">
+        You can also paste links here in the Grok chat and say “extract audio” if you need help.
+      </p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy section">📋</span> Instagram / Reels</h3>
+<ul>
+<li>Ella Langley in the record books → <a href="https://www.instagram.com/p/DcPGnnWFL6d/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DcPGnnWFL6d/', this)">Copy</button></li>
+<li>Band playing on Lake Austin → <a href="https://www.instagram.com/reel/DcHmn2ahj23/" target="_blank">Reel 1</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DcHmn2ahj23/', this)">Copy</button> • <a href="https://www.instagram.com/reel/DcMuPNllCF4/" target="_blank">Reel 2</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DcMuPNllCF4/', this)">Copy</button></li>
+<li>Brick phone craziness → <a href="https://www.instagram.com/p/DYaISxqFg4r/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DYaISxqFg4r/', this)">Copy</button></li>
+<li>Good Italian in Austin → <a href="https://www.instagram.com/reel/DYr_jhyRGHI/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DYr_jhyRGHI/', this)">Copy</button></li>
+<li>Custom jingle guy → <a href="https://www.instagram.com/reel/DYTXWifMf07/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DYTXWifMf07/', this)">Copy</button></li>
+<li>Julia Ray timelogs → <a href="https://www.instagram.com/juliaray.timelogs/reels/" target="_blank">Profile</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/juliaray.timelogs/reels/', this)">Copy</button></li>
+<li>Your bananas → <a href="https://www.instagram.com/reel/DYCv1Gss1P0/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DYCv1Gss1P0/', this)">Copy</button></li>
+<li>How would women feel about guys doing this? → <a href="https://www.instagram.com/reel/DYAi6tUIKZN/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DYAi6tUIKZN/', this)">Copy</button></li>
+<li>Voice changer for iPhone → <a href="https://www.instagram.com/p/DX1s2-iDNBN/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DX1s2-iDNBN/', this)">Copy</button></li>
+<li>Adult swim-up bar in ATX → <a href="https://www.instagram.com/reel/DXfKxqyD68T/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DXfKxqyD68T/', this)">Copy</button></li>
+<li>Does this work on mosquitoes? → <a href="https://www.instagram.com/reel/DXt3ol7iLIW/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DXt3ol7iLIW/', this)">Copy</button></li>
+<li>Things parents used to do that is now illegal → <a href="https://www.instagram.com/p/DXKhyMejHE8/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DXKhyMejHE8/', this)">Copy</button></li>
+<li>Woman looks out window with dog &amp; gossips → <a href="https://www.instagram.com/reel/DXwbUMUtPu-/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DXwbUMUtPu-/', this)">Copy</button></li>
+<li>Guy turned pudding into airline miles → <a href="https://www.instagram.com/p/DXpLXJ7kaQZ/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DXpLXJ7kaQZ/', this)">Copy</button></li>
+<li>Lowes funding trades training → <a href="https://www.instagram.com/p/DXD3IGIAM6U/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DXD3IGIAM6U/', this)">Copy</button></li>
+<li>Combat soccer → <a href="https://www.instagram.com/reel/DUwmnBmDAbz/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DUwmnBmDAbz/', this)">Copy</button></li>
+<li>What do you want for dinner? → <a href="https://www.instagram.com/reel/DXLMY5sAbqj/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DXLMY5sAbqj/', this)">Copy</button></li>
+<li>Protein in whales / live to 200 → <a href="https://www.instagram.com/p/DW7aVwCldqn/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DW7aVwCldqn/', this)">Copy</button></li>
+<li>New cave discovery &amp; fossils in TX → <a href="https://www.instagram.com/p/DW4qnDKDUmh/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DW4qnDKDUmh/', this)">Copy</button></li>
+<li>We used to take our stereo out of the car → <a href="https://www.instagram.com/p/DW33vbejnKE/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DW33vbejnKE/', this)">Copy</button></li>
+<li>Strange Texas high school mascots → <a href="https://www.instagram.com/p/DWaTHjKEbGl/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DWaTHjKEbGl/', this)">Copy</button></li>
+<li>Fastest kid alive → <a href="https://www.instagram.com/reel/DWwocV2kbk5/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DWwocV2kbk5/', this)">Copy</button></li>
+<li>Observations dating 200 women → <a href="https://www.instagram.com/p/DWzfG7TjyLK/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DWzfG7TjyLK/', this)">Copy</button></li>
+<li>Sandy banana dance party → <a href="https://www.instagram.com/reel/DWUqDkIDLzt/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DWUqDkIDLzt/', this)">Copy</button></li>
+<li>Passive aggressive things at work → <a href="https://www.instagram.com/p/DWPD5FEkXSU/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DWPD5FEkXSU/', this)">Copy</button></li>
+<li>This is my fav thing right now → <a href="https://www.instagram.com/reel/DTVvrVfDzc1/" target="_blank">Reel</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/reel/DTVvrVfDzc1/', this)">Copy</button></li>
+<li>Earrings that photo attacker → <a href="https://www.instagram.com/p/DT3i6dICn-2/" target="_blank">Post</a> <button class="link-copy" onclick="copyLink('https://www.instagram.com/p/DT3i6dICn-2/', this)">Copy</button></li>
+</ul>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy section">📋</span> Facebook / Other</h3>
+<ul>
+<li>Harrison Ford + Cookie Monster “num numing” Raiders theme → <a href="https://www.facebook.com/share/r/18g5e1ugRn/" target="_blank">Facebook</a> <button class="link-copy" onclick="copyLink('https://www.facebook.com/share/r/18g5e1ugRn/', this)">Copy</button></li>
+<li>Parade for New Braunfels gold medalist → <a href="https://www.facebook.com/share/p/17QhgmQw6K/" target="_blank">Facebook</a> <button class="link-copy" onclick="copyLink('https://www.facebook.com/share/p/17QhgmQw6K/', this)">Copy</button></li>
+</ul>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Kevin Bacon is great <span class="added-date">Added Aug 31</span></h3>
+<p>Short clip energy. Play it, then phone: “Who is your ‘this person is secretly great at everything’ celebrity?”</p>
+<p><a class="more-here" href="https://youtube.com/shorts/1S7Mri9ZZmU?si=0DSRa4EBFAOudBeQ" rel="noopener" target="_blank">Watch / grab audio →</a></p>
+</div><div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Let em tell you something Linda <span class="added-date">Added Aug 31</span></h3>
+<p>Drop / reaction clip. Instant “we’ve all got a Linda” phone topic.</p>
+<p><a class="more-here" href="https://youtube.com/shorts/yKRHUxG3NtM?si=XP3lg1ADmpe__Ozd" rel="noopener" target="_blank">Watch / grab audio →</a></p>
+</div></div>
+<div class="panel" id="panel-local">
+<h2>Local Austin & Texas</h2>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong><a href="stories/deveny-heb-prize.html">Austin teacher Alasin DeVeny wins $50,000 H-E-B Excellence prize</a></strong>
+<span class="added">Moved to Local Oct 1 — past 36 hours</span>
+<p>Headline now links to the story page. Phone: best teacher, one sentence.</p>
+</div>
+<details class="archive-bin" style="margin:12px 0 16px;border:2px solid #1B2A4A;border-radius:10px;padding:10px 14px;background:#f3eee4">
+<summary style="cursor:pointer;font-weight:800">Local Archive — older standouts (delete after 21 days in archive)</summary>
+<div class="item">
+<strong><a href="stories/njrotc-cadets.html">Lone Star NJROTC cadets — Sep 6 standout</a></strong>
+<span class="added">Archived Oct 1 · clock started Sep 6 · delete after Oct 4</span>
+<p>9/11 Heroes Run and Tiger Challenge window has passed. Story page kept until the 21-day archive clock ends.</p>
+</div>
+<div class="item">
+<strong><a href="stories/bin-buddies.html">Nine-year-old Bin Buddies — Sep 6 standout</a></strong>
+<span class="added">Archived Oct 1 · clock started Sep 6 · delete after Oct 4</span>
+<p>Story page kept until the 21-day archive clock ends.</p>
+</div>
+</details>
+
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Elon wants a tunnel Austin to San Antonio</strong>
+<p>Would you ride it?</p>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Harrison Ford &amp; Cookie Monster “num num” the Raiders theme</h3><p>Harrison Ford and Cookie Monster cooking and “num numing” the Raiders of the Lost Ark theme. Pure visual drop gold. </p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Food &amp; Business</h3>
+<ul>
+<li>Via 313 Detroit-style pizza — amazing<br/>
+<a class="more-here" href="https://via313.com/" rel="noopener" target="_blank">More here →</a></li>
+<li>HEB vs Buc-ee’s brisket sandwich<br/>
+<a class="more-here" href="https://www.mysanantonio.com/food/article/heb-bucees-brisket-sandwich-22186435.php" rel="noopener" target="_blank">More here →</a></li>
+<li>What exactly is an Austin-style burrito?<br/>
+<a class="more-here" href="https://www.mysanantonio.com/lifestyle/article/austin-style-burritos-new-york-city-22218767.php" rel="noopener" target="_blank">More here →</a></li>
+<li>Chick-fil-A debuts chicken and waffle sandwiches<br/>
+<a class="more-here" href="https://www.chick-fil-a.com/press-room/how-customer-cravings-reimagined-a-classic" rel="noopener" target="_blank">More here →</a></li>
+<li>DVD / video store opening near ABIA<br/>
+<a class="more-here" href="https://austin.culturemap.com/news/entertainment/austin-video-store-opening/" rel="noopener" target="_blank">More here →</a></li>
+<li>European specialty food store in Austin</li>
+<li><strong>Paramount studios looking to Austin</strong><br/>
+<a class="more-here" href="https://www.kxan.com/news/local/austin/hollywood-to-texas-austin-thrown-into-paramount-merger-fight/" rel="noopener" target="_blank">More here →</a></li>
+<li>Moving company that employs musicians and creatives — “last people I want moving my stuff”</li>
+<li>Is there such a thing as a Goodwill Outlet?</li>
+<li>Japanese food at a Mexican restaurant</li>
+<li>Coyote vests for dogs</li>
+<li>Texas BBQ collab</li>
+</ul>
+</div>
+
+<details class="archive-bin" style="margin-top:16px;border:2px solid #1B2A4A;border-radius:10px;padding:10px 14px;background:#f3eee4">
+<summary style="cursor:pointer;font-weight:800">Archive — older than 4 days (21)</summary>
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Moving company that employs musicians and creatives <span class="added-date">Added Aug 29</span></h3><p>“These are the last people I want moving my stuff.” Funny observation about a local mover staffed by artists. Cast confessions of the worst move ever + “would you hire the band?”</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> H-E-B vs Buc-ee’s brisket sandwich war <span class="added-date">Added Aug 29</span></h3><p>The eternal Texas debate just got specific. Who actually has the better brisket sandwich right now? Take sides, bring receipts, and let callers settle it.</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Strange Texas high school mascots <span class="added-date">Added Aug 29</span></h3><p>There is a competition for everything, and Texas high school mascots deliver. Rank the weirdest ones you’ve seen or go to school with. Instant caller phone topic with photos.</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> How was Chris’ Urban Cowboy event? <span class="added-date">Added Aug 30</span></h3>
+<p>Cast / listener recap. Who went, what did they wear, was it more honky-tonk or more costume party?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Le Garage. Did anyone clean up? <span class="added-date">Added Aug 30</span></h3>
+<p>Twice-a-year blowout at Palmer Events Center, 140+ local brands. Monday-after phone: “What did you actually buy, and do you regret it in the daylight?”</p>
+<p><a class="more-here" href="https://legaragesale.net/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Huge model train expo at Palmer Events Center <span class="added-date">Added Aug 30</span></h3>
+<p>Austin Train Show all weekend — 25,000 sq ft, Lego railroad, kiddie express. “Did you go, or do you still have the box of trains from your dad in the garage?”</p>
+<p><a class="more-here" href="https://do512.com/events/2026/8/29/austin-train-show-tickets" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Westlake beats Inglewood 33-26 <span class="added-date">Added Aug 30</span></h3>
+<p>Chaparrals open the 2026 season with a thriller at Chaparral Stadium, rallying past California power Inglewood. QB Patton Jones (first career start) accounted for three TDs. Classic Friday-night energy + Texas vs. California bragging rights. Phone: “Best high-school football memory or most dramatic comeback you’ve ever seen?”</p>
+<p><a class="more-here" href="https://texashsfootball.com/westlake-storms-back-to-beat-inglewood-in-33-26-thriller/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Carrot kid is a thing now at Longhorn games</h3>
+<p>Kid (or kids) showing up with giant carrots? Visual bit / phone: “What’s the weirdest good-luck item or costume you’ve seen at a game?” Local color after the biggest win in years.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> What dead Austin business would you bring back? <span class="added-date">Added Sep 8</span></h3>
+<p>Blockbuster, Tower Records, Toys R Us, Circuit City, Foley’s — then localize. Heritage-listener phone.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> We’ve never met anyone who works at Tesla <span class="added-date">Added Sep 9 PM</span></h3>
+<p>Austin observation gold. “In a city full of Teslas… have you ever actually met someone who works there?” Soft phone + Cybercab tie-in.</p>
+</div>
+<div class="new-subtabs" id="local-subtabs">
+<button class="new-subtab active" onclick="showLocalBucket('now')" type="button">Current</button>
+<button class="new-subtab" onclick="showLocalBucket('archive')" type="button">Archive</button>
+</div>
+<div id="local-now">
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Someone pulled the fence down at Dirty Martin’s</h3>
+<p>Local Austin food landmark news. Phone topic: “What’s the most Austin place that has taken a beating lately?” </p>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> CapMetro rail paused for North Burnet / Uptown Station work</h3>
+<p>Rail service suspended while crews work on the new North Burnet/Uptown Station. </p>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> UT Austin hit 100,000 undergrad applications</h3>
+<p>About 9,000 more than last year. Caller: “Was getting into UT harder when you applied… or does it just feel that way now?” </p>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> 6th Street veteran hat</h3>
+<p>Local visual / story note. </p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Bat Fest 2026 — Saturday Sep 5 <span class="added-date">Added Sep 2</span></h3>
+<p>20th year at the Congress Ave Bridge, 3–11 p.m. $15 advance. Bats are the headliner and they don’t publish a set time.</p>
+<p class="note">“In Austin, even the headliner doesn’t know what time the bats are going on.”</p>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Austin Museum Hop / Museum Day</h3><p>Smithsonian Museum Day was Sep 20. Soft: which free museum did you hit, or which one is still on the list?</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> TX–Ohio State highlights in Spanish</h3><p>Most-viewed regular-season game in 10 years. Play a Spanish-call clip if we can get it.</p></div>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Possible dinosaur tracks on Brushy Creek in Hutto <span class="added-date">Added Sep 2</span></h3>
+<p>Phone: would you even know a print if you saw one?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Arboretum under new ownership <span class="added-date">Added Aug 31</span></h3>
+<p>Sandy rollerblade visual. Patios, live music space, pop-ups.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> La Fleur Fresh Flower Market — Anderson Mill <span class="added-date">Added Aug 31</span></h3>
+<p>10401 Anderson Mill Rd., Ste. 106. DIY by the stem.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Riviera ISD rattlesnake warning for Friday night <span class="added-date">Added Sep 2</span></h3>
+<p>Texas football + wildlife. Good small-town news sting.</p>
+</div>
+</div>
+<div hidden="" id="local-archive"><div class="item standout-moved" data-added="2026-09-06T12:03:00-05:00" data-local="2026-09-08T05:40:00-05:00">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <a href="stories/njrotc-cadets.html">Lone Star NJROTC Cadets Set Sights on Dual September Physical Challenges</a> <span class="added-date">Moved to Archive Sep 14</span></h3>
+</div>
+<div class="item standout-moved" data-added="2026-09-06T12:03:00-05:00" data-local="2026-09-08T05:40:00-05:00">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> <a href="stories/bin-buddies.html">Nine-Year-Old Austin 'Bin Buddies' Turn Chore Into Local Business Success</a> <span class="added-date">Moved to Archive Sep 14</span></h3>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Rankings, Places &amp; News</h3>
+<ul>
+<li>76% of Austinites live within walking distance of a park (ParkScore #47, up 7 spots)<br/>
+<a class="more-here" href="https://www.austintexas.gov/parks/news/austin-climbs-47th-2026-parkscorer-index" rel="noopener" target="_blank">More here →</a></li>
+<li>Austin ranked 28th in US for staycations<br/>
+<a class="more-here" href="https://www.mysanantonio.com/lifestyle/article/budget-friendly-trips-texas-22297354.php" rel="noopener" target="_blank">More here →</a></li>
+<li>Georgetown is the #1 boomtown in America<br/>
+<a class="more-here" href="https://www.mysanantonio.com/lifestyle/article/fastest-growing-cities-texas-22287732.php" rel="noopener" target="_blank">More here →</a></li>
+<li>Most dangerous intersection in Austin<br/>
+<a class="more-here" href="https://www.statesman.com/business/transportation/article/austin-most-dangerous-intersections-local-data-22247828.php" rel="noopener" target="_blank">More here →</a></li>
+<li>Narcan vending machines<br/>
+<a class="more-here" href="https://www.statesman.com/news/healthcare/article/naloxone-vending-machines-travis-county-22191626.php" rel="noopener" target="_blank">More here →</a></li>
+<li>Optimus factory going to be huge<br/>
+<a class="more-here" href="https://www.bizjournals.com/austin/news/2026/04/22/elon-musk-tesla-optimus-factory-austin-texas.html" rel="noopener" target="_blank">More here →</a></li>
+<li>Adult swim-up bar in ATX</li>
+<li>Unsupervised Robo Taxis out and about<br/>
+<a class="more-here" href="https://www.theverge.com/transportation/982759/tesla-robotaxi-unsupervised-austin-robotaxi-tracker" rel="noopener" target="_blank">More here →</a></li>
+<li>Automated speed monitoring becoming a thing</li>
+<li>On phone at red light in TX<br/>
+<a class="more-here" href="https://www.mysanantonio.com/news/austin/article/is-it-legal-to-be-on-phone-at-red-light-texas-22159821.php" rel="noopener" target="_blank">More here →</a></li>
+<li>UT freshman running for city council<br/>
+<a class="more-here" href="https://www.chron.com/texas/article/university-texas-freshman-austin-city-council-22214779.php" rel="noopener" target="_blank">More here →</a></li>
+<li>New cave discovery &amp; fossils in Texas</li>
+<li>Strange Texas high school mascots</li>
+<li>Did you know they make coyote vests for dogs?</li>
+<li>Home Depot already has Halloween décor out</li>
+<li>Easy Breather for Austin allergies</li>
+</ul>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Lake Austin shutting down in Oct for 6 weeks <span class="added-date">Moved Aug 30</span></h3><p>Local impact note for boaters and lake people.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Mystery abandoned Jeep + Joe Miles / Spazmatics </h3><p>Local mystery + band connection. Still floating as a soft local story.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Little Nishi sushi expanding to brick-and-mortar </h3><p>Local sushi food truck Little Nishi expanding on Southern Oaks Drive. Softshell tempura, hand rolls, sashimi coming.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Tesla parking-ticket hack </h3><p>Driver figured out a way to have the car move every two hours so it wouldn’t get a ticket. Austin EV owners will have opinions.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> SpaceX 1M sq ft vs Tesla 10M </h3><p>Perspective bit on the size of the local factories.</p></div>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Chris Stapleton + Stella Lefty at the UT Tailgate before Ohio State <span class="added-date">Added Aug 31 PM</span></h3>
+<p>Big pre-game energy on the 40 Acres. Stapleton + Stella Lefty is a serious local flex. “Are you going for the music, the tailgate, or both?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sark on pros playing in college <span class="added-date">Added Aug 31 PM</span></h3>
+<p>Steve Sarkisian talking about the current NCAA eligibility chaos with former NFL guys circling back. Local sports-talk energy without getting in the weeds. Soft phone: “Should a guy who was in an NFL camp be allowed to play college ball again?”</p>
+<p><a class="more-here" href="https://www.instagram.com/reel/DctwVZXuhqj/?igsh=MWNmdDhkaXI4aWJzdA==" rel="noopener" target="_blank">Instagram source →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> They’re bringing back the GMC Jimmy</h3>
+<p>Reports of a body-on-frame midsize SUV revival to fight the 4Runner / Bronco / Wrangler. Phone: “Would you buy a new Jimmy, or is the name still stuck in the ’90s for you?”</p>
+</div></div>
+
+</details>
+</div>
+<div class="panel" id="panel-caller">
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Someday video calls in our pocket</strong>
+<span class="added-date">Added Sep 25 AM</span>
+<p>Clip idea from the Doc. Phone: the sci-fi thing that quietly showed up in your pocket and you barely noticed.</p>
+</div>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>What the next generation may not know how to do</strong>
+<span class="added-date">Added Sep 25 AM</span>
+<p>Read a map, write cursive, drive a stick, change a tire, memorize phone numbers, make change. Then younger callers name something JB and Sandy’s generation cannot do.</p>
+</div>
+
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>News you’re excited about that nobody else cares about</strong>
+<p>Porsche “S1” flat-eight rumor is the example. Phone: your weirdly specific headline.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>What a six-year-old can do that you still cannot</strong>
+<p>Dive without holding your nose, no-handed bike, whistle, snap, chopsticks, cartwheel, gum bubble.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>The Quote Nobody Gets Anymore</strong>
+<p>Hosts say the line first. Movie, old commercial, SNL, lyric. Then: what have you said for 30 years that younger coworkers think you invented?</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Couple behavior that makes you immediately suspicious</strong>
+<p>Joint Facebook? Shared email? Location tracking? Knowing passwords? Answering each other’s phone? Hosts call each Healthy / Weird / Something Happened Here.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Listener becomes a cast member for a day</strong>
+<p>Phone bit idea from the Doc.</p>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Scheels Cedar Park opens Saturday — with a Ferris wheel</h3><p>300,000 sq ft sporting-goods palace with a 65-ft indoor Ferris wheel, 16,000-gallon aquarium, candy store and café. Grand opening starts 7 a.m. with giveaways and skydivers. “Are we going for the gear or just to ride the Ferris wheel inside a store?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Longhorn Football Guides For Everyone</h3><p>Season is almost here. “What’s the one Longhorn take you will die on?” Perfect for Friday energy and callers who think they know more than the coaches. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> How far can a Tesla go past 0% battery?</h3><p>Austin EV owners will have stories. “Have you ever babysat the range or pushed it on purpose?” Pair with the parking-ticket hack. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Parade for New Braunfels gold medalist</h3><p>Local hero energy just down I-35. “What’s the most Austin/Central Texas way to celebrate a hometown champion?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Hotel San Jose documentary</h3><p>Cool local look at an Austin landmark. Date-night / local-pride recommendation that isn’t another bar tip. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Paramount studios looking to Austin</h3><p>Local film/TV interest. Light industry/cool-job angle. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Band playing on Lake Austin</h3><p>Instagram reels of a band performing on Lake Austin. Local vibe + “what’s the most Austin place you’ve seen live music?” Audio already in Edited Audio. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Chick-fil-A chicken &amp; waffle sandwich</h3><p>Limited-time or local buzz food item. “Is this a yes or a hard pass?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> DVD / video store opening near ABIA</h3><p>A physical video store is opening near the airport. Nostalgia + “when did you last rent a movie?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Georgetown is the #1 boomtown in America</h3><p>Local growth story. “Would you still move to Georgetown now, or is the secret out?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> 76% of Austinites live within walking distance of a park</h3><p>ParkScore rankings. Austin climbed. Soft local pride + “which park is actually your go-to?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Adults swim-up bar in ATX</h3><p>Instagram reel gold. “Is this peak Austin summer or just enabling day-drinking?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Most dangerous intersection in Austin</h3><p>Statesman data piece. Everyone has a candidate. Take calls, then reveal the actual #1. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Is it legal to be on your phone at a red light in Texas?</h3><p>MySanAntonio explainer. Perfect for “what do you actually do at red lights?” confessions. </p></div>
+
+<details class="archive-bin" style="margin-top:16px;border:2px solid #1B2A4A;border-radius:10px;padding:10px 14px;background:#f3eee4">
+<summary style="cursor:pointer;font-weight:800">Archive — older than 4 days (34)</summary>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Do Your Spouse</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>Caller has 20 seconds to imitate the phrase, noise, or habit their spouse does constantly. Then get the spouse on and let them impersonate the caller. Second act is the bit.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Would you vacation without your spouse?</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>Honest phone topic. Solo trip, friends trip, or never. What’s the longest you’d go?</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Tesla Optimus gets ONE chore forever</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>It can only do one job for the rest of its life. Laundry, yard, dishes, or the H-E-B run? Time-consuming vs the one you hate.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Job that looks awesome but actually sucks</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>Rule: you had to have done the job. Bartender, flight attendant, radio, chef, realtor, teacher, musician, working on a boat.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Empty Your Pockets</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>Studio empties pockets/purse on the table. Object that needs the most explanation wins. Listeners text photos. Plant a couple of weird items on purpose.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Annual Performance Review</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>Listeners submit one compliment and one complaint — about a boss, a spouse, a roommate, or this show. Keep it light.</p>
+</div>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Tiny household issue that became a marital dispute</h3><p>Throw pillows, thermostat, ceiling fan, dishwasher, decorative towels, shoe zone. How many YEARS has this argument been going on?</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Toy Hall of Fame nominees</h3><p>What belongs? What is a crime if it gets in?</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Annual performance review (older take)</h3><p>One compliment + one complaint. Sandy as HR, anonymous. Reverse roles next day. Save lines as imaging.</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Hobby that makes your spouse disappear</h3><p>Hunting, fantasy football, golf, cycling, boating, gardening, gaming, Christmas decorating. How many hours a week before it’s a second relationship?</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sleeping in on the weekend may be good for you <span class="added-date">Added Sep 1 PM</span></h3>
+<p>New research flips the old advice: a moderate weekend lie-in (about 90 minutes extra) is linked to lower high-blood-pressure risk. Overdoing it is still not ideal. Perfect phone: “How late is too late on a Saturday, and do you actually feel better?”</p>
+<p><a class="more-here" href="https://www.theguardian.com/lifeandstyle/2026/aug/30/sleeping-in-weekend-may-be-good-for-you-study" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Who is the best roller skater on the show? <span class="added-date">Added Aug 29</span></h3><p>Pure cast bit. Rank the hosts/producers, then open it to listener votes. Visual, silly, and hard to mess up.</p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Women friends find out they are actually sisters <span class="added-date">Added Aug 29</span></h3><p>Classic “wait… what?” story energy. Two longtime friends discover through DNA or a family story that they are sisters. Phone topic: “What’s the wildest family secret that came out later in life?” Keep it light and local-feeling.</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Poll: does anyone love Bigfoot like Tricia does? <span class="added-date">Added Aug 30</span></h3>
+<p>Tricia’s hill to die on. Board / social poll, then calls from believers vs “it’s a guy in a suit.” Keep it fun, not a lecture.</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>What you don’t really know about my job</strong>
+<span class="added-date">Added Sep 22 PM</span>
+<p>Teachers who never get a real bathroom break, nurses who skip lunch, radio people who talk for a living but can’t leave the mic. Phone: “What is the part of your job that still surprises people?”</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Is a Birthday Text Enough?</strong>
+<span class="added-date">Added Sep 22 PM</span>
+<p>Who still requires an actual phone call on their birthday? Mom? Spouse? Best friend? At what relationship level does a text become insulting? Does a personalized video count more than a call?</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>What technology would you willingly downgrade?</strong>
+<span class="added-date">Added Sep 22 PM</span>
+<p>Car without a touchscreen, dumb TV, flip phone, physical concert ticket, analog thermostat, real key instead of an app. Challenge: live with the old version for 48 hours.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> You never see pretty people at the DMV</h3>
+<p>Do they not have to register cars? Light phone.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Kid phrase that makes you reach for your wallet</h3>
+<p>“Dad, quick question…” “Hypothetically…” “Are you in a good mood?” “So everybody else is going…” Flip: what phrase did YOU use on your parents?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> That’s Where You Lost Me</h3>
+<p>Finish: “I was interested until you said _____.” 90-minute wait, costume party, no seats, shared bathroom.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Open house with zero intention of buying</h3>
+<p>Nosy, expensive house, free cookies, ex’s neighborhood. What surprised you inside?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> What did somebody talk you into trying — were they right?</h3>
+<p>Pickleball, Pilates, sushi, audiobook, cold plunge, Costco, cruise, e-bike. Cast each nominates one thing the other tries before Friday.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Shirley Temple in a can</h3>
+<p>Quick cast or phone: the grown-up version of the kid drink, or the surprise that it still exists. Soft open: “What’s the childhood drink you still order when nobody’s looking?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Pickleball on the decline</h3>
+<p>Court growth in the biggest U.S. cities slowed hard (just 4% last year after double-digit jumps). The boom cooled. Soft open: “Are you still playing, did you quit, or did you never start?” Phone: “What trend did you fully commit to that is already cooling off?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Do you study the restaurant menu before you arrive? <span class="added-date">Added Sep 8</span></h3>
+<p>Restaurant Weeks ended Sep 13. Pair with Golden Girls Kitchen still running.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Struggle meal you still love <span class="added-date">Added Sep 8</span></h3>
+<p>Buttered noodles, beans and rice, breakfast for dinner, canned chili. Then: do you STILL love it?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Halloween Tesla driving through a cemetery <span class="added-date">Added Sep 9 PM</span></h3>
+<p>Visual bit. Silent electric car rolling through headstones at night. Phone: “What’s the creepiest (or funniest) thing you’ve seen a Tesla do?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> $500 AI toothbrush <span class="added-date">Added Sep 8</span></h3>
+<p>Need or toy. Cast first.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Arch on falling in the tunnel <span class="added-date">Added Sep 8</span></h3>
+<p>Ohio State week tape. Pair with Sark/Arch audio.</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Highest-HP Mustang has arrived <span class="added-date">Added Sep 2 PM</span></h3>
+<p>The highest-horsepower Mustang yet is out. Car guys will care; everyone else can weigh in on “what’s the most overpowered thing you’ve ever driven or ridden in?”</p>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Girls and keychains</h3>
+<p>Short bit / observation — girls and keychains. </p>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Facebook Price is Right items</h3>
+<p>Bit idea — guess the Facebook Marketplace asking price, Price Is Right style. </p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Strong Phone Topics</h3>
+<ul>
+<li><strong>“What was the exact moment you knew…?”</strong> Quit the job / relationship over / new best friend / bought the wrong car / vacation was doomed.</li>
+<li><strong>“What task takes less than two minutes that you will avoid for DAYS?”</strong> Dishwasher, Amazon return, dentist, laundry, lightbulb, voicemails. Cast brings photo evidence.</li>
+<li><strong>Could You Survive Before GPS?</strong></li>
+<li><strong>Which job gets almost NO sympathy but is secretly incredibly difficult?</strong> Teachers, home-health, servers, flight attendants, tow-truck, daycare, 911, caregivers. Build Austin’s Underrated Hard Jobs Top 10.</li>
+<li><strong>Facebook Marketplace: Austin Edition</strong> Bizarre listings. Guess the price + how long until it drops.</li>
+<li><strong>What Would You Pay to Experience Again?</strong> Buy a ticket to relive ONE day — which day and how much?</li>
+<li>The Important Moment You Somehow Missed at Your Own Event</li>
+<li><strong>TikTok Ruined Something You Used to Love</strong> — “What did the internet tell you that you wish you could unlearn?”</li>
+<li><strong>You Ordered Better Than Me / Meal Swap</strong></li>
+<li><strong>“What family story did you grow up believing that later turned out to be completely wrong?”</strong></li>
+<li><strong>You Have 60 Seconds to Sell Your Friend</strong> (friend gets 20 seconds to correct)</li>
+<li>What’s in your search history?</li>
+<li>Do you guys want a robot?</li>
+<li><strong>Ask an Actual…</strong> New Yorker who moved here, small-town mayor, flight attendant, HOA president, etc.</li>
+<li><strong>Your Algorithm Knows Too Much</strong> — First four recommended videos + personality diagnosis</li>
+<li><strong>Give Us 60 Seconds</strong> — Expert one-question interviews, hard stop at 60 seconds</li>
+<li>What does your phone wallpaper say about you?</li>
+<li>“What would you have finished by now if your phone didn’t exist?”</li>
+<li>“What is the one ridiculous thing you would buy if money didn’t matter?”</li>
+<li>“What does your spouse collect that is slowly taking over your house?”</li>
+<li><strong>The Reply-All Disaster</strong> — Accidental message to the exact wrong person</li>
+<li>Best Buc-ee’s snack / Best Hill Country town / Best BBQ side / Best road-trip stop within 2 hours</li>
+<li>Something totally normal other people can do that you can’t. Sandy can still eat an entire large pizza.</li>
+<li>Family sayings for the dumbest reasons</li>
+<li>Things kids have done that are infuriating and hilarious</li>
+<li>“Everyone in Austin thinks they’re a DJ, comedian, startup founder, or pickleball pro. Which are you?”</li>
+<li>“What’s the most Austin thing you saw this week?”</li>
+<li>What is your spouse way better at than you are?</li>
+<li>Passive aggressive things you did at work</li>
+<li>Boxing in aggressive drivers</li>
+<li>Is Austin hard to survive?</li>
+<li>Do airlines jack up prices when you keep checking?</li>
+<li>You are stuck in the last TV show you watched — where are you?</li>
+<li>What job could we do at SpaceX?</li>
+<li>Pickle Smoothie</li>
+<li>How far can a Tesla go past 0%?</li>
+<li>Favorite childhood song</li>
+<li>Women friends find out they are actually sisters</li>
+<li>Women need 47 minutes of attention a day</li>
+<li>I can only play one song on my instrument</li>
+<li>Friday Night Lights talk</li>
+<li>Go pee pee</li>
+<li>The first ever ESPN broadcast</li>
+</ul>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> What thieves do with stolen art <span class="added-date">Moved Aug 30</span></h3><p>Curious “where does it go?” phone topic. 
+</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> White sneakers stomping ritual <span class="added-date">Moved Aug 30</span></h3><p>Saw a guy with perfectly white sneakers and wanted to stomp them dirty. Middle school / high school rule: new shoes get stomped; fresh haircut gets a slap on the neck. Caller topic gold.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “The Day We Called In With Our Industry Secrets” </h3><p>Cast / industry phone topic that still has legs.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “Let’s Rank Em” </h3><p>Standing bit format — rank anything.</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Rich Dad Poor Dad author says he’s $1.2 billion in debt <span class="added-date">Added Aug 31</span></h3>
+<p>Robert Kiyosaki’s line: owe the bank $20 million, you have a problem; owe $1 billion, they do. Phone: “Is that genius or a guy selling books?”</p>
+<p><a class="more-here" href="https://finance.yahoo.com/real-estate/articles/robert-kiyosaki-says-1-2b-113500795.html" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> MMA fighter offered $500k to fight a chimp</h3>
+<p>Amateur MMA fighter Cole Johnson claims he’s been offered over $500,000 to fight a chimpanzee (supposedly livestreamed). Experts say the injuries would be catastrophic. Pure phone: “Would you take the money? What’s the dumbest thing you’ve almost done for cash?”</p>
+<p><a class="more-here" href="https://www.iflscience.com/amateur-mma-fighter-claims-he-has-been-offered-over-500000-to-fight-a-chimpanzee-it-would-be-one-hell-of-a-funeral-84577" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Highest / lowest depreciating cars</h3>
+<p>New lists out: Porsche 718 Cayman &amp; 911, Corvette, Tacoma hold value best; EVs and big luxury SUVs lose the most (LEAF, Model S, Range Rover). Phone: “What’s the car you owned that lost value the fastest… or the one that still surprises you on the trade-in?”</p>
+</div></div>
+
+</details>
+</div>
+<div class="panel" id="panel-records">
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Parents drinking at youth sports</h3><p>Fall sports are ramping up. Don’t make it only about alcohol. Ask: “What behavior is completely normal at adult sports but inappropriate at a kid’s game?” Drinking, heckling, coaching from the stands, booing officials, dressing like it’s the Super Bowl, screaming at an 11-year-old. Callers will have stories. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Damnit Pam! Whole Foods bar story</h3><p>Touched on a sensitive subject at the Whole Foods bar by chiming in when it turned out Pam was going to be 20 minutes late for work. Classic “I should have kept my mouth shut” energy. Cast confessions of the times you accidentally made it worse. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> The average American has only eaten five of these</h3><p>Oyster, octopus, blue cheese, catfish, frog, beef tongue, Spam, raw fish, tofu… Rank the list, confess what you’ve never tried, or invent the one food that should be on the “never again” list. Quick phone topic. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sandy can’t do eye drops</h3><p>Personal / cast bit. What simple adult skill do you still fail at? Eye drops, parallel parking, folding fitted sheets, using a can opener the “right” way. Everyone has one. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Home Depot already has Halloween decor out</h3><p>August is barely over. “Is this too early or are you already in full spooky mode?” Perfect Friday observation + caller poll. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> People who hate Monday because of a bad weekend</h3><p>Classic: Aggies after a loss, anyone whose plans fell apart, the “I already need a nap” crowd. Friday setup for Monday pain. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Things that have not changed over the years</h3><p>Shot put, hibachi, soccer scoring, talent in a beauty pageant. “What else is still exactly the same as when you were a kid?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Woman looks out the window with her dog and gossips</h3><p>Pure visual bit. “What’s the most Austin version of neighborhood watch?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Bad News Bears is 50 years old</h3><p>You want to know how much people have changed? Bad News Bears came out 50 years ago. Nostalgia + “what kids’ movie still holds up?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Speed puzzling competitions exist</h3><p>There is a competition for everything. Speed puzzling is a real thing. “What obscure competition would you secretly dominate?” </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Disappointment Diary</h3><p>Cast bit / recurring idea — logging the small daily letdowns for comedy. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Tricia tries to figure out what JB &amp; Sandy are talking about</h3><p>Recurring bit. Tricia catching up mid-conversation. Keep the running joke alive. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> The different types of “Austin Famous”</h3><p>Athlete / coach / restaurateur / homeless / TV weather person / killer / musician / naked cyclist. Rank them or add categories. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Passive-aggressive things you did at work</h3><p>Instagram gold. Cast examples first, then phones. Keep it light and office-safe. </p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Running List</h3>
+<ul>
+<li style="color:var(--muted); font-style:italic;">(List cleared — new record ideas will appear here)</li>
+</ul>
+</div>
+</div>
+
+<details class="archive-bin" style="margin-top:16px;border:2px solid #1B2A4A;border-radius:10px;padding:10px 14px;background:#f3eee4">
+<summary style="cursor:pointer;font-weight:800">Archive — older than 4 days (1)</summary>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Book of records: engaged the most times <span class="added-date">Added Sep 2 PM</span></h3>
+<p>Someone claims the record for most times engaged. Instant phone: “What’s your personal record for almost-getting-married / almost-saying-yes?” Or “How many times is too many times to get engaged?”</p>
+</div>
+
+</details>
+</div>
+<div class="panel" id="panel-personal">
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Tricia thinks Amazon played a trick on her</strong>
+<p>Cast bit. Phone: has a package ever felt like a prank?</p>
+</div>
+
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>What got ruined once you found out how it was made</strong>
+<p>Sandy seeing cheese being made. Hot dogs, chicken nuggets, honey…</p>
+</div>
+
+<details class="archive-bin" style="margin-top:16px;border:2px solid #1B2A4A;border-radius:10px;padding:10px 14px;background:#f3eee4">
+<summary style="cursor:pointer;font-weight:800">Archive — older than 4 days (7)</summary>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Erin’s lucky titty / Hollywood Smothers call</h3>
+<p>JB was calling Smothers all second half… but it was Erin’s lucky titty that did it. Texas erased a 20-point fourth-quarter deficit and stunned #1 Ohio State 24-23. Pure cast gold + phone: “What’s your dumbest (or most effective) game-day superstition?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Erin didn’t throw out JB’s kite after all</h3>
+<p>Cast bit. Soft open: the thing you thought was gone that turns up in the garage / closet / trunk. Phone: “What’s the item you ‘threw away’ that your partner secretly saved?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sandy’s weekend car-cleanup club <span class="added-date">Added Sep 8</span></h3>
+<p>Who is actually in it. Phone: when did you last clean the car?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Longhorn Scottie Scheffler wins Tour Championship <span class="added-date">Added Aug 30</span></h3>
+<p>Texas guy, second FedEx Cup in three years. Overcame a two-shot deficit Sunday at East Lake. Phone: “Is Scottie the most boring superstar in sports, or is that the compliment?” Easy local pride drop.</p>
+<p><a class="more-here" href="https://www.cbssports.com/golf/news/tour-championship-leaderboard-2026-live-updates-fedex-cup-playoffs-round-4/live/" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Updates</h3>
+<ul>
+<li>Sandy’s Father’s Day photo — finally fixed</li>
+<li>Sandy dip / Copenhagen update</li>
+<li>Sandy banana dance party</li>
+<li>Sandy can still eat an entire large pizza</li>
+<li>Sandy can’t do eye drops</li>
+<li>JB had a friend stop by the house — this doesn’t happen anymore</li>
+<li>John at the gym learning names</li>
+</ul>
+</div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> JB now has AC in the garage <span class="added-date">Moved Aug 30</span></h3><p>Cast quality-of-life update. “What was the upgrade that changed your daily life the most?”</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Brace yourself for Stella Lefty. It’s coming <span class="added-date">Moved Aug 30</span></h3><p>Running cast tease / character bit.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Tricia jumps out of a swing like an 8-year-old <span class="added-date">Moved Aug 30</span></h3><p>Cast bit / visual — Tricia going full kid-mode on a swing.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “This is my kind of parenting.” <span class="added-date">Moved Aug 30</span></h3><p>Short reaction / drop note.</p></div>
+<div class="item" style="border-left:3px solid var(--orange);padding-left:10px;"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> “Do you ever make your wife text you her boobs to bring home food or a treat?” </h3><p>Cast / relationship bit. Keep it playful.</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Erin keeps asking me what I want to do for my birthday</h3>
+<p>Cast bit. Soft open: the partner who keeps asking until you invent an answer. Phone: “What’s the birthday plan question that makes you freeze?”</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> JB should maybe quit telling Erin “You’re gonna miss me when I’m dead”</h3>
+<p>Cast bit. Soft open: the line that gets used once too often. Phone: “What’s the household phrase that needs to be retired?”</p>
+</div></div>
+
+</details>
+</div>
+<div class="panel" id="panel-scams">
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Clyde’s brother reunion?</h3><p>Someone has the number for the people who adopted Clyde’s brother. Should we organize a reunion? Soft, feel-good phone / cast bit. </p></div>
+<h2>Scams &amp; Warnings</h2>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Watch List</h3>
+<ul>
+<li>Credit card fraud alert — lots of auto-debits to re-do</li>
+<li>Possibly now baldness or making fun of it could be considered sexual harassment</li>
+</ul>
+</div>
+</div>
+<div class="panel" id="panel-music">
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Drops &amp; Suggestions</h3>
+<ul>
+<li>Favorite childhood song: <strong>Devil Went Down to Georgia</strong> — great caller prompt + possible drop</li>
+<li>Custom jingle guy reel — potential station jingle or parody</li>
+<li>Harrison Ford + Cookie Monster “num numing” the Raiders theme</li>
+</ul>
+<div class="suggestion">
+        Strong packaging idea: short music bed under the best “exact moment you knew” or Book of Records calls.
+      </div>
+</div>
+</div>
+
+<details class="archive-bin" style="margin-top:16px;border:2px solid #1B2A4A;border-radius:10px;padding:10px 14px;background:#f3eee4">
+<summary style="cursor:pointer;font-weight:800">Archive — older than 4 days (6)</summary>
+<div class="item">
+<button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button>
+<strong>Ella Langley still #1</strong>
+<span class="added">Archived Sep 29 — older than 4 days</span>
+<p>New clip / comment on the record. Phone: the country song you still can’t believe is that big.</p>
+<p><a class="more-here" href="#">More here →</a></p>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Three best songs about Texas</h3><p>Social first, then on air. Must have Texas or a Texas city in the title.</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Did Choosin’ Texas rip off Rascal Flatts? <span class="added-date">Added Sep 9</span></h3>
+<p>New Cars and Freedom comparison. Play both hooks. Phone: homage or steal?</p>
+</div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Luke Combs My Kinda Saturday Night Tour returns in 2027 <span class="added-date">Added Sep 2</span></h3>
+<p>Tour announcement energy. “Which current country tour are you actually marking on the calendar?” Soft phone + playlist talk.</p>
+</div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Custom jingle guy <span class="added-date">Added Aug 29</span></h3><p>There is a guy who makes custom jingles for everything. “What would your personal entrance song / life jingle be?” Fast and funny.</p></div>
+
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sydney Sweeney went wing walking <span class="added-date">Added Aug 29</span></h3>
+<p>Euphoria star strapped to a biplane over Kent, loop-the-loops, told Tom Cruise to watch out. Partner Scooter Braun was on the second plane. Phone: “What’s the craziest thing you’ve done for a date or a story?” Visual clip gold if you can get the video.</p>
+<p><a class="more-here" href="https://www.bbc.co.uk/news/articles/cj4jxry5nyyo" rel="noopener" target="_blank">More here →</a></p>
+</div>
+
+</details>
+</div>
+<div class="panel" id="panel-kvet">
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Ella Langley in the record books</h3><p>Music / country note that fits the show’s energy. </p></div>
+
+<div class="item"><h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Favorite childhood song — Devil Went Down to Georgia</h3><p>Host shares, then “what song still lives rent-free from when you were 10?” </p></div>
+</div>
+
+</div>
+<div class="panel" id="panel-sept11">
+<h2>Sept 11</h2>
+<p class="note">Tribute only. Audio lives in Edited Audio → Sept 11 / Tribute.</p>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sept 11 news report as it happened</h3>
+<p>Live-style report at the base of the towers. <a href="audio/Sept-11-News-Report-As-It-Happened.mp3">Listen</a></p>
+</div>
+<div class="item">
+<h3>Lone Star NJROTC — 9/11 Heroes Run</h3>
+<p>Local cadets volunteer Sep 13. Story page: <a href="stories/njrotc-cadets.html">open</a></p>
+</div>
+</div>
+<div class="panel" id="panel-m2w">
+<h2>Minute To Win It</h2>
+<p class="note"><strong>New packet: Oct 5–9.</strong> Rotated Sat Oct 3, the day after the Sep 28–Oct 2 Friday end. Questions were not rewritten. Posters are answers 7 and 8 — tap to download. Full week live on the this-week page.</p>
+<p><a href="m2w/this-week.html">Open this week full page</a> · <a href="m2w/index.html">All weeks through Nov 13</a></p>
+<div class="m2w-day">
+<h3>This week — Oct 5–9</h3>
+<p class="note">Questions live on the this-week page so we do not rewrite them mid-packet. Rotated Sat Oct 3.</p>
+<p><a href="m2w/this-week.html">Open this week (clickable Q&amp;A + posters)</a> · <a href="m2w/index.html">All weeks through Nov 13</a></p>
+</div>
+</div><!-- /panel-m2w -->
+<div class="panel" id="panel-grok"><h2>Grok Thinks You Will Dig This</h2>
+<p class="note">Picked for the show: local Austin/Central Texas, birthdays, light entertainment. Refreshed Sun Oct 4, 7 AM. No politics. More here → opens the full story.</p>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>ACL Sunday: Twenty One Pilots vs. The xx</strong><p>Weekend One closes today at Zilker. Twenty One Pilots headline the American Express stage at 8:30. The xx headline T-Mobile at the same time. Also on the day: Parcels, Blood Orange, SOFI TUKKER, The War on Drugs, Geese, Stella Lefty. Soft: which closer, and who is already done with mud. <a class="more-here" href="https://www.jambase.com/article/austin-city-limits-festival-2026-livestream-schedule" rel="noopener" target="_blank">More here →</a></p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Couch stream starts at 3:35</strong><p>Hulu and Disney+ carry selected Sunday sets from 3:35 p.m. CT. Soft: one set in person, the rest on the couch. <a class="more-here" href="https://www.jambase.com/article/austin-city-limits-festival-2026-livestream-schedule" rel="noopener" target="_blank">More here →</a></p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>ACL Nights: Suki Waterhouse, Ryan Beatty</strong><p>Roof option if Zilker is enough. Ryan Beatty at Scoot Inn at 5. Suki Waterhouse at Emo’s at 9 (Loveland Tour). Rochelle Jordan at Antone’s at 10. Soft: park closer or a room with a roof. <a class="more-here" href="https://www.ticketmaster.com/discover/austin?date=thismonth" rel="noopener" target="_blank">More here →</a></p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Sunday weather: 83 and a morning shower chance</strong><p>NWS: 40% chance of showers before 1 p.m., slight storm chance 1–4, high near 83. North-northeast around 10, gusts to 25. Tonight clears, low around 72. Monday sunny, high near 86. Soft: the first weekend that feels like October, if the park cooperates. <a class="more-here" href="https://forecast.weather.gov/MapClick.php?textField1=30.27&textField2=-97.74" rel="noopener" target="_blank">More here →</a></p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Birthdays: Alicia Silverstone is 50</strong><p>Susan Sarandon turns 80. Christoph Waltz turns 70. Alicia Silverstone turns 50 (Clueless, still the reference). Dakota Johnson turns 37. Also M. Ward (53) and Leigh-Anne Pinnock of Little Mix (35). Soft open: as if. <a class="more-here" href="https://www.upi.com/Entertainment_News/2026/10/04/Famous-birthdays-for-Oct-4-Susan-Sarandon-Alicia-Silverstone/9731791082017/" rel="noopener" target="_blank">More here →</a></p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Tomorrow: Kate Winslet, Jesse Eisenberg</strong><p>Monday birthdays if you need a tomorrow hit: Kate Winslet 51, Jesse Eisenberg 43, Neil deGrasse Tyson 68, Brian Johnson of AC/DC 79. Soft: who you share a day with.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Texas volleyball vs Alabama, 2 p.m.</strong><p>Gregory Gym, 2 p.m. If the park is a no. Soft: the indoor plan that does not involve mud. Monster Truck Wars are also at the Expo Center today if someone needs louder.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Trail of Lights tickets are already on sale</strong><p>62nd H-E-B Trail of Lights is Dec 10–23 at Zilker. Free nights Dec 10–11 and 13–17. Paid nights $8, kids under 12 free. Soft: buying December lights in October — organized, or unhinged? <a class="more-here" href="https://austin.culturemap.com/news/entertainment/trail-of-lights-2026-tickets/" rel="noopener" target="_blank">More here →</a></p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Longhorns are on a bye</strong><p>Texas is off this weekend after the 20–17 win at Tennessee. Next is Red River: Texas vs Oklahoma, Saturday Oct 10, 2:30 p.m. CT, Cotton Bowl, ABC. Soft: what do you do with a bye Sunday if you are not at ACL?</p></div>
+</div>
+<div class="panel" id="panel-farmed"><h2>Farmed From Others</h2>
+<p class="note">10 fresh Sunday cards. Any-day shows only. Joe is Monday, Mojo is Wednesday, Hey Morton is Thursday. No Bobby Bones, no Jubal. Audio on the card when we have a file; otherwise a recommend.</p>
+<div class="farmed-note">Sunday Oct 4, late morning · Sheets poll, then who is still going back to Zilker.</div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Smiley (Indy) — The Sunday plan that is still unlocked</strong><p><strong>Where it came from:</strong> Plan-changed open. <strong>How they ran it:</strong> Host states the plan, then the thing that undid it. <strong>JB & Sandy Austin version:</strong> “We’re doing ACL Sunday.” Then the mud photos, then the couch. Who is still going, and who already changed the group chat? Audio: recommend a plan-change sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Smiley (Indy) — The thing you packed and will not use</strong><p><strong>Where it came from:</strong> Just-in-case bit. <strong>How they ran it:</strong> Host names the item that never left the bag. <strong>JB & Sandy Austin version:</strong> Poncho, backup socks, the printed schedule. What did you bring to Zilker that is still in the car? Audio: recommend a packing sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Daly Migs (Seattle) — Low-tech wins the park</strong><p><strong>Where it came from:</strong> Old-school vs. app. <strong>How they ran it:</strong> Host pits the paper against the phone. <strong>JB & Sandy Austin version:</strong> The ACL app dies and the friend with the printed schedule becomes the leader. Who still trusts a paper map? Audio: recommend a wrong-turn sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Daly Migs (Seattle) — Pretend the shoes are fine</strong><p><strong>Where it came from:</strong> Pretend-not-notice. <strong>How they ran it:</strong> Host names the thing everyone can see and nobody mentions. <strong>JB & Sandy Austin version:</strong> “These are waterproof.” They were not. How long do you pretend before the weekend is over? Audio: recommend a squish sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Valentine — The compliment that was actually a warning</strong><p><strong>Where it came from:</strong> Kindness phone. <strong>How they ran it:</strong> Host reads a nice line that meant the opposite. <strong>JB & Sandy Austin version:</strong> “You look ready for the park.” Translation: those shoes will not survive. What compliment was a warning? Audio: recommend a too-sweet sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>On Air with Ryan Seacrest — Tiny win, then the song</strong><p><strong>Where it came from:</strong> Small-win closer. <strong>How they ran it:</strong> One real win, then a song that matches the mood. <strong>JB & Sandy Austin version:</strong> Found a dry patch of grass. Made it to noon volleyball instead of the mud. What is the tiny Sunday win? Audio: recommend a tiny-win sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Miguel & Holly (Tampa Mix) — The meal that got ruined</strong><p><strong>Where it came from:</strong> Food-order phone. <strong>How they ran it:</strong> Host names the order, then the thing that wrecked it. <strong>JB & Sandy Austin version:</strong> Breakfast taco in the car, then the group chat says “we’re going.” Who ate the festival meal in the driveway? Audio: recommend a food sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Dwyer & Michaels — The house rule that failed</strong><p><strong>Where it came from:</strong> House-rule bit. <strong>How they ran it:</strong> Host states the rule, then the Sunday that broke it. <strong>JB & Sandy Austin version:</strong> “One festival day.” It became two, and the laundry is still in the basket. What house rule did the weekend kill? Audio: recommend a rule-break sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Heidi & Frank (KLOS) — One more time</strong><p><strong>Where it came from:</strong> One-more-time phone. <strong>How they ran it:</strong> Host asks who is going back for the closer. <strong>JB & Sandy Austin version:</strong> Twenty One Pilots or The xx at 8:30. Who is actually going back, and who is watching the 3:35 stream in socks? Audio: recommend a one-more-set sting; otherwise pure talk.</p></div>
+<div class="item"><button class="copy-btn" onclick="copyItem(this)" title="Copy">📋</button><strong>Closer — Most Austin thing</strong><p><strong>Where it came from:</strong> City-pitch closer. <strong>How they ran it:</strong> Host takes the most Austin detail of the day. <strong>JB & Sandy Austin version:</strong> Skipping the headline clash to sit in Gregory Gym at noon, then arguing about sheet-washing on the way home. What is the most Austin thing you did this weekend? Audio: recommend a city sting; otherwise pure talk.</p></div>
+
+<div class="panel" id="panel-lastlaugh">
+<h2>Last Laugh</h2>
+<p class="note" style="margin-bottom:14px;">
+      Comedy drops. Files live in Dropbox (and on the H: drive). The site does not store the 616 MB.
+      Open the folder, then grab the file that matches the name.
+    </p>
+<p style="text-align:center;margin-bottom:18px;">
+<a href="https://www.dropbox.com/scl/fo/4dhmg90be9u8ekrxwbhks/AAasbuyWk4i1fQhqO5ZXJKk?rlkey=84v4y92si3hypbu9jd3f5ouix&amp;dl=0" style="display:inline-block;background:linear-gradient(135deg,#1e4f8f,#3b82f6);color:#fff;font-weight:800;
+                padding:12px 22px;border-radius:14px;text-decoration:none;" target="_blank">Open Last Laugh folder</a>
+</p>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sid Davis — Old Rock and Rollers <span class="added-date">Aug 28</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Sid Davis Old Rock and Rollers.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Steven Wright — Breakfast Anytime <span class="added-date">Aug 27</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Steven Wright Breakfast Anytime.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Wife is a Morning Person <span class="added-date">Aug 25</span></h3>
+<p class="note">File on H: / Dropbox: Final last laugh Wife is a Morning Person.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Foxworthy — Flip Flops <span class="added-date">Aug 24</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Foxworthy Flip Flops.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Derrick Stroup — 90s Cowboys <span class="added-date">Aug 21</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Derrick Stroup 90s Cowboys.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Kathleen Madigan — Airport Drinking <span class="added-date">Aug 20</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Kathleen Madigan Airport Drinking.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Wetting The Bed <span class="added-date">Aug 19</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Wetting The Bed.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Lachlan Patterson — Women is so smart <span class="added-date">Aug 18</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Lachland Patterson-Women is so smart.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Brent Moran <span class="added-date">Aug 14</span></h3>
+<p class="note">File on H: / Dropbox: Final last Laugh Brent Moran.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Teachers / Jail <span class="added-date">Aug 13</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Teachers-Jail.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Jim Gaffigan — Indoor Pools <span class="added-date">Aug 12</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Jim Gaffigan Indoor Pools.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Dusty Slay — No Better Shirts <span class="added-date">Aug 11</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Dusty Slay No Better Shirts.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Bill Maher — UFOs <span class="added-date">Aug 10</span></h3>
+<p class="note">File on H: / Dropbox: Final last Laugh Bill Mahr UFOs.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Nate Bargatze — Fight an orangutan <span class="added-date">Aug 7</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Nate Bergatze Fight an orangatang.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Karen Morgan — Dorm Shopping <span class="added-date">Aug 6</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Karen Morgan Dorm Shopping.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Zoltan Kaszas — Back To School <span class="added-date">Aug 5</span></h3>
+<p class="note">File on H: / Dropbox: FInal Last Laugh Zoltan Kaszas Back To School.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Jason McKinney — No AC <span class="added-date">Aug 5</span></h3>
+<p class="note">File on H: / Dropbox: Final last laugh Jason McKinney No AC.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Jeff Allen — Sunscreen <span class="added-date">Aug 4</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Jeff Allan Sunscreen.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Jim Gaffigan — Sunburn <span class="added-date">Aug 3</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Gaffigan Sunburn.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Shane Gillis — Al Qaeda <span class="added-date">July 31</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Shane Gillis Al Quida.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Jo Koy — Street Names in Hawaii <span class="added-date">July 30</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Joy Koy Street Names in Hawaii.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Louie Anderson — Caesar Salad <span class="added-date">July 29</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Louie Anderson Ceasar Salad.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Erica Rhodes — Avocado <span class="added-date">July 28</span></h3>
+<p class="note">File on H: / Dropbox: Final last laugh Erica Rhodes Avacado.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Wave Williamson — Flight Concerns <span class="added-date">July 24</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Wave Williamson Flight Concerns.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Ron White — Hurricane Evacuations <span class="added-date">July 23</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Ron White Hurrican Evacuations.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Jim Gaffigan — Big Families <span class="added-date">July 22</span></h3>
+<p class="note">File on H: / Dropbox: Final last laugh Jim Gaffigan Big Families.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Sharks <span class="added-date">July 21</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Sharks.aac</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> College Wrestling <span class="added-date">July 21</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh College Wrestling.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Xplosive D <span class="added-date">July 20</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Xplosive D.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Dusty Slay — Rain <span class="added-date">July 17</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Dusty Slay Rain.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Seinfeld — Kids Say Wait Up <span class="added-date">July 14</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Seinfeld Kids Say Wait Up.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Larry the Cable Guy <span class="added-date">July 10</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Larry Cable Guy July 10 2026.wav</p>
+</div>
+<div class="item">
+<h3><span class="copy-icon" onclick="copyItem(this)" title="Copy">📋</span> Nate B — Boating <span class="added-date">July 3</span></h3>
+<p class="note">File on H: / Dropbox: Final Last Laugh Nate B Boating.wav</p>
+</div>
+</div>
+<div style="text-align:center; margin: 28px 0 8px;">
+<img alt="Sausage race" class="sausage-fun lg" src="sausage3.jpg"/>
+<div class="sausage-caption">How about ode to sausage?</div>
+</div>
+<footer>
+    JB &amp; Sandy • 98.1 KVET<br/>
+    Click any tab • No login • Copy icons next to sections
+  </footer>
+<script>
+
+    function showNewBucket(which) {
+      document.querySelectorAll('.new-bucket').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.new-subtab').forEach(el => el.classList.remove('active'));
+      const bucket = document.getElementById('new-' + which);
+      if (bucket) bucket.classList.add('active');
+      const btn = document.querySelector('.new-subtab[onclick*="' + which + '"]');
+      if (btn) btn.classList.add('active');
+    }
+    
+function toggleMore(){
+  var w=document.getElementById('more-wrap');
+  if(w) w.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  var w=document.getElementById('more-wrap');
+  if(w && !w.contains(e.target)) w.classList.remove('open');
+});
+
+function showFarmedBucket(which){
+  var now=document.getElementById('farmed-now');
+  var arch=document.getElementById('farmed-archive');
+  if(now) now.hidden = (which!=='now');
+  if(arch) arch.hidden = (which!=='archive');
+  document.querySelectorAll('#farmed-subtabs .new-subtab').forEach(function(b,i){
+    b.classList.toggle('active', (which==='now' && i===0) || (which==='archive' && i===1));
+  });
+}
+function showTab(id) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.navbtn').forEach(b => b.classList.remove('active'));
+      var more=document.getElementById('more-wrap'); if(more) more.classList.remove('open');
+      const panel = document.getElementById('panel-' + id);
+      if (panel) panel.classList.add('active');
+      const btn = document.querySelector('.pill[data-tab="' + id + '"]');
+      if (btn) btn.classList.add('active');
+      if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    function filterPrep(q) {
+      q = (q || '').toLowerCase();
+      document.querySelectorAll('.item, .audio-card, .farm-card, .hk-pad').forEach(el => {
+        const hit = !q || el.innerText.toLowerCase().includes(q);
+        el.classList.toggle('hide-search', !hit);
+      });
+    }
+    function copyItem(el) {
+      const item = el.closest('.item');
+      if (!item) return;
+      const text = item.innerText.replace('📋', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const status = document.getElementById('copy-status');
+        status.style.display = 'block';
+        status.textContent = 'Section copied!';
+        setTimeout(() => { status.style.display = 'none'; }, 1800);
+      });
+    }
+    function copyAllNotes() {
+      let all = '';
+      document.querySelectorAll('.panel').forEach(panel => {
+        all += panel.innerText.replace(/📋/g, '') + '\n\n';
+      });
+      navigator.clipboard.writeText(all.trim()).then(() => {
+        const status = document.getElementById('copy-status');
+        status.style.display = 'block';
+        status.textContent = 'All notes copied!';
+        setTimeout(() => { status.style.display = 'none'; }, 2000);
+      });
+    }
+    function copyLink(url, btn) {
+      navigator.clipboard.writeText(url).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    }
+  </script>
+<script>
+
+function showLocalBucket(id){
+  var now = document.getElementById('local-now');
+  var arch = document.getElementById('local-archive');
+  document.querySelectorAll('#local-subtabs .new-subtab').forEach(function(b){
+    var oc = b.getAttribute('onclick') || '';
+    b.classList.toggle('active', oc.indexOf("'" + id + "'") >= 0);
+  });
+  if (now) now.hidden = (id !== 'now');
+  if (arch) arch.hidden = (id !== 'archive');
+}
+
+
+(function(){
+  var overlay = document.getElementById('emergency-overlay');
+  var closeBtn = document.getElementById('emergency-close');
+  if (!overlay) return;
+  var today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Chicago' });
+  var seen = null;
+  try { seen = localStorage.getItem('jb-sandy-emergency-seen'); } catch (e) {}
+  if (seen !== today) {
+    /* overlay retired — TODAY page instead */
+    overlay.setAttribute('aria-hidden', 'false');
+    setTimeout(function(){ overlay.classList.add('is-dim'); }, 10000);
+  }
+  function dismiss(){
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+    try { localStorage.setItem('jb-sandy-emergency-seen', today); } catch (e) {}
+  }
+  if (closeBtn) closeBtn.addEventListener('click', dismiss);
+  function jump(tab){
+    dismiss();
+    if (typeof showTab === 'function') showTab(tab);
+    var btn = document.querySelector('.pill[data-tab="'+tab+'"]');
+    if (btn) btn.scrollIntoView({block:'nearest'});
+  }
+  document.querySelectorAll('#emergency-overlay a[data-jump], #panel-emergency a[data-jump]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
+      jump(a.getAttribute('data-jump'));
+    });
+  });
+})();
+document.addEventListener('click', function(ev){
+  var a = ev.target.closest && ev.target.closest('a[data-jump]');
+  if (!a) return;
+  ev.preventDefault();
+  var tab = a.getAttribute('data-jump');
+  if (typeof showTab === 'function') showTab(tab);
+  var panel = document.getElementById('panel-' + tab);
+  if (panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+function showAudioBucket(id){
+  var front = document.getElementById('edited-audio-front');
+  var grid = document.getElementById('edited-audio-grid');
+  document.querySelectorAll('#audio-subtabs .new-subtab').forEach(function(b){
+    var oc = b.getAttribute('onclick') || '';
+    b.classList.toggle('active', oc.indexOf("'" + id + "'") >= 0);
+  });
+  if (id === 'front'){
+    if (front) front.hidden = false;
+    if (grid) grid.hidden = true;
+    return;
+  }
+  if (front) front.hidden = true;
+  if (grid) grid.hidden = false;
+  document.querySelectorAll('#edited-audio-grid .audio-card').forEach(function(card){
+    var buckets = (card.getAttribute('data-buckets') || '').split(/\s+/);
+    card.classList.toggle('hide-bucket', buckets.indexOf(id) < 0);
+  });
+}
+function addClipToHotkeys(name, src){
+  var status = document.getElementById('audio-hk-status');
+  if (window.JBSandyHotkeys && window.JBSandyHotkeys.addClip){
+    var msg = window.JBSandyHotkeys.addClip(name, src);
+    if (status) status.textContent = msg;
+    return;
+  }
+  try {
+    var key = 'jb-sandy-hotkeys-board';
+    var raw = localStorage.getItem(key);
+    var board = raw ? JSON.parse(raw) : null;
+    if (!board || !board.folders || !board.folders[0]) {
+      if (status) status.textContent = 'Open the Hotkeys tab once so the board loads, then try again.';
+      return;
+    }
+    var page = board.folders[0].pages[0];
+    page.pads = page.pads || [];
+    var slots = (page.rows||5)*(page.cols||5);
+    var idx = page.pads.findIndex(function(p){ return !p || !p.src; });
+    if (idx < 0){
+      if (page.pads.length < slots) { idx = page.pads.length; page.pads.push({name:name, src:src}); }
+    } else {
+      page.pads[idx] = {name:name, src:src};
+    }
+    if (idx < 0){
+      if (status) status.textContent = 'Hotkeys board is full. Clear a pad first.';
+      return;
+    }
+    board.touched = true;
+    localStorage.setItem(key, JSON.stringify(board));
+    if (status) status.textContent = 'Parked “'+name+'” on Hotkeys pad '+(idx+1)+'. Open Hotkeys to fire it.';
+  } catch (e) {
+    if (status) status.textContent = 'Could not add to Hotkeys.';
+  }
+}
+</script>
+<script src="hotkeys.js"></script>
+<script id="standouts-pipeline" type="application/json">
+{"clock_started":"2026-09-06T12:03:00-05:00","items":[
+ {"id":"njrotc-cadets","stage":"today","added":"2026-09-06T12:03:00-05:00","headline":"Lone Star NJROTC Cadets Set Sights on Dual September Physical Challenges","page":"stories/njrotc-cadets.html"},
+ {"id":"bin-buddies","stage":"today","added":"2026-09-06T12:03:00-05:00","headline":"Nine-Year-Old Austin 'Bin Buddies' Turn Chore Into Local Business Success","page":"stories/bin-buddies.html"}
+]}
+</script>
+</body>
+</html>

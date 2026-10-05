@@ -1,0 +1,22 @@
+# Audio moved from edited-audio/ (and duplicate copies in the repo root) to audio/ in the Oct 2026 redesign.
+/edited-audio/archive/*  /audio/archive/:splat  301
+/edited-audio/*          /audio/:splat          301
+/Dolly%209-5%20Clip.mp3  /audio/archive/Dolly%209-5%20Clip.mp3  301
+/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3  /audio/archive/Dolly%20Ender%20Coat%20of%20Many%20Colors.mp3  301
+/Dolly%20Ender%20Jolene.mp3  /audio/archive/Dolly%20Ender%20Jolene.mp3  301
+/Dolly%20Imagination%20Library.mp3  /audio/archive/Dolly%20Imagination%20Library.mp3  301
+/Dolly%20John%20Rich%20American%20Original.mp3  /audio/archive/Dolly%20John%20Rich%20American%20Original.mp3  301
+/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3  /audio/archive/Dolly%20Live%20TV%20I%20Will%20Always%20Love%20You.mp3  301
+/Dolly%20On%20Her%20Positive%20Attitude.mp3  /audio/archive/Dolly%20On%20Her%20Positive%20Attitude.mp3  301
+/Dolly%20On%20With%20Johnny%20Caron.mp3  /audio/archive/Dolly%20On%20With%20Johnny%20Caron.mp3  301
+/Dolly%20Recent%20Hospital%20Visit.mp3  /audio/archive/Dolly%20Recent%20Hospital%20Visit.mp3  301
+/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3  /audio/archive/Dolly%20on%209-5%20What%20it%20means%20to%20her.mp3  301
+/Dolly%20on%20Her%20Rock%20Star%20Album.mp3  /audio/archive/Dolly%20on%20Her%20Rock%20Star%20Album.mp3  301
+/Dolly%20on%20Taylors%20song%20writing.mp3  /audio/archive/Dolly%20on%20Taylors%20song%20writing.mp3  301
+/Dolly_Jolene_Full.mp3  /audio/archive/Dolly_Jolene_Full.mp3  301
+/Dolly_Loved_Show_Business.mp3  /audio/archive/Dolly_Loved_Show_Business.mp3  301
+/Dolly_My%20Life%20Meant%20Something.mp3  /audio/archive/Dolly_My%20Life%20Meant%20Something.mp3  301
+/Full%20Dolly%20Tribute%20Piece.mp3  /audio/archive/Full%20Dolly%20Tribute%20Piece.mp3  301
+/band%20on%20Lake.mp3  /audio/band%20on%20Lake.mp3  301
+/iHeart%20Tribute%20Long%20Form.mp3  /audio/archive/iHeart%20Tribute%20Long%20Form.mp3  301
+/showprep_monologue_bits.mp3  /audio/showprep_monologue_bits.mp3  301
