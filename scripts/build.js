@@ -167,7 +167,10 @@ const groups = [["standout", "Local standouts"], ["quick", "Quick hitters"], ["w
 let todayHtml = `<section id="today">
 <p class="stamp">${esc(STAMP)}</p>
 <h1>Today’s stories</h1>`;
-if (st.unchanged_since_last_check) {
+const newTodayCount = storyCurrent.filter((s) => s.first_seen === TODAY).length;
+if (newTodayCount && st.last_changed === TODAY) {
+  todayHtml += `<p class="note">${newTodayCount} new ${newTodayCount === 1 ? "story" : "stories"} from the doc today.</p>`;
+} else if (st.unchanged_since_last_check) {
   todayHtml += `<p class="note">No new stories today. The stories doc hasn’t changed since ${esc(fmt(st.last_changed, true))}.</p>`;
 } else if (st.new_today) {
   todayHtml += `<p class="note">${st.new_today} new ${st.new_today === 1 ? "story" : "stories"} from the doc today.</p>`;
