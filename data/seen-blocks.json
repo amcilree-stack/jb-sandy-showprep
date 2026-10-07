@@ -82,7 +82,7 @@
   "doc_hash": "811260ed6667b43a",
   "last_changed": "2026-10-07",
   "last_checked": "2026-10-07",
-  "unchanged_since_last_check": false,
+  "unchanged_since_last_check": true,
   "headlines": [
    "407e21253882",
    "c110401c1c46",
@@ -107,6 +107,6 @@
    "c5ce96b1ad74",
    "a66b8025d97e"
   ],
-  "new_today": 6
+  "new_today": 0
  }
 }
