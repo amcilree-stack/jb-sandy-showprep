@@ -1,2 +1,102 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>JB &amp; Sandy · Air board</title><link rel="stylesheet" href="/assets/site.css"><style>body{background:linear-gradient(165deg,#123a73 0%,#1d5aa8 42%,#2f7ed6 100%);color:#f7f4ee}header.top{background:rgba(10,28,58,.88);border-bottom:1px solid rgba(255,255,255,.28)}.brand,.brand span{color:#fff}nav.main a{color:#d7e6ff}nav.main{flex-wrap:wrap;gap:12px}main.wrap{background:rgba(255,252,247,.96);color:#1c2430;border:1px solid rgba(255,255,255,.7);border-radius:18px;margin:16px auto 28px;padding:18px 18px 24px}.hour{margin-top:22px;background:#fff;border:1px solid #c9d7ea;border-radius:14px;padding:8px 12px 10px}.slot{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;background:transparent;border:0;border-top:1px solid #e1e8f2;color:inherit;font:inherit;padding:10px 0;cursor:pointer}.slot .time{font-weight:700;min-width:46px;color:#1d4f91}.slot .tag{margin-left:auto;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#c4552a}.panel{background:#f4f8fd;border:1px solid #b9cbe2;border-radius:12px;padding:12px 14px;margin:8px 0 16px}.src{color:#1c2430;font-size:.95rem;font-weight:700;font-style:italic}.actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.actions button,.kicker button,.actions a.btn{font:inherit;font-weight:700;border:1px solid #1d4f91;border-radius:10px;padding:8px 10px;background:#1d4f91;color:#fff;text-decoration:none}.actions button.ghost,.kicker button.ghost,.actions a.ghost{background:#fff;color:#1d4f91}.long{background:#fff;border:1px solid #d5e0ee;border-radius:10px;padding:8px 10px;margin-top:8px}.kicker{padding:10px 0;border-top:1px solid #d5e0ee}</style></head><body><header class="top"><div class="wrap"><a class="brand" href="/">JB &amp; Sandy <span>· Air board</span></a><nav class="main"><a href="/prep/#today">Today</a><a href="/prep/#ideas">Ideas</a><a href="/prep/#audio">Audio</a><a href="/archive/">Archive</a><a href="/m2w/this-week">Minute to Win It</a><a href="/last-laugh/">Last Laugh</a></nav></div></header><main class="wrap"><p class="stamp">Thursday, Oct 8</p><h1>6:00–9:00</h1><p class="note">Source and author are bold and italic on the opened card.</p><div id="board"></div></main><script src="/board.js"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>JB &amp; Sandy · Air board</title>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+html, body { background: linear-gradient(165deg, #123a73 0%, #1d5aa8 42%, #2f7ed6 100%) !important; color: #f7f4ee; min-height: 100%; }
+header.top { background: rgba(10, 28, 58, .88); border-bottom: 1px solid rgba(255,255,255,.28); }
+.brand, .brand span, nav.main a { color: #fff; }
+nav.main { display: flex; flex-wrap: wrap; gap: 12px; }
+main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid rgba(255,255,255,.7); border-radius: 18px; margin: 16px auto 28px; padding: 18px 18px 24px; max-width: 880px; }
+.hour { margin-top: 22px; background: #fff; border: 1px solid #c9d7ea; border-radius: 14px; padding: 8px 12px 10px; }
+.slot { display: flex; gap: 10px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; border-top: 1px solid #e1e8f2; color: inherit; font: inherit; padding: 10px 0; cursor: pointer; }
+.slot .time { font-weight: 700; min-width: 46px; color: #1d4f91; }
+.slot .tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; }
+.panel { background: #f4f8fd; border: 1px solid #b9cbe2; border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px; }
+.src { color: #1c2430; font-size: .95rem; font-weight: 700; font-style: italic; }
+.actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.actions button, .kicker button, .actions a.btn { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; text-decoration: none; cursor: pointer; }
+.actions button.ghost, .kicker button.ghost, .actions a.ghost { background: #fff; color: #1d4f91; }
+.long { background: #fff; border: 1px solid #d5e0ee; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
+.kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="/">JB &amp; Sandy <span>· Air board</span></a>
+<nav class="main">
+<a href="/prep/#today">Today</a>
+<a href="/prep/#ideas">Ideas</a>
+<a href="/prep/#audio">Audio</a>
+<a href="/archive/">Archive</a>
+<a href="/m2w/this-week">Minute to Win It</a>
+<a href="/last-laugh/">Last Laugh</a>
+</nav>
+</div></header>
+<main class="wrap">
+<p class="stamp">Thursday, Oct 8</p>
+<h1>6:00–9:00</h1>
+<p class="note">The board is back. Today, Ideas, Audio, Archive, Minute to Win It, and Last Laugh are still behind the buttons.</p>
+<div id="board"></div>
+</main>
+<script>
+const storyPool = [
+  { title: "ACL Weekend 2 starts Friday", read: "Zilker, Friday through Sunday. Weekend 1 already happened.", phone: "Who is going, and who is sitting this weekend out?", source: "Austin Monthly", author: "Austin Monthly", url: "https://www.austinmonthly.com/7-fun-things-to-do-in-austin-this-weekend-oct-8-11/", long: "Austin Monthly published this Oct. 6 as its weekend list for Oct. 8 to 11. The lede is ACL Weekend 2 at Zilker. The rest of the list is the Fear Fair maze, Texas-OU watch parties, Moe's Tavern, Gruene Food and Wine Fest, Twisted Carnival, and the Golden Girls Kitchen." },
+  { title: "Gruene Food and Wine Fest starts today", read: "40th year, Oct. 8 to 11. Robert Earl Keen and Shane Smith and the Saints.", phone: "Who drives to Gruene?", source: "Austin Monthly", author: "Austin Monthly", url: "https://www.austinmonthly.com/7-fun-things-to-do-in-austin-this-weekend-oct-8-11/", long: "Item 5 in the Austin Monthly weekend list. Four days in Gruene. Named acts are Robert Earl Keen and Shane Smith and the Saints. Tastings and Tunes is free Saturday." },
+  { title: "Boo at the Zoo is back Friday and Saturday nights", read: "Austin Zoo, through Oct. 24. Kids in costume, after dark.", phone: "Who already has a costume?", source: "Visit Austin", author: "Visit Austin", url: "https://www.austintexas.org/events/october-and-november/", long: "Visit Austin lists Boo at the Zoo Oct. 2 through Oct. 24, Friday and Saturday nights. Costume, train rides, music, haunted house." },
+  { title: "Moe's Tavern is back on East 11th", read: "Nickel City Simpsons pop-up through Oct. 31 at 1133 E. 11th.", phone: "Who is going for the bit?", source: "Austin Monthly", author: "Austin Monthly", url: "https://www.austinmonthly.com/7-fun-things-to-do-in-austin-this-weekend-oct-8-11/", long: "Austin Monthly lists Moe's Tavern at 1133 E. 11th through Oct. 31. Krusty Burgers, Duff, character bartenders." },
+  { title: "Kacey Musgraves is at the Moody Center", read: "Middle of Nowhere Tour. Hit New story if it already happened.", phone: "Who has tickets?", source: "Ticketmaster", author: "Ticketmaster", url: "https://www.ticketmaster.com/discover/austin?date=thismonth", long: "Ticketmaster listed Kacey Musgraves at Moody Center ATX. William Beckmann opens. If the show already happened, use New story." }
+];
+const kickerPool = [
+  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "Old record was India.", source: "East Idaho News", author: "Victoria Rodriguez", url: "https://www.eastidahonews.com/2026/10/idaho-sets-new-guinness-world-record-for-largest-serving-of-french-fries/", long: "Victoria Rodriguez at KIVI, via East Idaho News, says the Idaho Potato Commission and Spud Daddy set the fry record Friday at 1,474 pounds. The old mark was 1,452.85 pounds in India in 2018." },
+  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton named it Bagheera.", source: "Guinness World Records", author: "Adam Millward", url: "https://www.guinnessworldrecords.com/news/2026/10/all-hail-pumpking-paton-british-grower-beats-his-own-record-with-giant-gourd", long: "Adam Millward at Guinness writes that Ian Paton weighed Bagheera on Oct. 3 at 2,856.8 pounds. He grew it alone after his twin retired. It is on display near Southampton through October." },
+  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "67 days up there.", source: "Dexerto", author: "Callum Doyle", url: "https://www.dexerto.com/pokemon/pokemon-go-sent-pikachu-to-space-for-67-days-aboard-iss-3410420/", long: "Callum Doyle at Dexerto reports a Pikachu plush flew with Sophie Adenot from April 11 to June 17, about 1,040 orbits. It is now the center of an ESA and Pokemon exhibition." },
+  { line: "A carpenter found a wallet lost for 51 years.", more: "Under the floors in Nova Scotia.", source: "UPI", author: "UPI", url: "https://www.upi.com/Odd_News/", long: "UPI flagged a wallet found under the floors of a Nova Scotia house. Inside were a license, a student ID, a 1975 Hamlet ticket, and a dollar." }
+];
+const docPool = [
+  { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first." },
+  { q: "What mundane thing hypnotizes you?", how: "From the Doc. Dirt grader, car wash, lawn robot." },
+  { q: "They sent me an Uber.", how: "From the Doc. What happened that made someone send the ride?" },
+  { q: "Optimus gets one chore forever. What is it?", how: "From the Doc. Laundry, yard, dishes, or the H-E-B run." },
+  { q: "Over-50 agility test: socks, one foot at a time.", how: "From the Doc. Do it in studio first." },
+  { q: "That is not your pet.", how: "From the Doc. Raccoon, squirrel, deer, fox." },
+  { q: "Do your spouse. Then get the spouse on.", how: "From the Doc. 20 seconds." },
+  { q: "Empty your pockets.", how: "From the Doc. Most inexplicable item wins." }
+];
+const slots = ["s610", "s705", "s810"];
+let open = localStorage.getItem("air-open") || "";
+let longOpen = localStorage.getItem("air-long") || "";
+let storySkip = JSON.parse(localStorage.getItem("air-story-skip") || "{}");
+let kickerSkip = JSON.parse(localStorage.getItem("air-kicker-skip") || "[0,1,2,3]");
+let benched = JSON.parse(localStorage.getItem("air-bench") || "[]");
+let used = JSON.parse(localStorage.getItem("air-used") || "[]");
+function save() { localStorage.setItem("air-open", open); localStorage.setItem("air-long", longOpen); localStorage.setItem("air-story-skip", JSON.stringify(storySkip)); localStorage.setItem("air-kicker-skip", JSON.stringify(kickerSkip)); localStorage.setItem("air-bench", JSON.stringify(benched)); localStorage.setItem("air-used", JSON.stringify(used)); }
+function storyFor(slot) { const n = storySkip[slot] || 0; const usedTitles = slots.filter(s => s !== slot).map(s => storyPool[(storySkip[s] || 0) % storyPool.length].title); let i = n; for (let k = 0; k < storyPool.length; k++) { const pick = storyPool[i % storyPool.length]; if (!usedTitles.includes(pick.title)) return pick; i++; } return storyPool[n % storyPool.length]; }
+function kickerAt(i) { return kickerPool[(kickerSkip[i] || i) % kickerPool.length]; }
+function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; longOpen = ""; save(); draw(); }
+function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; longOpen = ""; save(); draw(); }
+function toggleLong(id) { longOpen = longOpen === id ? "" : id; save(); draw(); }
+function available() { return docPool.filter(bit => !benched.includes(bit.q)); }
+function pick(n) { const pool = available(); return pool[n] || pool[0] || docPool[0]; }
+function bench(q) { if (!benched.includes(q)) benched.unshift(q); save(); draw(); }
+function markUsed(q) { if (used.includes(q)) used = used.filter(x => x !== q); else used.push(q); save(); draw(); }
+function toggle(id) { open = open === id ? "" : id; save(); draw(); }
+function row(time, label, id, tag) { return `<button class="slot" onclick="toggle('${id}')"><span class="time">${time}</span><span>${label}</span><span class="tag">${tag}</span></button>`; }
+function sourceLine(item, id) { const more = longOpen === id ? `<div class="long"><p>${item.long}</p></div>` : ""; const who = item.author ? item.source + ", " + item.author : item.source; return `<p class="src"><em><strong>${who}</strong></em></p><div class="actions"><a class="btn ghost" href="${item.url}" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong('${id}')">${longOpen === id ? "Hide longer read" : "Longer read"}</button></div>${more}`; }
+function storyCard(slot, extra) { const s = storyFor(slot); return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}${sourceLine(s, "long-" + slot)}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div></div>`; }
+function docCard(bit) { const struck = used.includes(bit.q) ? "text-decoration:line-through" : ""; const q = bit.q.replace(/'/g, ""); return `<div class="panel"><h3 style="${struck}">${bit.q}</h3><p>${bit.how}</p><div class="actions"><button onclick="markUsed('${q}')">${used.includes(bit.q) ? "Undo" : "Used"}</button><button class="ghost" onclick="bench('${q}')">Bench it</button></div></div>`; }
+function draw() {
+  const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
+  const ks = [0,1,2,3].map(kickerAt);
+  const d1 = pick(0), d2 = pick(1), d3 = pick(2), d4 = pick(3);
+  const cdc = ks.map((k, i) => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p>${sourceLine(k, "k" + i)}<button onclick="newKicker(${i})">New story</button></div>`).join("");
+  document.getElementById("board").innerHTML = `<section class="hour"><h2>6:00</h2>${row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked")}${row("6:10", "Replay: " + a.title, "s610", "story")}${open === "s610" ? storyCard("s610") : ""}${row("6:25", "Replay from Yesterday", "replay", "locked")}${row("6:35", "Tease: " + ks[0].line, "cdc", "tied")}${row("6:40", "Care Don't Care", "cdc", "open")}${open === "cdc" ? `<div class="panel"><h3>Care Don't Care</h3>${cdc}</div>` : ""}${row("6:52", "Last Laugh", "laugh6", "locked")}</section><section class="hour"><h2>7:00</h2>${row("7:05", b.title, "s705", "story")}${open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : ""}${row("7:10", "Minute to Win It", "m2w", "locked")}${row("7:26", d1.q, "d1", "doc")}${open === "d1" ? docCard(d1) : ""}${row("7:32", "Phones if lit. Doc bit waits.", "phones7", "phones")}${row("7:40", d2.q, "d2", "doc")}${open === "d2" ? docCard(d2) : ""}${row("7:52", "Last Laugh", "laugh7", "locked")}</section><section class="hour"><h2>8:00</h2>${row("8:05", "Tease: " + c.title, "s810", "tied")}${row("8:10", c.title, "s810", "story")}${open === "s810" ? storyCard("s810") : ""}${row("8:26", d3.q, "d3", "doc")}${open === "d3" ? docCard(d3) : ""}${row("8:32", "Phones if lit. Doc bit waits.", "phones8", "phones")}${row("8:40", d4.q, "d4", "doc")}${open === "d4" ? docCard(d4) : ""}${row("8:52", "Last Laugh", "laugh8", "locked")}</section>`;
+}
+draw();
+</script>
+</body>
+</html>
