@@ -24,7 +24,7 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 .kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
 .kicker:first-of-type { border-top: 0; }
 .actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-.actions button { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; cursor: pointer; }
+.actions button, .kicker button { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; cursor: pointer; }
 .actions button.ghost { background: #fff; color: #1d4f91; }
 .bench { color: #5e6874; font-size: .92rem; }
 </style>
@@ -44,7 +44,7 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 <main class="wrap">
 <p class="stamp">Thursday, Oct 8</p>
 <h1>6:00–9:00</h1>
-<p class="note">Tap a Story We Love to open it. New story swaps that slot. Lammes is off the board.</p>
+<p class="note">New story is on every Story We Love and on each Care Don’t Care kicker.</p>
 <div id="board"></div>
 </main>
 <script>
@@ -55,30 +55,36 @@ const storyPool = [
   { title: "Moe's Tavern is back on East 11th", read: "Nickel City's Simpsons pop-up runs through Oct. 31 at 1133 E. 11th. Krusty Burgers, Duff, bartenders in character.", phone: "Who is going for the bit, and who is too old to wait in that line?" },
   { title: "Kacey Musgraves is at the Moody Center tonight", read: "William Beckmann opens. Tour name is Middle of Nowhere. If this already happened, hit New story.", phone: "Who has tickets, and who is fine staying home?" }
 ];
-const kickers = [
-  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "Friday at Boise Potato Days. About 50 people, 1,700 pounds of potatoes, six fryers. Old record was 1,452 pounds in India. They fed the fries to the crowd." },
-  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton named it Bagheera. About 130 gallons of water a day. Heavier than a white rhino, then cow feed." },
-  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "Plush in an astronaut suit. 67 days with Sophie Adenot. Water recycler, freezers at 144 below, crew quarters." },
-  { line: "A carpenter found a wallet lost for 51 years.", more: "Under the floors in Nova Scotia. License, student ID, a 1975 Hamlet ticket, and a dollar. Returned to Richard Gilroy, now 68." }
+const kickerPool = [
+  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "About 50 people, 1,700 pounds of potatoes, six fryers. Old record was 1,452 pounds in India." },
+  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton named it Bagheera. About 130 gallons of water a day. Then it becomes cow feed." },
+  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "Plush in an astronaut suit. 67 days with Sophie Adenot." },
+  { line: "A carpenter found a wallet lost for 51 years.", more: "Under the floors in Nova Scotia. License, student ID, a 1975 Hamlet ticket, and a dollar." },
+  { line: "A kangaroo spent a day on the loose in Missouri.", more: "It got out of a petting zoo. Police, animal control, and a bystander got it back." },
+  { line: "An Idaho man tried to move 51 malt balls with a straw.", more: "One minute, two bowls, a world-record attempt." },
+  { line: "Police pulled over two men for driving an actual couch.", more: "North Carolina. Not a couch-shaped car. A couch." },
+  { line: "A shark cruised a flooded New Jersey driveway.", more: "After a nor'easter. It was a harmless smooth dogfish, three to five feet." }
 ];
 const docPool = [
-  { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first. You two guess why. Photo for the Reel." },
-  { q: "What mundane thing hypnotizes you?", how: "From the Doc. Dirt grader, tortilla machine, car wash, lawn robot. Ask how long they stood there." },
+  { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first. You two guess why." },
+  { q: "What mundane thing hypnotizes you?", how: "From the Doc. Dirt grader, tortilla machine, car wash, lawn robot." },
   { q: "They sent me an Uber.", how: "From the Doc. What happened that made someone order the ride and send you away?" },
   { q: "Optimus gets one chore forever. What is it?", how: "From the Doc. Laundry, yard, dishes, or the H-E-B run." },
-  { q: "Over-50 agility test: socks, one foot at a time.", how: "From the Doc. Do it in studio first. Then ask who can and who cheated." },
-  { q: "That is not your pet.", how: "From the Doc. Raccoon, squirrel, deer, fox, armadillo. It started visiting. Now it has a name." },
+  { q: "Over-50 agility test: socks, one foot at a time.", how: "From the Doc. Do it in studio first." },
+  { q: "That is not your pet.", how: "From the Doc. Raccoon, squirrel, deer, fox, armadillo." },
   { q: "Do your spouse. Then get the spouse on.", how: "From the Doc. 20 seconds. Then the spouse does the caller." },
   { q: "Empty your pockets.", how: "From the Doc. No warning. Most inexplicable item wins." }
 ];
 const slots = ["s610", "s705", "s810"];
 let open = localStorage.getItem("air-open") || "";
 let storySkip = JSON.parse(localStorage.getItem("air-story-skip") || "{}");
+let kickerSkip = JSON.parse(localStorage.getItem("air-kicker-skip") || "[0,1,2,3]");
 let benched = JSON.parse(localStorage.getItem("air-bench") || "[]");
 let used = JSON.parse(localStorage.getItem("air-used") || "[]");
 function save() {
   localStorage.setItem("air-open", open);
   localStorage.setItem("air-story-skip", JSON.stringify(storySkip));
+  localStorage.setItem("air-kicker-skip", JSON.stringify(kickerSkip));
   localStorage.setItem("air-bench", JSON.stringify(benched));
   localStorage.setItem("air-used", JSON.stringify(used));
 }
@@ -93,12 +99,17 @@ function storyFor(slot) {
   }
   return storyPool[n % storyPool.length];
 }
-function newStory(slot) {
-  storySkip[slot] = (storySkip[slot] || 0) + 1;
-  open = slot;
-  save();
-  draw();
+function kickerAt(i) {
+  const taken = kickerSkip.filter((n, idx) => idx !== i);
+  let n = kickerSkip[i] || i;
+  for (let k = 0; k < kickerPool.length; k++) {
+    if (!taken.includes(n % kickerPool.length)) return kickerPool[n % kickerPool.length];
+    n++;
+  }
+  return kickerPool[i % kickerPool.length];
 }
+function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; save(); draw(); }
+function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; save(); draw(); }
 function available() { return docPool.filter(bit => !benched.includes(bit.q)); }
 function pick(n) { const pool = available(); return pool[n] || pool[0] || docPool[0]; }
 function bench(q) { if (!benched.includes(q)) benched.unshift(q); save(); draw(); }
@@ -109,7 +120,7 @@ function row(time, label, id, tag) {
 }
 function storyCard(slot, extra) {
   const s = storyFor(slot);
-  return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div><p>New story pulls the next Austin story for this slot.</p></div>`;
+  return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div></div>`;
 }
 function docCard(bit) {
   const struck = used.includes(bit.q) ? "text-decoration:line-through" : "";
@@ -118,17 +129,18 @@ function docCard(bit) {
 }
 function draw() {
   const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
+  const ks = [0,1,2,3].map(kickerAt);
   const d1 = pick(0), d2 = pick(1), d3 = pick(2), d4 = pick(3);
-  const cdc = kickers.map(k => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p><p><b>Care, or don’t care?</b></p></div>`).join("");
+  const cdc = ks.map((k, i) => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p><p><b>Care, or don’t care?</b></p><button onclick="newKicker(${i})">New story</button></div>`).join("");
   document.getElementById("board").innerHTML = `
     <section class="hour"><h2>6:00</h2>
       ${row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked")}
       ${row("6:10", "Replay: " + a.title, "s610", "story")}
-      ${open === "s610" ? storyCard("s610", "<p>Replay of yesterday’s 9 a.m. Story We Love. New story only if this one is stale.</p>") : ""}
+      ${open === "s610" ? storyCard("s610") : ""}
       ${row("6:25", "Replay from Yesterday", "replay", "locked")}
-      ${row("6:35", "Tease: " + kickers[0].line, "cdc", "tied")}
+      ${row("6:35", "Tease: " + ks[0].line, "cdc", "tied")}
       ${row("6:40", "Care Don’t Care", "cdc", "open")}
-      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3>${cdc}</div>` : ""}
+      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3><p>The tease uses the first line. New story swaps that kicker only.</p>${cdc}</div>` : ""}
       ${row("6:52", "Last Laugh", "laugh6", "locked")}
     </section>
     <section class="hour"><h2>7:00</h2>
@@ -153,7 +165,7 @@ function draw() {
       ${open === "d4" ? docCard(d4) : ""}
       ${row("8:52", "Last Laugh", "laugh8", "locked")}
     </section>
-    <p class="bench">New story is on 6:10, 7:05, and 8:10. It sticks on this phone.</p>`;
+    <p class="bench">New story sticks on this phone. It does not change anyone else's board.</p>`;
 }
 draw();
 </script>
