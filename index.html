@@ -23,9 +23,11 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 .panel p { margin: 6px 0; }
 .kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
 .kicker:first-of-type { border-top: 0; }
-.actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-.actions button, .kicker button { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; cursor: pointer; }
-.actions button.ghost { background: #fff; color: #1d4f91; }
+.src { color: #5e6874; font-size: .88rem; }
+.actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+.actions button, .kicker button, .actions a.btn { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; cursor: pointer; text-decoration: none; }
+.actions button.ghost, .kicker button.ghost, .actions a.ghost { background: #fff; color: #1d4f91; }
+.long { background: #fff; border: 1px solid #d5e0ee; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
 .bench { color: #5e6874; font-size: .92rem; }
 </style>
 </head>
@@ -44,26 +46,26 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 <main class="wrap">
 <p class="stamp">Thursday, Oct 8</p>
 <h1>6:00–9:00</h1>
-<p class="note">New story is on every Story We Love and on each Care Don’t Care kicker.</p>
+<p class="note">Open a story or a kicker for the short read, the source, the original link, and a longer read.</p>
 <div id="board"></div>
 </main>
 <script>
 const storyPool = [
-  { title: "ACL Weekend 2 starts Friday", read: "Zilker, Friday through Sunday. Weekend 1 already happened. Rain or shine unless it gets dangerous. Poncho is the outfit.", phone: "Who is going, and who is sitting this weekend out?" },
-  { title: "Gruene Food and Wine Fest starts today", read: "40th year, Oct. 8 to 11. Robert Earl Keen and Shane Smith and the Saints are on the bill. Tastings and Tunes is free Saturday.", phone: "Who drives to Gruene for a festival, and who says that is a Saturday, not a Thursday?" },
-  { title: "Boo at the Zoo is back Friday and Saturday nights", read: "Austin Zoo, through Oct. 24. Kids in costume, train rides, and the haunted house. It is after dark.", phone: "Who already has a costume, and who is still pretending they will figure it out Friday?" },
-  { title: "Moe's Tavern is back on East 11th", read: "Nickel City's Simpsons pop-up runs through Oct. 31 at 1133 E. 11th. Krusty Burgers, Duff, bartenders in character.", phone: "Who is going for the bit, and who is too old to wait in that line?" },
-  { title: "Kacey Musgraves is at the Moody Center tonight", read: "William Beckmann opens. Tour name is Middle of Nowhere. If this already happened, hit New story.", phone: "Who has tickets, and who is fine staying home?" }
+  { title: "ACL Weekend 2 starts Friday", read: "Zilker, Friday through Sunday. Weekend 1 already happened. Rain or shine unless it gets dangerous.", phone: "Who is going, and who is sitting this weekend out?", source: "Austin Monthly", url: "https://www.austinmonthly.com/7-fun-things-to-do-in-austin-this-weekend-oct-8-11/", long: "Austin Monthly's weekend list leads with ACL Weekend 2 at Zilker, Friday through Sunday. It is the second of the two festival weekends. The same piece also stacks Halloween pop-ups and the Gruene Food and Wine Fest. Rain or shine unless the weather turns dangerous." },
+  { title: "Gruene Food and Wine Fest starts today", read: "40th year, Oct. 8 to 11. Robert Earl Keen and Shane Smith and the Saints are on the bill.", phone: "Who drives to Gruene, and who says that is a Saturday?", source: "Austin Monthly", url: "https://www.austinmonthly.com/7-fun-things-to-do-in-austin-this-weekend-oct-8-11/", long: "The 40th Gruene Food and Wine Fest runs Oct. 8 to 11. Austin Monthly lists bites, drinks, and concerts including Robert Earl Keen and Shane Smith and the Saints. Tastings and Tunes, the wine tasting, is free on Saturday." },
+  { title: "Boo at the Zoo is back Friday and Saturday nights", read: "Austin Zoo, through Oct. 24. Kids in costume, train rides, and the haunted house after dark.", phone: "Who already has a costume?", source: "Visit Austin", url: "https://www.austintexas.org/events/october-and-november/", long: "Visit Austin lists Boo at the Zoo on Friday and Saturday nights in October, through Oct. 24. Kids come in costume. The night includes train rides, music, and haunted-house visits. It is the zoo after dark, not a daytime field trip." },
+  { title: "Moe's Tavern is back on East 11th", read: "Nickel City's Simpsons pop-up runs through Oct. 31 at 1133 E. 11th. Krusty Burgers and Duff.", phone: "Who is going for the bit?", source: "Austin Monthly", url: "https://www.austinmonthly.com/7-fun-things-to-do-in-austin-this-weekend-oct-8-11/", long: "Austin Monthly says Nickel City's Simpsons pop-up is back through Oct. 31 at 1133 E. 11th St. Moe's Tavern has the decor, bartenders dressed as characters, Krusty Burgers, and Duff. It is a Halloween bar bit, not a new restaurant." },
+  { title: "Kacey Musgraves is at the Moody Center", read: "William Beckmann opens. Tour name is Middle of Nowhere. Hit New story if this already happened.", phone: "Who has tickets, and who is fine staying home?", source: "Ticketmaster", url: "https://www.ticketmaster.com/discover/austin?date=thismonth", long: "Ticketmaster lists Kacey Musgraves on the Middle of Nowhere Tour at Moody Center ATX. William Beckmann opens. If the show already happened, use New story and take the next Austin card." }
 ];
 const kickerPool = [
-  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "About 50 people, 1,700 pounds of potatoes, six fryers. Old record was 1,452 pounds in India." },
-  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton named it Bagheera. About 130 gallons of water a day. Then it becomes cow feed." },
-  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "Plush in an astronaut suit. 67 days with Sophie Adenot." },
-  { line: "A carpenter found a wallet lost for 51 years.", more: "Under the floors in Nova Scotia. License, student ID, a 1975 Hamlet ticket, and a dollar." },
-  { line: "A kangaroo spent a day on the loose in Missouri.", more: "It got out of a petting zoo. Police, animal control, and a bystander got it back." },
-  { line: "An Idaho man tried to move 51 malt balls with a straw.", more: "One minute, two bowls, a world-record attempt." },
-  { line: "Police pulled over two men for driving an actual couch.", more: "North Carolina. Not a couch-shaped car. A couch." },
-  { line: "A shark cruised a flooded New Jersey driveway.", more: "After a nor'easter. It was a harmless smooth dogfish, three to five feet." }
+  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "About 50 people, six fryers, old record was India.", source: "East Idaho News", url: "https://www.eastidahonews.com/2026/10/idaho-sets-new-guinness-world-record-for-largest-serving-of-french-fries/", long: "East Idaho News, via KIVI, says the Idaho Potato Commission and Spud Daddy cooked the fries Friday at Potato Days in the Idaho Botanical Garden. About 1,700 pounds of raw potatoes went in. The weigh-in was 1,474 pounds, beating India's 1,452.85-pound record from 2018. Six fryers, about 50 people. They served the fries free." },
+  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton named it Bagheera. Then it becomes cow feed.", source: "Guinness World Records", url: "https://www.guinnessworldrecords.com/news/2026/10/All-hail-Pumpking-Paton-British-grower-beats-his-own-record-with-giant-gourd.html", long: "Guinness says Ian Paton, 65, of Hampshire, weighed Bagheera at 2,856.8 pounds on Oct. 3. He and his twin held the old record at 2,819 pounds. He watered this one about 130 gallons a day. It goes on display at Sunnyfields Farm near Southampton, then becomes cow feed." },
+  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "Plush in an astronaut suit. 67 days up there.", source: "Dexerto", url: "https://www.dexerto.com/pokemon/pokemon-go-sent-pikachu-to-space-for-67-days-aboard-iss-3410420/", long: "Dexerto reports a Pikachu plush flew with ESA astronaut Sophie Adenot from April 11 to June 17. About 67 days and 1,040 orbits. The trip is the center of an ESA and Pokemon exhibition for World Space Week. She showed it around the station, including the water recycler and the crew quarters." },
+  { line: "A carpenter found a wallet lost for 51 years.", more: "Under the floors in Nova Scotia. License, student ID, and a dollar.", source: "UPI", url: "https://www.upi.com/Odd_News/2026/10/07/Guinness-World-Records-heaviest-pumpkin/5121791389821/", long: "UPI's odd-news desk reported the wallet on Oct. 6. A carpenter found it under the floors of a Nova Scotia house. Inside were a license, a student ID, a birth certificate, a 1975 Hamlet ticket, and a dollar. A Facebook post found the owner's wife. He is 68 now." },
+  { line: "A kangaroo spent a day on the loose in Missouri.", more: "It got out of a petting zoo. Police and a bystander got it back.", source: "UPI", url: "https://www.upi.com/Odd_News/", long: "A kangaroo got out of a Missouri petting zoo and was loose for about a day. Police, animal control, and a bystander cornered it. Nobody was hurt. It is a care-or-don't-care animal bit, not a local Austin story." },
+  { line: "An Idaho man tried to move 51 malt balls with a straw.", more: "One minute, two bowls, a record attempt.", source: "UPI", url: "https://www.upi.com/Odd_News/", long: "The attempt was 51 malt balls from one bowl to another in one minute, using only a straw. It is a Guinness-style oddity. Good for a kicker, not a local story." },
+  { line: "Police pulled over two men for driving an actual couch.", more: "North Carolina. Not a couch-shaped car. A couch.", source: "UPI", url: "https://www.upi.com/Odd_News/", long: "North Carolina police stopped two men who were driving a couch down the road. Not a novelty car. A couch. The ticket is the punch line." },
+  { line: "A shark cruised a flooded New Jersey driveway.", more: "After a nor'easter. It was a harmless smooth dogfish.", source: "UPI", url: "https://www.upi.com/Odd_News/", long: "After a nor'easter, a three-to-five-foot smooth dogfish was swimming in a flooded New Jersey driveway. Harmless. The picture is the bit." }
 ];
 const docPool = [
   { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first. You two guess why." },
@@ -77,12 +79,14 @@ const docPool = [
 ];
 const slots = ["s610", "s705", "s810"];
 let open = localStorage.getItem("air-open") || "";
+let longOpen = localStorage.getItem("air-long") || "";
 let storySkip = JSON.parse(localStorage.getItem("air-story-skip") || "{}");
 let kickerSkip = JSON.parse(localStorage.getItem("air-kicker-skip") || "[0,1,2,3]");
 let benched = JSON.parse(localStorage.getItem("air-bench") || "[]");
 let used = JSON.parse(localStorage.getItem("air-used") || "[]");
 function save() {
   localStorage.setItem("air-open", open);
+  localStorage.setItem("air-long", longOpen);
   localStorage.setItem("air-story-skip", JSON.stringify(storySkip));
   localStorage.setItem("air-kicker-skip", JSON.stringify(kickerSkip));
   localStorage.setItem("air-bench", JSON.stringify(benched));
@@ -108,8 +112,9 @@ function kickerAt(i) {
   }
   return kickerPool[i % kickerPool.length];
 }
-function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; save(); draw(); }
-function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; save(); draw(); }
+function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; longOpen = ""; save(); draw(); }
+function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; longOpen = ""; save(); draw(); }
+function toggleLong(id) { longOpen = longOpen === id ? "" : id; save(); draw(); }
 function available() { return docPool.filter(bit => !benched.includes(bit.q)); }
 function pick(n) { const pool = available(); return pool[n] || pool[0] || docPool[0]; }
 function bench(q) { if (!benched.includes(q)) benched.unshift(q); save(); draw(); }
@@ -118,9 +123,13 @@ function toggle(id) { open = open === id ? "" : id; save(); draw(); }
 function row(time, label, id, tag) {
   return `<button class="slot" onclick="toggle('${id}')"><span class="time">${time}</span><span>${label}</span><span class="tag">${tag}</span></button>`;
 }
+function sourceLine(item, id) {
+  const more = longOpen === id ? `<div class="long">${item.long}</div>` : "";
+  return `<p class="src">${item.source}</p><div class="actions"><a class="btn ghost" href="${item.url}" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong('${id}')">${longOpen === id ? "Hide longer read" : "Longer read"}</button></div>${more}`;
+}
 function storyCard(slot, extra) {
   const s = storyFor(slot);
-  return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div></div>`;
+  return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}${sourceLine(s, "long-" + slot)}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div></div>`;
 }
 function docCard(bit) {
   const struck = used.includes(bit.q) ? "text-decoration:line-through" : "";
@@ -131,7 +140,7 @@ function draw() {
   const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
   const ks = [0,1,2,3].map(kickerAt);
   const d1 = pick(0), d2 = pick(1), d3 = pick(2), d4 = pick(3);
-  const cdc = ks.map((k, i) => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p><p><b>Care, or don’t care?</b></p><button onclick="newKicker(${i})">New story</button></div>`).join("");
+  const cdc = ks.map((k, i) => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p><p><b>Care, or don’t care?</b></p>${sourceLine(k, "k" + i)}<button onclick="newKicker(${i})">New story</button></div>`).join("");
   document.getElementById("board").innerHTML = `
     <section class="hour"><h2>6:00</h2>
       ${row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked")}
@@ -140,7 +149,7 @@ function draw() {
       ${row("6:25", "Replay from Yesterday", "replay", "locked")}
       ${row("6:35", "Tease: " + ks[0].line, "cdc", "tied")}
       ${row("6:40", "Care Don’t Care", "cdc", "open")}
-      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3><p>The tease uses the first line. New story swaps that kicker only.</p>${cdc}</div>` : ""}
+      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3><p>The tease uses the first line. Each kicker has the source, the original, and a longer read.</p>${cdc}</div>` : ""}
       ${row("6:52", "Last Laugh", "laugh6", "locked")}
     </section>
     <section class="hour"><h2>7:00</h2>
@@ -165,7 +174,7 @@ function draw() {
       ${open === "d4" ? docCard(d4) : ""}
       ${row("8:52", "Last Laugh", "laugh8", "locked")}
     </section>
-    <p class="bench">New story sticks on this phone. It does not change anyone else's board.</p>`;
+    <p class="bench">More here opens the original. Longer read stays on this card.</p>`;
 }
 draw();
 </script>
