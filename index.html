@@ -7,12 +7,21 @@
 <title>JB &amp; Sandy · Air board</title>
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-.slots { margin: 8px 0 0; }
-.slot { display: flex; gap: 10px; align-items: baseline; padding: 8px 0; border-top: 1px solid var(--line); }
-.slot:first-child { border-top: 0; }
-.time { font-weight: 700; min-width: 46px; }
-.tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 nav.main { flex-wrap: wrap; gap: 12px; }
+.hour { margin-top: 28px; }
+.slot { display: flex; gap: 10px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; border-top: 1px solid var(--line); color: inherit; font: inherit; padding: 10px 0; cursor: pointer; }
+.slot:first-child { border-top: 0; }
+.slot .time { font-weight: 700; min-width: 46px; }
+.slot .tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+.panel { background: var(--soft); border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px; }
+.panel h3 { margin-bottom: 6px; }
+.panel p { margin: 6px 0; }
+.kicker { padding: 10px 0; border-top: 1px solid var(--line); }
+.kicker:first-of-type { border-top: 0; }
+.actions { display: flex; gap: 8px; margin-top: 8px; }
+.actions button { font: inherit; font-weight: 700; border: 0; border-radius: 10px; padding: 8px 10px; background: var(--accent); color: var(--accent-fg); cursor: pointer; }
+.actions button.ghost { background: var(--line); color: var(--fg); }
+.bench { color: var(--muted); font-size: .92rem; }
 </style>
 </head>
 <body>
@@ -28,43 +37,106 @@ nav.main { flex-wrap: wrap; gap: 12px; }
 </nav>
 </div></header>
 <main class="wrap">
-<p class="stamp">Wednesday, Oct 7 · mock fill</p>
+<p class="stamp">Wednesday, Oct 7</p>
 <h1>6:00–9:00</h1>
-<p class="note">Front page is the board. Today, Ideas, Audio, and the rest sit behind the buttons.</p>
-<h2>6:00</h2>
-<div class="slots">
-<div class="slot"><span class="time">6:00</span><span>Intro, then the first thing that made Tricia laugh</span><span class="tag">locked</span></div>
-<div class="slot"><span class="time">6:10</span><span>Replay: Congress Avenue bats are still flying</span><span class="tag">locked</span></div>
-<div class="slot"><span class="time">6:25</span><span>Replay from Yesterday</span><span class="tag">locked</span></div>
-<div class="slot"><span class="time">6:35</span><span>Tease: Idaho cooked 1,474 pounds of fries</span><span class="tag">tied</span></div>
-<div class="slot"><span class="time">6:40</span><span>Care Don’t Care</span><span class="tag">tied</span></div>
-<div class="slot"><span class="time">6:52</span><span>Last Laugh</span><span class="tag">locked</span></div>
-</div>
-<article>
-<h3>Care Don’t Care</h3>
-<p>Idaho cooked 1,474 pounds of French fries and broke a record. About 50 people, six fryers, old record was India. Care, or don’t care?</p>
-<p>A British grower beat his own pumpkin record at 2,856.8 pounds. He named it Bagheera. Care, or don’t care?</p>
-<p>A stuffed Pikachu got a guided tour of the space station. 67 days up there. Care, or don’t care?</p>
-<p>A carpenter found a wallet lost for 51 years under a floor in Nova Scotia. Care, or don’t care?</p>
-</article>
-<h2>7:00</h2>
-<div class="slots">
-<div class="slot"><span class="time">7:05</span><span>Lammes Candies is coming back. Then Minute to Win It setup.</span><span class="tag">locked</span></div>
-<div class="slot"><span class="time">7:10</span><span>Minute to Win It</span><span class="tag">locked</span></div>
-<div class="slot"><span class="time">7:26</span><span>What strange item lives in your car?</span><span class="tag">doc</span></div>
-<div class="slot"><span class="time">7:32</span><span>Phones if lit. Doc bit waits.</span><span class="tag">phones</span></div>
-<div class="slot"><span class="time">7:40</span><span>What mundane thing hypnotizes you?</span><span class="tag">doc</span></div>
-<div class="slot"><span class="time">7:52</span><span>Last Laugh</span><span class="tag">locked</span></div>
-</div>
-<h2>8:00</h2>
-<div class="slots">
-<div class="slot"><span class="time">8:05</span><span>Tease: Kacey is at the Moody Center tonight</span><span class="tag">tied</span></div>
-<div class="slot"><span class="time">8:10</span><span>Kacey Musgraves, Moody Center, tonight and tomorrow</span><span class="tag">tied</span></div>
-<div class="slot"><span class="time">8:26</span><span>They sent me an Uber</span><span class="tag">doc</span></div>
-<div class="slot"><span class="time">8:32</span><span>Phones if lit. Doc bit waits.</span><span class="tag">phones</span></div>
-<div class="slot"><span class="time">8:40</span><span>Optimus gets one chore forever</span><span class="tag">doc</span></div>
-<div class="slot"><span class="time">8:52</span><span>Last Laugh</span><span class="tag">locked</span></div>
-</div>
+<p class="note">Tap a story or Care Don’t Care to open it. Open breaks are from the Doc. Bench It pulls the next Doc bit on this phone.</p>
+<div id="board"></div>
 </main>
+<script>
+const stories = {
+  bats: { title: "Congress Avenue bats are still flying", read: "Sample title for yesterday’s 9 a.m. Story We Love. The real card uses whatever aired. Last night’s flight started about 32 minutes after sunset.", phone: "Who has taken an out-of-towner to the bridge?" },
+  lammes: { title: "Lammes Candies is coming back", read: "The 141-year candy maker closed the Airport Boulevard shop this spring. Holiday pre-orders are open. Shipping starts Nov. 1. The old store stays closed.", phone: "Who stockpiled the last boxes in April?" },
+  kacey: { title: "Kacey Musgraves is at the Moody Center tonight and tomorrow", read: "William Beckmann opens. The tour name is Middle of Nowhere.", phone: "Who already has tickets, and who is pretending they are fine staying home?" }
+};
+const kickers = [
+  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "Friday at Boise Potato Days, the Idaho Potato Commission and Spud Daddy took the Guinness title. About 50 people cut 1,700 pounds of potatoes and cooked them in six fryers. The old record was 1,452 pounds, set in India in 2018. They fed the fries to the crowd." },
+  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton, 65, from Hampshire, weighed Bagheera on Oct. 3. Last year he and his twin held the record at 2,819 pounds. He watered this one about 130 gallons a day. It is heavier than a white rhino, then it becomes cow feed." },
+  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "A plush in an astronaut suit flew with ESA astronaut Sophie Adenot from April 11 to June 17. 67 days, about 1,040 orbits. She showed it the water recycler, the freezers at 144 below, and the crew quarters." },
+  { line: "A carpenter found a wallet lost for 51 years.", more: "Matty Goldsmith found it under the floors in Dartmouth, Nova Scotia. Inside: a license, a student ID, a birth certificate, a 1975 Hamlet ticket, and a dollar. A Facebook post found Richard Gilroy’s wife. He is 68 now." }
+];
+const docPool = [
+  { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first. You two guess why. Photo for the Reel." },
+  { q: "What mundane thing hypnotizes you?", how: "From the Doc. Dirt grader, tortilla machine, car wash, lawn robot. Ask how long they stood there." },
+  { q: "They sent me an Uber.", how: "From the Doc. What happened that made someone order the ride and send you away?" },
+  { q: "Optimus gets one chore forever. What is it?", how: "From the Doc. Laundry, yard, dishes, or the H-E-B run." },
+  { q: "Over-50 agility test: socks, one foot at a time.", how: "From the Doc. Do it in studio first. Then ask who can and who cheated." },
+  { q: "That is not your pet.", how: "From the Doc. Raccoon, squirrel, deer, fox, armadillo. It started visiting. Now it has a name." },
+  { q: "Do your spouse. Then get the spouse on.", how: "From the Doc. 20 seconds. Then the spouse does the caller." },
+  { q: "Empty your pockets.", how: "From the Doc. No warning. Most inexplicable item wins." }
+];
+let open = localStorage.getItem("air-open") || "";
+let benched = JSON.parse(localStorage.getItem("air-bench") || "[]");
+let used = JSON.parse(localStorage.getItem("air-used") || "[]");
+function save() {
+  localStorage.setItem("air-open", open);
+  localStorage.setItem("air-bench", JSON.stringify(benched));
+  localStorage.setItem("air-used", JSON.stringify(used));
+}
+function available() { return docPool.filter(bit => !benched.includes(bit.q)); }
+function pick(n) {
+  const pool = available();
+  return pool[n] || pool[0] || docPool[0];
+}
+function bench(q) {
+  if (!benched.includes(q)) benched.unshift(q);
+  save();
+  draw();
+}
+function markUsed(q) {
+  if (used.includes(q)) used = used.filter(x => x !== q);
+  else used.push(q);
+  save();
+  draw();
+}
+function toggle(id) { open = open === id ? "" : id; save(); draw(); }
+function row(time, label, id, tag) {
+  return `<button class="slot" onclick="toggle('${id}')"><span class="time">${time}</span><span>${label}</span><span class="tag">${tag}</span></button>`;
+}
+function docCard(bit) {
+  const struck = used.includes(bit.q) ? "text-decoration:line-through" : "";
+  const q = bit.q.replace(/'/g, "");
+  return `<div class="panel"><h3 style="${struck}">${bit.q}</h3><p>${bit.how}</p><div class="actions"><button onclick="markUsed('${q}')">${used.includes(bit.q) ? "Undo" : "Used"}</button><button class="ghost" onclick="bench('${q}')">Bench it</button></div><p>Bench it pulls the next bit from the Doc.</p></div>`;
+}
+function draw() {
+  const d1 = pick(0), d2 = pick(1), d3 = pick(2), d4 = pick(3);
+  const cdc = kickers.map(k => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p><p><b>Care, or don’t care?</b></p></div>`).join("");
+  document.getElementById("board").innerHTML = `
+    <section class="hour"><h2>6:00</h2>
+      ${row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked")}
+      ${open === "intro" ? `<div class="panel"><p>Locked. No Doc bit. No Bench it.</p></div>` : ""}
+      ${row("6:10", "Replay: " + stories.bats.title, "bats", "open")}
+      ${open === "bats" ? `<div class="panel"><h3>${stories.bats.title}</h3><p>${stories.bats.read}</p><p>Phone: ${stories.bats.phone}</p></div>` : ""}
+      ${row("6:25", "Replay from Yesterday", "replay", "locked")}
+      ${row("6:35", "Tease: " + kickers[0].line, "cdc", "tied")}
+      ${row("6:40", "Care Don’t Care", "cdc", "open")}
+      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3><p>The 6:35 tease is the first line. The rest is the click.</p>${cdc}</div>` : ""}
+      ${row("6:52", "Last Laugh", "laugh6", "locked")}
+    </section>
+    <section class="hour"><h2>7:00</h2>
+      ${row("7:05", stories.lammes.title + ". Then Minute to Win It setup.", "lammes", "open")}
+      ${open === "lammes" ? `<div class="panel"><h3>${stories.lammes.title}</h3><p>${stories.lammes.read}</p><p>Phone: ${stories.lammes.phone}</p><p>Then the setup: Minute to Win It is at 7:10.</p></div>` : ""}
+      ${row("7:10", "Minute to Win It", "m2w", "locked")}
+      ${row("7:26", d1.q, "d1", "doc")}
+      ${open === "d1" ? docCard(d1) : ""}
+      ${row("7:32", "Phones if lit. Doc bit waits.", "phones7", "phones")}
+      ${row("7:40", d2.q, "d2", "doc")}
+      ${open === "d2" ? docCard(d2) : ""}
+      ${row("7:52", "Last Laugh", "laugh7", "locked")}
+    </section>
+    <section class="hour"><h2>8:00</h2>
+      ${row("8:05", "Tease: " + stories.kacey.title, "kacey", "tied")}
+      ${row("8:10", stories.kacey.title, "kacey", "open")}
+      ${open === "kacey" ? `<div class="panel"><h3>${stories.kacey.title}</h3><p>${stories.kacey.read}</p><p>Phone: ${stories.kacey.phone}</p></div>` : ""}
+      ${row("8:26", d3.q, "d3", "doc")}
+      ${open === "d3" ? docCard(d3) : ""}
+      ${row("8:32", "Phones if lit. Doc bit waits.", "phones8", "phones")}
+      ${row("8:40", d4.q, "d4", "doc")}
+      ${open === "d4" ? docCard(d4) : ""}
+      ${row("8:52", "Last Laugh", "laugh8", "locked")}
+    </section>
+    <p class="bench">Benched on this phone: ${benched.length ? benched.join(" · ") : "nothing yet"}</p>`;
+}
+draw();
+</script>
 </body>
 </html>
