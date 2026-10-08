@@ -23,7 +23,7 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 .panel p { margin: 6px 0; }
 .kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
 .kicker:first-of-type { border-top: 0; }
-.actions { display: flex; gap: 8px; margin-top: 8px; }
+.actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
 .actions button { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; cursor: pointer; }
 .actions button.ghost { background: #fff; color: #1d4f91; }
 .bench { color: #5e6874; font-size: .92rem; }
@@ -42,22 +42,24 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 </nav>
 </div></header>
 <main class="wrap">
-<p class="stamp">Wednesday, Oct 7</p>
+<p class="stamp">Thursday, Oct 8</p>
 <h1>6:00–9:00</h1>
-<p class="note">Tap a story or Care Don’t Care to open it. Open breaks are from the Doc. Bench It pulls the next Doc bit on this phone.</p>
+<p class="note">Tap a Story We Love to open it. New story swaps that slot. Lammes is off the board.</p>
 <div id="board"></div>
 </main>
 <script>
-const stories = {
-  bats: { title: "Congress Avenue bats are still flying", read: "Sample title for yesterday’s 9 a.m. Story We Love. The real card uses whatever aired. Last night’s flight started about 32 minutes after sunset.", phone: "Who has taken an out-of-towner to the bridge?" },
-  lammes: { title: "Lammes Candies is coming back", read: "The 141-year candy maker closed the Airport Boulevard shop this spring. Holiday pre-orders are open. Shipping starts Nov. 1. The old store stays closed.", phone: "Who stockpiled the last boxes in April?" },
-  kacey: { title: "Kacey Musgraves is at the Moody Center tonight and tomorrow", read: "William Beckmann opens. The tour name is Middle of Nowhere.", phone: "Who already has tickets, and who is pretending they are fine staying home?" }
-};
+const storyPool = [
+  { title: "ACL Weekend 2 starts Friday", read: "Zilker, Friday through Sunday. Weekend 1 already happened. Rain or shine unless it gets dangerous. Poncho is the outfit.", phone: "Who is going, and who is sitting this weekend out?" },
+  { title: "Gruene Food and Wine Fest starts today", read: "40th year, Oct. 8 to 11. Robert Earl Keen and Shane Smith and the Saints are on the bill. Tastings and Tunes is free Saturday.", phone: "Who drives to Gruene for a festival, and who says that is a Saturday, not a Thursday?" },
+  { title: "Boo at the Zoo is back Friday and Saturday nights", read: "Austin Zoo, through Oct. 24. Kids in costume, train rides, and the haunted house. It is after dark.", phone: "Who already has a costume, and who is still pretending they will figure it out Friday?" },
+  { title: "Moe's Tavern is back on East 11th", read: "Nickel City's Simpsons pop-up runs through Oct. 31 at 1133 E. 11th. Krusty Burgers, Duff, bartenders in character.", phone: "Who is going for the bit, and who is too old to wait in that line?" },
+  { title: "Kacey Musgraves is at the Moody Center tonight", read: "William Beckmann opens. Tour name is Middle of Nowhere. If this already happened, hit New story.", phone: "Who has tickets, and who is fine staying home?" }
+];
 const kickers = [
-  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "Friday at Boise Potato Days, the Idaho Potato Commission and Spud Daddy took the Guinness title. About 50 people cut 1,700 pounds of potatoes and cooked them in six fryers. The old record was 1,452 pounds, set in India in 2018. They fed the fries to the crowd." },
-  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton, 65, from Hampshire, weighed Bagheera on Oct. 3. Last year he and his twin held the record at 2,819 pounds. He watered this one about 130 gallons a day. It is heavier than a white rhino, then it becomes cow feed." },
-  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "A plush in an astronaut suit flew with ESA astronaut Sophie Adenot from April 11 to June 17. 67 days, about 1,040 orbits. She showed it the water recycler, the freezers at 144 below, and the crew quarters." },
-  { line: "A carpenter found a wallet lost for 51 years.", more: "Matty Goldsmith found it under the floors in Dartmouth, Nova Scotia. Inside: a license, a student ID, a birth certificate, a 1975 Hamlet ticket, and a dollar. A Facebook post found Richard Gilroy’s wife. He is 68 now." }
+  { line: "Idaho cooked 1,474 pounds of French fries and broke a record.", more: "Friday at Boise Potato Days. About 50 people, 1,700 pounds of potatoes, six fryers. Old record was 1,452 pounds in India. They fed the fries to the crowd." },
+  { line: "A British grower beat his own pumpkin record. It weighed 2,856.8 pounds.", more: "Ian Paton named it Bagheera. About 130 gallons of water a day. Heavier than a white rhino, then cow feed." },
+  { line: "A stuffed Pikachu got a guided tour of the space station.", more: "Plush in an astronaut suit. 67 days with Sophie Adenot. Water recycler, freezers at 144 below, crew quarters." },
+  { line: "A carpenter found a wallet lost for 51 years.", more: "Under the floors in Nova Scotia. License, student ID, a 1975 Hamlet ticket, and a dollar. Returned to Richard Gilroy, now 68." }
 ];
 const docPool = [
   { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first. You two guess why. Photo for the Reel." },
@@ -69,57 +71,69 @@ const docPool = [
   { q: "Do your spouse. Then get the spouse on.", how: "From the Doc. 20 seconds. Then the spouse does the caller." },
   { q: "Empty your pockets.", how: "From the Doc. No warning. Most inexplicable item wins." }
 ];
+const slots = ["s610", "s705", "s810"];
 let open = localStorage.getItem("air-open") || "";
+let storySkip = JSON.parse(localStorage.getItem("air-story-skip") || "{}");
 let benched = JSON.parse(localStorage.getItem("air-bench") || "[]");
 let used = JSON.parse(localStorage.getItem("air-used") || "[]");
 function save() {
   localStorage.setItem("air-open", open);
+  localStorage.setItem("air-story-skip", JSON.stringify(storySkip));
   localStorage.setItem("air-bench", JSON.stringify(benched));
   localStorage.setItem("air-used", JSON.stringify(used));
 }
+function storyFor(slot) {
+  const n = storySkip[slot] || 0;
+  const usedTitles = slots.filter(s => s !== slot).map(s => storyPool[(storySkip[s] || 0) % storyPool.length].title);
+  let i = n;
+  for (let k = 0; k < storyPool.length; k++) {
+    const pick = storyPool[i % storyPool.length];
+    if (!usedTitles.includes(pick.title)) return pick;
+    i++;
+  }
+  return storyPool[n % storyPool.length];
+}
+function newStory(slot) {
+  storySkip[slot] = (storySkip[slot] || 0) + 1;
+  open = slot;
+  save();
+  draw();
+}
 function available() { return docPool.filter(bit => !benched.includes(bit.q)); }
-function pick(n) {
-  const pool = available();
-  return pool[n] || pool[0] || docPool[0];
-}
-function bench(q) {
-  if (!benched.includes(q)) benched.unshift(q);
-  save();
-  draw();
-}
-function markUsed(q) {
-  if (used.includes(q)) used = used.filter(x => x !== q);
-  else used.push(q);
-  save();
-  draw();
-}
+function pick(n) { const pool = available(); return pool[n] || pool[0] || docPool[0]; }
+function bench(q) { if (!benched.includes(q)) benched.unshift(q); save(); draw(); }
+function markUsed(q) { if (used.includes(q)) used = used.filter(x => x !== q); else used.push(q); save(); draw(); }
 function toggle(id) { open = open === id ? "" : id; save(); draw(); }
 function row(time, label, id, tag) {
   return `<button class="slot" onclick="toggle('${id}')"><span class="time">${time}</span><span>${label}</span><span class="tag">${tag}</span></button>`;
 }
+function storyCard(slot, extra) {
+  const s = storyFor(slot);
+  return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div><p>New story pulls the next Austin story for this slot.</p></div>`;
+}
 function docCard(bit) {
   const struck = used.includes(bit.q) ? "text-decoration:line-through" : "";
   const q = bit.q.replace(/'/g, "");
-  return `<div class="panel"><h3 style="${struck}">${bit.q}</h3><p>${bit.how}</p><div class="actions"><button onclick="markUsed('${q}')">${used.includes(bit.q) ? "Undo" : "Used"}</button><button class="ghost" onclick="bench('${q}')">Bench it</button></div><p>Bench it pulls the next bit from the Doc.</p></div>`;
+  return `<div class="panel"><h3 style="${struck}">${bit.q}</h3><p>${bit.how}</p><div class="actions"><button onclick="markUsed('${q}')">${used.includes(bit.q) ? "Undo" : "Used"}</button><button class="ghost" onclick="bench('${q}')">Bench it</button></div></div>`;
 }
 function draw() {
+  const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
   const d1 = pick(0), d2 = pick(1), d3 = pick(2), d4 = pick(3);
   const cdc = kickers.map(k => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p><p><b>Care, or don’t care?</b></p></div>`).join("");
   document.getElementById("board").innerHTML = `
     <section class="hour"><h2>6:00</h2>
       ${row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked")}
-      ${open === "intro" ? `<div class="panel"><p>Locked. No Doc bit. No Bench it.</p></div>` : ""}
-      ${row("6:10", "Replay: " + stories.bats.title, "bats", "open")}
-      ${open === "bats" ? `<div class="panel"><h3>${stories.bats.title}</h3><p>${stories.bats.read}</p><p>Phone: ${stories.bats.phone}</p></div>` : ""}
+      ${row("6:10", "Replay: " + a.title, "s610", "story")}
+      ${open === "s610" ? storyCard("s610", "<p>Replay of yesterday’s 9 a.m. Story We Love. New story only if this one is stale.</p>") : ""}
       ${row("6:25", "Replay from Yesterday", "replay", "locked")}
       ${row("6:35", "Tease: " + kickers[0].line, "cdc", "tied")}
       ${row("6:40", "Care Don’t Care", "cdc", "open")}
-      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3><p>The 6:35 tease is the first line. The rest is the click.</p>${cdc}</div>` : ""}
+      ${open === "cdc" ? `<div class="panel"><h3>Care Don’t Care</h3>${cdc}</div>` : ""}
       ${row("6:52", "Last Laugh", "laugh6", "locked")}
     </section>
     <section class="hour"><h2>7:00</h2>
-      ${row("7:05", stories.lammes.title + ". Then Minute to Win It setup.", "lammes", "open")}
-      ${open === "lammes" ? `<div class="panel"><h3>${stories.lammes.title}</h3><p>${stories.lammes.read}</p><p>Phone: ${stories.lammes.phone}</p><p>Then the setup: Minute to Win It is at 7:10.</p></div>` : ""}
+      ${row("7:05", b.title + ". Then Minute to Win It setup.", "s705", "story")}
+      ${open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : ""}
       ${row("7:10", "Minute to Win It", "m2w", "locked")}
       ${row("7:26", d1.q, "d1", "doc")}
       ${open === "d1" ? docCard(d1) : ""}
@@ -129,9 +143,9 @@ function draw() {
       ${row("7:52", "Last Laugh", "laugh7", "locked")}
     </section>
     <section class="hour"><h2>8:00</h2>
-      ${row("8:05", "Tease: " + stories.kacey.title, "kacey", "tied")}
-      ${row("8:10", stories.kacey.title, "kacey", "open")}
-      ${open === "kacey" ? `<div class="panel"><h3>${stories.kacey.title}</h3><p>${stories.kacey.read}</p><p>Phone: ${stories.kacey.phone}</p></div>` : ""}
+      ${row("8:05", "Tease: " + c.title, "s810", "tied")}
+      ${row("8:10", c.title, "s810", "story")}
+      ${open === "s810" ? storyCard("s810") : ""}
       ${row("8:26", d3.q, "d3", "doc")}
       ${open === "d3" ? docCard(d3) : ""}
       ${row("8:32", "Phones if lit. Doc bit waits.", "phones8", "phones")}
@@ -139,7 +153,7 @@ function draw() {
       ${open === "d4" ? docCard(d4) : ""}
       ${row("8:52", "Last Laugh", "laugh8", "locked")}
     </section>
-    <p class="bench">Benched on this phone: ${benched.length ? benched.join(" · ") : "nothing yet"}</p>`;
+    <p class="bench">New story is on 6:10, 7:05, and 8:10. It sticks on this phone.</p>`;
 }
 draw();
 </script>
