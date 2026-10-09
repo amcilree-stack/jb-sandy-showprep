@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 /* Generate the site from data/*.json:
-     index.html, jb-sandy-showprep.html (copy for old links), archive/index.html,
+     today/index.html (NOT the root index.html, which is the air board), jb-sandy-showprep.html (copy for old links), archive/index.html,
      archive/<week-monday>.html, archive/undated.html, archive/audio.html,
      stories/index.html, last-laugh/index.html, hotkeys/library.json
    Rules: anything older than 7 days, or flagged stale (past event/occasion), goes to the archive.
@@ -16,7 +16,7 @@ const TODAY = argToday > 0 ? process.argv[argToday + 1] : D.todayCT();
 const CUTOFF = D.addDays(TODAY, -7); // older than this -> archive
 const NEW_SINCE = D.addDays(TODAY, -3); // ideas this recent get the "New" treatment
 const read = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, f), "utf8"));
-const write = (f, s) => { const p = path.join(ROOT, f); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, s); };
+const write = (f, s) => { if (f === "index.html") throw new Error("refusing to write root index.html (air board owns it)"); const p = path.join(ROOT, f); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, s); };
 
 const stories = read("data/stories.json").items;
 const ideas = read("data/ideas.json").items;
@@ -57,8 +57,8 @@ function page({ title, body, nav = "", extraHead = "", scripts = "" }) {
 ${extraHead}</head>
 <body>
 <header class="top"><div class="wrap">
-<a class="brand" href="/">JB &amp; Sandy <span>· Show prep</span></a>
-<nav class="main" aria-label="Main">${n("today", "Today", "/#today")}${n("ideas", "Ideas", "/#ideas")}${n("audio", "Audio", "/#audio")}${n("archive", "Archive", "/archive/")}</nav>
+<a class="brand" href="/today/">JB &amp; Sandy <span>· Show prep</span></a>
+<nav class="main" aria-label="Main">${n("today", "Today", "/today/#today")}${n("ideas", "Ideas", "/today/#ideas")}${n("audio", "Audio", "/today/#audio")}${n("archive", "Archive", "/archive/")}</nav>
 </div></header>
 <main class="wrap">
 ${body}
@@ -142,7 +142,7 @@ function ideaBody(i, full) {
   const meta = [];
   meta.push("Added " + (i.date_estimated ? "≈ " : "") + fmt(i.added));
   meta.push(...ideaLinks(i));
-  if (clip) meta.push(clip.status === "ok" ? `<a href="/#clip-${esc(clip.id)}">▶ clip ${dur(clip.duration)}</a>` : `<a href="${esc(clip.source)}" target="_blank" rel="noopener">original video</a>`);
+  if (clip) meta.push(clip.status === "ok" ? `<a href="/today/#clip-${esc(clip.id)}">▶ clip ${dur(clip.duration)}</a>` : `<a href="${esc(clip.source)}" target="_blank" rel="noopener">original video</a>`);
   h += `<p class="meta">${meta.join(" · ")}</p>`;
   return h;
 }
@@ -220,10 +220,11 @@ const indexHtml = page({
   title: "JB & Sandy · Show prep",
   nav: "today",
   body: todayHtml + "\n" + ideasHtml + "\n" + audioHtml,
-  scripts: `<script src="hotkeys.js"></script>\n`,
+  scripts: `<script src="/hotkeys.js"></script>\n`,
 });
-write("index.html", indexHtml);
-write("jb-sandy-showprep.html", indexHtml.replace("<head>", '<head>\n<link rel="canonical" href="/">'));
+/* NEVER write /index.html: it is the Grok air board (pushed by amcilree-stack). The minimalist page lives at /today/. */
+write("today/index.html", indexHtml);
+write("jb-sandy-showprep.html", indexHtml.replace("<head>", '<head>\n<link rel="canonical" href="/today/">'));
 
 /* ---------- archive ---------- */
 const byWeek = {};

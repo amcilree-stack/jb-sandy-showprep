@@ -1,6 +1,6 @@
 # Show prep site: how it works
 
-Content lives in `data/`; the pages are generated. Don't hand-edit `index.html`.
+Content lives in `data/`; the pages are generated. The root `index.html` is the Grok air board (pushed daily by amcilree-stack) and must never be written by these scripts. The generated Today/Ideas/Audio page is `today/index.html`. Don't hand-edit generated pages.
 
 | File | What it is |
 |---|---|

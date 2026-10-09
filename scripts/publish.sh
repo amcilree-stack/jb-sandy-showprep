@@ -46,7 +46,10 @@ echo "== 4) regenerate pages"
 node scripts/build.js "${TODAY_ARGS[@]}"
 # Note: scripts/apply-basic-auth.js is Netlify's build step. Don't run it here; it would write credentials into _headers.
 
+# The root index.html is the Grok air board (owned by amcilree-stack). Never stage or overwrite it.
+git checkout -- index.html 2>/dev/null || true
 git add -A
+git reset -q -- index.html 2>/dev/null || true
 if git diff --cached --quiet; then
   echo "Nothing changed; nothing to publish."
   exit 0
@@ -55,9 +58,9 @@ fi
 # Skip pushes that only refresh the "Updated … AM CT" stamp. During-show runs
 # every 6 minutes would otherwise flood the repo with empty commits.
 STAGED=$(git diff --cached --name-only)
-if [ "$(printf '%s\n' "$STAGED" | grep -cvE '^(index\.html|jb-sandy-showprep\.html)$' || true)" = "0" ] \
+if [ "$(printf '%s\n' "$STAGED" | grep -cvE '^(today/index\.html|jb-sandy-showprep\.html)$' || true)" = "0" ] \
    && [ -n "$STAGED" ]; then
-  NONSTAMP=$(git diff --cached -U0 -- index.html jb-sandy-showprep.html 2>/dev/null \
+  NONSTAMP=$(git diff --cached -U0 -- today/index.html jb-sandy-showprep.html 2>/dev/null \
     | grep -E '^[+-]' | grep -vE '^(--- |\+\+\+ )' \
     | grep -cvE '^[+-]<p class="stamp">Updated ' || true)
   if [ "${NONSTAMP:-0}" = "0" ]; then
