@@ -29,6 +29,10 @@ a.slot { text-decoration: none; }
 .shuffle-btn { font: inherit; font-weight: 800; border: 1px solid #c4552a; border-radius: 10px; padding: 8px 12px; background: #c4552a; color: #fff; cursor: pointer; white-space: nowrap; }
 .shuffle-btn:hover { background: #a3441f; }
 
+.cat-badge { display: inline-block; font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 800; color: #c4552a; margin-bottom: 4px; }
+.story-pick .actions button { min-width: 108px; }
+
+
 .shade { position: fixed; inset: 0; background: rgba(10, 28, 58, .55); z-index: 40; display: none; }
 .shade.on { display: block; }
 .picker { position: fixed; z-index: 41; left: 50%; top: 4vh; transform: translateX(-50%); width: min(720px, 94vw); max-height: 92vh; overflow: auto; background: #fffaf3; color: #1c2430; border: 1px solid #d7c7b2; border-radius: 18px; padding: 18px 18px 22px; display: none; box-shadow: 0 18px 50px rgba(0,0,0,.28); }
@@ -60,7 +64,7 @@ a.slot { text-decoration: none; }
 <main class="wrap">
 <p class="stamp">Friday, Oct 9</p>
 <h1>6:00–9:00</h1>
-<p class="note">Longer read is the full summary of the source page again. Shuffle on a Doc bit opens replacements from the Doc. Minute to Win It opens that day's questions in a new window.</p>
+<p class="note">Longer read is the full summary of the source page again. Shuffle on a story opens 5 current stories. Shuffle on a Doc bit opens Doc replacements. Minute to Win It opens that day's questions in a new window.</p>
 <div id="board"></div>
 </main>
 <div class="shade" id="shade" onclick="closePicker()"></div>
@@ -71,6 +75,16 @@ a.slot { text-decoration: none; }
 <div class="toprow"><button onclick="reshuffle()">Shuffle</button></div>
 <div id="picker-list"></div>
 </div>
+
+<div class="shade" id="story-shade" onclick="closeStoryPicker()"></div>
+<div class="picker" id="story-picker" role="dialog" aria-label="Shuffle stories">
+<button class="x" onclick="closeStoryPicker()" aria-label="Close">&times;</button>
+<h2>Shuffle — pick a story</h2>
+<p class="sub" id="story-sub">5 current stories. Local Austin first. No politics, crime, or activism.</p>
+<div class="toprow"><button onclick="reshuffleAllStories()">Shuffle all 5</button></div>
+<div id="story-list"></div>
+</div>
+
 <script>
 const boardDate = "2026-10-09";
 const storyPool = [
@@ -157,6 +171,8 @@ let kickerSkip = JSON.parse(localStorage.getItem("air-kicker-skip") || "[0,1,2,3
 let never = JSON.parse(localStorage.getItem("air-never") || "[]");
 let used = JSON.parse(localStorage.getItem("air-used") || "[]");
 let slotPick = JSON.parse(localStorage.getItem("air-slot-pick") || "{}");
+let storyNever = JSON.parse(localStorage.getItem("air-story-never") || "[]");
+let storySlot = JSON.parse(localStorage.getItem("air-story-slot") || "{}");
 let pickerSlot = "";
 let pickerShown = [];
 function save() {
@@ -167,6 +183,8 @@ function save() {
   localStorage.setItem("air-never", JSON.stringify(never));
   localStorage.setItem("air-used", JSON.stringify(used));
   localStorage.setItem("air-slot-pick", JSON.stringify(slotPick));
+  localStorage.setItem("air-story-never", JSON.stringify(storyNever));
+  localStorage.setItem("air-story-slot", JSON.stringify(storySlot));
 }
 function esc(s) { return String(s || "").replace(/&/g, "&" + "amp;").replace(/</g, "&" + "lt;").replace(/>/g, "&" + "gt;").replace(/"/g, "&" + "quot;").replace(/'/g, "&" + "#39;"); }
 function todayISO() {
@@ -195,12 +213,19 @@ function available(day) {
 }
 function byId(id) { return docPool.find(b => b.id === id); }
 function storyFor(slot) {
+  if (typeof storySlot !== "undefined" && storySlot[slot]) {
+    const chosen = storyPool.find(s => s.id === storySlot[slot]);
+    if (chosen) return chosen;
+  }
   const n = storySkip[slot] || 0;
-  const usedTitles = slots.filter(s => s !== slot).map(s => storyPool[(storySkip[s] || 0) % storyPool.length].title);
+  const usedTitles = slots.filter(s => s !== slot).map(s => {
+    const picked = (typeof storySlot !== "undefined" && storySlot[s]) ? storyPool.find(x => x.id === storySlot[s]) : null;
+    return picked ? picked.title : storyPool[(storySkip[s] || 0) % storyPool.length].title;
+  });
   let i = n;
   for (let k = 0; k < storyPool.length; k++) {
     const pick = storyPool[i % storyPool.length];
-    if (!usedTitles.includes(pick.title)) return pick;
+    if (!usedTitles.includes(pick.title) && !(typeof storyNever !== "undefined" && storyNever.includes(pick.id))) return pick;
     i++;
   }
   return storyPool[n % storyPool.length];
@@ -299,6 +324,9 @@ function m2wHref(date) {
 function row(time, label, id, tag) {
   return '<button class="slot" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">' + tag + "</span></button>";
 }
+function storyRow(time, label, id) {
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">story</span></button><button class="shuffle-btn" onclick="openStoryPicker(\'' + id + '\')">Shuffle</button></div>';
+}
 function docRow(time, label, id) {
   return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">doc</span></button><button class="shuffle-btn" onclick="openPicker(\'' + id + '\')">Shuffle</button></div>';
 }
@@ -328,13 +356,13 @@ function draw() {
   document.getElementById("board").innerHTML =
     '<section class="hour"><h2>6:00</h2>' +
     row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked") +
-    row("6:10", "Replay: " + a.title, "s610", "story") + (open === "s610" ? storyCard("s610") : "") +
+    storyRow("6:10", "Replay: " + a.title, "s610") + (open === "s610" ? storyCard("s610") : "") +
     row("6:25", "Replay from Yesterday", "replay", "locked") +
     row("6:35", "Tease: " + ks[0].line, "cdc", "tied") +
     row("6:40", "Care Don't Care", "cdc", "open") + (open === "cdc" ? '<div class="panel"><h3>Care Don\'t Care</h3>' + cdc + "</div>" : "") +
     row("6:52", "Last Laugh", "laugh6", "locked") +
     '</section><section class="hour"><h2>7:00</h2>' +
-    row("7:05", b.title, "s705", "story") + (open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : "") +
+    storyRow("7:05", b.title, "s705") + (open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : "") +
     m2wRow() +
     docRow("7:26", d1.q, "d1") + (open === "d1" ? docCard(d1, "d1") : "") +
     row("7:32", "Phones if lit. Doc bit waits.", "phones7", "phones") +
@@ -342,7 +370,7 @@ function draw() {
     row("7:52", "Last Laugh", "laugh7", "locked") +
     '</section><section class="hour"><h2>8:00</h2>' +
     row("8:05", "Tease: " + c.title, "s810", "tied") +
-    row("8:10", c.title, "s810", "story") + (open === "s810" ? storyCard("s810") : "") +
+    storyRow("8:10", c.title, "s810") + (open === "s810" ? storyCard("s810") : "") +
     docRow("8:26", d3.q, "d3") + (open === "d3" ? docCard(d3, "d3") : "") +
     row("8:32", "Phones if lit. Doc bit waits.", "phones8", "phones") +
     docRow("8:40", d4.q, "d4") + (open === "d4" ? docCard(d4, "d4") : "") +
@@ -359,6 +387,109 @@ function mergeIdeas(items) {
     seen.add(id);
   });
 }
+const storyCats = [
+  { id: "local", label: "Local Austin" },
+  { id: "country", label: "Country Music" },
+  { id: "movies", label: "Movies" },
+  { id: "lifestyle", label: "Lifestyle" },
+  { id: "weird", label: "Weird News" }
+];
+storyPool.forEach(s => { if (!s.cat) s.cat = "local"; if (!s.id) s.id = s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 42); });
+storyPool.push(
+  { id: "sumo-cedar", cat: "local", title: "Sumo is at the H-E-B Center in Cedar Park tonight", read: "Sumo Championship League, 8 p.m. at 2100 Avenue of the Stars. A sport with centuries of history, in Cedar Park.", phone: "Who is going, and who did not know sumo was in town?", source: "CBS Austin", author: "", url: "https://cbsaustin.com/news/local/weekend-check-five-things-to-do-around-austin-oct-911", long: "CBS Austin's weekend check for Oct. 9-11 lists the Sumo Championship League at the H-E-B Center in Cedar Park on Saturday, Oct. 10, at 8 p.m. The address is 2100 Avenue of the Stars. The piece calls it a chance to see a sport with centuries of history without leaving Central Texas." },
+  { id: "ballet-two", cat: "local", title: "Ballet Austin TWO is $25 this weekend", read: "The Seventh Night Sky. 45 minutes, no intermission, every ticket $25. Saturday and Sunday at 2 and 4:30.", phone: "Who is doing the cheap ballet, and who is doing ACL?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "ATX Things lists Ballet Austin TWO's The Seventh Night Sky as a $25 family show, 45 minutes with no intermission, Saturday and Sunday at 2 and 4:30. It is part of a weekend stack that also includes Austin Oktoberfest and Pumpkin Nights." },
+  { id: "pumpkin-nights", cat: "local", title: "Pumpkin Nights is on at Pioneer Farms", read: "Through Oct. 31. Weekend adult tickets about $34 to $38. 10621 Pioneer Farms Drive.", phone: "Who already went, and who is waiting for a cooler night?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "ATX Things lists Pumpkin Nights at Pioneer Farms, 10621 Pioneer Farms Dr., through Oct. 31. Weekend adult tickets are $34 to $38. It is the night option if you are not at ACL." },
+  { id: "hot-luck", cat: "local", title: "Hot Luck Fest is next weekend", read: "Oct. 16 and 17. Food and music. Aaron Franklin is a co-founder. Eat with your fingers.", phone: "Who is going, and who is just going to say they knew?", source: "Austin Monthly", author: "", url: "https://www.austinmonthly.com/25-things-to-do-in-austin-this-october/", long: "Austin Monthly's October list includes Hot Luck Fest on Oct. 16-17. Visit Austin describes it as a live food and music festival that moved to the fall, co-founded by Aaron Franklin, built around open-pit cooking and music." },
+  { id: "lainey", cat: "country", title: "Lainey Wilson just dropped Kinda Love It", read: "Out Friday. John Mayer co-wrote it and plays guitar. The video is her and Duck on an ATV.", phone: "Who already played it, and who is waiting for the radio edit?", source: "Country Now", author: "Lauren Jo Black", url: "https://countrynow.com/lainey-wilson-embraces-a-new-sound-and-a-little-trouble-in-her-latest-song-kinda-love-it/", long: "Lauren Jo Black wrote this for Country Now on Oct. 9. Lainey Wilson released Kinda Love It on Friday. She co-wrote it with John Mayer, Kid Harpoon, and Jon Decious. Mayer plays guitar. The video stars her husband, Devlin Duck Hodges, on an ATV around the farm. She hosts the CMA Awards on Nov. 18." },
+  { id: "kip", cat: "country", title: "Kip Moore has a new album out", read: "Dyin On The Vine landed Friday, with a stack of other country projects the same day.", phone: "Who bought it, and who is still on the old one?", source: "Hillbilly Live", author: "", url: "https://hillbillylive.com/2026/10/08/kip-moore-brent-cobb-lainey-wilson-jackson-dean-jaren-johnston-chris-janson-and-more-have-new-music-out-now/", long: "Hillbilly Live's Oct. 8 new-music Friday list includes Kip Moore's album Dyin On The Vine, plus Brent Cobb, Jackson Dean, Tigirlily Gold, and a Lainey Wilson single." },
+  { id: "rrb", cat: "country", title: "Randy Rogers Band and Parker McCollum have a new song", read: "Tommy Jackson is out. Two Texas names on one track.", phone: "Who heard it, and who is claiming they knew first?", source: "Hillbilly Live", author: "", url: "https://hillbillylive.com/2026/10/08/kip-moore-brent-cobb-lainey-wilson-jackson-dean-jaren-johnston-chris-janson-and-more-have-new-music-out-now/", long: "Hillbilly Live lists Randy Rogers Band featuring Parker McCollum, Tommy Jackson, among the Oct. 9 country singles." },
+  { id: "old-town", cat: "country", title: "Steve Martin turned Old Town Road into bluegrass", read: "With Alison Brown, Del McCoury, and Dan Tyminski. Banjo, mandolin, fiddle. Out Oct. 8.", phone: "Better than the original, or leave it alone?", source: "Woodward Community Media", author: "Mariana A", url: "https://wcmspi.com/2026/10/10/steve-martin-and-alison-brown-give-lil-nas-xs-old-town-road-a-bluegrass-makeover/", long: "Mariana A wrote this Oct. 10. Steve Martin and Alison Brown released a bluegrass take on Old Town Road on Oct. 8, with Del McCoury and Dan Tyminski. Banjo, mandolin, fiddle, and bass replace the original production. Martin added new lyrics." },
+  { id: "miranda", cat: "country", title: "Miranda Lambert's Crisco is out", read: "Dropped Oct. 2. Chris Stapleton is on A Song To Sing.", phone: "Who has played it all the way through?", source: "Hank FM", author: "", url: "https://hankfm.com/881546/new-country-albums-fall-2026-release-dates/", long: "Hank FM's fall country release list has Miranda Lambert's Crisco on Oct. 2, with the single Till The Going's Gone and a Chris Stapleton duet, A Song To Sing. Brothers Osborne's Watertown follows Oct. 23." },
+  { id: "verity", cat: "movies", title: "Verity is the No. 1 movie", read: "Anne Hathaway, Dakota Johnson, Josh Hartnett. About $42 million domestic. Hathaway's third No. 1 this year.", phone: "Who saw it, and who is waiting for it to hit a streamer?", source: "The New York Times", author: "Derrick Bryson Taylor", url: "https://www.nytimes.com/2026/10/04/movies/anne-hathaway-odyseey-devil-prada-verity.html", long: "Derrick Bryson Taylor wrote this for The New York Times on Oct. 4. Verity, with Anne Hathaway, Dakota Johnson, and Josh Hartnett, opened at No. 1 with about $32 million and is near $42 million domestic. It is Hathaway's third No. 1 opening of 2026, after The Devil Wears Prada 2 and The Odyssey. It is a Colleen Hoover adaptation. Tom Cruise's Digger opened far behind it." },
+  { id: "whalefall", cat: "movies", title: "Whalefall opens Friday", read: "Josh Brolin, Austin Abrams, Elisabeth Shue. Wide release Oct. 16.", phone: "Who is in for a whale movie, and who is out?", source: "Box Office Mojo", author: "", url: "https://www.boxofficemojo.com/calendar/2026-10-10/", long: "Box Office Mojo lists Whalefall as a wide release on Oct. 16, with Austin Abrams, Josh Brolin, Elisabeth Shue, and Jane Levy. Clayface follows on Oct. 23." },
+  { id: "clayface", cat: "movies", title: "Clayface is two weeks out", read: "Warner Bros. Wide release Oct. 23. A comic-book villain movie.", phone: "Who is going opening night?", source: "Box Office Mojo", author: "", url: "https://www.boxofficemojo.com/calendar/2026-10-10/", long: "Box Office Mojo lists Clayface as a Warner Bros. wide release on Oct. 23." },
+  { id: "digger", cat: "movies", title: "Tom Cruise's Digger opened soft", read: "About $8 million. Verity beat it by a wide margin.", phone: "Who still goes to a Cruise movie on name alone?", source: "UPI", author: "Karen Butler", url: "https://www.upi.com/Entertainment_News/Movies/2026/10/04/verity-tops-box-office/1851791153286/", long: "Karen Butler wrote this for UPI on Oct. 4. Verity opened at No. 1 with $32.6 million. Digger, with Tom Cruise, landed around $8 million." },
+  { id: "gwtw", cat: "movies", title: "Gone with the Wind is back in theaters", read: "A 2026 re-release. Limited. Clark Gable, Vivien Leigh. Today.", phone: "Who is going, and who thinks it should stay on a shelf?", source: "Box Office Mojo", author: "", url: "https://www.boxofficemojo.com/calendar/2026-10-10/", long: "Box Office Mojo lists a Gone with the Wind 2026 re-release on Oct. 10, limited, with Clark Gable and Vivien Leigh." },
+  { id: "diets", cat: "lifestyle", title: "More people are on a diet, and fewer feel healthy", read: "64 percent followed a diet this year. Only 40 percent call their health excellent or very good. Lowest since 2012.", phone: "What diet did you start and quietly quit?", source: "IFIC", author: "", url: "https://ific.org/media/trying-harder-yet-feeling-worse-americans-self-reported-health-status-hits-a-record-low/", long: "The International Food Information Council's 2026 Food and Health Survey says 64 percent of Americans followed a specific eating pattern in the past year, the highest since tracking began in 2018. Only 40 percent rate their health excellent or very good, the lowest since 2012. High protein is the top diet for a fourth year. For the first time in 21 years, convenience beat healthfulness as a reason people buy food." },
+  { id: "protein", cat: "lifestyle", title: "High protein is the top diet again", read: "Fourth year in a row. 70 percent say they try to get more protein.", phone: "Who is actually tracking it, and who is just saying protein?", source: "IFIC", author: "", url: "https://ific.org/media/trying-harder-yet-feeling-worse-americans-self-reported-health-status-hits-a-record-low/", long: "IFIC says high protein led diets for a fourth straight year at 27 percent, up from 4 percent in 2018. Seventy percent say they actively try to include protein. Low-sugar, mindful eating, and clean eating follow." },
+  { id: "aging-diets", cat: "lifestyle", title: "A stack of diets is tied to slower aging", read: "No single winner. The common thread is plants, whole grains, nuts, less sugar.", phone: "Who changed how they eat after 40?", source: "Health.com", author: "Sarah Garone", url: "https://www.health.com/diets-slow-biological-aging-12134985", long: "Sarah Garone wrote this for Health.com on Oct. 9. A Nature Communications study looked at 10 diets and found none stood alone for healthy aging. All were linked with slower biological aging. The shared traits were plants, whole grains, legumes, nuts, healthy fats, and less red meat, sugar, and sodium." },
+  { id: "convenience", cat: "lifestyle", title: "Convenience just beat healthy on the grocery list", read: "Taste and price still win. Convenience passed healthfulness for the first time in 21 years of tracking.", phone: "What do you buy because it is easy, not because it is good?", source: "IFIC", author: "Kris Sollid", url: "https://ific.org/media/trying-harder-yet-feeling-worse-americans-self-reported-health-status-hits-a-record-low/", long: "Kris Sollid of IFIC said this is the first time in 21 years that convenience outweighed healthfulness in food-buying decisions. Taste is still first at 88 percent, price 78, convenience 61, healthfulness 56." },
+  { id: "spiderman", cat: "weird", title: "Hundreds of people dressed as Spider-Man for a record", read: "New York Comic Con. They went for a Guinness record.", phone: "Who owns a Spider-Man suit, and who is lying?", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "UPI Odd News on Oct. 9: hundreds of Marvel fans wore Spider-Man costumes at New York Comic Con and tried to break a Guinness World Record." },
+  { id: "diamond", cat: "weird", title: "A man dug up a 6-carat diamond in Arkansas", read: "6.03 carats. He found it while digging.", phone: "Who would actually go dig for a diamond?", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "A U.S. man discovered a 6.03-carat diamond while digging in Arkansas, reported Oct. 8." },
+  { id: "sisters", cat: "weird", title: "Sisters who did not know each other met at a softball game", read: "A teammate noticed the other player looked just like her. They had been separated as kids.", phone: "Who has a family story that sounds made up?", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "Samantha Rainsold, 19, was playing softball in Montana when a teammate noticed an opposing player who looked just like her. The two had been separated in childhood." },
+  { id: "fries", cat: "weird", title: "Idaho cooked 1,474 pounds of french fries", read: "Fifty chefs, six fryers, then they served them.", phone: "Who would have been in that line?", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/07/Guinness-World-Records-largest-serving-french-fries/1951791396507/", long: "Ben Hooper wrote this for UPI on Oct. 7. The Idaho Potato Commission and Spud Daddy cooked a 1,474-pound serving of fries and called it a Guinness record." },
+  { id: "ring", cat: "weird", title: "A 1965 class ring came out of a sewer and still fits", read: "He gave it to his sweetheart. She lost it down the sink. It came back 60 years later.", phone: "Who still has a class ring, and who lost one?", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/08/class-ring-sewer-Sheffield-Alabama/7991791477667/", long: "Ben Hooper wrote this for UPI on Oct. 8. Sewer workers in Sheffield, Alabama found a 1965 class ring. It belonged to Oscar James Meredith, who had given it to his sweetheart. She lost it down the sink. It still fits." }
+);
+let storyPickerSlot = "";
+let storyShown = {};
+function availableStories(cat, avoid) {
+  return storyPool.filter(s => s.cat === cat && !storyNever.includes(s.id) && !avoid.includes(s.id));
+}
+function pickStory(cat, avoid) {
+  const pool = availableStories(cat, avoid);
+  if (!pool.length) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+function fillStories(avoidMap) {
+  const next = {};
+  storyCats.forEach(c => {
+    const avoid = (avoidMap && avoidMap[c.id]) ? avoidMap[c.id] : [];
+    next[c.id] = pickStory(c.id, avoid) || pickStory(c.id, []);
+  });
+  return next;
+}
+function openStoryPicker(slot) {
+  storyPickerSlot = slot;
+  storyShown = fillStories();
+  renderStoryPicker();
+  document.getElementById("story-shade").classList.add("on");
+  document.getElementById("story-picker").classList.add("on");
+}
+function closeStoryPicker() {
+  document.getElementById("story-shade").classList.remove("on");
+  document.getElementById("story-picker").classList.remove("on");
+  storyPickerSlot = "";
+}
+function reshuffleAllStories() {
+  const avoid = {};
+  storyCats.forEach(c => { avoid[c.id] = storyShown[c.id] ? [storyShown[c.id].id] : []; });
+  storyShown = fillStories(avoid);
+  renderStoryPicker();
+}
+function reshuffleCategory(cat) {
+  const current = storyShown[cat] ? storyShown[cat].id : "";
+  storyShown[cat] = pickStory(cat, current ? [current] : []) || pickStory(cat, []);
+  renderStoryPicker();
+}
+function useStoryNow(id) {
+  if (!storyPickerSlot) return;
+  storySlot[storyPickerSlot] = id;
+  open = storyPickerSlot;
+  save();
+  closeStoryPicker();
+  draw();
+}
+function saveStoryLater(cat) { reshuffleCategory(cat); }
+function alreadyDidStory(id, cat) {
+  if (!storyNever.includes(id)) storyNever.push(id);
+  save();
+  reshuffleCategory(cat);
+}
+function neverStory(id, title, cat) {
+  if (!confirm("Never suggest this story again on this computer?")) return;
+  if (!storyNever.includes(id)) storyNever.push(id);
+  save();
+  reshuffleCategory(cat);
+}
+function renderStoryPicker() {
+  document.getElementById("story-sub").textContent = "5 current stories. Local Austin first. No politics, crime, or activism.";
+  document.getElementById("story-list").innerHTML = storyCats.map(c => {
+    const s = storyShown[c.id];
+    if (!s) return '<div class="pick"><h3>' + esc(c.label) + "</h3><p>No stories left in this category on this computer.</p></div>";
+    return '<div class="pick story-pick"><div class="cat-badge">' + esc(c.label) + "</div><h3>" + esc(s.title) + "</h3><p>" + esc(s.read) + '</p><p class="src"><em><strong>' + esc(s.source) + '</strong></em></p><div class="actions"><button onclick="useStoryNow(\'' + esc(s.id) + '\')">Use Now</button><button class="ghost" onclick="saveStoryLater(\'' + c.id + '\')">Save For Later</button><button class="ghost" onclick="alreadyDidStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Already Did It</button><button class="ghost" onclick="neverStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Never</button><button class="ghost" onclick="reshuffleCategory(\'' + c.id + '\')">Shuffle</button></div></div>';
+  }).join("");
+}
+
 fetch("/data/ideas.json").then(r => r.ok ? r.json() : null).then(data => {
   if (data && Array.isArray(data.items)) mergeIdeas(data.items);
   draw();
