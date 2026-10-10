@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>No calls? Pick a bit · JB & Sandy</title>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+html, body { background: linear-gradient(165deg, #123a73 0%, #1d5aa8 42%, #2f7ed6 100%) !important; color: #f7f4ee; min-height: 100%; }
+header.top { background: rgba(10, 28, 58, .88); border-bottom: 1px solid rgba(255,255,255,.28); }
+.brand, .brand span, nav.main a { color: #fff; }
+main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid rgba(255,255,255,.7); border-radius: 18px; margin: 16px auto 28px; padding: 18px 18px 24px; max-width: 880px; }
+.back { color: #1d4f91; font-weight: 800; text-decoration: none; }
+h1 { margin: 10px 0 4px; font-size: 2rem; }
+.sub { color: #4a5568; margin: 0 0 14px; }
+.toprow { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+button, .btn { font: inherit; font-weight: 800; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 12px; background: #fff; color: #1d4f91; cursor: pointer; }
+button.primary, .btn.primary { background: #c4552a; color: #fff; border-color: #c4552a; }
+.pick { border: 1px solid #d5e0ee; border-radius: 12px; padding: 12px 14px; margin: 10px 0; background: #fff; }
+.pick h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.pick p { margin: 0; color: #3b4656; }
+.actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.actions button { min-width: 108px; }
+.actions button.primary { background: #c4552a; color: #fff; border-color: #c4552a; }
+</style>
+</head>
+<body>
+<header class="top"><div class="brand">JB & Sandy <span>No calls</span></div></header>
+<main class="wrap">
+<a class="back" href="/">← Back to air board</a>
+<h1>No calls? Pick a bit.</h1>
+<p class="sub" id="sub">4 Doc bits not suggested in the last 3 hours.</p>
+<div class="toprow"><button class="primary" onclick="shuffleFour()">Shuffle 4 more</button></div>
+<div id="list"></div>
+</main>
+<script>
+const slot = new URLSearchParams(location.search).get("slot") || "phones7";
+const THREE_HOURS = 3 * 60 * 60 * 1000;
+let never = JSON.parse(localStorage.getItem("air-never") || "[]");
+let already = JSON.parse(localStorage.getItem("air-already") || "[]");
+let suggested = JSON.parse(localStorage.getItem("air-suggested") || "{}");
+let pool = [];
+let shown = [];
+
+function esc(s) {
+  return String(s || "").replace(/&/g, "&").replace(/</g, "<").replace(/>/g, ">").replace(/"/g, """).replace(/'/g, "&#39;");
+}
+function save() {
+  localStorage.setItem("air-never", JSON.stringify(never));
+  localStorage.setItem("air-already", JSON.stringify(already));
+  localStorage.setItem("air-suggested", JSON.stringify(suggested));
+}
+function stamp(ids) {
+  const now = Date.now();
+  ids.forEach(id => { suggested[id] = now; });
+  save();
+}
+function fresh(bit) {
+  if (never.includes(bit.id) || already.includes(bit.id)) return false;
+  const seen = suggested[bit.id];
+  return !seen || (Date.now() - seen) >= THREE_HOURS;
+}
+function pickFour() {
+  const open = pool.filter(b => fresh(b) && !shown.find(s => s.id === b.id));
+  const use = open.length ? open : pool.filter(b => !never.includes(b.id) && !already.includes(b.id));
+  const copy = use.slice();
+  const out = [];
+  while (copy.length && out.length < 4) {
+    out.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0]);
+  }
+  shown = out;
+  stamp(out.map(b => b.id));
+  render();
+}
+function render() {
+  const left = pool.filter(fresh).length;
+  document.getElementById("sub").textContent = shown.length + " Doc bits. " + left + " not suggested in the last 3 hours.";
+  document.getElementById("list").innerHTML = shown.map(b =>
+    '<div class="pick"><h3>' + esc(b.q) + "</h3><p>" + esc(b.how) + '</p><div class="actions">' +
+    '<button class="primary" onclick="useNow(\'' + esc(b.id) + '\')">Use Now</button>' +
+    '<button onclick="later(\'' + esc(b.id) + '\')">Save For Later</button>' +
+    '<button onclick="didIt(\'' + esc(b.id) + '\')">Already Did It</button>' +
+    '<button onclick="neverBit(\'' + esc(b.id) + '\')">Never</button></div></div>'
+  ).join("") || "<p>No Doc bits left on this computer.</p>";
+}
+function useNow(id) {
+  const picks = JSON.parse(localStorage.getItem("air-phone-pick") || "{}");
+  picks[slot] = id;
+  localStorage.setItem("air-phone-pick", JSON.stringify(picks));
+  location.href = "/";
+}
+function later(id) {
+  shown = shown.filter(b => b.id !== id);
+  const next = pool.find(b => fresh(b) && !shown.find(s => s.id === b.id));
+  if (next) { shown.push(next); stamp([next.id]); }
+  render();
+}
+function didIt(id) {
+  if (!already.includes(id)) already.push(id);
+  save();
+  later(id);
+}
+function neverBit(id) {
+  if (!confirm("Never suggest this bit again on this computer?")) return;
+  if (!never.includes(id)) never.push(id);
+  save();
+  later(id);
+}
+function shuffleFour() { shown = []; pickFour(); }
+
+fetch("/data/ideas.json").then(r => r.json()).then(data => {
+  const items = data.items || [];
+  pool = items.map(it => ({
+    id: it.id,
+    q: it.title || it.doc_text || "Doc bit",
+    how: (it.doc_text || it.body || it.title || "").slice(0, 220)
+  })).filter(b => b.id);
+  pickFour();
+}).catch(() => {
+  document.getElementById("list").innerHTML = "<p>Could not load the Doc.</p>";
+});
+</script>
+</body>
+</html>
