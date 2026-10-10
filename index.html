@@ -26,8 +26,8 @@ a.slot { text-decoration: none; }
 .kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
 .doc-row { display: flex; align-items: center; gap: 8px; border-top: 1px solid #e1e8f2; padding: 6px 0; }
 .doc-row .slot-main { flex: 1; display: flex; gap: 10px; align-items: baseline; text-align: left; background: transparent; border: 0; color: inherit; font: inherit; padding: 6px 0; cursor: pointer; }
-.shuffle-btn { font: inherit; font-weight: 800; border: 1px solid #c4552a; border-radius: 10px; padding: 8px 12px; background: #c4552a; color: #fff; cursor: pointer; white-space: nowrap; }
-.shuffle-btn:hover { background: #a3441f; }
+.shuffle-btn { font: inherit; font-weight: 800; border: 1px solid #1d5aa8; border-radius: 10px; padding: 8px 12px; background: #1d5aa8; color: #fff; cursor: pointer; white-space: nowrap; }
+.shuffle-btn:hover { background: #123a73; }
 
 .phones-row { align-items: center; }
 .phones-label { display: inline-flex; align-items: center; gap: 8px; color: #e10600; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; }
@@ -88,6 +88,16 @@ a.slot { text-decoration: none; }
 <p class="sub" id="story-sub">5 current stories. Local Austin first. No politics, crime, or activism.</p>
 <div class="toprow"><button onclick="reshuffleAllStories()">Shuffle all 5</button></div>
 <div id="story-list"></div>
+</div>
+
+
+<div class="shade" id="cdc-shade" onclick="closeCdcPicker()"></div>
+<div class="picker" id="cdc-picker" role="dialog" aria-label="Shuffle kickers">
+<button class="x" onclick="closeCdcPicker()" aria-label="Close">&times;</button>
+<h2>Care Don't Care</h2>
+<p class="sub">Hope you like these T. Kicker stories only.</p>
+<div class="toprow"><button class="shuffle-btn" onclick="reshuffleCdc()">Shuffle</button></div>
+<div id="cdc-list"></div>
 </div>
 
 <script>
@@ -179,6 +189,8 @@ let slotPick = JSON.parse(localStorage.getItem("air-slot-pick") || "{}");
 let storyNever = JSON.parse(localStorage.getItem("air-story-never") || "[]");
 let storySlot = JSON.parse(localStorage.getItem("air-story-slot") || "{}");
 let phonePick = JSON.parse(localStorage.getItem("air-phone-pick") || "{}");
+let cdcNever = JSON.parse(localStorage.getItem("air-cdc-never") || "[]");
+let cdcPick = JSON.parse(localStorage.getItem("air-cdc-pick") || "{}");
 let pickerSlot = "";
 let pickerShown = [];
 function save() {
@@ -236,7 +248,7 @@ function storyFor(slot) {
   }
   return storyPool[n % storyPool.length];
 }
-function kickerAt(i) { return kickerPool[(kickerSkip[i] || i) % kickerPool.length]; }
+function kickerAt(i) { if (cdcPick[i] != null && kickerPool[cdcPick[i]]) return kickerPool[cdcPick[i]]; return kickerPool[(kickerSkip[i] || i) % kickerPool.length]; }
 function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; longOpen = ""; save(); draw(); }
 function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; longOpen = ""; save(); draw(); }
 function toggleLong(id) { longOpen = longOpen === id ? "" : id; save(); draw(); }
@@ -337,6 +349,9 @@ function storyRow(time, label, id) {
 function phoneIcon() {
   return '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#123a73"/><path fill="#fff" d="M8.2 6.6c.3-.7 1.1-.9 1.7-.6l1.3.7c.5.3.7.9.5 1.4l-.6 1.3a1 1 0 0 0 .2 1.1l1.6 1.6a1 1 0 0 0 1.1.2l1.3-.6c.5-.2 1.1 0 1.4.5l.7 1.3c.3.6.1 1.4-.6 1.7l-1 .4c-2.2.9-4.8-.2-6.7-2.1s-3-4.5-2.1-6.7l.4-1z"/></svg>';
 }
+function cdcRow(time) {
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'cdc\')"><span class="time">' + time + '</span><span>Care Don\'t Care</span><span class="tag">open</span></button><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>';
+}
 function phonesRow(time, id) {
   const pick = phonePick[id];
   const bit = pick ? docPool.find(b => b.id === pick) : null;
@@ -355,8 +370,11 @@ function m2wRow() {
   const nice = new Date(boardDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
   return '<a class="slot" href="' + href + '" target="_blank" rel="noopener"><span class="time">7:10</span><span>Minute to Win It · ' + esc(nice) + '</span><span class="tag">open</span></a>';
 }
+function stripLead(s) {
+  return String(s || "").replace(/^[^.]+ wrote this for [^.]+ on [A-Za-z]+\.?\s*\d{1,2}\.\s*/, "");
+}
 function sourceLine(item, id) {
-  const more = longOpen === id ? '<div class="long"><p>' + esc(item.long) + "</p></div>" : "";
+  const more = longOpen === id ? '<div class="long"><p>' + esc(stripLead(item.long)) + "</p></div>" : "";
   const who = item.author ? item.source + ", " + item.author : item.source;
   return '<p class="src"><em><strong>' + esc(who) + '</strong></em></p><div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
 }
@@ -372,14 +390,14 @@ function draw() {
   const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
   const ks = [0, 1, 2, 3].map(kickerAt);
   const d1 = pickFor("d1", 0), d2 = pickFor("d2", 1), d3 = pickFor("d3", 2), d4 = pickFor("d4", 3);
-  const cdc = ks.map((k, i) => '<div class="kicker"><b>' + esc(k.line) + "</b><p>" + esc(k.more) + "</p>" + sourceLine(k, "k" + i) + '<button onclick="newKicker(' + i + ')">New story</button></div>').join("");
+  const cdc = '<p class="sub">Hope you like these T.</p><div class="toprow"><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>' + ks.map((k, i) => '<div class="kicker"><b>' + esc(k.line) + "</b><p>" + esc(k.more) + "</p>" + sourceLine(k, "k" + i) + '<button class="shuffle-btn" onclick="openCdcPicker(' + i + ')">Shuffle</button></div>').join("");
   document.getElementById("board").innerHTML =
     '<section class="hour"><h2>6:00</h2>' +
     row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked") +
     storyRow("6:10", "Replay: " + a.title, "s610") + (open === "s610" ? storyCard("s610") : "") +
     row("6:25", "Replay from Yesterday", "replay", "locked") +
     row("6:35", "Tease: " + ks[0].line, "cdc", "tied") +
-    row("6:40", "Care Don't Care", "cdc", "open") + (open === "cdc" ? '<div class="panel"><h3>Care Don\'t Care</h3>' + cdc + "</div>" : "") +
+    cdcRow("6:40") + (open === "cdc" ? '<div class="panel"><h3>Care Don\'t Care</h3>' + cdc + "</div>" : "") +
     row("6:52", "Last Laugh", "laugh6", "locked") +
     '</section><section class="hour"><h2>7:00</h2>' +
     storyRow("7:05", b.title, "s705") + (open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : "") +
@@ -508,6 +526,71 @@ function renderStoryPicker() {
     if (!s) return '<div class="pick"><h3>' + esc(c.label) + "</h3><p>No stories left in this category on this computer.</p></div>";
     return '<div class="pick story-pick"><div class="cat-badge">' + esc(c.label) + "</div><h3>" + esc(s.title) + "</h3><p>" + esc(s.read) + '</p><p class="src"><em><strong>' + esc(s.source) + '</strong></em></p><div class="actions"><button onclick="useStoryNow(\'' + esc(s.id) + '\')">Use Now</button><button class="ghost" onclick="saveStoryLater(\'' + c.id + '\')">Save For Later</button><button class="ghost" onclick="alreadyDidStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Already Did It</button><button class="ghost" onclick="neverStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Never</button><button class="ghost" onclick="reshuffleCategory(\'' + c.id + '\')">Shuffle</button></div></div>';
   }).join("");
+}
+
+
+kickerPool.push(
+  { line: "Hundreds of people dressed as Spider-Man for a record.", more: "New York Comic Con. They went for a Guinness record.", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "Hundreds of Marvel fans wore Spider-Man costumes at New York Comic Con and tried to break a Guinness World Record." },
+  { line: "A man dug up a 6-carat diamond in Arkansas.", more: "6.03 carats. He found it while digging.", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "A U.S. man discovered a 6.03-carat diamond while digging in Arkansas." },
+  { line: "Sisters who did not know each other met at a softball game.", more: "A teammate noticed the other player looked just like her.", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "Samantha Rainsold, 19, was playing softball in Montana when a teammate noticed an opposing player who looked just like her. The two had been separated in childhood." },
+  { line: "Idaho cooked 1,474 pounds of french fries.", more: "Fifty chefs, six fryers, then they served them.", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/07/Guinness-World-Records-largest-serving-french-fries/1951791396507/", long: "The Idaho Potato Commission and Spud Daddy cooked a 1,474-pound serving of fries and called it a Guinness record." },
+  { line: "Maryland in-laws won a second $50,000 lottery prize together.", more: "Same family. Second time.", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "A pair of Maryland in-laws collected their second $50,000 lottery prize together." }
+);
+let cdcPickerSlot = -1;
+let cdcShown = [];
+function cdcAvailable(avoid) {
+  return kickerPool.map((k, i) => ({ k, i })).filter(x => !cdcNever.includes(x.i) && !avoid.includes(x.i));
+}
+function openCdcPicker(slot) {
+  cdcPickerSlot = slot;
+  const avoid = [];
+  cdcShown = [];
+  const pool = cdcAvailable(avoid);
+  while (pool.length && cdcShown.length < 4) {
+    cdcShown.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  }
+  renderCdcPicker();
+  document.getElementById("cdc-shade").classList.add("on");
+  document.getElementById("cdc-picker").classList.add("on");
+}
+function closeCdcPicker() {
+  document.getElementById("cdc-shade").classList.remove("on");
+  document.getElementById("cdc-picker").classList.remove("on");
+}
+function reshuffleCdc() { openCdcPicker(cdcPickerSlot); }
+function useCdcNow(index) {
+  const slot = cdcPickerSlot < 0 ? 0 : cdcPickerSlot;
+  cdcPick[slot] = index;
+  open = "cdc";
+  save();
+  closeCdcPicker();
+  draw();
+}
+function laterCdc(index) {
+  cdcShown = cdcShown.filter(x => x.i !== index);
+  const next = cdcAvailable(cdcShown.map(x => x.i));
+  if (next.length) cdcShown.push(next[Math.floor(Math.random() * next.length)]);
+  renderCdcPicker();
+}
+function didCdc(index) {
+  if (!cdcNever.includes(index)) cdcNever.push(index);
+  save();
+  laterCdc(index);
+}
+function neverCdc(index) {
+  if (!confirm("Never suggest this kicker again on this computer?")) return;
+  if (!cdcNever.includes(index)) cdcNever.push(index);
+  save();
+  laterCdc(index);
+}
+function renderCdcPicker() {
+  document.getElementById("cdc-list").innerHTML = cdcShown.map(x =>
+    '<div class="pick"><h3>' + esc(x.k.line) + "</h3><p>" + esc(x.k.more) + '</p><p class="src"><em><strong>' + esc(x.k.source) + '</strong></em></p><div class="actions">' +
+    '<button onclick="useCdcNow(' + x.i + ')">Use Now</button>' +
+    '<button class="ghost" onclick="laterCdc(' + x.i + ')">Save For Later</button>' +
+    '<button class="ghost" onclick="didCdc(' + x.i + ')">Already Did It</button>' +
+    '<button class="ghost" onclick="neverCdc(' + x.i + ')">Never</button></div></div>'
+  ).join("") || "<p>No kickers left on this computer.</p>";
 }
 
 fetch("/data/ideas.json").then(r => r.ok ? r.json() : null).then(data => {
