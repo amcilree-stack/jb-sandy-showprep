@@ -31,7 +31,7 @@ a.slot { text-decoration: none; }
 
 .phones-row { align-items: center; }
 .phones-label { display: inline-flex; align-items: center; gap: 8px; color: #e10600; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; }
-.phones-link { margin-left: auto; color: #c4552a; font-weight: 800; text-decoration: underline; }
+.phones-link { margin-left: auto; color: #111; font-weight: 800; text-decoration: underline; }
 
 
 .cat-badge { display: inline-block; font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 800; color: #c4552a; margin-bottom: 4px; }
@@ -56,7 +56,7 @@ a.slot { text-decoration: none; }
 </head>
 <body>
 <header class="top"><div class="wrap">
-<a class="brand" href="/">JB & Sandy <span>· Air board</span></a>
+<a class="brand" href="/">JB and Sandy</a>
 <nav class="main">
 <a href="/prep/#today">Today</a>
 <a href="/prep/#ideas">Ideas</a>
@@ -340,17 +340,17 @@ function m2wHref(date) {
   return file + "#" + dayHash[d.getDay()];
 }
 function row(time, label, id, tag) {
-  return '<button class="slot" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">' + tag + "</span></button>";
+  return '<button class="slot" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + "</span></button>";
 }
 function storyRow(time, label, id) {
-  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">story</span></button><button class="shuffle-btn" onclick="openStoryPicker(\'' + id + '\')">Shuffle</button></div>';
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span></button><button class="shuffle-btn" onclick="openStoryPicker(\'' + id + '\')">Shuffle</button></div>';
 }
 
 function phoneIcon() {
   return '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#123a73"/><path fill="#fff" d="M8.2 6.6c.3-.7 1.1-.9 1.7-.6l1.3.7c.5.3.7.9.5 1.4l-.6 1.3a1 1 0 0 0 .2 1.1l1.6 1.6a1 1 0 0 0 1.1.2l1.3-.6c.5-.2 1.1 0 1.4.5l.7 1.3c.3.6.1 1.4-.6 1.7l-1 .4c-2.2.9-4.8-.2-6.7-2.1s-3-4.5-2.1-6.7l.4-1z"/></svg>';
 }
 function cdcRow(time) {
-  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'cdc\')"><span class="time">' + time + '</span><span>Care Don\'t Care</span><span class="tag">open</span></button><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>';
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'cdc\')"><span class="time">' + time + '</span><span>Care Don\'t Care</span></button><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>';
 }
 function phonesRow(time, id) {
   const pick = phonePick[id];
@@ -363,12 +363,12 @@ function phonesRow(time, id) {
 }
 
 function docRow(time, label, id) {
-  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">doc</span></button><button class="shuffle-btn" onclick="openPicker(\'' + id + '\')">Shuffle</button></div>';
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span></button><button class="shuffle-btn" onclick="openPicker(\'' + id + '\')">Shuffle</button></div>';
 }
 function m2wRow() {
   const href = m2wHref(boardDate);
   const nice = new Date(boardDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
-  return '<a class="slot" href="' + href + '" target="_blank" rel="noopener"><span class="time">7:10</span><span>Minute to Win It · ' + esc(nice) + '</span><span class="tag">open</span></a>';
+  return '<a class="slot" href="' + href + '" target="_blank" rel="noopener"><span class="time">7:10</span><span>Minute to Win It · ' + esc(nice) + '</span></a>';
 }
 function stripLead(s) {
   return String(s || "").replace(/^[^.]+ wrote this for [^.]+ on [A-Za-z]+\.?\s*\d{1,2}\.\s*/, "");
