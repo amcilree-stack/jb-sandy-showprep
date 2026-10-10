@@ -14,6 +14,7 @@ nav.main { display: flex; flex-wrap: wrap; gap: 12px; }
 main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid rgba(255,255,255,.7); border-radius: 18px; margin: 16px auto 28px; padding: 18px 18px 24px; max-width: 880px; }
 .hour { margin-top: 22px; background: #fff; border: 1px solid #c9d7ea; border-radius: 14px; padding: 8px 12px 10px; }
 .slot { display: flex; gap: 10px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; border-top: 1px solid #e1e8f2; color: inherit; font: inherit; padding: 10px 0; cursor: pointer; }
+a.slot { text-decoration: none; }
 .slot .time { font-weight: 700; min-width: 46px; color: #1d4f91; }
 .slot .tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; }
 .panel { background: #f4f8fd; border: 1px solid #b9cbe2; border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px; }
@@ -23,6 +24,20 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 .actions button.ghost, .kicker button.ghost, .actions a.ghost { background: #fff; color: #1d4f91; }
 .long { background: #fff; border: 1px solid #d5e0ee; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
 .kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
+.shade { position: fixed; inset: 0; background: rgba(10, 28, 58, .55); z-index: 40; display: none; }
+.shade.on { display: block; }
+.picker { position: fixed; z-index: 41; left: 50%; top: 4vh; transform: translateX(-50%); width: min(720px, 94vw); max-height: 92vh; overflow: auto; background: #fffaf3; color: #1c2430; border: 1px solid #d7c7b2; border-radius: 18px; padding: 18px 18px 22px; display: none; box-shadow: 0 18px 50px rgba(0,0,0,.28); }
+.picker.on { display: block; }
+.picker h2 { margin: 0 36px 4px 0; color: #123a73; font-size: 1.45rem; }
+.picker .sub { margin: 0 0 10px; color: #3d4a5c; }
+.picker .toprow { display: flex; justify-content: flex-end; margin: 0 0 10px; }
+.picker .x { position: absolute; right: 14px; top: 12px; border: 0; background: transparent; font-size: 1.4rem; cursor: pointer; color: #123a73; }
+.pick { background: #fff; border: 1px solid #c9d7ea; border-radius: 12px; padding: 10px 12px; margin: 0 0 10px; }
+.pick.timely { border-color: #c4552a; }
+.pick h3 { margin: 0 0 4px; font-size: 1.02rem; }
+.pick p { margin: 0; color: #3d4a5c; }
+.badge { display: inline-block; margin-left: 8px; font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; font-weight: 800; }
+.pick .actions button { font-size: .9rem; }
 </style>
 </head>
 <body>
@@ -40,10 +55,19 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 <main class="wrap">
 <p class="stamp">Friday, Oct 9</p>
 <h1>6:00–9:00</h1>
-<p class="note">Longer read is the full summary of the source page again.</p>
+<p class="note">Longer read is the full summary of the source page again. Shuffle on a Doc bit opens replacements from the Doc. Minute to Win It opens that day's questions in a new window.</p>
 <div id="board"></div>
 </main>
+<div class="shade" id="shade" onclick="closePicker()"></div>
+<div class="picker" id="picker" role="dialog" aria-label="Shuffle Doc bits">
+<button class="x" onclick="closePicker()" aria-label="Close">×</button>
+<h2>Shuffle — pick a replacement</h2>
+<p class="sub" id="picker-sub">Up to 6 bits from the Doc. Timely ones come first. Past-date bits stay out.</p>
+<div class="toprow"><button onclick="reshuffle()">Shuffle</button></div>
+<div id="picker-list"></div>
+</div>
 <script>
+const boardDate = "2026-10-09";
 const storyPool = [
   { title: "ACL Weekend 2 opens today, and Zilker is mud and dust", read: "Gates at noon. Dry and upper 80s, not last weekend's rain. Grass is gone, so it is mud in spots and dust in others. Kings of Leon at 8:15, Charli XCX at 8:40. You cannot see both.", phone: "Who is in Zilker today, and who already did Weekend 1?", source: "Austin American-Statesman", author: "Mary Wasson", url: "https://www.statesman.com/weather/article/austin-weather-acl-festival-weekend-22462894.php", long: "Mary Wasson, newsroom meteorologist, wrote this for the Austin American-Statesman on Oct. 8. She says Weekend 2 of ACL Fest is here after a rainy, muddy first weekend, and the forecast is the opposite: warm, dry, and nearly perfect, except Zilker will be muddy in some spots and dusty in others. Much of the grass is gone, so dirt will kick up. She says plan the outfit and the shoes, and maybe bring a bandana. Friday starts mostly clear, light north wind, upper 60s to near 70, then middle to upper 80s under full sun. Afternoon north winds can gust 20 to 25 mph and stir the dust. Humidity stays low. Hurricane Isaias is in the Gulf, tracking toward Alabama and Florida, and Texas stays on the dry side. Saturday gates open at 11. Morning is a little above the early-October average of 64, about 80 at gate time, light north-northeast wind 3 to 10 mph, afternoon high 87. Sunday turns more humid with a south wind, morning near 70, afternoon near 90. Scattered showers can start Monday afternoon." },
   { title: "Fabrik and Kappo Kappo just got Michelin stars", read: "Announced Thursday. Fabrik is the vegan tasting menu in Tarrytown. Kappo Kappo is the twins inside the Proper. La Barbecue lost the star it had for two years. Austin now has seven.", phone: "Who has actually been, and who is just going to say they knew?", source: "Austin American-Statesman", author: "Matthew Odam", url: "https://www.statesman.com/entertainment/dining/article/austin-michelin-stars-fabrik-kappo-22464806.php", long: "Matthew Odam, restaurant critic, wrote this for the Austin American-Statesman on Oct. 8. Michelin added two Austin restaurants and Goldee's Bar-B-Q in Fort Worth on Thursday morning. Fabrik, a vegan tasting-menu place that was a Statesman Top 25 in 2025, got a star. Chef Je Wallerstein worked in Australia, Berlin, and Copenhagen, opened in East Austin, and moved to Tarrytown this summer. The menu is eight courses, local and seasonal, with flavors from Mexico, Italy, Scandinavia, and Japan. It was already a hard reservation. Kappo Kappo, from twin brothers Haru and Gohei Kishi, is inside the Proper Hotel and mixes French and Japanese, including sushi and braised beef. Sixteen of 17 Texas restaurants that had stars in 2024 and 2025 kept them. La Barbecue lost the star it held for two years and is now recommended. Austin has seven starred restaurants, Houston six, San Antonio three, Dallas two, Fort Worth one. No new Austin Bib Gourmands. The city still has 15. Din Ho Chinese BBQ is the only new Austin recommended restaurant. Garrison at the Fairmont is no longer recommended. The announcement was a press release, not the Houston gala of the last two years. It is the last act of a three-year Texas contract. The state paid $1.35 million, and each of five cities paid $270,000. Talks on a new deal are underway." },
@@ -55,45 +79,282 @@ const kickerPool = [
   { line: "Firefighters pulled an iguana named Tasslehoff out of a Kansas tree.", more: "He had been loose for about a week and would not come down.", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/08/spring-hill-kansas-iguana-tree/7311791476751/", long: "Ben Hooper wrote this for UPI on Oct. 8. The Spring Hill Fire Department in Kansas said crews were called to catch an iguana that had been loose about a week. The lizard, named Tasslehoff, had climbed a tree and would not come down. Firefighters borrowed a catch pole from Spring Hill police. The department said one member is experienced with reptiles, so they brought Mr. Tasslehoff down with teamwork." },
   { line: "Idaho cooked 1,474 pounds of french fries and called it a world record.", more: "Fifty chefs, six fryers, 1,700 pounds of potatoes. Then they served them.", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/07/Guinness-World-Records-largest-serving-french-fries/1951791396507/", long: "Ben Hooper wrote this for UPI on Oct. 7. The Idaho Potato Commission and the chain Spud Daddy cooked a 1,474-pound serving of fresh-cut fries at Boise Potato Days and called it a Guinness record. A team of 50 chefs turned 1,700 pounds of Idaho potatoes into 1,475 pounds of fries with six fryers. Jamey Higham, president and CEO of the commission, said if anyone holds the largest-serving record, it should be Idaho. The fries were served to the crowd after the weigh-in." }
 ];
-const docPool = [
-  { q: "Trail of Lights tickets are already on sale.", how: "From the Doc. Who already bought, and who waits until the first cold night?" },
-  { q: "That is not your pet.", how: "From the Doc. Raccoon, squirrel, deer, fox, armadillo. When did it start acting like family?" },
-  { q: "What problem do people try to solve the second you mention it?", how: "From the Doc. Back, sleep, weight, allergies. The advice you have heard 100 times." },
-  { q: "Wake-up service. Call the sleeping kid.", how: "From the Doc. Parents give a nickname, a chore, and why they have to get up." },
-  { q: "Over-50 agility test: socks, one foot at a time.", how: "From the Doc. No sitting. No leaning. Do it in studio first." },
-  { q: "What strange item permanently lives in your car?", how: "From the Doc. Caller names the object first. Cone, wedding dress, bowling ball." },
-  { q: "What mundane thing hypnotizes you?", how: "From the Doc. Dirt grader, car wash, lawn robot, tortilla machine." },
-  { q: "They sent me an Uber.", how: "From the Doc. What happened that made someone send the ride?" }
+const fallbackDocs = [
+  { id: "trail-of-lights", q: "Trail of Lights tickets are already on sale.", how: "Who already bought, and who waits until the first cold night?" },
+  { id: "not-your-pet", q: "That is not your pet.", how: "Raccoon, squirrel, deer, fox, armadillo. When did it start acting like family?" },
+  { id: "problem-solve", q: "What problem do people try to solve the second you mention it?", how: "Back, sleep, weight, allergies. The advice you have heard 100 times." },
+  { id: "wake-up", q: "Wake-up service. Call the sleeping kid.", how: "Parents give a nickname, a chore, and why they have to get up." },
+  { id: "socks", q: "Over-50 agility test: socks, one foot at a time.", how: "No sitting. No leaning. Do it in studio first." },
+  { id: "car-item", q: "What strange item permanently lives in your car?", how: "Caller names the object first. Cone, wedding dress, bowling ball." },
+  { id: "hypnotize", q: "What mundane thing hypnotizes you?", how: "Dirt grader, car wash, lawn robot, tortilla machine." },
+  { id: "uber", q: "They sent me an Uber.", how: "What happened that made someone send the ride?" },
+  { id: "sheets", q: "How long do you go between washing sheets?", how: "Honest number. Are the guest-room sheets a different story?" },
+  { id: "jeep", q: "Jeep people audio description.", how: "Describe a Jeep person without saying Jeep." },
+  { id: "single", q: "Sell us on being single.", how: "20 seconds to pitch solo living. Pick a spokesperson." },
+  { id: "gym", q: "67% of gym memberships go unused.", how: "Why keep it: guilt, January energy, or I might go Thursday?" },
+  { id: "spouse", q: "Do Your Spouse.", how: "20 seconds to imitate the spouse. Then get the spouse on." },
+  { id: "vacation", q: "Would you vacation without your spouse?", how: "Yes, no, and the rule that makes it okay." },
+  { id: "optimus", q: "Your Optimus gets one chore forever.", how: "The chore you hate, or the one that eats the most time?" },
+  { id: "job-sucks", q: "The job that looks awesome but sucks.", how: "You must have actually done it." },
+  { id: "next-gen", q: "What the next generation may not know how to do.", how: "Map, cursive, stick shift, change a tire, make change." },
+  { id: "pockets", q: "Empty Your Pockets.", how: "Studio empties first. Most inexplicable item wins." },
+  { id: "halloween-tesla", q: "Halloween: a Tesla driving through a cemetery.", how: "The weirdest thing you have seen in a cemetery." },
+  { id: "birthday-text", q: "Is a birthday text enough?", how: "Text, call, card, or showing up." },
+  { id: "arrested", q: "The closest you've come to getting arrested.", how: "Nonviolent, minor, and still a story." },
+  { id: "cool-hobby", q: "The hobby that suddenly got cool again.", how: "Mahjong, pickleball, vinyl, film cameras." },
+  { id: "dead-austin", q: "What dead Austin business would you bring back?", how: "Blockbuster, Tower, Toys R Us, the old Foley’s." },
+  { id: "struggle-meal", q: "The struggle meal you didn't know was a struggle meal.", how: "Buttered noodles, breakfast for dinner, the cheap staple." }
 ];
+const seasons = [
+  { keys: ["halloween", "cemetery"], start: "2026-10-01", end: "2026-10-31", label: "Halloween" },
+  { keys: ["trail of lights"], start: "2026-11-01", end: "2026-12-23", label: "Trail of Lights" },
+  { keys: ["christmas", "santa", "holiday lights", "nutcracker"], start: "2026-12-01", end: "2026-12-25", label: "Christmas" },
+  { keys: ["thanksgiving", "turkey day"], start: "2026-11-01", end: "2026-11-26", label: "Thanksgiving" },
+  { keys: ["new year", "new year's", "new years"], start: "2026-12-26", end: "2027-01-02", label: "New Year" },
+  { keys: ["valentine"], start: "2027-02-01", end: "2027-02-14", label: "Valentine's" },
+  { keys: ["super bowl"], start: "2027-01-20", end: "2027-02-08", label: "Super Bowl" },
+  { keys: ["oktoberfest"], start: "2026-09-20", end: "2026-10-12", label: "Oktoberfest" },
+  { keys: ["acl ", "acl fest", "austin city limits"], start: "2026-10-02", end: "2026-10-11", label: "ACL" }
+];
+const m2wWeeks = [
+  ["2026-09-07", "2026-09-11", "/m2w/sep-7-11-2026.html"],
+  ["2026-09-14", "2026-09-18", "/m2w/sep-14-18-2026.html"],
+  ["2026-09-21", "2026-09-25", "/m2w/sep-21-25-2026.html"],
+  ["2026-09-28", "2026-10-02", "/m2w/sep-28-oct-2-2026.html"],
+  ["2026-10-05", "2026-10-09", "/m2w/oct-5-9-2026.html"],
+  ["2026-10-12", "2026-10-16", "/m2w/oct-12-16-2026.html"],
+  ["2026-10-19", "2026-10-23", "/m2w/oct-19-23-2026.html"],
+  ["2026-10-26", "2026-10-30", "/m2w/oct-26-30-2026.html"],
+  ["2026-11-02", "2026-11-06", "/m2w/nov-2-6-2026.html"],
+  ["2026-11-09", "2026-11-13", "/m2w/nov-9-13-2026.html"],
+  ["2026-11-16", "2026-11-20", "/m2w/nov-16-20-2026.html"],
+  ["2026-11-23", "2026-11-27", "/m2w/nov-23-27-2026.html"],
+  ["2026-11-30", "2026-12-04", "/m2w/nov-30-dec-4-2026.html"],
+  ["2026-12-07", "2026-12-11", "/m2w/dec-7-11-2026.html"],
+  ["2026-12-14", "2026-12-18", "/m2w/dec-14-18-2026.html"],
+  ["2026-12-21", "2026-12-25", "/m2w/dec-21-25-2026.html"],
+  ["2026-12-28", "2027-01-01", "/m2w/dec-28-jan-1-2027.html"],
+  ["2027-01-04", "2027-01-08", "/m2w/jan-4-8-2027.html"],
+  ["2027-01-11", "2027-01-15", "/m2w/jan-11-15-2027.html"],
+  ["2027-01-18", "2027-01-22", "/m2w/jan-18-22-2027.html"],
+  ["2027-01-25", "2027-01-29", "/m2w/jan-25-29-2027.html"],
+  ["2027-02-01", "2027-02-05", "/m2w/feb-1-5-2027.html"],
+  ["2027-02-08", "2027-02-12", "/m2w/feb-8-12-2027.html"]
+];
+const dayHash = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 const slots = ["s610", "s705", "s810"];
+const docSlots = ["d1", "d2", "d3", "d4"];
+let docPool = fallbackDocs.slice();
 let open = localStorage.getItem("air-open") || "";
 let longOpen = localStorage.getItem("air-long") || "";
 let storySkip = JSON.parse(localStorage.getItem("air-story-skip") || "{}");
 let kickerSkip = JSON.parse(localStorage.getItem("air-kicker-skip") || "[0,1,2,3]");
-let benched = JSON.parse(localStorage.getItem("air-bench") || "[]");
+let never = JSON.parse(localStorage.getItem("air-never") || "[]");
 let used = JSON.parse(localStorage.getItem("air-used") || "[]");
-function save() { localStorage.setItem("air-open", open); localStorage.setItem("air-long", longOpen); localStorage.setItem("air-story-skip", JSON.stringify(storySkip)); localStorage.setItem("air-kicker-skip", JSON.stringify(kickerSkip)); localStorage.setItem("air-bench", JSON.stringify(benched)); localStorage.setItem("air-used", JSON.stringify(used)); }
-function storyFor(slot) { const n = storySkip[slot] || 0; const usedTitles = slots.filter(s => s !== slot).map(s => storyPool[(storySkip[s] || 0) % storyPool.length].title); let i = n; for (let k = 0; k < storyPool.length; k++) { const pick = storyPool[i % storyPool.length]; if (!usedTitles.includes(pick.title)) return pick; i++; } return storyPool[n % storyPool.length]; }
+let slotPick = JSON.parse(localStorage.getItem("air-slot-pick") || "{}");
+let pickerSlot = "";
+let pickerShown = [];
+function save() {
+  localStorage.setItem("air-open", open);
+  localStorage.setItem("air-long", longOpen);
+  localStorage.setItem("air-story-skip", JSON.stringify(storySkip));
+  localStorage.setItem("air-kicker-skip", JSON.stringify(kickerSkip));
+  localStorage.setItem("air-never", JSON.stringify(never));
+  localStorage.setItem("air-used", JSON.stringify(used));
+  localStorage.setItem("air-slot-pick", JSON.stringify(slotPick));
+}
+function esc(s) { return String(s || "").replace(/[&<>"']/g, c => ({ "&": "&", "<": "<", ">": ">", '"': """, "'": "&#39;" }[c])); }
+function todayISO() {
+  const d = new Date();
+  const z = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  return z.toISOString().slice(0, 10);
+}
+function seasonFor(bit) {
+  const text = ((bit.q || "") + " " + (bit.how || "") + " " + (bit.text || "")).toLowerCase();
+  return seasons.find(s => s.keys.some(k => text.includes(k))) || null;
+}
+function timelyState(bit, day) {
+  const s = seasonFor(bit);
+  if (!s) return { ok: true, timely: false, label: "" };
+  if (day > s.end) return { ok: false, timely: false, label: s.label };
+  if (day >= s.start && day <= s.end) return { ok: true, timely: true, label: s.label };
+  return { ok: true, timely: false, label: s.label };
+}
+function available(day) {
+  const usedQs = docSlots.map(id => (slotPick[id] && byId(slotPick[id])) || null).filter(Boolean).map(b => b.id);
+  return docPool.filter(bit => {
+    if (never.includes(bit.id) || never.includes(bit.q)) return false;
+    if (usedQs.includes(bit.id)) return false;
+    return timelyState(bit, day).ok;
+  });
+}
+function byId(id) { return docPool.find(b => b.id === id); }
+function storyFor(slot) {
+  const n = storySkip[slot] || 0;
+  const usedTitles = slots.filter(s => s !== slot).map(s => storyPool[(storySkip[s] || 0) % storyPool.length].title);
+  let i = n;
+  for (let k = 0; k < storyPool.length; k++) {
+    const pick = storyPool[i % storyPool.length];
+    if (!usedTitles.includes(pick.title)) return pick;
+    i++;
+  }
+  return storyPool[n % storyPool.length];
+}
 function kickerAt(i) { return kickerPool[(kickerSkip[i] || i) % kickerPool.length]; }
 function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; longOpen = ""; save(); draw(); }
 function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; longOpen = ""; save(); draw(); }
 function toggleLong(id) { longOpen = longOpen === id ? "" : id; save(); draw(); }
-function available() { return docPool.filter(bit => !benched.includes(bit.q)); }
-function pick(n) { const pool = available(); return pool[n] || pool[0] || docPool[0]; }
-function bench(q) { if (!benched.includes(q)) benched.unshift(q); save(); draw(); }
-function markUsed(q) { if (used.includes(q)) used = used.filter(x => x !== q); else used.push(q); save(); draw(); }
+function markUsed(id) { if (used.includes(id)) used = used.filter(x => x !== id); else used.push(id); save(); draw(); }
 function toggle(id) { open = open === id ? "" : id; save(); draw(); }
-function row(time, label, id, tag) { return `<button class="slot" onclick="toggle('${id}')"><span class="time">${time}</span><span>${label}</span><span class="tag">${tag}</span></button>`; }
-function sourceLine(item, id) { const more = longOpen === id ? `<div class="long"><p>${item.long}</p></div>` : ""; const who = item.author ? item.source + ", " + item.author : item.source; return `<p class="src"><em><strong>${who}</strong></em></p><div class="actions"><a class="btn ghost" href="${item.url}" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong('${id}')">${longOpen === id ? "Hide longer read" : "Longer read"}</button></div>${more}`; }
-function storyCard(slot, extra) { const s = storyFor(slot); return `<div class="panel"><h3>${s.title}</h3><p>${s.read}</p><p>Phone: ${s.phone}</p>${extra || ""}${sourceLine(s, "long-" + slot)}<div class="actions"><button onclick="newStory('${slot}')">New story</button></div></div>`; }
-function docCard(bit) { const struck = used.includes(bit.q) ? "text-decoration:line-through" : ""; const q = bit.q.replace(/'/g, ""); return `<div class="panel"><h3 style="${struck}">${bit.q}</h3><p>${bit.how}</p><div class="actions"><button onclick="markUsed('${q}')">${used.includes(bit.q) ? "Undo" : "Used"}</button><button class="ghost" onclick="bench('${q}')">Bench it</button></div></div>`; }
+function pickFor(slot, n) {
+  if (slotPick[slot] && byId(slotPick[slot])) return byId(slotPick[slot]);
+  const pool = available(boardDate);
+  return pool[n] || pool[0] || docPool[0];
+}
+function shufflePool(day) {
+  const pool = available(day).map(bit => Object.assign({}, bit, { _t: timelyState(bit, day) }));
+  const timely = pool.filter(b => b._t.timely);
+  const rest = pool.filter(b => !b._t.timely);
+  const mix = arr => arr.map(v => [Math.random(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+  return mix(timely).concat(mix(rest));
+}
+function takeSix(avoid) {
+  const day = todayISO();
+  const pool = shufflePool(day).filter(b => !avoid.includes(b.id));
+  const chosen = pool.slice(0, 6);
+  if (chosen.length < 6) {
+    const more = shufflePool(day).filter(b => !chosen.find(c => c.id === b.id));
+    chosen.push(...more.slice(0, 6 - chosen.length));
+  }
+  return chosen.slice(0, 6);
+}
+function openPicker(slot) {
+  pickerSlot = slot;
+  pickerShown = takeSix([]);
+  renderPicker();
+  document.getElementById("shade").classList.add("on");
+  document.getElementById("picker").classList.add("on");
+}
+function closePicker() {
+  document.getElementById("shade").classList.remove("on");
+  document.getElementById("picker").classList.remove("on");
+  pickerSlot = "";
+}
+function reshuffle() {
+  const avoid = pickerShown.map(b => b.id);
+  pickerShown = takeSix(avoid);
+  renderPicker();
+}
+function useNow(id) {
+  if (!pickerSlot) return;
+  slotPick[pickerSlot] = id;
+  open = pickerSlot;
+  save();
+  closePicker();
+  draw();
+}
+function saveLater(id) {
+  pickerShown = pickerShown.filter(b => b.id !== id);
+  if (!pickerShown.length) pickerShown = takeSix([]);
+  renderPicker();
+}
+function alreadyDid(id) {
+  if (!never.includes(id)) never.push(id);
+  pickerShown = pickerShown.filter(b => b.id !== id);
+  if (!pickerShown.length) pickerShown = takeSix([]);
+  save();
+  renderPicker();
+  draw();
+}
+function neverBit(id, q) {
+  if (!confirm('Never suggest "' + q + '" again on this computer?')) return;
+  if (!never.includes(id)) never.push(id);
+  pickerShown = pickerShown.filter(b => b.id !== id);
+  if (!pickerShown.length) pickerShown = takeSix([]);
+  save();
+  renderPicker();
+  draw();
+}
+function renderPicker() {
+  const day = todayISO();
+  const left = available(day).length;
+  document.getElementById("picker-sub").textContent = (pickerShown.length || 0) + " from the Doc. " + left + " still available on this computer. Timely ones come first. Past-date bits stay out.";
+  document.getElementById("picker-list").innerHTML = pickerShown.map(bit => {
+    const t = timelyState(bit, day);
+    const badge = t.timely ? '<span class="badge">Timely · ' + esc(t.label) + "</span>" : "";
+    return '<div class="pick' + (t.timely ? " timely" : "") + '"><h3>' + esc(bit.q) + badge + "</h3><p>" + esc(bit.how) + '</p><div class="actions"><button onclick="useNow(\'' + esc(bit.id) + '\')">Use Now</button><button class="ghost" onclick="saveLater(\'' + esc(bit.id) + '\')">Save For Later</button><button class="ghost" onclick="alreadyDid(\'' + esc(bit.id) + '\')">Already Did It</button><button class="ghost" onclick="neverBit(\'' + esc(bit.id) + '\', \'' + esc(bit.q).replace(/'/g, "") + '\')">Never</button></div></div>';
+  }).join("") || "<p>No Doc bits left on this computer.</p>";
+}
+function m2wHref(date) {
+  const hit = m2wWeeks.find(w => date >= w[0] && date <= w[1]);
+  const file = hit ? hit[2] : "/m2w/this-week.html";
+  const d = new Date(date + "T12:00:00");
+  return file + "#" + dayHash[d.getDay()];
+}
+function row(time, label, id, tag) {
+  return '<button class="slot" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span><span class="tag">' + tag + "</span></button>";
+}
+function m2wRow() {
+  const href = m2wHref(boardDate);
+  const nice = new Date(boardDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
+  return '<a class="slot" href="' + href + '" target="_blank" rel="noopener"><span class="time">7:10</span><span>Minute to Win It · ' + esc(nice) + '</span><span class="tag">open</span></a>';
+}
+function sourceLine(item, id) {
+  const more = longOpen === id ? '<div class="long"><p>' + esc(item.long) + "</p></div>" : "";
+  const who = item.author ? item.source + ", " + item.author : item.source;
+  return '<p class="src"><em><strong>' + esc(who) + '</strong></em></p><div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
+}
+function storyCard(slot, extra) {
+  const s = storyFor(slot);
+  return '<div class="panel"><h3>' + esc(s.title) + "</h3><p>" + esc(s.read) + "</p><p>Phone: " + esc(s.phone) + "</p>" + (extra || "") + sourceLine(s, "long-" + slot) + '<div class="actions"><button onclick="newStory(\'' + slot + '\')">New story</button></div></div>';
+}
+function docCard(bit, slot) {
+  const struck = used.includes(bit.id) || used.includes(bit.q) ? "text-decoration:line-through" : "";
+  return '<div class="panel"><h3 style="' + struck + '">' + esc(bit.q) + "</h3><p>" + esc(bit.how) + '</p><div class="actions"><button onclick="markUsed(\'' + esc(bit.id) + '\')">' + ((used.includes(bit.id) || used.includes(bit.q)) ? "Undo" : "Used") + '</button><button class="ghost" onclick="openPicker(\'' + slot + '\')">Shuffle</button></div></div>';
+}
 function draw() {
   const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
-  const ks = [0,1,2,3].map(kickerAt);
-  const d1 = pick(0), d2 = pick(1), d3 = pick(2), d4 = pick(3);
-  const cdc = ks.map((k, i) => `<div class="kicker"><b>${k.line}</b><p>${k.more}</p>${sourceLine(k, "k" + i)}<button onclick="newKicker(${i})">New story</button></div>`).join("");
-  document.getElementById("board").innerHTML = `<section class="hour"><h2>6:00</h2>${row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked")}${row("6:10", "Replay: " + a.title, "s610", "story")}${open === "s610" ? storyCard("s610") : ""}${row("6:25", "Replay from Yesterday", "replay", "locked")}${row("6:35", "Tease: " + ks[0].line, "cdc", "tied")}${row("6:40", "Care Don't Care", "cdc", "open")}${open === "cdc" ? `<div class="panel"><h3>Care Don't Care</h3>${cdc}</div>` : ""}${row("6:52", "Last Laugh", "laugh6", "locked")}</section><section class="hour"><h2>7:00</h2>${row("7:05", b.title, "s705", "story")}${open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : ""}${row("7:10", "Minute to Win It", "m2w", "locked")}${row("7:26", d1.q, "d1", "doc")}${open === "d1" ? docCard(d1) : ""}${row("7:32", "Phones if lit. Doc bit waits.", "phones7", "phones")}${row("7:40", d2.q, "d2", "doc")}${open === "d2" ? docCard(d2) : ""}${row("7:52", "Last Laugh", "laugh7", "locked")}</section><section class="hour"><h2>8:00</h2>${row("8:05", "Tease: " + c.title, "s810", "tied")}${row("8:10", c.title, "s810", "story")}${open === "s810" ? storyCard("s810") : ""}${row("8:26", d3.q, "d3", "doc")}${open === "d3" ? docCard(d3) : ""}${row("8:32", "Phones if lit. Doc bit waits.", "phones8", "phones")}${row("8:40", d4.q, "d4", "doc")}${open === "d4" ? docCard(d4) : ""}${row("8:52", "Last Laugh", "laugh8", "locked")}</section>`;
+  const ks = [0, 1, 2, 3].map(kickerAt);
+  const d1 = pickFor("d1", 0), d2 = pickFor("d2", 1), d3 = pickFor("d3", 2), d4 = pickFor("d4", 3);
+  const cdc = ks.map((k, i) => '<div class="kicker"><b>' + esc(k.line) + "</b><p>" + esc(k.more) + "</p>" + sourceLine(k, "k" + i) + '<button onclick="newKicker(' + i + ')">New story</button></div>').join("");
+  document.getElementById("board").innerHTML =
+    '<section class="hour"><h2>6:00</h2>' +
+    row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked") +
+    row("6:10", "Replay: " + a.title, "s610", "story") + (open === "s610" ? storyCard("s610") : "") +
+    row("6:25", "Replay from Yesterday", "replay", "locked") +
+    row("6:35", "Tease: " + ks[0].line, "cdc", "tied") +
+    row("6:40", "Care Don't Care", "cdc", "open") + (open === "cdc" ? '<div class="panel"><h3>Care Don\'t Care</h3>' + cdc + "</div>" : "") +
+    row("6:52", "Last Laugh", "laugh6", "locked") +
+    '</section><section class="hour"><h2>7:00</h2>' +
+    row("7:05", b.title, "s705", "story") + (open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : "") +
+    m2wRow() +
+    row("7:26", d1.q, "d1", "doc") + (open === "d1" ? docCard(d1, "d1") : "") +
+    row("7:32", "Phones if lit. Doc bit waits.", "phones7", "phones") +
+    row("7:40", d2.q, "d2", "doc") + (open === "d2" ? docCard(d2, "d2") : "") +
+    row("7:52", "Last Laugh", "laugh7", "locked") +
+    '</section><section class="hour"><h2>8:00</h2>' +
+    row("8:05", "Tease: " + c.title, "s810", "tied") +
+    row("8:10", c.title, "s810", "story") + (open === "s810" ? storyCard("s810") : "") +
+    row("8:26", d3.q, "d3", "doc") + (open === "d3" ? docCard(d3, "d3") : "") +
+    row("8:32", "Phones if lit. Doc bit waits.", "phones8", "phones") +
+    row("8:40", d4.q, "d4", "doc") + (open === "d4" ? docCard(d4, "d4") : "") +
+    row("8:52", "Last Laugh", "laugh8", "locked") +
+    "</section>";
 }
+function mergeIdeas(items) {
+  const seen = new Set(docPool.map(b => b.id));
+  items.forEach(it => {
+    const id = it.id || (it.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 48);
+    if (!id || seen.has(id)) return;
+    const how = (it.body || it.doc_text || "").split("\n").filter(Boolean)[0] || "From the Doc.";
+    docPool.push({ id: id, q: it.title || how, how: how.slice(0, 220), text: (it.title || "") + " " + (it.body || "") + " " + (it.doc_text || "") });
+    seen.add(id);
+  });
+}
+fetch("/data/ideas.json").then(r => r.ok ? r.json() : null).then(data => {
+  if (data && Array.isArray(data.items)) mergeIdeas(data.items);
+  draw();
+}).catch(() => draw());
 draw();
 </script>
 </body>
