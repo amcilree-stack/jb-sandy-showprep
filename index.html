@@ -241,22 +241,23 @@ function available(day) {
 }
 function byId(id) { return docPool.find(b => b.id === id); }
 function storyFor(slot) {
-  if (typeof storySlot !== "undefined" && storySlot[slot]) {
-    const chosen = storyPool.find(s => s.id === storySlot[slot]);
-    if (chosen) return chosen;
-  }
-  const n = storySkip[slot] || 0;
-  const usedTitles = slots.filter(s => s !== slot).map(s => {
-    const picked = (typeof storySlot !== "undefined" && storySlot[s]) ? storyPool.find(x => x.id === storySlot[s]) : null;
-    return picked ? picked.title : storyPool[(storySkip[s] || 0) % storyPool.length].title;
+  const res = {}, taken = [];
+  slots.forEach(s => {
+    const c = storySlot[s] ? storyPool.find(x => x.id === storySlot[s]) : null;
+    if (c) { res[s] = c; taken.push(c.title); }
   });
-  let i = n;
-  for (let k = 0; k < storyPool.length; k++) {
-    const pick = storyPool[i % storyPool.length];
-    if (!usedTitles.includes(pick.title) && !(typeof storyNever !== "undefined" && storyNever.includes(pick.id))) return pick;
-    i++;
-  }
-  return storyPool[n % storyPool.length];
+  slots.forEach((s, idx) => {
+    if (res[s]) return;
+    const start = (storySkip[s] || 0) + idx;
+    let pick = null;
+    for (let k = 0; k < storyPool.length && !pick; k++) {
+      const p = storyPool[(start + k) % storyPool.length];
+      if (!taken.includes(p.title) && !storyNever.includes(p.id)) pick = p;
+    }
+    res[s] = pick || storyPool[start % storyPool.length];
+    taken.push(res[s].title);
+  });
+  return res[slot];
 }
 function kickerAt(i) { if (cdcPick[i] != null && kickerPool[cdcPick[i]]) return kickerPool[cdcPick[i]]; return kickerPool[(kickerSkip[i] || i) % kickerPool.length]; }
 function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; longOpen = ""; save(); draw(); }
