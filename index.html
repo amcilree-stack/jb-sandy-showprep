@@ -23,6 +23,12 @@ a.slot { text-decoration: none; }
 .actions button, .kicker button, .actions a.btn { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; text-decoration: none; cursor: pointer; }
 .actions button.ghost, .kicker button.ghost, .actions a.ghost { background: #fff; color: #1d4f91; }
 .long { background: #fff; border: 1px solid #d5e0ee; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
+.panel.story h3.hl { margin: 0 0 6px; }
+.lede { font-weight: 600; }
+.srcline { font-size: .92rem; word-break: break-word; }
+.long h4 { margin: 4px 0 6px; }
+.long ul, .panel.story ul { margin: 6px 0 6px 1.1rem; padding: 0; }
+.long li, .panel.story li { margin: 4px 0; }
 .kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
 .doc-row { display: flex; align-items: center; gap: 8px; border-top: 1px solid #e1e8f2; padding: 6px 0; }
 .doc-row .slot-main { flex: 1; display: flex; gap: 10px; align-items: baseline; text-align: left; background: transparent; border: 0; color: inherit; font: inherit; padding: 6px 0; cursor: pointer; }
@@ -104,7 +110,7 @@ a.slot { text-decoration: none; }
 const boardDate = "2026-10-11";
 const storyPool = [
   { id: "acl-sunday", cat: "local", title: "ACL Sunday: Twenty One Pilots or The xx", read: "Final day of Weekend 2 at Zilker. Both close at 8:30. You cannot see both. Parcels and Geese earlier.", phone: "Who is in the park today, and which closer are you picking?", source: "OnesToWatch", author: "", url: "https://onestowatch.com/live/austin-weekend-events-october-9/", long: "OnesToWatch published a music guide for Oct. 9-11. Sunday at ACL Fest Weekend Two is the wind-down day. Parcels, the Australian group known for tight funk and disco-leaning live sets, play Zilker. The night ends with a choice: Twenty One Pilots close the American Express Stage at 8:30 p.m. opposite The xx on the T-Mobile Stage at the same time. The two sets overlap, so fans inside the park pick one. Friday and Sunday are generally easier to navigate than Saturday. Gates Sunday open at 11 a.m. The festival runs through 10 p.m." },
-  { id: "ballet", cat: "local", title: "Ballet Austin TWO does The Seventh Night Sky today", read: "45 minutes, no intermission, every ticket $25. 2 p.m. and 4:30 p.m. at the Studio Theater. Vietnamese legend of the stars.", phone: "Who is taking kids to a matinee instead of ACL?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "ATX Things published this Oct. 8. Ballet Austin's The Seventh Night Sky, performed by Ballet Austin TWO, is 45 minutes with no intermission, built for kids and families. Every ticket is $25. Shows are Saturday and Sunday, Oct. 10 and 11, each day at 2:00 and 4:30 p.m. It runs again Oct. 17 and 18. It is a wordless story based on a Vietnamese legend about two stars, Altair and Vega, who cross the Milky Way on a bridge of birds once a year. Ballet Austin pitches it as a good first ballet and part of its Fables of the World series. It is at the AustinVentures Studio Theater, 501 W. Third St." },
+  { id: "ballet", cat: "local", headline: "Ballet Austin TWO Does A Family Ballet Today, And Every Ticket Is $25", lede: "Ballet Austin TWO performs The Seventh Night Sky today at 2 p.m. and 4:30 p.m., and every ticket is $25.", bullets: ["It runs 45 minutes with no intermission and is built for kids and families.", "It is a wordless story based on a Vietnamese legend about two stars, Altair and Vega, who cross the Milky Way on a bridge of birds once a year."], longHead: "The Full Story:", title: "Ballet Austin TWO does The Seventh Night Sky today", read: "45 minutes, no intermission, every ticket $25. 2 p.m. and 4:30 p.m. at the Studio Theater. Vietnamese legend of the stars.", phone: "Who is taking kids to a matinee instead of ACL?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "Ballet Austin TWO is performing The Seventh Night Sky today, Oct. 11, at 2:00 and 4:30 p.m. Every ticket is $25, according to Ballet Austin. The show runs 45 minutes with no intermission and was built for kids and families. ATX Things published its weekend guide on Oct. 8.\n\nIt is a wordless story based on a Vietnamese legend about two stars, Altair and Vega, who cross the Milky Way on a bridge of birds once a year. Ballet Austin pitches it as a good first ballet and part of its Fables of the World series for families. It runs again Oct. 17 and 18.\n\nA few details before you go:\n\n- Where - It is at the AustinVentures Studio Theater. Google Maps lists Ballet Austin's Butler Center at 501 W. Third St.\n- Parking - Ballet Austin describes parking as free, with the location and details emailed to ticket holders 48 hours before the show.\n- Tickets - They can be exchanged free of charge, and the production is not eligible for subscriber discounts.\n- Weather - If you are making a day of it, the forecast for Sunday is sunny with a high near 91 and almost no chance of rain, per the National Weather Service as cited by ATX Things." },
   { id: "pumpkin", cat: "local", title: "Pumpkin Nights is open tonight at Pioneer Farms", read: "More than 10,000 hand-carved pumpkins. Nine lands on a half-mile trail. Family-friendly, no jump scares. Tickets in advance.", phone: "Who already went, and who is going after dark?", source: "Pumpkin Nights", author: "", url: "https://www.pumpkinnights.com/", long: "Pumpkin Nights is a walk through more than 10,000 hand-carved pumpkins across nine immersive lands on a glowing half-mile trail at Pioneer Farms, 10621 Pioneer Farms Dr. It runs through Oct. 31. Family-friendly with no jump scares required. Fire shows, festive food, and games in Pumpkin Village. Costumes encouraged. Entry time slots run every 30 minutes; weekend slots 6:00 to 9:30 p.m., event ends 11:15 p.m. Parking $10 per car. Tickets are purchased online in advance. Kids 3 and under free." },
   { id: "country-max", cat: "country", title: "Max McNown is on the ACL Sunday bill", read: "Country-leaning act on the Weekend 2 Sunday schedule at Zilker.", phone: "Who is catching the country sets instead of the headliners?", source: "KVUE", author: "", url: "https://www.kvue.com/article/entertainment/events/austin-city-limits/artists-lineup-2026-austin-city-limits-festival/269-cae3083e-0a6c-4b43-8ffd-e7f9221a55d9", long: "KVUE listed the Sunday Oct. 11 ACL acts, which include Max McNown, Houndmouth, and others alongside the big closers. Max McNown has been building a following with country-leaning songs. The full by-day poster puts Twenty One Pilots, The xx, Geese, and Sofi Tukker as the main Sunday names." },
   { id: "movies", cat: "movies", title: "Fear Fair clown maze is still up at Sign Bar", read: "Haunted clown maze with live actors. Themed cocktails. Through the month.", phone: "Who is doing the maze this week?", source: "Austin Chronicle", author: "", url: "https://calendar.austinchronicle.com/", long: "Local listings still have the Fear Fair haunted maze at Sign Bar running in October. Live actors, new sets, themed drinks. It is one of the non-ACL options people mentioned for the weekend." },
@@ -377,13 +383,41 @@ function m2wRow() {
 function stripLead(s) {
   return String(s || "").replace(/^[^.]+ wrote this for [^.]+ on [A-Za-z]+\.?\s*\d{1,2}\.\s*/, "");
 }
+function inlineMd(s) {
+  let t = esc(s);
+  t = t.replace(/&lt;(\/?)(b|strong|em|i)&gt;/g, "<$1$2>");
+  t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  return t;
+}
+function bulletMd(s) {
+  if (/\*\*|<b>|<strong>/.test(s)) return inlineMd(s);
+  const m = s.match(/^(.+?) - ([\s\S]*)$/);
+  return m ? "<strong>" + inlineMd(m[1]) + "</strong> - " + inlineMd(m[2]) : inlineMd(s);
+}
+function blocksMd(text, labelBullets) {
+  const src = Array.isArray(text) ? text.map(x => /^[-*\u2022] /.test(x) ? x : "- " + x).join("\n") : String(text || "");
+  return src.trim().split(/\n\s*\n/).filter(Boolean).map(b => {
+    const lines = b.split("\n").map(l => l.trim()).filter(Boolean);
+    if (lines.every(l => /^[-*\u2022] /.test(l))) {
+      return "<ul>" + lines.map(l => "<li>" + (labelBullets ? bulletMd(l.replace(/^[-*\u2022] /, "")) : inlineMd(l.replace(/^[-*\u2022] /, ""))) + "</li>").join("") + "</ul>";
+    }
+    return "<p>" + inlineMd(lines.join(" ")) + "</p>";
+  }).join("");
+}
 function sourceLine(item, id) {
   const more = longOpen === id ? '<div class="long"><p>' + esc(stripLead(item.long)) + "</p></div>" : "";
   const who = item.author ? item.source + ", " + item.author : item.source;
   return '<p class="src"><em><strong>' + esc(who) + '</strong></em></p><div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
 }
+function newFormatLines(item, id) {
+  const more = longOpen === id ? '<div class="long"><h4>' + esc(item.longHead || "The Full Story:") + "</h4>" + blocksMd(item.long, true) + "</div>" : "";
+  const src = '<p class="srcline"><strong>Source:</strong> ' + esc(item.source) + ' (<a href="' + esc(item.url) + '" target="_blank" rel="noopener">' + esc(item.url) + "</a>)</p>";
+  return (item.bullets ? blocksMd(item.bullets, false) : "") + src + '<div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
+}
 function storyCard(slot, extra) {
   const s = storyFor(slot);
+  if (s.headline) return '<div class="panel story"><h3 class="hl">' + inlineMd(s.headline) + '</h3><p class="lede">' + inlineMd(s.lede || "") + "</p>" + (extra || "") + newFormatLines(s, "long-" + slot) + '<div class="actions"><button onclick="newStory(\'' + slot + '\')">New story</button></div></div>';
   return '<div class="panel"><h3>' + esc(s.title) + "</h3><p>" + esc(s.read) + "</p><p>Phone: " + esc(s.phone) + "</p>" + (extra || "") + sourceLine(s, "long-" + slot) + '<div class="actions"><button onclick="newStory(\'' + slot + '\')">New story</button></div></div>';
 }
 function docCard(bit, slot) {
@@ -394,7 +428,7 @@ function draw() {
   const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
   const ks = [0, 1, 2, 3].map(kickerAt);
   const d1 = pickFor("d1", 0), d2 = pickFor("d2", 1), d3 = pickFor("d3", 2), d4 = pickFor("d4", 3);
-  const cdc = '<p class="sub">Hope you like these T.</p><div class="toprow"><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>' + ks.map((k, i) => '<div class="kicker"><b>' + esc(k.line) + "</b><p>" + esc(k.more) + "</p>" + sourceLine(k, "k" + i) + '<button class="shuffle-btn" onclick="openCdcPicker(' + i + ')">Shuffle</button></div>').join("");
+  const cdc = '<p class="sub">Hope you like these T.</p><div class="toprow"><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>' + ks.map((k, i) => '<div class="kicker">' + (k.headline ? "<b>" + inlineMd(k.headline) + "</b><p>" + inlineMd(k.lede || "") + "</p>" + (k.bullets ? blocksMd(k.bullets, false) : "") + "<p><b>Care, or don\u2019t care?</b></p>" + newFormatLines(k, "k" + i) : "<b>" + esc(k.line) + "</b><p>" + esc(k.more) + "</p>" + sourceLine(k, "k" + i)) + '<button class="shuffle-btn" onclick="openCdcPicker(' + i + ')">Shuffle</button></div>').join("");
   document.getElementById("board").innerHTML =
     '<section class="hour"><h2>6:00</h2>' +
     row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked") +
