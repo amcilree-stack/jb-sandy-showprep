@@ -18,6 +18,10 @@ a.slot { text-decoration: none; }
 .slot .time { font-weight: 700; min-width: 46px; color: #1d4f91; }
 .slot .tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; }
 .anytime-btn { display: block; width: 100%; box-sizing: border-box; font: inherit; font-weight: 800; font-size: 1.05rem; min-height: 48px; border: 2px solid #1d5aa8; border-radius: 12px; padding: 10px 14px; margin: 6px 0 10px; background: #fff; color: #1d5aa8; cursor: pointer; text-align: center; }
+.any-sec h4 { margin: 10px 0 4px; font-size: 1.15rem; color: #123a73; }
+.any-sec .toprow { display: flex; justify-content: flex-end; margin: 0 0 10px; }
+.any-sec .toprow button { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 14px; background: #fff; color: #1d4f91; cursor: pointer; }
+.poll-stats { margin: 6px 0; padding-left: 20px; }
 .anytime-btn:hover { background: #1d5aa8; color: #fff; }
 .panel { background: #f4f8fd; border: 1px solid #b9cbe2; border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px; }
 .src { color: #1c2430; font-size: .95rem; font-weight: 700; font-style: italic; }
@@ -79,8 +83,11 @@ a.slot { text-decoration: none; }
 <h1>6:00–9:00</h1>
 <p class="note">Longer read is the full summary of the source page again. Shuffle on a story opens 5 current stories. Shuffle on a Doc bit opens Doc replacements. Minute to Win It opens that day's questions in a new window.</p>
 <!-- ANYTIME BUTTON START (preserve) -->
-<button class="anytime-btn" id="anytime-btn" type="button" aria-expanded="false" aria-controls="anytime-panel" onclick="var p=document.getElementById('anytime-panel');p.hidden=!p.hidden;this.setAttribute('aria-expanded',String(!p.hidden))">I would put it here</button>
-<div class="panel" id="anytime-panel" hidden><h3>Anytime</h3><p>No set time. Nothing here yet.</p></div>
+<button class="anytime-btn" id="anytime-btn" type="button" aria-expanded="false" aria-controls="anytime-panel" onclick="var p=document.getElementById('anytime-panel');p.hidden=!p.hidden;this.setAttribute('aria-expanded',String(!p.hidden))">Unknown Poll Generator</button>
+<div class="panel" id="anytime-panel" hidden><h3>Anytime</h3><p class="note">No set time. Pick a section.</p>
+<!-- ANYTIME SECTIONS (add new sections as more .any-sec blocks) -->
+<section class="any-sec" id="sec-polls"><h4>Unknown Poll Generator</h4><p class="note">5 light polls at a time. Shuffle gives 5 new ones. Halloween leans first through Oct 31. Approx. numbers are labeled.</p><div class="toprow"><button class="ghost" id="poll-shuffle" type="button">Shuffle</button></div><div id="poll-list"></div></section>
+</div>
 <!-- ANYTIME BUTTON END -->
 <div id="board"></div>
 </main>
@@ -638,6 +645,98 @@ function renderCdcPicker() {
   ).join("") || "<p>No kickers left on this computer.</p>";
 }
 
+// POLL GENERATOR START (preserve)
+// pollPool: rewritten each morning by the 4:28 AM build. Fields: id, headline, stats[], source, closer, theme.
+const pollPool = [
+  { id: "p-candy-stash", headline: "Americans eat through their Halloween candy stash twice before the first trick-or-treater shows up.", stats: ["Average person raids the stash twice before Halloween night", "26% had to restock three times or more", "55% still dash out for candy at the last minute"], source: "Talker Research for CVS, 2,000 U.S. adults, Sept 2025", closer: "So who is the candy for, the kids or you?", theme: "halloween" },
+  { id: "p-hal-people", headline: "Almost two-thirds of us call ourselves a \"Halloween person.\"", stats: ["62% are Halloween people", "43% go all out for the holiday", "51% of decorators say they have the best-looking house on the block"], source: "Talker Research for CVS, 2,000 U.S. adults, Sept 2025", closer: "Check your neighbor's yard and see if they agree with that last one.", theme: "halloween" },
+  { id: "p-hal-special", headline: "What makes Halloween special? Candy wins, and it's not close.", stats: ["42% say candy", "27% say costumes", "23% say the fall atmosphere", "21% say the spooky vibes"], source: "Talker Research for CVS, 2,000 U.S. adults, Sept 2025", closer: "Costumes are second. Candy is basically the whole holiday.", theme: "halloween" },
+  { id: "p-nrf-activities", headline: "Here's how America plans to spend Halloween this year.", stats: ["61% will hand out candy", "50% will dress in a costume", "42% will decorate the house or yard", "42% will carve pumpkins", "42% will watch scary movies"], source: "National Retail Federation, 7,889 U.S. consumers, Sept 2026", closer: "Half of us in costume. Sandy, what are you going as?", theme: "halloween" },
+  { id: "p-nrf-early", headline: "Halloween shopping starts in September now.", stats: ["49% started shopping in September or earlier", "Only 34% did that ten years ago", "74% plan to celebrate this year"], source: "National Retail Federation, 7,889 U.S. consumers, Sept 2026", closer: "Pumpkins and Christmas trees are in the same aisle at this point.", theme: "halloween" },
+  { id: "p-hichew-bags", headline: "The average Halloween household buys 4.5 bags of candy.", stats: ["4.5 bags of candy per season", "48% buy the big party-size bag (over 20 ounces)", "18% buy it the day it hits the store", "86% like chocolate candy, 53% chewy, 43% fruity"], source: "Talker Research for HI-CHEW, 5,000 U.S. Halloween celebrants, July-Aug 2025", closer: "Four and a half bags. Nobody in that house is buying for the kids only.", theme: "halloween" },
+  { id: "p-empower-spend", headline: "The average American plans to spend $296 on Halloween.", stats: ["$296 average planned spend", "57% say rising chocolate prices change their candy spending", "31% will hit a pumpkin patch or harvest festival", "21% will go to a theme park or haunted house"], source: "Talker Research for Empower, 2,000 U.S. adults, Sept 2025", closer: "Almost $300 and we still hand out the little fun-size bars.", theme: "halloween" },
+  { id: "p-costume-hours", headline: "Getting the costume ready takes about five and a half hours.", stats: ["Nearly 5.5 hours to pull a look together", "43% still need finishing touches or makeup in the final days", "Hair and makeup take the longest"], source: "Talker Research for CVS, 2,000 U.S. adults, Sept 2025", closer: "Five and a half hours to be a ghost under a bedsheet. Seems like a lot.", theme: "halloween" },
+  { id: "p-mars-candy", headline: "Two-thirds of us would eat our favorite Halloween candy all year.", stats: ["66% would buy their favorite Halloween candy year-round", "M&Ms is the number one Halloween candy", "Skittles is the top non-chocolate candy after candy corn"], source: "Mars / Morning Consult, 3,001 U.S. adults, 2026", closer: "Candy corn is still in the top two for non-chocolate, so somebody out there is buying it.", theme: "halloween" },
+  { id: "p-pumpkin-spice", headline: "Is pumpkin spice's reign over?", stats: ["58% think there are better fall flavors", "45% are tired of pumpkin spice", "Cinnamon 39%, salted caramel 37%, candy apple 36%, pumpkin spice 32%"], source: "Talker Research for Post Honey Bunches of Oats, 2,000 U.S. adults, May 2024", closer: "Pumpkin spice came in fourth. Still showing up in everything at Starbucks though.", theme: "fall" },
+  { id: "p-slumberstitions", headline: "Three-quarters of us are strict about our bedtime routine.", stats: ["76% say they must follow their nighttime routine to sleep well", "48% say a top sheet is an absolute must", "66 degrees is the perfect temperature", "68% would rather be too cold than too hot"], source: "Talker Research for Mattress Firm, 2,000 U.S. adults, Feb 2026", closer: "66 degrees. Somebody in your house just argued with the thermostat.", theme: "sleep" },
+  { id: "p-sleep-breakup", headline: "Some people have broken up with a partner over sleep habits.", stats: ["17% ended a relationship solely over sleep habits, 6% say it was one of the reasons", "Snoring is the top complaint at 44%", "Tossing and turning 30%, stealing the covers 27%"], source: "Talker Research, 2,000 U.S. adults, July 2026", closer: "Breaking up over the covers is the most country song nobody has written yet.", theme: "relationships" },
+  { id: "p-coffee-judge", headline: "One in three coffee drinkers judge you by your coffee order.", stats: ["23% have a coffee order they only get in secret", "Only 39% drink coffee in the morning, 46% say afternoon or evening", "Only 14% drink it black, 58% like medium roast"], source: "Talker Research, 1,586 U.S. coffee drinkers, Sept 2026", closer: "Call in and confess your secret coffee order.", theme: "food" },
+  { id: "p-pets-public", headline: "Where Americans do not want to see your dog.", stats: ["48% would be irritated by a dog in a restaurant", "45% say no pets in grocery stores", "32% say no pets in coffee shops", "Golden retriever is the favorite breed at 21%"], source: "Talker Research, 2,000 U.S. adults, Aug 2026", closer: "Nearly half and yet somehow the dog is at the table anyway.", theme: "pets" },
+  { id: "p-obsession", headline: "Americans think we have an \"obsession problem.\"", stats: ["64% say the country has a serious obsession problem", "65% obsess over food, 55% over health and fitness", "77% believe food should be fun"], source: "Talker Research for Pancho's Cheese Dip, 2,000 U.S. adults, April 2026", closer: "Cheese dip company says food should be fun. Shocking.", theme: "general" }
+];
+let pollNever = JSON.parse(localStorage.getItem("air-poll-never") || "[]");
+let pollUsed = JSON.parse(localStorage.getItem("air-poll-used") || "[]");
+let pollRecent = JSON.parse(localStorage.getItem("air-poll-recent") || "[]");
+let pollShown = JSON.parse(localStorage.getItem("air-poll-shown") || "[]");
+let pollNow = localStorage.getItem("air-poll-now") || "";
+function pollSave() {
+  localStorage.setItem("air-poll-never", JSON.stringify(pollNever));
+  localStorage.setItem("air-poll-used", JSON.stringify(pollUsed));
+  localStorage.setItem("air-poll-recent", JSON.stringify(pollRecent.slice(-10)));
+  localStorage.setItem("air-poll-shown", JSON.stringify(pollShown));
+  localStorage.setItem("air-poll-now", pollNow);
+}
+function pollById(id) { return pollPool.find(p => p.id === id); }
+function pollHidden(id) { return pollNever.includes(id) || pollUsed.includes(id); }
+function pollPick(avoid) {
+  const free = pollPool.filter(p => !pollHidden(p.id) && !avoid.includes(p.id));
+  return free.length ? free[Math.floor(Math.random() * free.length)] : null;
+}
+function pollFill() {
+  pollShown = pollShown.filter(id => pollById(id) && !pollNever.includes(id) && !pollUsed.includes(id));
+  while (pollShown.length < 5) {
+    const p = pollPick(pollShown.concat(pollRecent)) || pollPick(pollShown);
+    if (!p) break;
+    pollShown.push(p.id);
+  }
+}
+function pollShuffle() {
+  pollRecent = pollRecent.concat(pollShown).filter((v, i, a) => a.indexOf(v) === i);
+  const keep = pollRecent.slice(-10);
+  pollShown = [];
+  while (pollShown.length < 5) {
+    const p = pollPick(pollShown.concat(keep)) || pollPick(pollShown.concat(pollRecent.slice(-5)));
+    if (!p) break;
+    pollShown.push(p.id);
+  }
+  pollRecent = keep.concat(pollShown).filter((v, i, a) => a.indexOf(v) === i).slice(-10);
+  pollNow = "";
+  pollSave();
+  renderPolls();
+}
+function pollUseNow(id) {
+  pollNow = id;
+  if (!pollUsed.includes(id)) pollUsed.push(id);
+  pollSave();
+  renderPolls(true);
+}
+function pollAlready(id) {
+  if (!pollUsed.includes(id)) pollUsed.push(id);
+  pollSave();
+  pollFill();
+  renderPolls();
+}
+function pollNeverFn(id) {
+  if (!confirm("Never suggest this poll again on this computer?")) return;
+  if (!pollNever.includes(id)) pollNever.push(id);
+  pollSave();
+  pollFill();
+  renderPolls();
+}
+function renderPolls(keepNow) {
+  const el = document.getElementById("poll-list");
+  if (!el) return;
+  if (!keepNow) pollFill();
+  const ids = pollShown.filter(id => pollById(id) && (id === pollNow || !pollHidden(id)));
+  el.innerHTML = ids.map(id => {
+    const p = pollById(id);
+    const now = id === pollNow;
+    return '<div class="pick poll-pick' + (now ? " timely" : "") + '"><div class="cat-badge">' + (now ? "On air now" : esc(p.theme)) + "</div><h3>" + esc(p.headline) + "</h3><ul class=\"poll-stats\">" + p.stats.map(s => "<li>" + esc(s) + "</li>").join("") + '</ul><p class="src"><em><strong>' + esc(p.source) + "</strong></em></p>" + (p.closer ? "<p><strong>Closer:</strong> " + esc(p.closer) + "</p>" : "") + '<div class="actions"><button onclick="pollUseNow(\'' + esc(p.id) + '\')">Use Now</button><button class="ghost" onclick="pollAlready(\'' + esc(p.id) + '\')">Already Used</button><button class="ghost" onclick="pollNeverFn(\'' + esc(p.id) + '\')">Never</button></div></div>';
+  }).join("") || "<p>No polls left on this computer.</p>";
+}
+document.getElementById("poll-shuffle").onclick = pollShuffle;
+renderPolls();
+// POLL GENERATOR END
 fetch("/data/ideas.json").then(r => r.ok ? r.json() : null).then(data => {
   if (data && Array.isArray(data.items)) mergeIdeas(data.items);
   draw();
