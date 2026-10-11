@@ -17,6 +17,8 @@ main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid
 a.slot { text-decoration: none; }
 .slot .time { font-weight: 700; min-width: 46px; color: #1d4f91; }
 .slot .tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; }
+.anytime-btn { display: block; width: 100%; box-sizing: border-box; font: inherit; font-weight: 800; font-size: 1.05rem; min-height: 48px; border: 2px solid #1d5aa8; border-radius: 12px; padding: 10px 14px; margin: 6px 0 10px; background: #fff; color: #1d5aa8; cursor: pointer; text-align: center; }
+.anytime-btn:hover { background: #1d5aa8; color: #fff; }
 .panel { background: #f4f8fd; border: 1px solid #b9cbe2; border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px; }
 .src { color: #1c2430; font-size: .95rem; font-weight: 700; font-style: italic; }
 .actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
@@ -76,6 +78,10 @@ a.slot { text-decoration: none; }
 <p class="stamp">Sunday, Oct 11</p>
 <h1>6:00–9:00</h1>
 <p class="note">Longer read is the full summary of the source page again. Shuffle on a story opens 5 current stories. Shuffle on a Doc bit opens Doc replacements. Minute to Win It opens that day's questions in a new window.</p>
+<!-- ANYTIME BUTTON START (preserve) -->
+<button class="anytime-btn" id="anytime-btn" type="button" aria-expanded="false" aria-controls="anytime-panel" onclick="var p=document.getElementById('anytime-panel');p.hidden=!p.hidden;this.setAttribute('aria-expanded',String(!p.hidden))">I would put it here</button>
+<div class="panel" id="anytime-panel" hidden><h3>Anytime</h3><p>No set time. Nothing here yet.</p></div>
+<!-- ANYTIME BUTTON END -->
 <div id="board"></div>
 </main>
 <div class="shade" id="shade" onclick="closePicker()"></div>
