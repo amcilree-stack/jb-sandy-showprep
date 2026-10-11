@@ -4,3 +4,7 @@
 [build]
   command = "node scripts/apply-basic-auth.js"
   publish = "."
+
+[[edge_functions]]
+  path = "/*"
+  function = "auth"

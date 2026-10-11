@@ -91,3 +91,6 @@ The Anytime panel's first section is the Unknown Poll Generator. Its code sits b
 
 ## Source display rule
 Keep writing `source` (publisher name only) and `url` as separate fields on every story, kicker and (optionally) poll. The board shows "Source: <name>" with the name itself as the link to `url` (new tab, rel noopener) and never displays the raw URL. Never put raw URLs in any visible text (headline, lede, bullets, long, closer); use `[text](url)` only if a link inside text is truly needed. Do not change the sourceLine/newFormatLines/srcLink rendering code in index.html when rebuilding.
+
+## Site is behind HTTP Basic Auth
+howaboutodetosausage.com is protected by a Netlify Edge Function (user SausageLover). Any verification curl must use `-u "SausageLover:$SITE_BASIC_AUTH_PASSWORD"` (env var on the box; never print, echo, log or commit it). Git pushes are unaffected. `netlify/edge-functions/auth.js` and the `[[edge_functions]]` block in `netlify.toml` must be preserved. Do not remove or overwrite them in rebuilds.
