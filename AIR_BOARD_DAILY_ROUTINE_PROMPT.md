@@ -33,7 +33,7 @@ Fields (see AIR_BOARD_STORY_FORMAT.md, same as the Ballet Austin TWO item in the
 - `headline`: plain headline that states the key fact. For Story We Love, Title Case with the key number or fact (example: "Ballet Austin TWO Does A Family Ballet Today, And Every Ticket Is $25").
 - `lede`: one line, key fact plus who reported it ("according to ...") when natural.
 - `bullets`: array of exactly 2 short bullets, the next most useful facts. Real numbers only if the story has them; otherwise plain words at similar length.
-- `source`: publisher name only. `url`: exact article page (not a home page, calendar or tag page; if the only source is a hub page, find the specific article).
+- `source`: publisher name only (no URL, no parentheses). `url`: exact article page (not a home page, calendar or tag page; if the only source is a hub page, find the specific article).
 - `longHead`: "The Full Story:".
 - `long`: several paragraphs separated by a blank line (`\n\n`), plain conversational language, accurate to the source page only. Add a bold-label breakdown at the end ("- Label - text" lines) ONLY when the story has natural parts; otherwise flowing paragraphs only. Decide per story.
 - Also keep `title` (short, used by the 6:10, 7:05, 8:10 row labels and the Shuffle picker), plus short `read` and `phone` lines (the old-style prompt: `phone` is a one-line question to ask callers) so pickers work. For kickers also keep `line` (one-line tease used in the 6:35 tease row and picker) and `more`; add `headline`, `lede`, `bullets`, `source`, `url`, `longHead`, `long` as above.
@@ -88,3 +88,6 @@ The Anytime panel's first section is the Unknown Poll Generator. Its code sits b
 - Holiday logic: if today is within about 3 to 4 weeks of a major holiday (Halloween, Thanksgiving, Christmas, New Year's, Valentine's Day, July 4th, etc.), at least half of the pool is themed to that holiday (`theme` = that holiday). Otherwise stay fully general. Prioritize variety: different themes and different stats, no near-duplicates, and do not reuse polls that were in the previous pool unless fewer than 15 fresh ones can be verified.
 - Escape quotes inside strings. No extra commentary, no "want more?" lines inside the data.
 - Verify: node --check passes, 14 to 16 polls, unique ids, every poll has headline, 2-5 stats, source, theme; the markers, `#sec-polls`, `#poll-shuffle`, `#poll-list`, and `id="anytime-panel"` are still present.
+
+## Source display rule
+Keep writing `source` (publisher name only) and `url` as separate fields on every story, kicker and (optionally) poll. The board shows "Source: <name>" with the name itself as the link to `url` (new tab, rel noopener) and never displays the raw URL. Never put raw URLs in any visible text (headline, lede, bullets, long, closer); use `[text](url)` only if a link inside text is truly needed. Do not change the sourceLine/newFormatLines/srcLink rendering code in index.html when rebuilding.

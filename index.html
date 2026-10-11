@@ -31,7 +31,8 @@ a.slot { text-decoration: none; }
 .long { background: #fff; border: 1px solid #d5e0ee; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
 .panel.story h3.hl { margin: 0 0 6px; }
 .lede { font-weight: 600; }
-.srcline { font-size: .92rem; word-break: break-word; }
+.srcline { font-size: .92rem; overflow-wrap: anywhere; }
+.src a, .srcline a { text-decoration: underline; }
 .long h4 { margin: 4px 0 6px; }
 .long ul, .panel.story ul { margin: 6px 0 6px 1.1rem; padding: 0; }
 .long li, .panel.story li { margin: 4px 0; }
@@ -402,6 +403,7 @@ function inlineMd(s) {
   t = t.replace(/&lt;(\/?)(b|strong|em|i)&gt;/g, "<$1$2>");
   t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  t = t.replace(/(Source:\s*(?:<[^>]+>)?)([^<()\n]+?)\s*\((https?:\/\/[^)\s]+)\)/g, function (m, pre, name, u) { return pre + '<a class="srclink" href="' + u + '" target="_blank" rel="noopener">' + name.trim() + "</a>"; });
   return t;
 }
 function bulletMd(s) {
@@ -419,14 +421,18 @@ function blocksMd(text, labelBullets) {
     return "<p>" + inlineMd(lines.join(" ")) + "</p>";
   }).join("");
 }
+function srcLink(name, url) {
+  const n = esc(name || "");
+  return url && /^https?:\/\//.test(url) ? '<a class="srclink" href="' + esc(url) + '" target="_blank" rel="noopener">' + n + "</a>" : n;
+}
 function sourceLine(item, id) {
   const more = longOpen === id ? '<div class="long"><p>' + esc(stripLead(item.long)) + "</p></div>" : "";
-  const who = item.author ? item.source + ", " + item.author : item.source;
-  return '<p class="src"><em><strong>' + esc(who) + '</strong></em></p><div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
+  const who = srcLink(item.source, item.url) + (item.author ? ", " + esc(item.author) : "");
+  return '<p class="src"><em><strong>' + who + '</strong></em></p><div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
 }
 function newFormatLines(item, id) {
   const more = longOpen === id ? '<div class="long"><h4>' + esc(item.longHead || "The Full Story:") + "</h4>" + blocksMd(item.long, true) + "</div>" : "";
-  const src = '<p class="srcline"><strong>Source:</strong> ' + esc(item.source) + ' (<a href="' + esc(item.url) + '" target="_blank" rel="noopener">' + esc(item.url) + "</a>)</p>";
+  const src = '<p class="srcline"><strong>Source:</strong> ' + srcLink(item.source, item.url) + "</p>";
   return (item.bullets ? blocksMd(item.bullets, false) : "") + src + '<div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
 }
 function storyCard(slot, extra) {
@@ -576,7 +582,7 @@ function renderStoryPicker() {
   document.getElementById("story-list").innerHTML = storyCats.map(c => {
     const s = storyShown[c.id];
     if (!s) return '<div class="pick"><h3>' + esc(c.label) + "</h3><p>No stories left in this category on this computer.</p></div>";
-    return '<div class="pick story-pick"><div class="cat-badge">' + esc(c.label) + "</div><h3>" + esc(s.title) + "</h3><p>" + esc(s.read) + '</p><p class="src"><em><strong>' + esc(s.source) + '</strong></em></p><div class="actions"><button onclick="useStoryNow(\'' + esc(s.id) + '\')">Use Now</button><button class="ghost" onclick="saveStoryLater(\'' + c.id + '\')">Save For Later</button><button class="ghost" onclick="alreadyDidStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Already Did It</button><button class="ghost" onclick="neverStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Never</button><button class="ghost" onclick="reshuffleCategory(\'' + c.id + '\')">Shuffle</button></div></div>';
+    return '<div class="pick story-pick"><div class="cat-badge">' + esc(c.label) + "</div><h3>" + esc(s.title) + "</h3><p>" + esc(s.read) + '</p><p class="src"><em><strong>' + srcLink(s.source, s.url) + '</strong></em></p><div class="actions"><button onclick="useStoryNow(\'' + esc(s.id) + '\')">Use Now</button><button class="ghost" onclick="saveStoryLater(\'' + c.id + '\')">Save For Later</button><button class="ghost" onclick="alreadyDidStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Already Did It</button><button class="ghost" onclick="neverStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Never</button><button class="ghost" onclick="reshuffleCategory(\'' + c.id + '\')">Shuffle</button></div></div>';
   }).join("");
 }
 
@@ -637,7 +643,7 @@ function neverCdc(index) {
 }
 function renderCdcPicker() {
   document.getElementById("cdc-list").innerHTML = cdcShown.map(x =>
-    '<div class="pick"><h3>' + esc(x.k.line) + "</h3><p>" + esc(x.k.more) + '</p><p class="src"><em><strong>' + esc(x.k.source) + '</strong></em></p><div class="actions">' +
+    '<div class="pick"><h3>' + esc(x.k.line) + "</h3><p>" + esc(x.k.more) + '</p><p class="src"><em><strong>' + srcLink(x.k.source, x.k.url) + '</strong></em></p><div class="actions">' +
     '<button onclick="useCdcNow(' + x.i + ')">Use Now</button>' +
     '<button class="ghost" onclick="laterCdc(' + x.i + ')">Save For Later</button>' +
     '<button class="ghost" onclick="didCdc(' + x.i + ')">Already Did It</button>' +
@@ -731,7 +737,7 @@ function renderPolls(keepNow) {
   el.innerHTML = ids.map(id => {
     const p = pollById(id);
     const now = id === pollNow;
-    return '<div class="pick poll-pick' + (now ? " timely" : "") + '"><div class="cat-badge">' + (now ? "On air now" : esc(p.theme)) + "</div><h3>" + esc(p.headline) + "</h3><ul class=\"poll-stats\">" + p.stats.map(s => "<li>" + esc(s) + "</li>").join("") + '</ul><p class="src"><em><strong>' + esc(p.source) + "</strong></em></p>" + (p.closer ? "<p><strong>Closer:</strong> " + esc(p.closer) + "</p>" : "") + '<div class="actions"><button onclick="pollUseNow(\'' + esc(p.id) + '\')">Use Now</button><button class="ghost" onclick="pollAlready(\'' + esc(p.id) + '\')">Already Used</button><button class="ghost" onclick="pollNeverFn(\'' + esc(p.id) + '\')">Never</button></div></div>';
+    return '<div class="pick poll-pick' + (now ? " timely" : "") + '"><div class="cat-badge">' + (now ? "On air now" : esc(p.theme)) + "</div><h3>" + esc(p.headline) + "</h3><ul class=\"poll-stats\">" + p.stats.map(s => "<li>" + esc(s) + "</li>").join("") + '</ul><p class="src"><em><strong>' + srcLink(p.source, p.url) + "</strong></em></p>" + (p.closer ? "<p><strong>Closer:</strong> " + esc(p.closer) + "</p>" : "") + '<div class="actions"><button onclick="pollUseNow(\'' + esc(p.id) + '\')">Use Now</button><button class="ghost" onclick="pollAlready(\'' + esc(p.id) + '\')">Already Used</button><button class="ghost" onclick="pollNeverFn(\'' + esc(p.id) + '\')">Never</button></div></div>';
   }).join("") || "<p>No polls left on this computer.</p>";
 }
 document.getElementById("poll-shuffle").onclick = pollShuffle;
