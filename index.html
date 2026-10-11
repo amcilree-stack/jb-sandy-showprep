@@ -1,1 +1,607 @@
-PLACEHOLDER_FIXED
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>JB & Sandy · Air board</title>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+html, body { background: linear-gradient(165deg, #123a73 0%, #1d5aa8 42%, #2f7ed6 100%) !important; color: #f7f4ee; min-height: 100%; }
+header.top { background: rgba(10, 28, 58, .88); border-bottom: 1px solid rgba(255,255,255,.28); }
+.brand, .brand span, nav.main a { color: #fff; }
+nav.main { display: flex; flex-wrap: wrap; gap: 12px; }
+main.wrap { background: rgba(255,252,247,.96); color: #1c2430; border: 1px solid rgba(255,255,255,.7); border-radius: 18px; margin: 16px auto 28px; padding: 18px 18px 24px; max-width: 880px; }
+.hour { margin-top: 22px; background: #fff; border: 1px solid #c9d7ea; border-radius: 14px; padding: 8px 12px 10px; }
+.slot { display: flex; gap: 10px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; border-top: 1px solid #e1e8f2; color: inherit; font: inherit; padding: 10px 0; cursor: pointer; }
+a.slot { text-decoration: none; }
+.slot .time { font-weight: 700; min-width: 46px; color: #1d4f91; }
+.slot .tag { margin-left: auto; font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; }
+.panel { background: #f4f8fd; border: 1px solid #b9cbe2; border-radius: 12px; padding: 12px 14px; margin: 8px 0 16px; }
+.src { color: #1c2430; font-size: .95rem; font-weight: 700; font-style: italic; }
+.actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.actions button, .kicker button, .actions a.btn { font: inherit; font-weight: 700; border: 1px solid #1d4f91; border-radius: 10px; padding: 8px 10px; background: #1d4f91; color: #fff; text-decoration: none; cursor: pointer; }
+.actions button.ghost, .kicker button.ghost, .actions a.ghost { background: #fff; color: #1d4f91; }
+.long { background: #fff; border: 1px solid #d5e0ee; border-radius: 10px; padding: 8px 10px; margin-top: 8px; }
+.kicker { padding: 10px 0; border-top: 1px solid #d5e0ee; }
+.doc-row { display: flex; align-items: center; gap: 8px; border-top: 1px solid #e1e8f2; padding: 6px 0; }
+.doc-row .slot-main { flex: 1; display: flex; gap: 10px; align-items: baseline; text-align: left; background: transparent; border: 0; color: inherit; font: inherit; padding: 6px 0; cursor: pointer; }
+.shuffle-btn { font: inherit; font-weight: 800; border: 1px solid #1d5aa8; border-radius: 10px; padding: 8px 12px; background: #1d5aa8; color: #fff; cursor: pointer; white-space: nowrap; }
+.shuffle-btn:hover { background: #123a73; }
+
+.phones-row { align-items: center; }
+.phones-label { display: inline-flex; align-items: center; gap: 8px; color: #e10600; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; }
+.phones-link { margin-left: auto; color: #111; font-weight: 800; text-decoration: underline; }
+
+
+.cat-badge { display: inline-block; font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 800; color: #c4552a; margin-bottom: 4px; }
+.story-pick .actions button { min-width: 108px; }
+
+
+.shade { position: fixed; inset: 0; background: rgba(10, 28, 58, .55); z-index: 40; display: none; }
+.shade.on { display: block; }
+.picker { position: fixed; z-index: 41; left: 50%; top: 4vh; transform: translateX(-50%); width: min(720px, 94vw); max-height: 92vh; overflow: auto; background: #fffaf3; color: #1c2430; border: 1px solid #d7c7b2; border-radius: 18px; padding: 18px 18px 22px; display: none; box-shadow: 0 18px 50px rgba(0,0,0,.28); }
+.picker.on { display: block; }
+.picker h2 { margin: 0 36px 4px 0; color: #123a73; font-size: 1.45rem; }
+.picker .sub { margin: 0 0 10px; color: #3d4a5c; }
+.picker .toprow { display: flex; justify-content: flex-end; margin: 0 0 10px; }
+.picker .x { position: absolute; right: 14px; top: 12px; border: 0; background: transparent; font-size: 1.4rem; cursor: pointer; color: #123a73; }
+.pick { background: #fff; border: 1px solid #c9d7ea; border-radius: 12px; padding: 10px 12px; margin: 0 0 10px; }
+.pick.timely { border-color: #c4552a; }
+.pick h3 { margin: 0 0 4px; font-size: 1.02rem; }
+.pick p { margin: 0; color: #3d4a5c; }
+.badge { display: inline-block; margin-left: 8px; font-size: .68rem; letter-spacing: .04em; text-transform: uppercase; color: #c4552a; font-weight: 800; }
+.pick .actions button { font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="/">JB and Sandy</a>
+<nav class="main">
+<a href="/prep/#today">Today</a>
+<a href="/prep/#ideas">Ideas</a>
+<a href="/prep/#audio">Audio</a>
+<a href="/archive/">Archive</a>
+<a href="/m2w/this-week">Minute to Win It</a>
+<a href="/last-laugh/">Last Laugh</a>
+</nav>
+</div></header>
+<main class="wrap">
+<p class="stamp">Sunday, Oct 11</p>
+<h1>6:00–9:00</h1>
+<p class="note">Longer read is the full summary of the source page again. Shuffle on a story opens 5 current stories. Shuffle on a Doc bit opens Doc replacements. Minute to Win It opens that day's questions in a new window.</p>
+<div id="board"></div>
+</main>
+<div class="shade" id="shade" onclick="closePicker()"></div>
+<div class="picker" id="picker" role="dialog" aria-label="Shuffle Doc bits">
+<button class="x" onclick="closePicker()" aria-label="Close">×</button>
+<h2>Shuffle — pick a replacement</h2>
+<p class="sub" id="picker-sub">Up to 6 bits from the Doc. Timely ones come first. Past-date bits stay out.</p>
+<div class="toprow"><button onclick="reshuffle()">Shuffle</button></div>
+<div id="picker-list"></div>
+</div>
+
+<div class="shade" id="story-shade" onclick="closeStoryPicker()"></div>
+<div class="picker" id="story-picker" role="dialog" aria-label="Shuffle stories">
+<button class="x" onclick="closeStoryPicker()" aria-label="Close">&times;</button>
+<h2>Shuffle — pick a story</h2>
+<p class="sub" id="story-sub">5 current stories. Local Austin first. No politics, crime, or activism.</p>
+<div class="toprow"><button onclick="reshuffleAllStories()">Shuffle all 5</button></div>
+<div id="story-list"></div>
+</div>
+
+
+<div class="shade" id="cdc-shade" onclick="closeCdcPicker()"></div>
+<div class="picker" id="cdc-picker" role="dialog" aria-label="Shuffle kickers">
+<button class="x" onclick="closeCdcPicker()" aria-label="Close">&times;</button>
+<h2>Care Don't Care</h2>
+<p class="sub">Hope you like these T. Kicker stories only.</p>
+<div class="toprow"><button class="shuffle-btn" onclick="reshuffleCdc()">Shuffle</button></div>
+<div id="cdc-list"></div>
+</div>
+
+<script>
+const boardDate = "2026-10-11";
+const storyPool = [
+  { id: "acl-sunday", cat: "local", title: "ACL Sunday: Twenty One Pilots or The xx", read: "Final day of Weekend 2 at Zilker. Both close at 8:30. You cannot see both. Parcels and Geese earlier.", phone: "Who is in the park today, and which closer are you picking?", source: "OnesToWatch", author: "", url: "https://onestowatch.com/live/austin-weekend-events-october-9/", long: "OnesToWatch published a music guide for Oct. 9-11. Sunday at ACL Fest Weekend Two is the wind-down day. Parcels, the Australian group known for tight funk and disco-leaning live sets, play Zilker. The night ends with a choice: Twenty One Pilots close the American Express Stage at 8:30 p.m. opposite The xx on the T-Mobile Stage at the same time. The two sets overlap, so fans inside the park pick one. Friday and Sunday are generally easier to navigate than Saturday. Gates Sunday open at 11 a.m. The festival runs through 10 p.m." },
+  { id: "ballet", cat: "local", title: "Ballet Austin TWO does The Seventh Night Sky today", read: "45 minutes, no intermission, every ticket $25. 2 p.m. and 4:30 p.m. at the Studio Theater. Vietnamese legend of the stars.", phone: "Who is taking kids to a matinee instead of ACL?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "ATX Things published this Oct. 8. Ballet Austin's The Seventh Night Sky, performed by Ballet Austin TWO, is 45 minutes with no intermission, built for kids and families. Every ticket is $25. Shows are Saturday and Sunday, Oct. 10 and 11, each day at 2:00 and 4:30 p.m. It runs again Oct. 17 and 18. It is a wordless story based on a Vietnamese legend about two stars, Altair and Vega, who cross the Milky Way on a bridge of birds once a year. Ballet Austin pitches it as a good first ballet and part of its Fables of the World series. It is at the AustinVentures Studio Theater, 501 W. Third St." },
+  { id: "pumpkin", cat: "local", title: "Pumpkin Nights is open tonight at Pioneer Farms", read: "More than 10,000 hand-carved pumpkins. Nine lands on a half-mile trail. Family-friendly, no jump scares. Tickets in advance.", phone: "Who already went, and who is going after dark?", source: "Pumpkin Nights", author: "", url: "https://www.pumpkinnights.com/", long: "Pumpkin Nights is a walk through more than 10,000 hand-carved pumpkins across nine immersive lands on a glowing half-mile trail at Pioneer Farms, 10621 Pioneer Farms Dr. It runs through Oct. 31. Family-friendly with no jump scares required. Fire shows, festive food, and games in Pumpkin Village. Costumes encouraged. Entry time slots run every 30 minutes; weekend slots 6:00 to 9:30 p.m., event ends 11:15 p.m. Parking $10 per car. Tickets are purchased online in advance. Kids 3 and under free." },
+  { id: "country-max", cat: "country", title: "Max McNown is on the ACL Sunday bill", read: "Country-leaning act on the Weekend 2 Sunday schedule at Zilker.", phone: "Who is catching the country sets instead of the headliners?", source: "KVUE", author: "", url: "https://www.kvue.com/article/entertainment/events/austin-city-limits/artists-lineup-2026-austin-city-limits-festival/269-cae3083e-0a6c-4b43-8ffd-e7f9221a55d9", long: "KVUE listed the Sunday Oct. 11 ACL acts, which include Max McNown, Houndmouth, and others alongside the big closers. Max McNown has been building a following with country-leaning songs. The full by-day poster puts Twenty One Pilots, The xx, Geese, and Sofi Tukker as the main Sunday names." },
+  { id: "movies", cat: "movies", title: "Fear Fair clown maze is still up at Sign Bar", read: "Haunted clown maze with live actors. Themed cocktails. Through the month.", phone: "Who is doing the maze this week?", source: "Austin Chronicle", author: "", url: "https://calendar.austinchronicle.com/", long: "Local listings still have the Fear Fair haunted maze at Sign Bar running in October. Live actors, new sets, themed drinks. It is one of the non-ACL options people mentioned for the weekend." },
+  { id: "lifestyle", cat: "lifestyle", title: "Boo at the Zoo continues Friday and Saturday nights", read: "Austin Zoo, kids in costume, after dark, through Oct. 24.", phone: "Who already has a costume ready?", source: "Visit Austin", author: "", url: "https://www.austintexas.org/events/october-and-november/", long: "Visit Austin lists Boo at the Zoo Oct. 2 through Oct. 24, Friday and Saturday nights. Costume, train rides, music, haunted house visits included." },
+  { id: "weird", cat: "weird", title: "A mountain biker dropped 12 feet onto a cardboard box for a record", read: "Austrian rider Mario Neurauter. Landed the back tire on a small target.", phone: "Who has the most ridiculous hobby stunt?", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/09/austria-Guinness-World-Records-mountain-bicycle-vertical-drop/5421791564144/", long: "Ben Hooper wrote this for UPI on Oct. 9. Austrian mountain biker Mario Neurauter dropped 12.46 feet from an elevated platform and crushed a small cardboard box with his back tire. He set the Guinness record for the highest vertical drop on a bicycle onto a target (male). He did it at Bike Republic Sölden Festival in September 2025. He told Guinness he was not scared but knew hitting the box would be tricky. He had not trained for it specifically." }
+];
+const kickerPool = [
+  { line: "A mountain biker dropped 12.46 feet onto a cardboard box.", more: "Mario Neurauter of Austria. Back tire on the target. Guinness record.", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/09/austria-Guinness-World-Records-mountain-bicycle-vertical-drop/5421791564144/", long: "An Austrian mountain biker dropped 12.46 feet from an elevated platform and crushed a small cardboard box with his back tire. Mario Neurauter set the Guinness World Record for the highest vertical drop on a bicycle onto a target. He did it at Bike Republic Sölden Festival. He said he was not scared but knew hitting the box would be tricky because he had not trained for it specifically. He also tried two other drop records the same weekend." },
+  { line: "Orphaned kittens took a tour of a Minnesota aquarium.", more: "More than a dozen adoptable kittens at Sea Life at the Mall of America.", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/", long: "The Sea Life Aquarium at the Mall of America in Minnesota hosted more than a dozen special visitors: adoptable orphaned kittens. The aquarium said the visit gave the kittens a chance to explore a new environment while looking for homes." },
+  { line: "Hundreds of people dressed as Spider-Man for a world record.", more: "New York Comic Con. They tried for a Guinness record.", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "Hundreds of Marvel fans donned Spider-Man costumes at New York Comic Con and attempted to break a Guinness World Record for the largest gathering of people dressed as the character." },
+  { line: "An opossum got stuck on a fishing hook and was rescued from a tree.", more: "North Carolina. Firefighters and animal control got it down.", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "An opossum in North Carolina ended up caught on a fishing hook and stuck in a tree. Crews rescued it and the animal was taken for care." }
+];
+const fallbackDocs = [
+  { id: "trail-of-lights", q: "Trail of Lights tickets are already on sale.", how: "Who already bought, and who waits until the first cold night?" },
+  { id: "not-your-pet", q: "That is not your pet.", how: "Raccoon, squirrel, deer, fox, armadillo. When did it start acting like family?" },
+  { id: "problem-solve", q: "What problem do people try to solve the second you mention it?", how: "Back, sleep, weight, allergies. The advice you have heard 100 times." },
+  { id: "wake-up", q: "Wake-up service. Call the sleeping kid.", how: "Parents give a nickname, a chore, and why they have to get up." },
+  { id: "socks", q: "Over-50 agility test: socks, one foot at a time.", how: "No sitting. No leaning. Do it in studio first." },
+  { id: "car-item", q: "What strange item permanently lives in your car?", how: "Caller names the object first. Cone, wedding dress, bowling ball." },
+  { id: "hypnotize", q: "What mundane thing hypnotizes you?", how: "Dirt grader, car wash, lawn robot, tortilla machine." },
+  { id: "uber", q: "They sent me an Uber.", how: "What happened that made someone send the ride?" },
+  { id: "sheets", q: "How long do you go between washing sheets?", how: "Honest number. Are the guest-room sheets a different story?" },
+  { id: "jeep", q: "Jeep people audio description.", how: "Describe a Jeep person without saying Jeep." },
+  { id: "single", q: "Sell us on being single.", how: "20 seconds to pitch solo living. Pick a spokesperson." },
+  { id: "gym", q: "67% of gym memberships go unused.", how: "Why keep it: guilt, January energy, or I might go Thursday?" },
+  { id: "spouse", q: "Do Your Spouse.", how: "20 seconds to imitate the spouse. Then get the spouse on." },
+  { id: "vacation", q: "Would you vacation without your spouse?", how: "Yes, no, and the rule that makes it okay." },
+  { id: "optimus", q: "Your Optimus gets one chore forever.", how: "The chore you hate, or the one that eats the most time?" },
+  { id: "job-sucks", q: "The job that looks awesome but sucks.", how: "You must have actually done it." },
+  { id: "next-gen", q: "What the next generation may not know how to do.", how: "Map, cursive, stick shift, change a tire, make change." },
+  { id: "pockets", q: "Empty Your Pockets.", how: "Studio empties first. Most inexplicable item wins." },
+  { id: "halloween-tesla", q: "Halloween: a Tesla driving through a cemetery.", how: "The weirdest thing you have seen in a cemetery." },
+  { id: "birthday-text", q: "Is a birthday text enough?", how: "Text, call, card, or showing up." },
+  { id: "arrested", q: "The closest you've come to getting arrested.", how: "Nonviolent, minor, and still a story." },
+  { id: "cool-hobby", q: "The hobby that suddenly got cool again.", how: "Mahjong, pickleball, vinyl, film cameras." },
+  { id: "dead-austin", q: "What dead Austin business would you bring back?", how: "Blockbuster, Tower, Toys R Us, the old Foley’s." },
+  { id: "struggle-meal", q: "The struggle meal you didn't know was a struggle meal.", how: "Buttered noodles, breakfast for dinner, the cheap staple." }
+];
+const seasons = [
+  { keys: ["halloween", "cemetery"], start: "2026-10-01", end: "2026-10-31", label: "Halloween" },
+  { keys: ["trail of lights"], start: "2026-11-01", end: "2026-12-23", label: "Trail of Lights" },
+  { keys: ["christmas", "santa", "holiday lights", "nutcracker"], start: "2026-12-01", end: "2026-12-25", label: "Christmas" },
+  { keys: ["thanksgiving", "turkey day"], start: "2026-11-01", end: "2026-11-26", label: "Thanksgiving" },
+  { keys: ["new year", "new year's", "new years"], start: "2026-12-26", end: "2027-01-02", label: "New Year" },
+  { keys: ["valentine"], start: "2027-02-01", end: "2027-02-14", label: "Valentine's" },
+  { keys: ["super bowl"], start: "2027-01-20", end: "2027-02-08", label: "Super Bowl" },
+  { keys: ["oktoberfest"], start: "2026-09-20", end: "2026-10-12", label: "Oktoberfest" },
+  { keys: ["acl ", "acl fest", "austin city limits"], start: "2026-10-02", end: "2026-10-11", label: "ACL" }
+];
+const m2wWeeks = [
+  ["2026-09-07", "2026-09-11", "/m2w/sep-7-11-2026.html"],
+  ["2026-09-14", "2026-09-18", "/m2w/sep-14-18-2026.html"],
+  ["2026-09-21", "2026-09-25", "/m2w/sep-21-25-2026.html"],
+  ["2026-09-28", "2026-10-02", "/m2w/sep-28-oct-2-2026.html"],
+  ["2026-10-05", "2026-10-09", "/m2w/oct-5-9-2026.html"],
+  ["2026-10-12", "2026-10-16", "/m2w/oct-12-16-2026.html"],
+  ["2026-10-19", "2026-10-23", "/m2w/oct-19-23-2026.html"],
+  ["2026-10-26", "2026-10-30", "/m2w/oct-26-30-2026.html"],
+  ["2026-11-02", "2026-11-06", "/m2w/nov-2-6-2026.html"],
+  ["2026-11-09", "2026-11-13", "/m2w/nov-9-13-2026.html"],
+  ["2026-11-16", "2026-11-20", "/m2w/nov-16-20-2026.html"],
+  ["2026-11-23", "2026-11-27", "/m2w/nov-23-27-2026.html"],
+  ["2026-11-30", "2026-12-04", "/m2w/nov-30-dec-4-2026.html"],
+  ["2026-12-07", "2026-12-11", "/m2w/dec-7-11-2026.html"],
+  ["2026-12-14", "2026-12-18", "/m2w/dec-14-18-2026.html"],
+  ["2026-12-21", "2026-12-25", "/m2w/dec-21-25-2026.html"],
+  ["2026-12-28", "2027-01-01", "/m2w/dec-28-jan-1-2027.html"],
+  ["2027-01-04", "2027-01-08", "/m2w/jan-4-8-2027.html"],
+  ["2027-01-11", "2027-01-15", "/m2w/jan-11-15-2027.html"],
+  ["2027-01-18", "2027-01-22", "/m2w/jan-18-22-2027.html"],
+  ["2027-01-25", "2027-01-29", "/m2w/jan-25-29-2027.html"],
+  ["2027-02-01", "2027-02-05", "/m2w/feb-1-5-2027.html"],
+  ["2027-02-08", "2027-02-12", "/m2w/feb-8-12-2027.html"]
+];
+const dayHash = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+const slots = ["s610", "s705", "s810"];
+const docSlots = ["d1", "d2", "d3", "d4"];
+let docPool = fallbackDocs.slice();
+let open = localStorage.getItem("air-open") || "";
+let longOpen = localStorage.getItem("air-long") || "";
+let storySkip = JSON.parse(localStorage.getItem("air-story-skip") || "{}");
+let kickerSkip = JSON.parse(localStorage.getItem("air-kicker-skip") || "[0,1,2,3]");
+let never = JSON.parse(localStorage.getItem("air-never") || "[]");
+let used = JSON.parse(localStorage.getItem("air-used") || "[]");
+let slotPick = JSON.parse(localStorage.getItem("air-slot-pick") || "{}");
+let storyNever = JSON.parse(localStorage.getItem("air-story-never") || "[]");
+let storySlot = JSON.parse(localStorage.getItem("air-story-slot") || "{}");
+let phonePick = JSON.parse(localStorage.getItem("air-phone-pick") || "{}");
+let cdcNever = JSON.parse(localStorage.getItem("air-cdc-never") || "[]");
+let cdcPick = JSON.parse(localStorage.getItem("air-cdc-pick") || "{}");
+let pickerSlot = "";
+let pickerShown = [];
+function save() {
+  localStorage.setItem("air-open", open);
+  localStorage.setItem("air-long", longOpen);
+  localStorage.setItem("air-story-skip", JSON.stringify(storySkip));
+  localStorage.setItem("air-kicker-skip", JSON.stringify(kickerSkip));
+  localStorage.setItem("air-never", JSON.stringify(never));
+  localStorage.setItem("air-used", JSON.stringify(used));
+  localStorage.setItem("air-slot-pick", JSON.stringify(slotPick));
+  localStorage.setItem("air-story-never", JSON.stringify(storyNever));
+  localStorage.setItem("air-story-slot", JSON.stringify(storySlot));
+}
+function esc(s) { return String(s || "").replace(/&/g, "&" + "amp;").replace(/</g, "&" + "lt;").replace(/>/g, "&" + "gt;").replace(/"/g, "&" + "quot;").replace(/'/g, "&" + "#39;"); }
+function todayISO() {
+  const d = new Date();
+  const z = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  return z.toISOString().slice(0, 10);
+}
+function seasonFor(bit) {
+  const text = ((bit.q || "") + " " + (bit.how || "") + " " + (bit.text || "")).toLowerCase();
+  return seasons.find(s => s.keys.some(k => text.includes(k))) || null;
+}
+function timelyState(bit, day) {
+  const s = seasonFor(bit);
+  if (!s) return { ok: true, timely: false, label: "" };
+  if (day > s.end) return { ok: false, timely: false, label: s.label };
+  if (day >= s.start && day <= s.end) return { ok: true, timely: true, label: s.label };
+  return { ok: true, timely: false, label: s.label };
+}
+function available(day) {
+  const usedQs = docSlots.map(id => (slotPick[id] && byId(slotPick[id])) || null).filter(Boolean).map(b => b.id);
+  return docPool.filter(bit => {
+    if (never.includes(bit.id) || never.includes(bit.q)) return false;
+    if (usedQs.includes(bit.id)) return false;
+    return timelyState(bit, day).ok;
+  });
+}
+function byId(id) { return docPool.find(b => b.id === id); }
+function storyFor(slot) {
+  if (typeof storySlot !== "undefined" && storySlot[slot]) {
+    const chosen = storyPool.find(s => s.id === storySlot[slot]);
+    if (chosen) return chosen;
+  }
+  const n = storySkip[slot] || 0;
+  const usedTitles = slots.filter(s => s !== slot).map(s => {
+    const picked = (typeof storySlot !== "undefined" && storySlot[s]) ? storyPool.find(x => x.id === storySlot[s]) : null;
+    return picked ? picked.title : storyPool[(storySkip[s] || 0) % storyPool.length].title;
+  });
+  let i = n;
+  for (let k = 0; k < storyPool.length; k++) {
+    const pick = storyPool[i % storyPool.length];
+    if (!usedTitles.includes(pick.title) && !(typeof storyNever !== "undefined" && storyNever.includes(pick.id))) return pick;
+    i++;
+  }
+  return storyPool[n % storyPool.length];
+}
+function kickerAt(i) { if (cdcPick[i] != null && kickerPool[cdcPick[i]]) return kickerPool[cdcPick[i]]; return kickerPool[(kickerSkip[i] || i) % kickerPool.length]; }
+function newStory(slot) { storySkip[slot] = (storySkip[slot] || 0) + 1; open = slot; longOpen = ""; save(); draw(); }
+function newKicker(i) { kickerSkip[i] = (kickerSkip[i] || i) + 1; open = "cdc"; longOpen = ""; save(); draw(); }
+function toggleLong(id) { longOpen = longOpen === id ? "" : id; save(); draw(); }
+function markUsed(id) { if (used.includes(id)) used = used.filter(x => x !== id); else used.push(id); save(); draw(); }
+function toggle(id) { open = open === id ? "" : id; save(); draw(); }
+function pickFor(slot, n) {
+  if (slotPick[slot] && byId(slotPick[slot])) return byId(slotPick[slot]);
+  const pool = available(boardDate);
+  return pool[n] || pool[0] || docPool[0];
+}
+function shufflePool(day) {
+  const pool = available(day).map(bit => Object.assign({}, bit, { _t: timelyState(bit, day) }));
+  const timely = pool.filter(b => b._t.timely);
+  const rest = pool.filter(b => !b._t.timely);
+  const mix = arr => arr.map(v => [Math.random(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+  return mix(timely).concat(mix(rest));
+}
+function takeSix(avoid) {
+  const day = todayISO();
+  const pool = shufflePool(day).filter(b => !avoid.includes(b.id));
+  const chosen = pool.slice(0, 6);
+  if (chosen.length < 6) {
+    const more = shufflePool(day).filter(b => !chosen.find(c => c.id === b.id));
+    chosen.push(...more.slice(0, 6 - chosen.length));
+  }
+  return chosen.slice(0, 6);
+}
+function openPicker(slot) {
+  pickerSlot = slot;
+  pickerShown = takeSix([]);
+  renderPicker();
+  document.getElementById("shade").classList.add("on");
+  document.getElementById("picker").classList.add("on");
+}
+function closePicker() {
+  document.getElementById("shade").classList.remove("on");
+  document.getElementById("picker").classList.remove("on");
+  pickerSlot = "";
+}
+function reshuffle() {
+  const avoid = pickerShown.map(b => b.id);
+  pickerShown = takeSix(avoid);
+  renderPicker();
+}
+function useNow(id) {
+  if (!pickerSlot) return;
+  slotPick[pickerSlot] = id;
+  open = pickerSlot;
+  save();
+  closePicker();
+  draw();
+}
+function saveLater(id) {
+  pickerShown = pickerShown.filter(b => b.id !== id);
+  if (!pickerShown.length) pickerShown = takeSix([]);
+  renderPicker();
+}
+function alreadyDid(id) {
+  if (!never.includes(id)) never.push(id);
+  pickerShown = pickerShown.filter(b => b.id !== id);
+  if (!pickerShown.length) pickerShown = takeSix([]);
+  save();
+  renderPicker();
+  draw();
+}
+function neverBit(id, q) {
+  if (!confirm('Never suggest "' + q + '" again on this computer?')) return;
+  if (!never.includes(id)) never.push(id);
+  pickerShown = pickerShown.filter(b => b.id !== id);
+  if (!pickerShown.length) pickerShown = takeSix([]);
+  save();
+  renderPicker();
+  draw();
+}
+function renderPicker() {
+  const day = todayISO();
+  const left = available(day).length;
+  document.getElementById("picker-sub").textContent = (pickerShown.length || 0) + " from the Doc. " + left + " still available on this computer. Timely ones come first. Past-date bits stay out.";
+  document.getElementById("picker-list").innerHTML = pickerShown.map(bit => {
+    const t = timelyState(bit, day);
+    const badge = t.timely ? '<span class="badge">Timely · ' + esc(t.label) + "</span>" : "";
+    return '<div class="pick' + (t.timely ? " timely" : "") + '"><h3>' + esc(bit.q) + badge + "</h3><p>" + esc(bit.how) + '</p><div class="actions"><button onclick="useNow(\'' + esc(bit.id) + '\')">Use Now</button><button class="ghost" onclick="saveLater(\'' + esc(bit.id) + '\')">Save For Later</button><button class="ghost" onclick="alreadyDid(\'' + esc(bit.id) + '\')">Already Did It</button><button class="ghost" onclick="neverBit(\'' + esc(bit.id) + '\', \'' + esc(bit.q).replace(/'/g, "") + '\')">Never</button></div></div>';
+  }).join("") || "<p>No Doc bits left on this computer.</p>";
+}
+function m2wHref(date) {
+  const hit = m2wWeeks.find(w => date >= w[0] && date <= w[1]);
+  const file = hit ? hit[2] : "/m2w/this-week.html";
+  const d = new Date(date + "T12:00:00");
+  return file + "#" + dayHash[d.getDay()];
+}
+function row(time, label, id, tag) {
+  return '<button class="slot" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + "</span></button>";
+}
+function storyRow(time, label, id) {
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span></button><button class="shuffle-btn" onclick="openStoryPicker(\'' + id + '\')">Shuffle</button></div>';
+}
+
+function phoneIcon() {
+  return '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#123a73"/><path fill="#fff" d="M8.2 6.6c.3-.7 1.1-.9 1.7-.6l1.3.7c.5.3.7.9.5 1.4l-.6 1.3a1 1 0 0 0 .2 1.1l1.6 1.6a1 1 0 0 0 1.1.2l1.3-.6c.5-.2 1.1 0 1.4.5l.7 1.3c.3.6.1 1.4-.6 1.7l-1 .4c-2.2.9-4.8-.2-6.7-2.1s-3-4.5-2.1-6.7l.4-1z"/></svg>';
+}
+function cdcRow(time) {
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'cdc\')"><span class="time">' + time + '</span><span>Care Don\'t Care</span></button><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>';
+}
+function phonesRow(time, id) {
+  const pick = phonePick[id];
+  const bit = pick ? docPool.find(b => b.id === pick) : null;
+  const label = bit ? bit.q : "";
+  return '<div class="slot phones-row"><span class="time">' + time + '</span><span class="phones-label">' + phoneIcon() + " PHONES IF LIT</span>" +
+    (label ? '<span>' + esc(label) + "</span>" : "") +
+    '<a class="phones-link" href="/no-calls.html?slot=' + id + '">No calls? Click Here</a></div>' +
+    (bit && open === id ? '<div class="panel"><h3>' + esc(bit.q) + "</h3><p>" + esc(bit.how) + "</p></div>" : "");
+}
+
+function docRow(time, label, id) {
+  return '<div class="slot doc-row"><button class="slot-main" onclick="toggle(\'' + id + '\')"><span class="time">' + time + "</span><span>" + esc(label) + '</span></button><button class="shuffle-btn" onclick="openPicker(\'' + id + '\')">Shuffle</button></div>';
+}
+function m2wRow() {
+  const href = m2wHref(boardDate);
+  const nice = new Date(boardDate + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" });
+  return '<a class="slot" href="' + href + '" target="_blank" rel="noopener"><span class="time">7:10</span><span>Minute to Win It · ' + esc(nice) + '</span></a>';
+}
+function stripLead(s) {
+  return String(s || "").replace(/^[^.]+ wrote this for [^.]+ on [A-Za-z]+\.?\s*\d{1,2}\.\s*/, "");
+}
+function sourceLine(item, id) {
+  const more = longOpen === id ? '<div class="long"><p>' + esc(stripLead(item.long)) + "</p></div>" : "";
+  const who = item.author ? item.source + ", " + item.author : item.source;
+  return '<p class="src"><em><strong>' + esc(who) + '</strong></em></p><div class="actions"><a class="btn ghost" href="' + esc(item.url) + '" target="_blank" rel="noopener">More here</a><button class="ghost" onclick="toggleLong(\'' + id + '\')">' + (longOpen === id ? "Hide longer read" : "Longer read") + "</button></div>" + more;
+}
+function storyCard(slot, extra) {
+  const s = storyFor(slot);
+  return '<div class="panel"><h3>' + esc(s.title) + "</h3><p>" + esc(s.read) + "</p><p>Phone: " + esc(s.phone) + "</p>" + (extra || "") + sourceLine(s, "long-" + slot) + '<div class="actions"><button onclick="newStory(\'' + slot + '\')">New story</button></div></div>';
+}
+function docCard(bit, slot) {
+  const struck = used.includes(bit.id) || used.includes(bit.q) ? "text-decoration:line-through" : "";
+  return '<div class="panel"><h3 style="' + struck + '">' + esc(bit.q) + "</h3><p>" + esc(bit.how) + '</p><div class="actions"><button onclick="markUsed(\'' + esc(bit.id) + '\')">' + ((used.includes(bit.id) || used.includes(bit.q)) ? "Undo" : "Used") + '</button><button class="ghost" onclick="openPicker(\'' + slot + '\')">Shuffle</button></div></div>';
+}
+function draw() {
+  const a = storyFor("s610"), b = storyFor("s705"), c = storyFor("s810");
+  const ks = [0, 1, 2, 3].map(kickerAt);
+  const d1 = pickFor("d1", 0), d2 = pickFor("d2", 1), d3 = pickFor("d3", 2), d4 = pickFor("d4", 3);
+  const cdc = '<p class="sub">Hope you like these T.</p><div class="toprow"><button class="shuffle-btn" onclick="openCdcPicker(-1)">Shuffle</button></div>' + ks.map((k, i) => '<div class="kicker"><b>' + esc(k.line) + "</b><p>" + esc(k.more) + "</p>" + sourceLine(k, "k" + i) + '<button class="shuffle-btn" onclick="openCdcPicker(' + i + ')">Shuffle</button></div>').join("");
+  document.getElementById("board").innerHTML =
+    '<section class="hour"><h2>6:00</h2>' +
+    row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked") +
+    storyRow("6:10", "Replay: " + a.title, "s610") + (open === "s610" ? storyCard("s610") : "") +
+    row("6:25", "Replay from Yesterday", "replay", "locked") +
+    row("6:35", "Tease: " + ks[0].line, "cdc", "tied") +
+    cdcRow("6:40") + (open === "cdc" ? '<div class="panel"><h3>Care Don\'t Care</h3>' + cdc + "</div>" : "") +
+    row("6:52", "Last Laugh", "laugh6", "locked") +
+    '</section><section class="hour"><h2>7:00</h2>' +
+    storyRow("7:05", b.title, "s705") + (open === "s705" ? storyCard("s705", "<p>Then the setup: Minute to Win It is at 7:10.</p>") : "") +
+    m2wRow() +
+    docRow("7:26", d1.q, "d1") + (open === "d1" ? docCard(d1, "d1") : "") +
+    phonesRow("7:32", "phones7") +
+    docRow("7:40", d2.q, "d2") + (open === "d2" ? docCard(d2, "d2") : "") +
+    row("7:52", "Last Laugh", "laugh7", "locked") +
+    '</section><section class="hour"><h2>8:00</h2>' +
+    row("8:05", "Tease: " + c.title, "s810", "tied") +
+    storyRow("8:10", c.title, "s810") + (open === "s810" ? storyCard("s810") : "") +
+    docRow("8:26", d3.q, "d3") + (open === "d3" ? docCard(d3, "d3") : "") +
+    phonesRow("8:32", "phones8") +
+    docRow("8:40", d4.q, "d4") + (open === "d4" ? docCard(d4, "d4") : "") +
+    row("8:52", "Last Laugh", "laugh8", "locked") +
+    "</section>";
+}
+function mergeIdeas(items) {
+  const seen = new Set(docPool.map(b => b.id));
+  items.forEach(it => {
+    const id = it.id || (it.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 48);
+    if (!id || seen.has(id)) return;
+    const how = (it.body || it.doc_text || "").split("\n").filter(Boolean)[0] || "From the Doc.";
+    docPool.push({ id: id, q: it.title || how, how: how.slice(0, 220), text: (it.title || "") + " " + (it.body || "") + " " + (it.doc_text || "") });
+    seen.add(id);
+  });
+}
+const storyCats = [
+  { id: "local", label: "Local Austin" },
+  { id: "country", label: "Country Music" },
+  { id: "movies", label: "Movies" },
+  { id: "lifestyle", label: "Lifestyle" },
+  { id: "weird", label: "Weird News" }
+];
+storyPool.forEach(s => { if (!s.cat) s.cat = "local"; if (!s.id) s.id = s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 42); });
+storyPool.push(
+  { id: "sumo-cedar", cat: "local", title: "Sumo is at the H-E-B Center in Cedar Park tonight", read: "Sumo Championship League, 8 p.m. at 2100 Avenue of the Stars. A sport with centuries of history, in Cedar Park.", phone: "Who is going, and who did not know sumo was in town?", source: "CBS Austin", author: "", url: "https://cbsaustin.com/news/local/weekend-check-five-things-to-do-around-austin-oct-911", long: "CBS Austin's weekend check for Oct. 9-11 lists the Sumo Championship League at the H-E-B Center in Cedar Park on Saturday, Oct. 10, at 8 p.m. The address is 2100 Avenue of the Stars. The piece calls it a chance to see a sport with centuries of history without leaving Central Texas." },
+  { id: "ballet-two", cat: "local", title: "Ballet Austin TWO is $25 this weekend", read: "The Seventh Night Sky. 45 minutes, no intermission, every ticket $25. Saturday and Sunday at 2 and 4:30.", phone: "Who is doing the cheap ballet, and who is doing ACL?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "ATX Things lists Ballet Austin TWO's The Seventh Night Sky as a $25 family show, 45 minutes with no intermission, Saturday and Sunday at 2 and 4:30. It is part of a weekend stack that also includes Austin Oktoberfest and Pumpkin Nights." },
+  { id: "pumpkin-nights", cat: "local", title: "Pumpkin Nights is on at Pioneer Farms", read: "Through Oct. 31. Weekend adult tickets about $34 to $38. 10621 Pioneer Farms Drive.", phone: "Who already went, and who is waiting for a cooler night?", source: "ATX Things", author: "", url: "https://austintexasthings.com/article/austin-weekend-without-acl-oktoberfest-ballet-pumpkin-nights-oct-2026", long: "ATX Things lists Pumpkin Nights at Pioneer Farms, 10621 Pioneer Farms Dr., through Oct. 31. Weekend adult tickets are $34 to $38. It is the night option if you are not at ACL." },
+  { id: "hot-luck", cat: "local", title: "Hot Luck Fest is next weekend", read: "Oct. 16 and 17. Food and music. Aaron Franklin is a co-founder. Eat with your fingers.", phone: "Who is going, and who is just going to say they knew?", source: "Austin Monthly", author: "", url: "https://www.austinmonthly.com/25-things-to-do-in-austin-this-october/", long: "Austin Monthly's October list includes Hot Luck Fest on Oct. 16-17. Visit Austin describes it as a live food and music festival that moved to the fall, co-founded by Aaron Franklin, built around open-pit cooking and music." },
+  { id: "lainey", cat: "country", title: "Lainey Wilson just dropped Kinda Love It", read: "Out Friday. John Mayer co-wrote it and plays guitar. The video is her and Duck on an ATV.", phone: "Who already played it, and who is waiting for the radio edit?", source: "Country Now", author: "Lauren Jo Black", url: "https://countrynow.com/lainey-wilson-embraces-a-new-sound-and-a-little-trouble-in-her-latest-song-kinda-love-it/", long: "Lauren Jo Black wrote this for Country Now on Oct. 9. Lainey Wilson released Kinda Love It on Friday. She co-wrote it with John Mayer, Kid Harpoon, and Jon Decious. Mayer plays guitar. The video stars her husband, Devlin Duck Hodges, on an ATV around the farm. She hosts the CMA Awards on Nov. 18." },
+  { id: "kip", cat: "country", title: "Kip Moore has a new album out", read: "Dyin On The Vine landed Friday, with a stack of other country projects the same day.", phone: "Who bought it, and who is still on the old one?", source: "Hillbilly Live", author: "", url: "https://hillbillylive.com/2026/10/08/kip-moore-brent-cobb-lainey-wilson-jackson-dean-jaren-johnston-chris-janson-and-more-have-new-music-out-now/", long: "Hillbilly Live's Oct. 8 new-music Friday list includes Kip Moore's album Dyin On The Vine, plus Brent Cobb, Jackson Dean, Tigirlily Gold, and a Lainey Wilson single." },
+  { id: "rrb", cat: "country", title: "Randy Rogers Band and Parker McCollum have a new song", read: "Tommy Jackson is out. Two Texas names on one track.", phone: "Who heard it, and who is claiming they knew first?", source: "Hillbilly Live", author: "", url: "https://hillbillylive.com/2026/10/08/kip-moore-brent-cobb-lainey-wilson-jackson-dean-jaren-johnston-chris-janson-and-more-have-new-music-out-now/", long: "Hillbilly Live lists Randy Rogers Band featuring Parker McCollum, Tommy Jackson, among the Oct. 9 country singles." },
+  { id: "old-town", cat: "country", title: "Steve Martin turned Old Town Road into bluegrass", read: "With Alison Brown, Del McCoury, and Dan Tyminski. Banjo, mandolin, fiddle. Out Oct. 8.", phone: "Better than the original, or leave it alone?", source: "Woodward Community Media", author: "Mariana A", url: "https://wcmspi.com/2026/10/10/steve-martin-and-alison-brown-give-lil-nas-xs-old-town-road-a-bluegrass-makeover/", long: "Mariana A wrote this Oct. 10. Steve Martin and Alison Brown released a bluegrass take on Old Town Road on Oct. 8, with Del McCoury and Dan Tyminski. Banjo, mandolin, fiddle, and bass replace the original production. Martin added new lyrics." },
+  { id: "miranda", cat: "country", title: "Miranda Lambert's Crisco is out", read: "Dropped Oct. 2. Chris Stapleton is on A Song To Sing.", phone: "Who has played it all the way through?", source: "Hank FM", author: "", url: "https://hankfm.com/881546/new-country-albums-fall-2026-release-dates/", long: "Hank FM's fall country release list has Miranda Lambert's Crisco on Oct. 2, with the single Till The Going's Gone and a Chris Stapleton duet, A Song To Sing. Brothers Osborne's Watertown follows Oct. 23." },
+  { id: "verity", cat: "movies", title: "Verity is the No. 1 movie", read: "Anne Hathaway, Dakota Johnson, Josh Hartnett. About $42 million domestic. Hathaway's third No. 1 this year.", phone: "Who saw it, and who is waiting for it to hit a streamer?", source: "The New York Times", author: "Derrick Bryson Taylor", url: "https://www.nytimes.com/2026/10/04/movies/anne-hathaway-odyseey-devil-prada-verity.html", long: "Derrick Bryson Taylor wrote this for The New York Times on Oct. 4. Verity, with Anne Hathaway, Dakota Johnson, and Josh Hartnett, opened at No. 1 with about $32 million and is near $42 million domestic. It is Hathaway's third No. 1 opening of 2026, after The Devil Wears Prada 2 and The Odyssey. It is a Colleen Hoover adaptation. Tom Cruise's Digger opened far behind it." },
+  { id: "whalefall", cat: "movies", title: "Whalefall opens Friday", read: "Josh Brolin, Austin Abrams, Elisabeth Shue. Wide release Oct. 16.", phone: "Who is in for a whale movie, and who is out?", source: "Box Office Mojo", author: "", url: "https://www.boxofficemojo.com/calendar/2026-10-10/", long: "Box Office Mojo lists Whalefall as a wide release on Oct. 16, with Austin Abrams, Josh Brolin, Elisabeth Shue, and Jane Levy. Clayface follows on Oct. 23." },
+  { id: "clayface", cat: "movies", title: "Clayface is two weeks out", read: "Warner Bros. Wide release Oct. 23. A comic-book villain movie.", phone: "Who is going opening night?", source: "Box Office Mojo", author: "", url: "https://www.boxofficemojo.com/calendar/2026-10-10/", long: "Box Office Mojo lists Clayface as a Warner Bros. wide release on Oct. 23." },
+  { id: "digger", cat: "movies", title: "Tom Cruise's Digger opened soft", read: "About $8 million. Verity beat it by a wide margin.", phone: "Who still goes to a Cruise movie on name alone?", source: "UPI", author: "Karen Butler", url: "https://www.upi.com/Entertainment_News/Movies/2026/10/04/verity-tops-box-office/1851791153286/", long: "Karen Butler wrote this for UPI on Oct. 4. Verity opened at No. 1 with $32.6 million. Digger, with Tom Cruise, landed around $8 million." },
+  { id: "gwtw", cat: "movies", title: "Gone with the Wind is back in theaters", read: "A 2026 re-release. Limited. Clark Gable, Vivien Leigh. Today.", phone: "Who is going, and who thinks it should stay on a shelf?", source: "Box Office Mojo", author: "", url: "https://www.boxofficemojo.com/calendar/2026-10-10/", long: "Box Office Mojo lists a Gone with the Wind 2026 re-release on Oct. 10, limited, with Clark Gable and Vivien Leigh." },
+  { id: "diets", cat: "lifestyle", title: "More people are on a diet, and fewer feel healthy", read: "64 percent followed a diet this year. Only 40 percent call their health excellent or very good. Lowest since 2012.", phone: "What diet did you start and quietly quit?", source: "IFIC", author: "", url: "https://ific.org/media/trying-harder-yet-feeling-worse-americans-self-reported-health-status-hits-a-record-low/", long: "The International Food Information Council's 2026 Food and Health Survey says 64 percent of Americans followed a specific eating pattern in the past year, the highest since tracking began in 2018. Only 40 percent rate their health excellent or very good, the lowest since 2012. High protein is the top diet for a fourth year. For the first time in 21 years, convenience beat healthfulness as a reason people buy food." },
+  { id: "protein", cat: "lifestyle", title: "High protein is the top diet again", read: "Fourth year in a row. 70 percent say they try to get more protein.", phone: "Who is actually tracking it, and who is just saying protein?", source: "IFIC", author: "", url: "https://ific.org/media/trying-harder-yet-feeling-worse-americans-self-reported-health-status-hits-a-record-low/", long: "IFIC says high protein led diets for a fourth straight year at 27 percent, up from 4 percent in 2018. Seventy percent say they actively try to include protein. Low-sugar, mindful eating, and clean eating follow." },
+  { id: "aging-diets", cat: "lifestyle", title: "A stack of diets is tied to slower aging", read: "No single winner. The common thread is plants, whole grains, nuts, less sugar.", phone: "Who changed how they eat after 40?", source: "Health.com", author: "Sarah Garone", url: "https://www.health.com/diets-slow-biological-aging-12134985", long: "Sarah Garone wrote this for Health.com on Oct. 9. A Nature Communications study looked at 10 diets and found none stood alone for healthy aging. All were linked with slower biological aging. The shared traits were plants, whole grains, legumes, nuts, healthy fats, and less red meat, sugar, and sodium." },
+  { id: "convenience", cat: "lifestyle", title: "Convenience just beat healthy on the grocery list", read: "Taste and price still win. Convenience passed healthfulness for the first time in 21 years of tracking.", phone: "What do you buy because it is easy, not because it is good?", source: "IFIC", author: "Kris Sollid", url: "https://ific.org/media/trying-harder-yet-feeling-worse-americans-self-reported-health-status-hits-a-record-low/", long: "Kris Sollid of IFIC said this is the first time in 21 years that convenience outweighed healthfulness in food-buying decisions. Taste is still first at 88 percent, price 78, convenience 61, healthfulness 56." },
+  { id: "spiderman", cat: "weird", title: "Hundreds of people dressed as Spider-Man for a record", read: "New York Comic Con. They went for a Guinness record.", phone: "Who owns a Spider-Man suit, and who is lying?", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "UPI Odd News on Oct. 9: hundreds of Marvel fans wore Spider-Man costumes at New York Comic Con and tried to break a Guinness World Record." },
+  { id: "diamond", cat: "weird", title: "A man dug up a 6-carat diamond in Arkansas", read: "6.03 carats. He found it while digging.", phone: "Who would actually go dig for a diamond?", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "A U.S. man discovered a 6.03-carat diamond while digging in Arkansas, reported Oct. 8." },
+  { id: "sisters", cat: "weird", title: "Sisters who did not know each other met at a softball game", read: "A teammate noticed the other player looked just like her. They had been separated as kids.", phone: "Who has a family story that sounds made up?", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "Samantha Rainsold, 19, was playing softball in Montana when a teammate noticed an opposing player who looked just like her. The two had been separated in childhood." },
+  { id: "fries", cat: "weird", title: "Idaho cooked 1,474 pounds of french fries", read: "Fifty chefs, six fryers, then they served them.", phone: "Who would have been in that line?", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/07/Guinness-World-Records-largest-serving-french-fries/1951791396507/", long: "Ben Hooper wrote this for UPI on Oct. 7. The Idaho Potato Commission and Spud Daddy cooked a 1,474-pound serving of fries and called it a Guinness record." },
+  { id: "ring", cat: "weird", title: "A 1965 class ring came out of a sewer and still fits", read: "He gave it to his sweetheart. She lost it down the sink. It came back 60 years later.", phone: "Who still has a class ring, and who lost one?", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/08/class-ring-sewer-Sheffield-Alabama/7991791477667/", long: "Ben Hooper wrote this for UPI on Oct. 8. Sewer workers in Sheffield, Alabama found a 1965 class ring. It belonged to Oscar James Meredith, who had given it to his sweetheart. She lost it down the sink. It still fits." }
+);
+let storyPickerSlot = "";
+let storyShown = {};
+function availableStories(cat, avoid) {
+  return storyPool.filter(s => s.cat === cat && !storyNever.includes(s.id) && !avoid.includes(s.id));
+}
+function pickStory(cat, avoid) {
+  const pool = availableStories(cat, avoid);
+  if (!pool.length) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+function fillStories(avoidMap) {
+  const next = {};
+  storyCats.forEach(c => {
+    const avoid = (avoidMap && avoidMap[c.id]) ? avoidMap[c.id] : [];
+    next[c.id] = pickStory(c.id, avoid) || pickStory(c.id, []);
+  });
+  return next;
+}
+function openStoryPicker(slot) {
+  storyPickerSlot = slot;
+  storyShown = fillStories();
+  renderStoryPicker();
+  document.getElementById("story-shade").classList.add("on");
+  document.getElementById("story-picker").classList.add("on");
+}
+function closeStoryPicker() {
+  document.getElementById("story-shade").classList.remove("on");
+  document.getElementById("story-picker").classList.remove("on");
+  storyPickerSlot = "";
+}
+function reshuffleAllStories() {
+  const avoid = {};
+  storyCats.forEach(c => { avoid[c.id] = storyShown[c.id] ? [storyShown[c.id].id] : []; });
+  storyShown = fillStories(avoid);
+  renderStoryPicker();
+}
+function reshuffleCategory(cat) {
+  const current = storyShown[cat] ? storyShown[cat].id : "";
+  storyShown[cat] = pickStory(cat, current ? [current] : []) || pickStory(cat, []);
+  renderStoryPicker();
+}
+function useStoryNow(id) {
+  if (!storyPickerSlot) return;
+  storySlot[storyPickerSlot] = id;
+  open = storyPickerSlot;
+  save();
+  closeStoryPicker();
+  draw();
+}
+function saveStoryLater(cat) { reshuffleCategory(cat); }
+function alreadyDidStory(id, cat) {
+  if (!storyNever.includes(id)) storyNever.push(id);
+  save();
+  reshuffleCategory(cat);
+}
+function neverStory(id, title, cat) {
+  if (!confirm("Never suggest this story again on this computer?")) return;
+  if (!storyNever.includes(id)) storyNever.push(id);
+  save();
+  reshuffleCategory(cat);
+}
+function renderStoryPicker() {
+  document.getElementById("story-sub").textContent = "5 current stories. Local Austin first. No politics, crime, or activism.";
+  document.getElementById("story-list").innerHTML = storyCats.map(c => {
+    const s = storyShown[c.id];
+    if (!s) return '<div class="pick"><h3>' + esc(c.label) + "</h3><p>No stories left in this category on this computer.</p></div>";
+    return '<div class="pick story-pick"><div class="cat-badge">' + esc(c.label) + "</div><h3>" + esc(s.title) + "</h3><p>" + esc(s.read) + '</p><p class="src"><em><strong>' + esc(s.source) + '</strong></em></p><div class="actions"><button onclick="useStoryNow(\'' + esc(s.id) + '\')">Use Now</button><button class="ghost" onclick="saveStoryLater(\'' + c.id + '\')">Save For Later</button><button class="ghost" onclick="alreadyDidStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Already Did It</button><button class="ghost" onclick="neverStory(\'' + esc(s.id) + '\', \'' + c.id + '\')">Never</button><button class="ghost" onclick="reshuffleCategory(\'' + c.id + '\')">Shuffle</button></div></div>';
+  }).join("");
+}
+
+
+kickerPool.push(
+  { line: "Hundreds of people dressed as Spider-Man for a record.", more: "New York Comic Con. They went for a Guinness record.", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "Hundreds of Marvel fans wore Spider-Man costumes at New York Comic Con and tried to break a Guinness World Record." },
+  { line: "A man dug up a 6-carat diamond in Arkansas.", more: "6.03 carats. He found it while digging.", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "A U.S. man discovered a 6.03-carat diamond while digging in Arkansas." },
+  { line: "Sisters who did not know each other met at a softball game.", more: "A teammate noticed the other player looked just like her.", source: "Dunya News", author: "", url: "https://dunyanews.tv/en/tags/Weird-News/38", long: "Samantha Rainsold, 19, was playing softball in Montana when a teammate noticed an opposing player who looked just like her. The two had been separated in childhood." },
+  { line: "Idaho cooked 1,474 pounds of french fries.", more: "Fifty chefs, six fryers, then they served them.", source: "UPI", author: "Ben Hooper", url: "https://www.upi.com/Odd_News/2026/10/07/Guinness-World-Records-largest-serving-french-fries/1951791396507/", long: "The Idaho Potato Commission and Spud Daddy cooked a 1,474-pound serving of fries and called it a Guinness record." },
+  { line: "Maryland in-laws won a second $50,000 lottery prize together.", more: "Same family. Second time.", source: "UPI", author: "", url: "https://www.upi.com/Odd_News/", long: "A pair of Maryland in-laws collected their second $50,000 lottery prize together." }
+);
+let cdcPickerSlot = -1;
+let cdcShown = [];
+function cdcAvailable(avoid) {
+  return kickerPool.map((k, i) => ({ k, i })).filter(x => !cdcNever.includes(x.i) && !avoid.includes(x.i));
+}
+function openCdcPicker(slot) {
+  cdcPickerSlot = slot;
+  const avoid = [];
+  cdcShown = [];
+  const pool = cdcAvailable(avoid);
+  while (pool.length && cdcShown.length < 4) {
+    cdcShown.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  }
+  renderCdcPicker();
+  document.getElementById("cdc-shade").classList.add("on");
+  document.getElementById("cdc-picker").classList.add("on");
+}
+function closeCdcPicker() {
+  document.getElementById("cdc-shade").classList.remove("on");
+  document.getElementById("cdc-picker").classList.remove("on");
+}
+function reshuffleCdc() { openCdcPicker(cdcPickerSlot); }
+function useCdcNow(index) {
+  const slot = cdcPickerSlot < 0 ? 0 : cdcPickerSlot;
+  cdcPick[slot] = index;
+  open = "cdc";
+  save();
+  closeCdcPicker();
+  draw();
+}
+function laterCdc(index) {
+  cdcShown = cdcShown.filter(x => x.i !== index);
+  const next = cdcAvailable(cdcShown.map(x => x.i));
+  if (next.length) cdcShown.push(next[Math.floor(Math.random() * next.length)]);
+  renderCdcPicker();
+}
+function didCdc(index) {
+  if (!cdcNever.includes(index)) cdcNever.push(index);
+  save();
+  laterCdc(index);
+}
+function neverCdc(index) {
+  if (!confirm("Never suggest this kicker again on this computer?")) return;
+  if (!cdcNever.includes(index)) cdcNever.push(index);
+  save();
+  laterCdc(index);
+}
+function renderCdcPicker() {
+  document.getElementById("cdc-list").innerHTML = cdcShown.map(x =>
+    '<div class="pick"><h3>' + esc(x.k.line) + "</h3><p>" + esc(x.k.more) + '</p><p class="src"><em><strong>' + esc(x.k.source) + '</strong></em></p><div class="actions">' +
+    '<button onclick="useCdcNow(' + x.i + ')">Use Now</button>' +
+    '<button class="ghost" onclick="laterCdc(' + x.i + ')">Save For Later</button>' +
+    '<button class="ghost" onclick="didCdc(' + x.i + ')">Already Did It</button>' +
+    '<button class="ghost" onclick="neverCdc(' + x.i + ')">Never</button></div></div>'
+  ).join("") || "<p>No kickers left on this computer.</p>";
+}
+
+fetch("/data/ideas.json").then(r => r.ok ? r.json() : null).then(data => {
+  if (data && Array.isArray(data.items)) mergeIdeas(data.items);
+  draw();
+}).catch(() => draw());
+draw();
+</script>
+</body>
+</html>
