@@ -716,6 +716,48 @@
    "md5": "5b40879d480136b38bbfd8b384b9c454",
    "on_board": false,
    "status": "ok"
+  },
+  {
+   "id": "tesla-robot-coming-next-year",
+   "idea_id": "tesla-robot-coming-next-year",
+   "title": "Tesla robot coming next year",
+   "origin": "ideas-doc",
+   "added": "2026-10-12",
+   "source": "https://www.instagram.com/p/DeXpVNoCerU/?exln=MXBneWRrbjM2MDNlNA%3D%3D",
+   "source_label": "Instagram post",
+   "status": "failed",
+   "file": null,
+   "error": "ERROR: [Instagram] DeXpTE9JoXX: No video formats found!; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the la",
+   "attempts": 1,
+   "desc": "Instagram post for “Tesla robot coming next year”. The audio couldn’t be pulled, so open the original."
+  },
+  {
+   "id": "tesla-robot-coming-next-year-2",
+   "idea_id": "tesla-robot-coming-next-year",
+   "title": "Tesla robot coming next year",
+   "origin": "ideas-doc",
+   "added": "2026-10-12",
+   "source": "https://www.instagram.com/reel/DeVjqWDAoAk/?rpxt=ZDRyYXNuN2Ixbjdz",
+   "source_label": "Instagram reel",
+   "status": "ok",
+   "file": "audio/tesla-robot-coming-next-year-2.mp3",
+   "md5": "3442b950879302581feff71bbce1067c",
+   "duration": 25,
+   "desc": "KVUE: Buda unveiled a 19-foot-long, 10-foot-tall wiener dog sculpture at Buda City Park as part of the Buda Economic Development…"
+  },
+  {
+   "id": "supposedly-the-greatest-pick-up-line-ever",
+   "idea_id": "supposedly-the-greatest-pick-up-line-ever",
+   "title": "Supposedly The Greatest Pick Up Line Ever",
+   "origin": "ideas-doc",
+   "added": "2026-10-12",
+   "source": "https://www.tiktok.com/t/ZTypjfcC3/",
+   "source_label": "TikTok",
+   "status": "ok",
+   "file": "audio/supposedly-the-greatest-pick-up-line-ever.mp3",
+   "md5": "19d9e3e8af4584b91d6097d1d3979eba",
+   "duration": 188.2,
+   "desc": "mind.meets.money: Most people ignore this 😱🧠"
   }
  ]
 }
