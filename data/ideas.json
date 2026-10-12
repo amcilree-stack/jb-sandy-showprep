@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "match-the-college-football-team-to-it-s-iconic-song",
+   "title": "Match the College football team to it’s iconic song",
+   "body": null,
+   "doc_text": "Match the College football team to it’s iconic song",
+   "added": "2026-10-12",
+   "links": [
+    {
+     "url": "https://apnews.com/quiz/college-football-famous-stadium-songs",
+     "label": "iconic song"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "a3424eccc976"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "lakeside-bathroom-names",
    "title": "Lakeside bathroom names.",
    "body": null,
