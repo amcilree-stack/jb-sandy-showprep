@@ -2,6 +2,33 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "buda-adds-weiner-dog-statue",
+   "title": "Buda adds Weiner dog statue",
+   "body": null,
+   "doc_text": "Buda adds Weiner dog statue\nDo you support laptop bans\nShane Gillis drops and F Bomb on SNL\nErin went through all of my t shirts.",
+   "added": "2026-10-12",
+   "links": [
+    {
+     "url": "https://www.instagram.com/reel/DeVjqWDAoAk/?rpxt=ZDRyYXNuN2Ixbjdz",
+     "label": "statue"
+    },
+    {
+     "url": "https://www.mysanantonio.com/news/austin/article/austin-cafes-laptop-policies-22459820.php",
+     "label": "laptop bans"
+    }
+   ],
+   "social": [
+    "https://www.instagram.com/reel/DeVjqWDAoAk/?rpxt=ZDRyYXNuN2Ixbjdz"
+   ],
+   "doc_lines": [
+    "9f5af7d20860",
+    "1053392d7ec9",
+    "2274d4cc74d5",
+    "a6285f498a8e"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "tesla-robot-coming-next-year",
    "title": "Tesla robot coming next year",
    "body": null,
