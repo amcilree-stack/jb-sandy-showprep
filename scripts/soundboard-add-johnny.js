@@ -51,7 +51,7 @@ else {
 const planOf = (fn) => plan.find((x) => x.filename === fn) || {};
 
 const LL = /last[\s_-]*laugh|quarter[\s_-]*after/i;
-function isLastLaugh(f) { const p = planOf(path.basename(f)); if (/^(drop|sunny_quarter)/i.test(path.basename(f))) return true; return LL.test(path.relative(DIR, f)) || LL.test(p.group || "") || LL.test(p.rel || "") || /last laugh/i.test(p.category || p.section || ""); }
+function isLastLaugh(f) { const p = planOf(path.basename(f)); if ((/drop/i.test(path.basename(f)) || /^sunny_quarter/i.test(path.basename(f)))) return true; return LL.test(path.relative(DIR, f)) || LL.test(p.group || "") || LL.test(p.rel || "") || /last laugh/i.test(p.category || p.section || ""); }
 
 /* air day: a weekday as its own filename section ("jbs_monday_…", "jbs_friday_…") or in the runsheet's
    air_day/category/group; otherwise the weekday the cuts were filed for (Sat/Sun -> Monday). */
