@@ -457,7 +457,7 @@ function draw() {
   document.getElementById("board").innerHTML =
     '<section class="hour"><h2>6:00</h2>' +
     row("6:00", "Intro, then the first thing that made Tricia laugh", "intro", "locked") +
-    storyRow("6:10", "Replay: " + a.title, "s610") + (open === "s610" ? storyCard("s610") : "") +
+    '<div class="slot"><span class="time">6:10</span><span>Replay Story We Love From 9:35 The Previous Day</span></div>' + /* 6:10 fixed (Sandy, Oct 13 2026): no Shuffle, no story */
     row("6:25", "Replay from Yesterday", "replay", "locked") +
     row("6:35", "Tease: " + ks[0].line, "cdc", "tied") +
     cdcRow("6:40") + (open === "cdc" ? '<div class="panel"><h3>Care Don\'t Care</h3>' + cdc + "</div>" : "") +

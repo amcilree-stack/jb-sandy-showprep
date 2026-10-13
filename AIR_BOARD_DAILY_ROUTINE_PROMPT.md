@@ -12,15 +12,15 @@ Goal: regenerate the howaboutodetosausage.com air board (root `index.html`) for 
 ## 1. Files you may and may not touch
 - You may edit ONLY root `index.html`. Exactly these blocks change: `const boardDate`, `const storyPool`, `storyPool.push(...)`, `const kickerPool`. Optionally `fallbackDocs` and the doc-line rule below.
 - NEVER touch `/today/`, `jb-sandy-showprep.html`, `prep/`, `data/`, `archive/`, `stories/`, `m2w/`, `no-calls.html`, `scripts/`, `assets/`, `_headers`, `_redirects`, `netlify.toml`. The showprep publisher (scripts/publish.sh, author "JB Sandy Showprep") owns those and never writes root index.html. Do not run it.
-- Do not change CSS, the draw() layout, the Shuffle pickers, the M2W weeks, seasons, the 6:10/7:05/8:10 rows, Doc rows, phones rows, or localStorage keys. Preserve all markup and JS exactly. The title must stay `JB &amp; Sandy · Air board` and the brand `JB &amp; Sandy`; use `&amp;` (an earlier writer broke it with a bare `&`).
+- Do not change CSS, the draw() layout, the Shuffle pickers, the M2W weeks, seasons, the 6:10 fixed row, the 7:05/8:10 rows, Doc rows, phones rows, or localStorage keys. Preserve all markup and JS exactly. The title must stay `JB &amp; Sandy · Air board` and the brand `JB &amp; Sandy`; use `&amp;` (an earlier writer broke it with a bare `&`).
 - Never commit a near-empty or truncated index.html (on Oct 11 a bad write replaced the whole file with ~11 bytes). Always edit the existing file in place and sanity check before pushing (section 6).
 
 ## 2. Board structure (what you are regenerating)
-The page is a script-driven board. Rows: 6:00 hour: 6:00 intro, 6:10 Story We Love (slot s610), 6:25 Replay, 6:35 Tease, 6:40 Care Don't Care (4 kickers), 6:52 Last Laugh. 7:00 hour: 7:05 Story We Love (s705), Minute to Win It (m2w), 7:26 Doc bit d1, 7:32 phones, 7:40 Doc bit d2, 7:52 Last Laugh. 8:00 hour: 8:05 tease, 8:10 Story We Love (s810), 8:26 d3, 8:32 phones, 8:40 d4, 8:52 Last Laugh.
+The page is a script-driven board. Rows: 6:00 hour: 6:00 intro, 6:10 FIXED text "Replay Story We Love From 9:35 The Previous Day" (static, no Shuffle, no story; never put a story in 6:10), 6:25 Replay, 6:35 Tease, 6:40 Care Don't Care (4 kickers), 6:52 Last Laugh. 7:00 hour: 7:05 Story We Love (s705), Minute to Win It (m2w), 7:26 Doc bit d1, 7:32 phones, 7:40 Doc bit d2, 7:52 Last Laugh. 8:00 hour: 8:05 tease, 8:10 Story We Love (s810), 8:26 d3, 8:32 phones, 8:40 d4, 8:52 Last Laugh.
 
 Data you write each day:
 1. `const boardDate = "YYYY-MM-DD";` set to today.
-2. `const storyPool = [ ... ];` Story We Love pool, at the top level. Each day previously had 3 to 7 items (Oct 8: 6, Oct 9: 3, Oct 11: 7 with 3 more via push). Write 7 to 9 fresh items. The first 3 are what the 6:10, 7:05 and 8:10 rows show by default (storyPool order determines the three default slots: item 0 = the 6:10 story, item 1 = the 7:05 story, item 2 = the 8:10 story, with no Shuffle clicks; the board guarantees three different stories, and Shuffle never shows the same story in two slots), so put the best three first, with three distinct titles and ids, mix of Local Austin and fun. These are items for today: events today/this weekend, new local news, positive/fun stories. Austin and Texas first. No politics, crime or activism.
+2. `const storyPool = [ ... ];` Story We Love pool, at the top level. Each day previously had 3 to 7 items (Oct 8: 6, Oct 9: 3, Oct 11: 7 with 3 more via push). Write 7 to 9 fresh items. The 6:10 row is fixed text and never shows a story. Item 1 = the 7:05 story and item 2 = the 8:10 story by default (item 0 is still in the pool for Shuffle; order determines defaults, with no Shuffle clicks; the board guarantees three different stories, and Shuffle never shows the same story in two slots), so put the best three first, with three distinct titles and ids, mix of Local Austin and fun. These are items for today: events today/this weekend, new local news, positive/fun stories. Austin and Texas first. No politics, crime or activism.
 3. `storyPool.push( ... )` block (the Shuffle picker pool, after the `storyCats` array): add 2 to 3 items per category for the five categories `local`, `country`, `movies`, `lifestyle`, `weird` (about 15 to 20 items total). Every item needs `cat`. Items must be current (released this week, happening today or soon, or in the news in the last 3 days). Drop anything past its date. Keep the `storyCats` array and the `.forEach` line as is. Items in the top storyPool without `cat` default to `local`.
 4. `const kickerPool = [ ... ];` Care Don't Care pool: 4 items (the board shows 4 in the 6:40 panel, the Shuffle picker pulls from the pool). Short odd/fun/weird news from the last 3 days, each with its own source page. Prefer 6 to 8 so Shuffle has spares.
 5. Doc bits (the 4 Doc rows, Show Ideas Doc 1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw) are NOT written by you daily. The page loads `/data/ideas.json` at view time (kept by the showprep publisher) and merges it into `docPool` (starts from `fallbackDocs`). Leave `fallbackDocs` alone. The stories Google Doc (1Ne3xytvS0dxznA65lRRhipuknnxC3ejBopajqSJPhrI) feeds `/today/` only, not the air board. You may read it as a hint for topics but never copy it into the board without checking a source page.
@@ -36,7 +36,7 @@ Fields (see AIR_BOARD_STORY_FORMAT.md, same as the Ballet Austin TWO item in the
 - `source`: publisher name only (no URL, no parentheses). `url`: exact article page (not a home page, calendar or tag page; if the only source is a hub page, find the specific article).
 - `longHead`: "The Full Story:".
 - `long`: several paragraphs separated by a blank line (`\n\n`), plain conversational language, accurate to the source page only. Add a bold-label breakdown at the end ("- Label - text" lines) ONLY when the story has natural parts; otherwise flowing paragraphs only. Decide per story.
-- Also keep `title` (short, used by the 6:10, 7:05, 8:10 row labels and the Shuffle picker), plus short `read` and `phone` lines (the old-style prompt: `phone` is a one-line question to ask callers) so pickers work. For kickers also keep `line` (one-line tease used in the 6:35 tease row and picker) and `more`; add `headline`, `lede`, `bullets`, `source`, `url`, `longHead`, `long` as above.
+- Also keep `title` (short, used by the 7:05 and 8:10 row labels and the Shuffle picker), plus short `read` and `phone` lines (the old-style prompt: `phone` is a one-line question to ask callers) so pickers work. For kickers also keep `line` (one-line tease used in the 6:35 tease row and picker) and `more`; add `headline`, `lede`, `bullets`, `source`, `url`, `longHead`, `long` as above.
 - No dashes anywhere in writing except the "Label - text" bullet pattern. No em dashes. Avoid semicolons. Plain, short sentences a radio host can read aloud.
 - Markdown-ish allowed in `bullets`/`long`: blank lines between paragraphs, "- " for bullets, `**bold**`, `[text](url)`.
 - Write the strings as valid JS: use double-quoted strings, escape `"` and newlines (`\n\n`). Use straight apostrophes inside strings freely.
@@ -63,7 +63,7 @@ Run these on the edited local file; stop and do NOT push if any fails:
 3. Count: 7 to 9 items in the top storyPool, 15 to 20 in the push block, at least 4 kickers; every one of them has headline, lede, bullets (length 2), source, url, longHead, long, title, and unique id; every story has a valid `cat` among local, country, movies, lifestyle, weird.
 4. No item still in old-only shape. No bare `&` in `<title>` or `.brand`. `boardDate` equals today.
 5. `git diff --stat` shows only index.html; `git diff` outside the data blocks (boardDate, storyPool, push block, kickerPool) must be empty.
-6. Optional: render with a headless browser at desktop width, open the 6:10 card and Longer read, confirm no JS error.
+6. Optional: render with a headless browser at desktop width, open the 7:05 card and confirm 6:10 still reads the fixed replay text with no Shuffle and Longer read, confirm no JS error.
 
 ## 7. Commit and push (only if content changed)
 - If the new index.html is identical to origin/main, or only boardDate changed, do nothing and say "No change".
@@ -75,7 +75,7 @@ Run these on the edited local file; stop and do NOT push if any fails:
 - Never print or log the token.
 
 ## 9. Final summary (max 8 lines)
-Date, commit hash or "No change", the three default Story We Love titles (6:10, 7:05, 8:10), the 4 default Care Don't Care lines, counts (stories, push pool, kickers), anything dropped because a source could not be fetched, and the curl check results. Flag any problem plainly.
+Date, commit hash or "No change", the two default Story We Love titles (7:05, 8:10), the 4 default Care Don't Care lines, counts (stories, push pool, kickers), anything dropped because a source could not be fetched, and the curl check results. Flag any problem plainly.
 
 ## 7. Anytime button (preserve)
 Root `index.html` has a static block between `<!-- ANYTIME BUTTON START (preserve) -->` and `<!-- ANYTIME BUTTON END -->`, directly above `<div id="board">`: the full-width button labeled "Unknown Poll Generator" (class `anytime-btn`, id `anytime-btn`) and its hidden panel `#anytime-panel` titled "Anytime", plus the `.anytime-btn` CSS rules. This is outside draw(). Never remove, rename or move it (the label stays exactly "Unknown Poll Generator"), and keep its CSS. After editing, confirm both markers and `id="anytime-panel"` are still in the file before pushing. Edit only the data blocks listed in section 1.
@@ -94,3 +94,6 @@ Keep writing `source` (publisher name only) and `url` as separate fields on ever
 
 ## Site is behind HTTP Basic Auth
 howaboutodetosausage.com is protected by a Netlify Edge Function (user SausageLover). Any verification curl must use `-u "SausageLover:$SITE_BASIC_AUTH_PASSWORD"` (env var on the box; never print, echo, log or commit it). Git pushes are unaffected. `netlify/edge-functions/auth.js` and the `[[edge_functions]]` block in `netlify.toml` must be preserved. Do not remove or overwrite them in rebuilds.
+
+## 6:10 fixed slot (Sandy, Oct 13 2026)
+The 6:10 row in draw() is static text "Replay Story We Love From 9:35 The Previous Day" with no Shuffle button and no story. Never restore storyRow("6:10"...) or refill it. Before pushing, confirm `rg -c "Replay Story We Love From 9:35 The Previous Day" index.html` is 1 and there is no `storyRow("6:10"`.
