@@ -54,9 +54,9 @@ for (const c of data.clips) {
   const l = links.find((x) => x.url === c.url);
   if (!l) continue;
   if (l.tag !== c.tag) { c.tag = l.tag; moved++; }
-  if (l.desc && l.desc !== c.desc) c.desc = l.desc;
+  if (l.desc && l.desc !== c.doc_desc) { if (c.doc_desc !== undefined) c.desc = l.desc; c.doc_desc = l.desc; } // only a doc edit overrides the written description
 }
-const fresh = links.filter((l) => !data.clips.some((c) => c.url === l.url) && !(data.failed || []).some((f) => f.url === l.url));
+const fresh = links.filter((l, i) => links.findIndex((x) => x.url === l.url) === i && !data.clips.some((c) => c.url === l.url));
 if (!ENABLED) {
   console.log(`soundboard: extraction is OFF (data/soundboard-config.json). ${fresh.length} doc link(s) waiting, ${moved} tag change(s).`);
 } else {
@@ -71,16 +71,22 @@ if (!ENABLED) {
     const run = meta.status === 0 ? spawnSync(yt, ["--no-playlist", "-x", "--audio-format", "mp3", "--audio-quality", "2", "-o", path.join(tmp, "a.%(ext)s"), l.url], { encoding: "utf8", timeout: 300000 }) : meta;
     const out = path.join(tmp, "a.mp3");
     if (run.status !== 0 || !fs.existsSync(out)) {
-      (data.failed = data.failed || []).push({ url: l.url, tag: l.tag, desc: l.desc, added: TODAY, error: String((run.stderr || "yt-dlp missing")).split("\n").filter((x) => /ERROR/.test(x)).pop() || "extraction failed" });
-      failed++; console.log("  ✗", l.url); fs.rmSync(tmp, { recursive: true, force: true }); continue;
+      const err = String((run.stderr || "yt-dlp missing")).split("\n").filter((x) => /ERROR/.test(x)).pop() || "extraction failed";
+      // can't download: show the pad as "Needs live recording" (no audio) so someone can record it from the mixer
+      data.clips.push({ id, url: l.url, tag: l.tag, doc_desc: l.desc, title: (l.desc || info.title || "Video clip").slice(0, 80), desc: l.desc || "", added: TODAY,
+        file: null, duration: null, outcue: null, status: "needs_recording", error: err.slice(0, 200) });
+      failed++; console.log("  ✗ needs live recording:", l.url, err); fs.rmSync(tmp, { recursive: true, force: true }); continue;
     }
     const file = `sb-audio/${id}.mp3`;
     fs.copyFileSync(out, path.join(ROOT, file));
     const pr = spawnSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out], { encoding: "utf8" });
     const oc = spawnSync("python3", [path.join(__dirname, "outcue.py"), out], { encoding: "utf8", timeout: 600000 });
+    let tr = {}; try { tr = JSON.parse(oc.stdout); } catch (e) { /* no transcript */ }
+    // full post audio is kept untrimmed, so nothing is cut; flag if the source itself starts/ends mid-word
+    if (tr.head_ok === false || tr.tail_ok === false) console.log("  ! word at the very " + (tr.head_ok === false ? "start" : "end") + " of the source:", l.url);
     const title = (l.desc || info.title || "Clip").replace(/\s+/g, " ").slice(0, 80);
-    data.clips.push({ id, url: l.url, tag: l.tag, title, desc: l.desc || (info.uploader ? info.uploader + ": " : "") + (info.title || ""), added: TODAY,
-      file, duration: Math.round(parseFloat(pr.stdout) * 10) / 10 || null, outcue: (oc.stdout || "").trim() || null, status: "ok" });
+    data.clips.push({ id, url: l.url, tag: l.tag, doc_desc: l.desc, title, desc: l.desc || (info.uploader ? info.uploader + ": " : "") + (info.title || ""), added: TODAY,
+      file, duration: Math.round(parseFloat(pr.stdout) * 10) / 10 || null, outcue: tr.outcue || null, incue: tr.incue || null, transcript: (tr.text || "").slice(0, 2000), status: "ok", head_ok: tr.head_ok !== false, tail_ok: tr.tail_ok !== false });
     made++; console.log("  ✓", title, file);
     fs.rmSync(tmp, { recursive: true, force: true });
   }

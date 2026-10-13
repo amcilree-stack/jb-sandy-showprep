@@ -53,7 +53,7 @@
   }
   function allClips() {
     var out = [];
-    docClips.forEach(function (c) { out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: "/" + c.file.replace(/^\//, ""), source: c.url, tag: c.tag || "", added: c.added }); });
+    docClips.forEach(function (c) { out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: c.file ? "/" + c.file.replace(/^\//, "") : "", needsRec: !c.file, source: c.url, tag: c.tag || "", added: c.added }); });
     state.uploads.forEach(function (u) { out.push({ id: u.id, kind: "upload", title: u.title, desc: u.desc, outcue: u.outcue, duration: u.duration, src: "/api/sb/audio/" + u.id, source: "", tag: u.board, uploadBoard: u.board, added: u.added }); });
     var now = Date.now();
     return out.map(function (c) {
@@ -102,7 +102,7 @@
     $("favs").innerHTML = favs.map(function (c) { return '<button type="button" class="fav' + (current && current.id === c.id ? " playing" : "") + '" data-play="' + esc(c.id) + '">' + esc(c.title) + "<small>" + esc(fmtDur(c.duration)) + "</small></button>"; }).join("");
     var list = clips.filter(function (c) { return c.board === tab; });
     if (q) { var qq = q.toLowerCase(); list = clips.filter(function (c) { return c.board !== "trash" || tab === "trash"; }).filter(function (c) { return [c.title, c.desc, c.outcue, c.tag, c.board].join(" ").toLowerCase().indexOf(qq) >= 0; }); }
-    list.sort(function (a, b) { return addedTs(b.added) - addedTs(a.added); });
+    list.sort(function (a, b) { return (a.needsRec ? 1 : 0) - (b.needsRec ? 1 : 0) || addedTs(b.added) - addedTs(a.added); });
     window.__pads = list;
     $("grid").innerHTML = list.length ? list.map(padHtml).join("") : '<div class="empty">' + (q ? "No clips match “" + esc(q) + "”." : tab === "trash" ? "Trash is empty." : "No clips here yet. Drop an MP3/WAV on the board, or tag a link in the Show Ideas doc.") + "</div>";
     preload(list);
@@ -110,6 +110,7 @@
   function padHtml(c, i) {
     var chips = '<span class="key">' + (i < 9 ? i + 1 : "") + "</span>";
     if (c.chip && (c.board === "daily" || c.board === "archive" || c.board === "trash")) chips += '<span class="chip exp">⏱ ' + esc(c.chip) + "</span>";
+    if (c.needsRec) chips += '<span class="chip notag" style="background:#e33;color:#fff">Needs live recording</span>';
     if (c.untagged && c.board !== "trash") chips += '<button type="button" class="chip notag" data-pick="' + esc(c.id) + '" title="Tap to pick a board">No tag</button>';
     else if (c.kind === "doc" && c.tag) chips += '<span class="chip">#' + esc(c.tag) + "</span>";
     else if (c.kind === "upload") chips += '<span class="chip">uploaded</span>';
@@ -118,7 +119,7 @@
     var acts = c.board === "trash"
       ? '<button type="button" class="keep" data-restore="' + esc(c.id) + '">Restore</button><button type="button" class="ib" data-purge="' + esc(c.id) + '">Delete now</button>'
       : (c.board === "archive" ? '<button type="button" class="keep" data-keep="' + esc(c.id) + '">Keep → Evergreen</button>' : "") +
-        '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button><button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
+        (c.needsRec ? '<a class="ib" style="flex:1;text-align:center;text-decoration:none" href="' + esc(c.source) + '" target="_blank" rel="noopener">Open original ↗</a>' : '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button>') + '<button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
     return '<div class="pad' + (playing ? " playing" : "") + '" data-id="' + esc(c.id) + '"><div class="top">' + chips + '<button type="button" class="star' + (c.fav ? " on" : "") + '" data-fav="' + esc(c.id) + '" title="Favorite">★</button></div>' +
       "<b>" + esc(c.title) + "</b>" + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
       '<div class="meta">⏱ ' + fmtDur(c.duration) + (c.outcue ? ' · Out: <i>“' + esc(c.outcue) + "”</i>" : "") + "</div>" +
@@ -129,11 +130,11 @@
   function find(id) { return allClips().filter(function (c) { return c.id === id; })[0]; }
 
   /* ---------- audio ---------- */
-  function audioFor(c) { var a = audios[c.id]; if (!a) { a = audios[c.id] = new Audio(); a.preload = "auto"; a.src = c.src; a.addEventListener("ended", function () { if (current && current.id === c.id) { current = null; nowUpdate(); render(); } }); } return a; }
-  function preload(list) { list.slice(0, 24).forEach(audioFor); }
+  function audioFor(c) { if (!c.src) return { pause: function () {}, play: function () { return Promise.reject(); } }; var a = audios[c.id]; if (!a) { a = audios[c.id] = new Audio(); a.preload = "auto"; a.src = c.src; a.addEventListener("ended", function () { if (current && current.id === c.id) { current = null; nowUpdate(); render(); } }); } return a; }
+  function preload(list) { list.filter(function (c) { return c.src; }).slice(0, 24).forEach(audioFor); }
   function stopAll() { Object.keys(audios).forEach(function (k) { var a = audios[k]; a.pause(); a.currentTime = 0; a.volume = 1; }); current = null; nowUpdate(); render(); }
   function play(id) {
-    var c = find(id); if (!c) return;
+    var c = find(id); if (!c || !c.src) return;
     if (current && current.id === id) { stopAll(); return; }
     stopAll();
     var a = audioFor(c); a.volume = 1; a.currentTime = 0;
@@ -169,7 +170,7 @@
     return Promise.all([
       fetch("/data/soundboard.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : { clips: [] }; }).catch(function () { return { clips: [] }; }),
       api("state").catch(function () { return { overrides: {}, uploads: [] }; })
-    ]).then(function (r) { docClips = (r[0].clips || []).filter(function (c) { return c.file; }); state = r[1]; render(); });
+    ]).then(function (r) { docClips = (r[0].clips || []).filter(function (c) { return c.file || c.status === "needs_recording"; }); state = r[1]; render(); });
   }
 
   /* ---------- upload / edit form ---------- */
