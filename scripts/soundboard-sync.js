@@ -56,7 +56,19 @@ for (const c of data.clips) {
   if (l.tag !== c.tag) { c.tag = l.tag; moved++; }
   if (l.desc && l.desc !== c.doc_desc) { if (c.doc_desc !== undefined) c.desc = l.desc; c.doc_desc = l.desc; } // only a doc edit overrides the written description
 }
-const fresh = links.filter((l, i) => links.findIndex((x) => x.url === l.url) === i && !data.clips.some((c) => c.url === l.url));
+data.skipped = data.skipped || []; // cached: links checked once and found to have no audio (photo posts etc.) -> never re-checked
+const SB_TAG = (t) => /^(1day|evergreen|beds|holiday-.+)$/.test(t || "");
+const fresh = links.filter((l, i) => links.findIndex((x) => x.url === l.url) === i && !data.clips.some((c) => c.url === l.url)
+  && !(data.skipped.some((x) => x.url === l.url) && !SB_TAG(l.tag))); // a tag added later still gets a pad
+// does yt-dlp metadata show a playable audio track?  true / false (no audio) / null (couldn't tell)
+function hasAudio(meta, info) {
+  const err = String(meta.stderr || "");
+  if (meta.status !== 0) return /No video formats found|There is no video in this post|Unsupported URL|no video/i.test(err) ? false : null;
+  const fmts = info.formats || [];
+  if (fmts.length) return fmts.some((f) => f.acodec && f.acodec !== "none") || fmts.some((f) => f.acodec == null && f.vcodec && f.vcodec !== "none") ? true : false;
+  if (info.acodec) return info.acodec !== "none";
+  return info.duration ? true : null;
+}
 if (!ENABLED) {
   console.log(`soundboard: extraction is OFF (data/soundboard-config.json). ${fresh.length} doc link(s) waiting, ${moved} tag change(s).`);
 } else {
@@ -68,7 +80,12 @@ if (!ENABLED) {
     const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "sb-"));
     const meta = yt ? spawnSync(yt, ["--no-playlist", "-j", l.url], { encoding: "utf8", timeout: 120000 }) : { status: 1 };
     let info = {}; try { info = JSON.parse(meta.stdout.trim().split("\n").pop()); } catch (e) { /* */ }
-    const run = meta.status === 0 ? spawnSync(yt, ["--no-playlist", "-x", "--audio-format", "mp3", "--audio-quality", "2", "-o", path.join(tmp, "a.%(ext)s"), l.url], { encoding: "utf8", timeout: 300000 }) : meta;
+    const audio = yt ? hasAudio(meta, info) : null;
+    if (audio !== true && !SB_TAG(l.tag)) { // no confirmed sound and no soundboard tag: skip silently, cache it
+      if (!data.skipped.some((x) => x.url === l.url)) data.skipped.push({ url: l.url, checked: TODAY, reason: audio === false ? "no audio track (photo post / no video)" : "could not confirm audio" });
+      console.log("  – skipped (no audio):", l.url); fs.rmSync(tmp, { recursive: true, force: true }); continue;
+    }
+    const run = meta.status === 0 || SB_TAG(l.tag) ? spawnSync(yt, ["--no-playlist", "-x", "--audio-format", "mp3", "--audio-quality", "2", "-o", path.join(tmp, "a.%(ext)s"), l.url], { encoding: "utf8", timeout: 300000 }) : meta;
     const out = path.join(tmp, "a.mp3");
     if (run.status !== 0 || !fs.existsSync(out)) {
       const err = String((run.stderr || "yt-dlp missing")).split("\n").filter((x) => /ERROR/.test(x)).pop() || "extraction failed";

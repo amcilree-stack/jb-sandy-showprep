@@ -19,20 +19,6 @@
    "doc_desc": "How to get info out of people"
   },
   {
-   "id": "doc-399357d3eb",
-   "url": "https://www.instagram.com/p/DeXpVNoCerU/?exln=MXBneWRrbjM2MDNlNA%3D%3D",
-   "tag": "",
-   "title": "Tesla Robot Coming Next Year",
-   "desc": "Instagram post about Tesla's robot coming next year. Couldn't be downloaded (no video formats found).",
-   "added": "2026-10-13",
-   "file": null,
-   "duration": null,
-   "outcue": null,
-   "status": "needs_recording",
-   "error": "ERROR: [Instagram] DeXpTE9JoXX: No video formats found!; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the la",
-   "doc_desc": "Tesla robot coming next year"
-  },
-  {
    "id": "doc-b52f7b97c1",
    "url": "https://www.instagram.com/reel/DeVjqWDAoAk/?rpxt=ZDRyYXNuN2Ixbjdz",
    "tag": "",
@@ -67,34 +53,6 @@
    "doc_desc": "Supposedly The Greatest Pick Up Line Ever"
   },
   {
-   "id": "doc-f2a2073d3d",
-   "url": "https://www.instagram.com/p/DdU85pfF93V/",
-   "tag": "",
-   "title": "Texas vs. Ohio State: Most-Watched Regular Season Game in 10 Years",
-   "desc": "Instagram post on the TX–Ohio State ratings. Couldn't be downloaded (no video formats found).",
-   "added": "2026-10-13",
-   "file": null,
-   "duration": null,
-   "outcue": null,
-   "status": "needs_recording",
-   "error": "ERROR: [Instagram] DdU81zNuG2u: No video formats found!; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the la",
-   "doc_desc": "The TX Ohio St. game was the most viewed regular season game in 10 years."
-  },
-  {
-   "id": "doc-0a07a89a64",
-   "url": "https://www.instagram.com/p/DdJ0T96GcE_/",
-   "tag": "",
-   "title": "Pickleball on the Decline",
-   "desc": "Instagram post about pickleball's decline. Couldn't be downloaded (no video formats found).",
-   "added": "2026-10-13",
-   "file": null,
-   "duration": null,
-   "outcue": null,
-   "status": "needs_recording",
-   "error": "ERROR: [Instagram] DdJ0TdniShB: No video formats found!; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the la",
-   "doc_desc": "Pickleball on the decline"
-  },
-  {
    "id": "doc-474a2a35ec",
    "url": "https://www.instagram.com/p/Dc18EcXqKpV/",
    "tag": "",
@@ -110,6 +68,23 @@
    "head_ok": true,
    "tail_ok": true,
    "doc_desc": "Drew Lynch walking down Euro cobblestones with his take on traveling to Europe"
+  }
+ ],
+ "skipped": [
+  {
+   "url": "https://www.instagram.com/p/DeXpVNoCerU/?exln=MXBneWRrbjM2MDNlNA%3D%3D",
+   "checked": "2026-10-13",
+   "reason": "photo post, no audio (removed per Sandy)"
+  },
+  {
+   "url": "https://www.instagram.com/p/DdU85pfF93V/",
+   "checked": "2026-10-13",
+   "reason": "photo post, no audio (removed per Sandy)"
+  },
+  {
+   "url": "https://www.instagram.com/p/DdJ0T96GcE_/",
+   "checked": "2026-10-13",
+   "reason": "photo post, no audio (removed per Sandy)"
   }
  ]
 }

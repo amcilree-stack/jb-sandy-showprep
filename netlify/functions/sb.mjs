@@ -60,6 +60,15 @@ export default async (req) => {
       if (!r) return new Response("not found", { status: 404 });
       return new Response(r.data, { headers: { "content-type": r.metadata?.mime || "audio/mpeg", "cache-control": "private, max-age=31536000, immutable" } });
     }
+    if (req.method === "POST" && parts[0] === "empty") { // blank pad: title only, audio dropped in later
+      const b = await req.json().catch(() => ({}));
+      const st = await load(s);
+      const clip = { id: "up-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), title: clean(b.title, 120) || "New pad", desc: "", outcue: "",
+        board: BOARD_RE.test(b.board) ? b.board : "daily", duration: null, added: Date.now(), empty: true };
+      st.uploads.push(clip);
+      await s.setJSON("state", st);
+      return json({ ok: true, clip });
+    }
     if (req.method === "POST" && parts[0] === "upload") {
       const meta = JSON.parse(url.searchParams.get("meta") || "{}");
       const buf = await req.arrayBuffer();
@@ -67,9 +76,16 @@ export default async (req) => {
       if (buf.byteLength > MAX) return json({ error: "File is over 5.5 MB. Trim it or export as MP3." }, 413);
       const mime = /wav/i.test(req.headers.get("content-type") || meta.name || "") ? "audio/wav" : "audio/mpeg";
       const board = BOARD_RE.test(meta.board) ? meta.board : "daily";
-      const id = "up-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-      await s.set("audio/" + id, buf, { metadata: { mime } });
       const st = await load(s);
+      const fill = meta.fill ? st.uploads.find((u) => u.id === meta.fill) : null;
+      if (meta.fill && !fill) return json({ error: "pad not found" }, 404);
+      const id = fill ? fill.id : "up-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+      await s.set("audio/" + id, buf, { metadata: { mime } });
+      if (fill) {
+        Object.assign(fill, { empty: false, duration: Number(meta.duration) || null, mime, size: buf.byteLength, name: clean(meta.name, 200) });
+        await s.setJSON("state", st);
+        return json({ ok: true, clip: fill });
+      }
       const clip = { id, title: clean(meta.title, 120) || "Untitled clip", desc: clean(meta.desc), outcue: clean(meta.outcue, 200),
         board, duration: Number(meta.duration) || null, added: Date.now(), mime, size: buf.byteLength, name: clean(meta.name, 200) };
       st.uploads.push(clip);

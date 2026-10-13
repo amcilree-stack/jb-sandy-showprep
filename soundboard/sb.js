@@ -54,7 +54,7 @@
   function allClips() {
     var out = [];
     docClips.forEach(function (c) { out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: c.file ? "/" + c.file.replace(/^\//, "") : "", needsRec: !c.file, source: c.url, tag: c.tag || "", added: c.added }); });
-    state.uploads.forEach(function (u) { out.push({ id: u.id, kind: "upload", title: u.title, desc: u.desc, outcue: u.outcue, duration: u.duration, src: "/api/sb/audio/" + u.id, source: "", tag: u.board, uploadBoard: u.board, added: u.added }); });
+    state.uploads.forEach(function (u) { out.push({ id: u.id, kind: "upload", title: u.title, desc: u.desc, outcue: u.outcue, duration: u.duration, src: u.empty ? "" : "/api/sb/audio/" + u.id + (u.size ? "?v=" + u.size : ""), empty: !!u.empty, source: "", tag: u.board, uploadBoard: u.board, added: u.added }); });
     var now = Date.now();
     return out.map(function (c) {
       var o = state.overrides[c.id] || {};
@@ -102,14 +102,16 @@
     $("favs").innerHTML = favs.map(function (c) { return '<button type="button" class="fav' + (current && current.id === c.id ? " playing" : "") + '" data-play="' + esc(c.id) + '">' + esc(c.title) + "<small>" + esc(fmtDur(c.duration)) + "</small></button>"; }).join("");
     var list = clips.filter(function (c) { return c.board === tab; });
     if (q) { var qq = q.toLowerCase(); list = clips.filter(function (c) { return c.board !== "trash" || tab === "trash"; }).filter(function (c) { return [c.title, c.desc, c.outcue, c.tag, c.board].join(" ").toLowerCase().indexOf(qq) >= 0; }); }
-    list.sort(function (a, b) { return (a.needsRec ? 1 : 0) - (b.needsRec ? 1 : 0) || addedTs(b.added) - addedTs(a.added); });
+    list.sort(function (a, b) { return (a.needsRec || a.empty ? 1 : 0) - (b.needsRec || b.empty ? 1 : 0) || addedTs(b.added) - addedTs(a.added); });
     window.__pads = list;
-    $("grid").innerHTML = list.length ? list.map(padHtml).join("") : '<div class="empty">' + (q ? "No clips match “" + esc(q) + "”." : tab === "trash" ? "Trash is empty." : "No clips here yet. Drop an MP3/WAV on the board, or tag a link in the Show Ideas doc.") + "</div>";
+    var canEmpty = !q && tab !== "archive" && tab !== "trash";
+    $("grid").innerHTML = (canEmpty ? '<button type="button" class="pad addpad" id="addpad" style="align-items:center;justify-content:center;border:2px dashed var(--line);color:var(--mut);font-weight:700;font-size:16px;min-height:120px">+ Empty pad</button>' : "") + (list.length ? list.map(padHtml).join("") : '<div class="empty">' + (q ? "No clips match “" + esc(q) + "”." : tab === "trash" ? "Trash is empty." : "No clips here yet. Drop an MP3/WAV on the board, or tag a link in the Show Ideas doc.") + "</div>");
     preload(list);
   }
   function padHtml(c, i) {
     var chips = '<span class="key">' + (i < 9 ? i + 1 : "") + "</span>";
     if (c.chip && (c.board === "daily" || c.board === "archive" || c.board === "trash")) chips += '<span class="chip exp">⏱ ' + esc(c.chip) + "</span>";
+    if (c.empty) chips += '<span class="chip">empty pad</span>';
     if (c.needsRec) chips += '<span class="chip notag" style="background:#e33;color:#fff">Needs live recording</span>';
     if (c.untagged && c.board !== "trash") chips += '<button type="button" class="chip notag" data-pick="' + esc(c.id) + '" title="Tap to pick a board">No tag</button>';
     else if (c.kind === "doc" && c.tag) chips += '<span class="chip">#' + esc(c.tag) + "</span>";
@@ -119,9 +121,9 @@
     var acts = c.board === "trash"
       ? '<button type="button" class="keep" data-restore="' + esc(c.id) + '">Restore</button><button type="button" class="ib" data-purge="' + esc(c.id) + '">Delete now</button>'
       : (c.board === "archive" ? '<button type="button" class="keep" data-keep="' + esc(c.id) + '">Keep → Evergreen</button>' : "") +
-        (c.needsRec ? '<a class="ib" style="flex:1;text-align:center;text-decoration:none" href="' + esc(c.source) + '" target="_blank" rel="noopener">Open original ↗</a>' : '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button>') + '<button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
+        (c.empty ? '<label class="ib emptydrop" data-fill="' + esc(c.id) + '" style="flex:1;text-align:center;border:2px dashed var(--or);cursor:pointer">⬆ Drop MP3/WAV or tap<input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav" hidden data-fillinput="' + esc(c.id) + '"></label>' : c.needsRec ? '<a class="ib" style="flex:1;text-align:center;text-decoration:none" href="' + esc(c.source) + '" target="_blank" rel="noopener">Open original ↗</a>' : '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button>') + '<button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
     return '<div class="pad' + (playing ? " playing" : "") + '" data-id="' + esc(c.id) + '"><div class="top">' + chips + '<button type="button" class="star' + (c.fav ? " on" : "") + '" data-fav="' + esc(c.id) + '" title="Favorite">★</button></div>' +
-      "<b>" + esc(c.title) + "</b>" + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
+      (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>") + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
       '<div class="meta">⏱ ' + fmtDur(c.duration) + (c.outcue ? ' · Out: <i>“' + esc(c.outcue) + "”</i>" : "") + "</div>" +
       (c.source ? '<div class="meta"><a href="' + esc(c.source) + '" target="_blank" rel="noopener">' + esc(host(c.source)) + " ↗</a></div>" : "") +
       '<div class="act">' + acts + "</div></div>";
@@ -215,7 +217,32 @@
   $("file").addEventListener("change", function (e) { takeFile(e.target.files[0]); e.target.value = ""; });
   ["dragenter", "dragover"].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); $("drop").classList.add("over"); }); });
   ["dragleave", "drop"].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); if (ev === "drop" || e.target === document.documentElement) $("drop").classList.remove("over"); }); });
-  document.addEventListener("drop", function (e) { if (e.dataTransfer && e.dataTransfer.files.length) takeFile(e.dataTransfer.files[0]); });
+  document.addEventListener("drop", function (e) {
+    if (!(e.dataTransfer && e.dataTransfer.files.length)) return;
+    var pad = e.target.closest && e.target.closest(".pad"); var id = pad && pad.dataset.id;
+    var u = id && state.uploads.filter(function (x) { return x.id === id && x.empty; })[0];
+    if (u) fillPad(id, e.dataTransfer.files[0]); else takeFile(e.dataTransfer.files[0]);
+  });
+
+  /* ---------- empty pads ---------- */
+  function fillPad(id, file) {
+    if (!file) return;
+    if (!/\.(mp3|wav)$/i.test(file.name) && !/audio\/(mpeg|wav|x-wav|mp3)/.test(file.type)) { toast("Only MP3 or WAV files."); return; }
+    if (file.size > 5.5 * 1048576) { toast("That file is over 5.5 MB. Export it as an MP3 and try again."); return; }
+    toast("Uploading " + file.name + "…");
+    duration(file).then(function (d) {
+      return api("upload?meta=" + encodeURIComponent(JSON.stringify({ fill: id, duration: d ? Math.round(d * 10) / 10 : null, name: file.name })), { method: "POST", headers: { "content-type": file.type || "audio/mpeg" }, body: file });
+    }).then(function (r) { state.uploads = state.uploads.map(function (u) { return u.id === id ? r.clip : u; }); delete audios[id]; render(); toast("Audio added to “" + r.clip.title + "”."); })
+      .catch(function (e) { toast("Upload failed: " + e.message); });
+  }
+  function addEmpty() {
+    api("empty", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ title: "New pad", board: tab }) })
+      .then(function (r) { state.uploads.push(r.clip); render(); var i = document.querySelector('[data-title="' + r.clip.id + '"]'); if (i) { i.focus(); i.select(); } })
+      .catch(function (e) { toast("Couldn't add pad: " + e.message); });
+  }
+  document.addEventListener("change", function (e) { var id = e.target.dataset && e.target.dataset.fillinput; if (id) { fillPad(id, e.target.files[0]); e.target.value = ""; } });
+  document.addEventListener("focusout", function (e) { var id = e.target.dataset && e.target.dataset.title; if (id && e.target.classList.contains("padtitle")) { var v = e.target.value.trim() || "New pad"; var u = state.uploads.filter(function (x) { return x.id === id; })[0]; if (u && u.title !== v) { u.title = v; patch(id, { title: v }); } } });
+  document.addEventListener("keydown", function (e) { if (e.key === "Enter" && e.target.classList && e.target.classList.contains("padtitle")) e.target.blur(); }, true);
 
   /* ---------- picker for untagged ---------- */
   var pickId = null;
@@ -226,6 +253,7 @@
   /* ---------- events ---------- */
   document.addEventListener("click", function (e) {
     var t = e.target.closest("button"); if (!t) return; var d = t.dataset;
+    if (t.id === "addpad") { addEmpty(); return; }
     if (d.tab) { tab = d.tab; q = ""; $("q").value = ""; render(); }
     else if (d.play) play(d.play);
     else if (d.fade) fade(d.fade);
