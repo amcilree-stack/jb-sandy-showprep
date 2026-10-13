@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Publish the show-prep site:
 #   1) export both Google Docs        2) detect new stories + ideas (data/seen-blocks.json)
-#   3) extract audio for new links    4) regenerate the pages
+#   3) soundboard sync (/soundboard/)    4) regenerate the pages
 #   5) commit and push to GitHub using SHOWPREP_GITHUB_TOKEN (Netlify deploys from main)
 #
 # Usage:  SHOWPREP_GITHUB_TOKEN=... scripts/publish.sh
@@ -40,8 +40,8 @@ fi
 
 echo "== 1-2) export docs + detect new stories and ideas"
 node scripts/sync-docs.js "${TODAY_ARGS[@]}"
-echo "== 3) extract audio for new social video links"
-node scripts/extract-audio.js "${TODAY_ARGS[@]}"
+echo "== 3) soundboard: doc tags + audio from new social video links (extraction gated by data/soundboard-config.json)"
+node scripts/soundboard-sync.js "${TODAY_ARGS[@]}"
 echo "== 4) regenerate pages"
 node scripts/build.js "${TODAY_ARGS[@]}"
 # Note: scripts/apply-basic-auth.js is Netlify's build step. Don't run it here; it would write credentials into _headers.

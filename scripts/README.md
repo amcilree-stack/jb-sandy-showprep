@@ -6,7 +6,8 @@ Content lives in `data/`; the pages are generated. The root `index.html` is the 
 |---|---|
 | `data/stories.json` | Stories from the stories doc (`first_seen`, optional `stale` reason) |
 | `data/ideas.json` | Show Ideas doc items, newest first (`added`, links, social video links) |
-| `data/audio.json` | Every clip. `origin: ideas-doc` = made from doc links; `library` = the old edited-audio set |
+| `data/soundboard.json` | Doc clips for /soundboard/ (scripts/soundboard-sync.js). Button edits + uploads live in Netlify Blobs via netlify/functions/sb.mjs |
+| `data/soundboard-config.json` | `"extract": false` keeps audio extraction off |
 | `data/seen-blocks.json` | Fingerprints of doc lines already handled, plus the stories-doc hash, used to spot new items and to tell when the doc hasn't changed |
 | `data/legacy.json` | Every card from the old one-page site (archive only) |
 

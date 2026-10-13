@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Soundboard · JB &amp; Sandy</title><link rel="stylesheet" href="/soundboard/sb.css"></head>
+<body>
+<header class="hd"><a class="back" href="/">← Back to Air Board</a><h1>Sausage <span>Soundboard</span></h1>
+<input id="q" class="search" type="search" placeholder="Search clips, cues, tags…" aria-label="Search clips">
+<button id="stopall" class="stop" type="button">■ STOP ALL</button></header>
+<nav id="tabs" class="tabs" aria-label="Boards"></nav>
+<main class="main"><section class="col">
+<div id="favwrap"><h2>★ Favorites</h2><div id="favs" class="favs"></div></div>
+<h2 id="boardtitle">Daily</h2><p id="boardnote" class="note"></p>
+<div id="grid" class="grid"></div></section>
+<aside class="side">
+<label id="drop" class="drop" for="file"><b>⬆ Drop MP3/WAV here</b>or tap to browse<input id="file" type="file" accept=".mp3,.wav,audio/mpeg,audio/wav" hidden></label>
+<div class="box rules"><b>Doc tags</b> (on the same line as the link)<br><code>URL #tag - description</code><br><code>#1day</code> Daily: 24h from 12:01 AM next day → Archive 7d<br><code>#evergreen</code> never expires<br><code>#beds</code> beds &amp; stingers<br><code>#holiday-halloween</code> shows 4 weeks before<br>No tag = <code>#1day</code>. A board set with a button wins over the doc tag.<br>Keys: <code>1–9</code> play · <code>Esc</code> stop all</div>
+</aside></main>
+<div id="now" class="now"><span id="nowt" class="t">Nothing playing</span><div class="bar"><div id="nowbar"></div></div><span id="nowcue" class="cue"></span><button id="nowfade" class="ib" type="button">Fade</button><button id="nowstop" class="ib" type="button">■</button></div>
+<div id="toast" class="toast" hidden></div>
+<div id="modal" class="modal" hidden><form id="form" class="form"><h3 id="ftitle">Add a clip</h3><div id="ffile" class="file"></div>
+<label>Title<input name="title" required maxlength="120"></label>
+<label>Description<textarea name="desc" rows="2" maxlength="300"></textarea></label>
+<label>Out cue (last words)<input name="outcue" maxlength="200"></label>
+<label>Board<select name="board" id="fboard"></select></label>
+<div class="btns"><button type="button" class="ib" id="fcancel">Cancel</button><button class="go" id="fsave">Add to board</button></div></form></div>
+<div id="picker" class="modal" hidden><div class="form"><h3>Pick a board</h3><div id="pickbtns" class="pickbtns"></div><div class="btns"><button type="button" class="ib" id="pcancel">Cancel</button></div></div></div>
+<script src="/soundboard/sb.js"></script></body></html>

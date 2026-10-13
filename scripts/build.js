@@ -20,7 +20,7 @@ const write = (f, s) => { if (f === "index.html") throw new Error("refusing to w
 
 const stories = read("data/stories.json").items;
 const ideas = read("data/ideas.json").items;
-const audio = read("data/audio.json").clips;
+const audio = []; // old audio page retired Oct 13 2026; clips live on /soundboard/ (data/soundboard.json + Netlify Blobs)
 const seen = read("data/seen-blocks.json");
 const legacy = fs.existsSync(path.join(ROOT, "data/legacy.json")) ? read("data/legacy.json").items : [];
 
@@ -58,13 +58,13 @@ ${extraHead}</head>
 <body>
 <header class="top"><div class="wrap">
 <a class="brand" href="/today/">JB &amp; Sandy <span>· Show prep</span></a>
-<nav class="main" aria-label="Main">${n("today", "Today", "/today/#today")}${n("ideas", "Ideas", "/today/#ideas")}${n("audio", "Audio", "/today/#audio")}${n("archive", "Archive", "/archive/")}</nav>
+<nav class="main" aria-label="Main">${n("today", "Today", "/today/#today")}${n("ideas", "Ideas", "/today/#ideas")}${n("audio", "Audio", "/soundboard/")}${n("archive", "Archive", "/archive/")}</nav>
 </div></header>
 <main class="wrap">
 ${body}
 </main>
 <footer class="site"><div class="wrap">
-<a href="/m2w/this-week.html">Minute To Win It</a><a href="/stories/">Story pages</a><a href="/last-laugh/">Last Laugh</a><a href="/archive/audio.html">Audio archive</a>
+<a href="/m2w/this-week.html">Minute To Win It</a><a href="/stories/">Story pages</a><a href="/last-laugh/">Last Laugh</a><a href="/soundboard/">Soundboard</a>
 <p>98.1 KVET · Built from the stories and Show Ideas docs.</p>
 </div></footer>
 <script src="/assets/site.js"></script>
@@ -205,22 +205,10 @@ if (ideasWeek.length) {
 }
 ideasHtml += `</section>`;
 
-let audioHtml = `<section id="audio">
-<h2>Audio board</h2>
-<p class="sub">Tap to play, tap again to stop. Nothing autoplays.</p>`;
-if (clipCurrent.length) {
-  audioHtml += `<h4>From the Show Ideas doc</h4>` + clipCurrent.sort((a, b) => (a.status === "ok" ? 0 : 1) - (b.status === "ok" ? 0 : 1)).map((c) => clipHtml(c)).join("\n");
-}
-audioHtml += `<h4>Hotkeys</h4>
-<div id="hotkeys-app"><p class="meta">Loading hotkeys…</p></div>
-<p class="meta">Tap a pad to play, tap again to fade, and tap a third time to cut. Older clips (Dolly, Sept 11, Longhorns, Bat Fest) are in the <a href="/archive/audio.html">audio archive</a>.</p>
-</section>`;
-
 const indexHtml = page({
   title: "JB & Sandy · Show prep",
   nav: "today",
-  body: todayHtml + "\n" + ideasHtml + "\n" + audioHtml,
-  scripts: `<script src="/hotkeys.js"></script>\n`,
+  body: todayHtml + "\n" + ideasHtml,
 });
 /* NEVER write /index.html: it is the Grok air board (pushed by amcilree-stack). The minimalist page lives at /today/. */
 write("today/index.html", indexHtml);
@@ -263,23 +251,13 @@ write("archive/undated.html", page({
   body: `<p class="stamp"><a href="/archive/">← Archive</a></p><h1>Undated</h1><p class="meta">Cards from the old one-page site that never had a date. ${undated.length} items.</p>` + archiveList(undated),
 }));
 
-/* audio archive: every library clip not on the hotkeys board + archived doc clips */
-const libClips = audio.filter((c) => c.origin === "library");
-const cats = [...new Set(libClips.map((c) => c.category))];
-let audioArch = `<p class="stamp"><a href="/archive/">← Archive</a></p><h1>Audio archive</h1><p class="meta">Every clip on the site, one file each under <code>audio/</code>. Tap to play.</p>`;
-const archDocClips = clipsIdeas.filter((c) => !clipCurrent.includes(c));
-if (archDocClips.length) audioArch += `<h4>From the Show Ideas doc</h4>` + archDocClips.map((c) => clipHtml(c) + (c.stale ? `<p class="why">Stale: ${esc(c.stale)}</p>` : "")).join("\n");
-for (const c of cats) {
-  audioArch += `<h4>${esc(c)}</h4>` + libClips.filter((x) => x.category === c).map((x) => clipHtml(x) + (x.stale ? `<p class="why">${esc(x.stale)}</p>` : "")).join("\n");
-}
-write("archive/audio.html", page({ title: "Audio archive", nav: "archive", body: audioArch }));
 
 let arch = `<h1>Archive</h1><p class="meta">Anything older than 7 days, plus items tied to a date or occasion that has passed. Nothing has been deleted.</p>
 <h2>By week</h2><ul class="weeks">` +
   weeks.map((w) => `<li><a href="/archive/${w}.html">Week of ${fmt(w, true)}</a><span class="n">${byWeek[w].length} items</span></li>`).join("") +
   `<li><a href="/archive/undated.html">Undated (old page)</a><span class="n">${undated.length} items</span></li></ul>
 <h2>More</h2><ul class="weeks">
-<li><a href="/archive/audio.html">Audio archive</a><span class="n">${libClips.length + archDocClips.length} clips</span></li>
+<li><a href="/soundboard/">Soundboard</a><span class="n">audio</span></li>
 <li><a href="/archive/old-site-2026-10-04.html">The old one-page site (Oct 4 snapshot)</a><span class="n">as it was</span></li>
 <li><a href="/m2w/">Minute To Win It, all weeks</a><span class="n"></span></li>
 <li><a href="/stories/">Story pages</a><span class="n"></span></li>
@@ -302,12 +280,6 @@ write("last-laugh/index.html", page({
 <p><a href="https://www.dropbox.com/scl/fo/4dhmg90be9u8ekrxwbhks/AAasbuyWk4i1fQhqO5ZXJKk?rlkey=84v4y92si3hypbu9jd3f5ouix&amp;dl=0" target="_blank" rel="noopener">Open the Last Laugh folder ↗</a></p>
 <ul class="compact">` + lastLaugh.map((l) => `<li><span class="t">${esc(l.title)}</span> <span class="meta">${fmt(l.date)}</span><br><span class="d">${l.html.replace(/<\/?p[^>]*>/g, "")}</span></li>`).join("") + `</ul>`,
 }));
-
-/* hotkeys library (assign list) from audio.json */
-write("hotkeys/library.json", JSON.stringify({
-  note: "Generated by scripts/build.js from data/audio.json. Add clips there (or drop an mp3 in audio/ and run the build).",
-  clips: audio.filter((c) => c.status === "ok" && c.file).map((c) => ({ name: c.title, src: c.file })),
-}, null, 2) + "\n");
 
 const stats = {
   today: TODAY, stories_current: storyCurrent.length, ideas_new: ideasNew.length, ideas_week: ideasWeek.length,
