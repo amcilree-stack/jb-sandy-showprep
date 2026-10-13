@@ -53,7 +53,7 @@
   }
   function allClips() {
     var out = [];
-    docClips.forEach(function (c) { out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: c.file ? "/" + c.file.replace(/^\//, "") : "", needsRec: !c.file, source: c.url, tag: c.tag || "", added: c.added }); });
+    docClips.forEach(function (c) { out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: c.file ? "/" + c.file.replace(/^\//, "") : "", needsRec: !c.file, sourceName: c.source_name || "", source: c.url, tag: c.tag || "", added: c.added }); });
     state.uploads.forEach(function (u) { out.push({ id: u.id, kind: "upload", title: u.title, desc: u.desc, outcue: u.outcue, duration: u.duration, src: u.empty ? "" : "/api/sb/audio/" + u.id + (u.size ? "?v=" + u.size : ""), empty: !!u.empty, source: "", tag: u.board, uploadBoard: u.board, added: u.added }); });
     var now = Date.now();
     return out.map(function (c) {
@@ -125,7 +125,7 @@
     return '<div class="pad' + (playing ? " playing" : "") + '" data-id="' + esc(c.id) + '"><div class="top">' + chips + '<button type="button" class="star' + (c.fav ? " on" : "") + '" data-fav="' + esc(c.id) + '" title="Favorite">★</button></div>' +
       (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>") + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
       '<div class="meta">⏱ ' + fmtDur(c.duration) + (c.outcue ? ' · Out: <i>“' + esc(c.outcue) + "”</i>" : "") + "</div>" +
-      (c.source ? '<div class="meta"><a href="' + esc(c.source) + '" target="_blank" rel="noopener">' + esc(host(c.source)) + " ↗</a></div>" : "") +
+      (c.sourceName ? '<div class="meta">Source: ' + esc(c.sourceName) + '</div>' : "") + (c.source ? '<div class="meta"><a href="' + esc(c.source) + '" target="_blank" rel="noopener">' + esc(host(c.source)) + " ↗</a></div>" : "") +
       '<div class="act">' + acts + "</div></div>";
   }
   function host(u) { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return "source"; } }
