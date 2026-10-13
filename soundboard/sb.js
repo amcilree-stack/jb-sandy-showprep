@@ -48,6 +48,7 @@
     var t = String(tag || "").toLowerCase().replace(/^#/, "");
     if (!t || t === "1day") return "daily";
     if (t === "evergreen" || t === "beds") return t;
+    if (/^day-(mon|tue|wed|thu|fri)$/.test(t)) return t.slice(4);
     if (t.indexOf("holiday-") === 0) return "holiday-" + holKey(t.slice(8));
     return "daily";
   }
@@ -76,15 +77,16 @@
   }
   function tabs(clips) {
     var now = Date.now();
-    var t = [["daily", "Daily"], ["evergreen", "Evergreen"], ["beds", "Beds"]];
+    var t = [["daily", "Daily"], ["mon", "Mon"], ["tue", "Tue"], ["wed", "Wed"], ["thu", "Thu"], ["fri", "Fri"], ["evergreen", "Evergreen"], ["beds", "Beds"]];
     HOL.forEach(function (h) { if (holVisible(h[0], now)) t.push(["holiday-" + h[0], h[1], 1]); });
     t.push(["archive", "Archive"], ["trash", "🗑 Trash"]);
     return t.map(function (x) { return { id: x[0], label: x[1], hol: !!x[2], n: clips.filter(function (c) { return c.board === x[0]; }).length }; });
   }
-  var NOTES = { daily: "Clears 24 hours after 12:01 AM the day after the link was added, then sits in Archive for 7 days.", evergreen: "Never expires.", beds: "Beds and stingers.", archive: "Expired Daily clips. Deleted after 7 days unless you tap Keep → Evergreen.", trash: "Deleted clips stay here 7 days. Restore to put one back." };
+  var WD = { mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday", fri: "Friday" };
+  var NOTES = { mon: "Johnny's cuts airing Monday.", tue: "Johnny's cuts airing Tuesday.", wed: "Johnny's cuts airing Wednesday.", thu: "Johnny's cuts airing Thursday.", fri: "Johnny's cuts airing Friday.", daily: "Clears 24 hours after 12:01 AM the day after the link was added, then sits in Archive for 7 days.", evergreen: "Never expires.", beds: "Beds and stingers.", archive: "Expired Daily clips. Deleted after 7 days unless you tap Keep → Evergreen.", trash: "Deleted clips stay here 7 days. Restore to put one back." };
   function fmtDur(s) { if (!s && s !== 0) return "–:––"; s = Math.round(s); return Math.floor(s / 60) + ":" + ("0" + s % 60).slice(-2); }
   function boardOptions(includeDaily) {
-    var now = Date.now(), o = [["daily", "Daily (#1day)"], ["evergreen", "Evergreen"], ["beds", "Beds & stingers"]];
+    var now = Date.now(), o = [["daily", "Daily (#1day)"], ["mon", "Monday"], ["tue", "Tuesday"], ["wed", "Wednesday"], ["thu", "Thursday"], ["fri", "Friday"], ["evergreen", "Evergreen"], ["beds", "Beds & stingers"]];
     HOL.forEach(function (h) { var w = holWindow(h[0], now); var d = w ? new Date(Date.UTC(w.date[0], w.date[1] - 1, w.date[2])).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }) : ""; o.push(["holiday-" + h[0], "Holiday – " + h[1].replace(/^\S+\s/, "") + (d ? " (" + d + ")" : "")]); });
     return o;
   }
@@ -95,7 +97,7 @@
     if (!T.some(function (t) { return t.id === tab; })) tab = "daily";
     $("tabs").innerHTML = T.map(function (t) { return '<button type="button" class="tab' + (t.id === tab ? " on" : "") + (t.hol ? " hol" : "") + '" data-tab="' + t.id + '">' + esc(t.label) + '<span class="n">' + t.n + "</span></button>"; }).join("");
     var cur = T.filter(function (t) { return t.id === tab; })[0];
-    $("boardtitle").textContent = cur.label.replace(/^🗑 /, "");
+    $("boardtitle").textContent = WD[tab] || cur.label.replace(/^🗑 /, "");
     $("boardnote").textContent = NOTES[tab] || (cur.hol ? "Shows 4 weeks before the holiday and hides after it. Clips are kept for next year." : "");
     var favs = clips.filter(function (c) { return c.fav && c.board !== "trash"; });
     $("favwrap").hidden = !favs.length;
@@ -107,7 +109,25 @@
     var canEmpty = !q && tab !== "archive" && tab !== "trash";
     $("grid").innerHTML = (canEmpty ? '<button type="button" class="pad addpad" id="addpad" style="align-items:center;justify-content:center;border:2px dashed var(--line);color:var(--mut);font-weight:700;font-size:16px;min-height:120px">+ Empty pad</button>' : "") + (list.length ? list.map(padHtml).join("") : '<div class="empty">' + (q ? "No clips match “" + esc(q) + "”." : tab === "trash" ? "Trash is empty." : "No clips here yet. Drop an MP3/WAV on the board, or tag a link in the Show Ideas doc.") + "</div>");
     preload(list);
+    fit();
   }
+  /* 15 pads fit without scrolling at 1280x800; more pads -> smaller pads (no cap; scrolls when tiny) */
+  function fit() {
+    var g = $("grid"), n = g.children.length;
+    g.classList.remove("fit"); g.style.gridTemplateColumns = ""; g.style.gridAutoRows = ""; g.style.removeProperty("--fs");
+    if (window.innerWidth <= 820 || !n || g.querySelector(".empty")) return;
+    var W = g.clientWidth, H = window.innerHeight - g.getBoundingClientRect().top - window.scrollY - 92, gap = 10;
+    var slots = Math.max(15, n), best = null;
+    for (var cols = 3; cols <= 12; cols++) {
+      var rows = Math.ceil(slots / cols), w = (W - gap * (cols - 1)) / cols, h = (H - gap * (rows - 1)) / rows;
+      var score = Math.min(w / 1.05, h); if (!best || score > best.score) best = { cols: cols, h: h, w: w, score: score };
+    }
+    var h = Math.max(96, Math.floor(best.h));
+    g.classList.add("fit"); g.style.gridTemplateColumns = "repeat(" + best.cols + ", minmax(0,1fr))"; g.style.gridAutoRows = h + "px";
+    g.style.setProperty("--fs", Math.max(0.72, Math.min(1, h / 175)).toFixed(2));
+    g.classList.toggle("tiny", h < 150);
+  }
+  window.addEventListener("resize", function () { clearTimeout(window.__ft); window.__ft = setTimeout(fit, 120); });
   function padHtml(c, i) {
     var chips = '<span class="key">' + (i < 9 ? i + 1 : "") + "</span>";
     if (c.chip && (c.board === "daily" || c.board === "archive" || c.board === "trash")) chips += '<span class="chip exp">⏱ ' + esc(c.chip) + "</span>";
@@ -274,5 +294,6 @@
   });
   setInterval(render, 60000);
   window.__sb = { holVisible: holVisible, dailyStart: dailyStart, tagBoard: tagBoard, holWindow: holWindow };
+  if (/^#(daily|mon|tue|wed|thu|fri|evergreen|beds|archive|trash)$/.test(location.hash)) tab = location.hash.slice(1);
   load();
 })();

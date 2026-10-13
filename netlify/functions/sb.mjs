@@ -10,7 +10,7 @@ const MAX = 5.5 * 1024 * 1024;
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
 const store = () => getStore({ name: "soundboard", consistency: "strong" });
 const clean = (v, n = 300) => String(v ?? "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
-const BOARD_RE = /^(daily|evergreen|beds|holiday-[a-z0-9]+)$/;
+const BOARD_RE = /^(daily|mon|tue|wed|thu|fri|evergreen|beds|holiday-[a-z0-9]+)$/;
 
 async function load(s) {
   const st = (await s.get("state", { type: "json" })) || { overrides: {}, uploads: [] };
