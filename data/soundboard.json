@@ -446,6 +446,23 @@
    "head_ok": true,
    "tail_ok": true,
    "status": "ok"
+  },
+  {
+   "id": "doc-d5c38bca01",
+   "url": "https://www.instagram.com/reel/DeZBmc_ssjc/?vrfl=NTc4MTIwNjQ2YQ%3D%3D",
+   "tag": "",
+   "doc_desc": "How do you get this men grown ass men together to sing Popeye",
+   "title": "How do you get this men grown ass men together to sing Popeye",
+   "desc": "How do you get this men grown ass men together to sing Popeye",
+   "added": "2026-10-14",
+   "file": "sb-audio/doc-d5c38bca01.mp3",
+   "duration": 30.2,
+   "outcue": "…I'm not by the Sailor Man.",
+   "incue": "I'm not part of Sailor…",
+   "transcript": "I'm not part of Sailor Man. I live in a garbage can. My girlfriend is olive, she fades in olive, she fades in. I'm not by the Sailor Man.",
+   "status": "ok",
+   "head_ok": true,
+   "tail_ok": true
   }
  ],
  "skipped": [
