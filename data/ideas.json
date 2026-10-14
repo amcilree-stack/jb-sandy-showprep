@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "ford-coming-out-with-an-ev-truck-starting-at-29-900",
+   "title": "Ford coming out with an EV truck starting at $29,900",
+   "body": null,
+   "doc_text": "Ford coming out with an EV truck starting at $29,900",
+   "added": "2026-10-14",
+   "links": [
+    {
+     "url": "https://www.thedrive.com/news/fords-new-electric-truck-is-called-fathom-and-starts-at-29945",
+     "label": "EV truck starting at $29,900"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "6993c856b094"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "are-divorce-parties-a-thing",
    "title": "Are divorce parties a thing?",
    "body": null,
