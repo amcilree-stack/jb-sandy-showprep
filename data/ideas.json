@@ -2,6 +2,25 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "ali-bipic",
+   "title": "Ali Bipic",
+   "body": null,
+   "doc_text": "Ali Bipic",
+   "added": "2026-10-15",
+   "links": [
+    {
+     "url": "https://www.youtube.com/watch?v=RnRf-r-RdA4",
+     "label": "Ali Bipic"
+    }
+   ],
+   "social": [
+    "https://www.youtube.com/watch?v=RnRf-r-RdA4"
+   ],
+   "doc_lines": [
+    "67511f226e1e"
+   ]
+  },
+  {
    "id": "is-the-save-muny-thing-finally-resolved",
    "title": "Is the Save Muny thing finally resolved?",
    "body": null,
