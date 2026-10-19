@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>JB &amp; Sandy · Air board</title>
+<title>JB & Sandy · Air board</title>
 <link rel="stylesheet" href="/assets/site.css">
 <style>
 html, body { background: linear-gradient(165deg, #123a73 0%, #1d5aa8 42%, #2f7ed6 100%) !important; color: #f7f4ee; min-height: 100%; }
@@ -81,7 +81,7 @@ a.slot { text-decoration: none; }
 </nav>
 </div></header>
 <main class="wrap">
-<p class="stamp">Sunday, Oct 11</p>
+<p class="stamp" id="board-stamp">Monday, Oct 19</p>
 <h1>6:00–9:00</h1>
 <p class="note">Longer read is the full summary of the source page again. Shuffle on a story opens 5 current stories. Shuffle on a Doc bit opens Doc replacements. Minute to Win It opens that day's questions in a new window.</p>
 <!-- ANYTIME BUTTON START (preserve) -->
@@ -123,6 +123,7 @@ a.slot { text-decoration: none; }
 
 <script>
 const boardDate = "2026-10-19";
+(function(){var el=document.getElementById("board-stamp");if(el)el.textContent=new Date(boardDate+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});})();
 const storyPool = [
   { id: "state-fair-21m", cat: "local", headline: "The State Fair Of Texas Wraps Up With Nearly 2.1 Million Fairgoers", lede: "Big Tex waved his final farewell Sunday after a 24 day run at Fair Park, according to the State Fair of Texas.", bullets: ["The busiest day was October 10, the Red River Rivalry, with more than 203,000 people.", "Fairgoers ate about 450,000 Fletcher's Corny Dogs."], longHead: "The Full Story:", title: "State Fair closes at nearly 2.1 million", read: "The State Fair of Texas closed Sunday with nearly 2.1 million fairgoers over 24 days. About 450,000 corny dogs got eaten and a steer sold for a record $227,000.", phone: "What is the one State Fair food you would drive to Dallas for?", source: "State Fair of Texas", author: "", url: "https://bigtex.com/the-2026-state-fair-of-texas-welcomes-nearly-2-1-million-fairgoers-fairgoers-celebrated-140-years-of-texas-tradition-while-helping-the-state-fair-support-students-strengthen-communities-and-invest/", long: "The 2026 State Fair of Texas is in the books. The fair says nearly 2.1 million people came through the gates during its 24 day run at Fair Park in Dallas, and this year it was celebrating 140 years of Texas tradition.\n\nThe busiest day was Saturday, October 10, the day of the Red River Rivalry. Big Tex welcomed more than 203,000 people that day alone.\n\nThe food numbers are the fun part. Fairgoers ate approximately 450,000 Fletcher's Original Corny Dogs. One of Tommy G's new creations, the Flamin' Crunch Pizza, used around 15,000 bags of Flamin' Hot Cheetos. And the Candy Watermelon used about 10,000 watermelons, which the fair says is about an acre of them.\n\nThe midway gave away approximately 500,000 prizes worth an estimated $1.8 million, enough to fill about 90 semi trucks, and more than 375,000 balloons got popped at the balloon games.\n\nBig Tex himself got a new look this year, with a 95 gallon cowboy hat and size 96 boots. The Grand Champion Market Steer at the youth livestock auction sold for $227,000, a new State Fair record.\n\n- Attendance - nearly 2.1 million over 24 days\n- Corny dogs - about 450,000\n- Midway prizes - about 500,000\n- Record steer - $227,000" },
   { id: "f1-week-cota", cat: "local", headline: "F1 Week Is Here, And COTA Adds A Brand New Thursday Before The Race", lede: "The Formula 1 United States Grand Prix runs Thursday, October 22, through Sunday at Circuit of The Americas, according to Austinot.", bullets: ["Maroon 5 plays Friday night and Post Malone plays Saturday night after the racing.", "The new Grand PrixView Thursday has a Pit Lane Walk and early access to COTALAND."], longHead: "The Full Story:", title: "F1 week at COTA", read: "F1 weekend at COTA starts Thursday with the new Grand PrixView day. Maroon 5 Friday, Post Malone Saturday. Tickets start at $150.", phone: "Are you going out to COTA this weekend, or are you avoiding the traffic like it's your job?", source: "Austinot", author: "", url: "https://austinot.com/austin-picks-october-19-to-october-22-2026", long: "Formula 1 is back in Austin this week. The United States Grand Prix runs Thursday, October 22, through Sunday, October 25, at Circuit of The Americas, and this year it is billed as a new four day celebration of speed and sound. Tickets start at $150.\n\nThe new day is Grand PrixView Thursday. It features on track action from the all female F1 ACADEMY race series, fan villages across the property, first access to the F1 Fan Zone, a Formula 1 Pit Lane Walk, merchandise shopping, and a chance to hit COTALAND before the weekend fills up.\n\nThere is plenty of star power off the track too. Maroon 5 plays Friday and Post Malone plays Saturday at the Germania Insurance Amphitheater.\n\n- Thursday - Grand PrixView, F1 ACADEMY, Pit Lane Walk\n- Friday - Maroon 5\n- Saturday - Post Malone\n- Tickets - start at $150" },
@@ -404,7 +405,7 @@ function stripLead(s) {
 }
 function inlineMd(s) {
   let t = esc(s);
-  t = t.replace(/&lt;(\/?)(b|strong|em|i)&gt;/g, "<$1$2>");
+  t = t.replace(/<(\/?)(b|strong|em|i)>/g, "<$1$2>");
   t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   t = t.replace(/(Source:\s*(?:<[^>]+>)?)([^<()\n]+?)\s*\((https?:\/\/[^)\s]+)\)/g, function (m, pre, name, u) { return pre + '<a class="srclink" href="' + u + '" target="_blank" rel="noopener">' + name.trim() + "</a>"; });
