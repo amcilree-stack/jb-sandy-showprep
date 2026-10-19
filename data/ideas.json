@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "indeed-flex-gig-app",
+   "title": "Indeed Flex gig app",
+   "body": null,
+   "doc_text": "Indeed Flex gig app",
+   "added": "2026-10-19",
+   "links": [
+    {
+     "url": "https://cbsaustin.com/news/tech-this-out/need-extra-cash-this-app-finds-you-a-shift-in-ten-minutes",
+     "label": "Indeed Flex gig app"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "608cc84bb377"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "let-s-bring-back-the-big-thank-you",
    "title": "Let's bring back the “Big Thank You”",
    "body": null,
