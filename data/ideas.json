@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "all-day-pizza-one-of-the-best-in-the-country",
+   "title": "All Day pizza one of the best in the country",
+   "body": null,
+   "doc_text": "All Day pizza one of the best in the country",
+   "added": "2026-10-21",
+   "links": [
+    {
+     "url": "https://www.foodandwine.com/best-pizza-in-america-12160341?utm_term=atxtoday&utm_content=atxtoday",
+     "label": "best in the country"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "5f8cc9b04aa6"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "brandy-remix",
    "title": "Brandy Remix",
    "body": null,
