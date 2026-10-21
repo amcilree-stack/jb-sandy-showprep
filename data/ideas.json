@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "stubbs-membership",
+   "title": "Stubbs membership",
+   "body": null,
+   "doc_text": "Stubbs membership",
+   "added": "2026-10-21",
+   "links": [
+    {
+     "url": "https://www.bizjournals.com/austin/news/2026/10/20/stubbs-bbq-barbecue-texas-memberships-food.html?utm_content=AU&ana=e_AU_me&j=48025457&senddate=2026-10-21&utm_term=ep9&empos=p9",
+     "label": "membership"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "0ad8888a72a4"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "all-day-pizza-one-of-the-best-in-the-country",
    "title": "All Day pizza one of the best in the country",
    "body": null,
