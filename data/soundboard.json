@@ -837,6 +837,40 @@
    "status": "ok",
    "head_ok": true,
    "tail_ok": true
+  },
+  {
+   "id": "doc-2f81423228",
+   "url": "https://www.instagram.com/reel/Dd_weD8PjdR/?psln=NTc4MTIwNjQ2YQ%3D%3D",
+   "tag": "",
+   "doc_desc": "Brandy Remix",
+   "title": "Brandy Remix",
+   "desc": "Brandy Remix",
+   "added": "2026-10-21",
+   "file": "sb-audio/doc-2f81423228.mp3",
+   "duration": 34.7,
+   "outcue": "…Doo, doo, doo, doo, doo, doo",
+   "incue": "Yeah, your house could steal…",
+   "transcript": "Yeah, your house could steal a savor from the sea Baby, baby, doo, doo, doo, doo, doo, doo, doo, doo, doo, doo, doo, doo Doo, doo, doo, doo, doo, doo",
+   "status": "ok",
+   "head_ok": false,
+   "tail_ok": true
+  },
+  {
+   "id": "doc-a93a14b017",
+   "url": "https://www.instagram.com/reel/DerikVFxg2R/?rpxt=MzRlODBiNWFlZA%3D%3D&srtk=MzRlODBiNWFlZA%3D%3D",
+   "tag": "",
+   "doc_desc": "Brandy with the lead singer of Looking Glass",
+   "title": "Brandy with the lead singer of Looking Glass",
+   "desc": "Brandy with the lead singer of Looking Glass",
+   "added": "2026-10-21",
+   "file": "sb-audio/doc-a93a14b017.mp3",
+   "duration": 46.7,
+   "outcue": "…fine Brand new Such a fine",
+   "incue": "Don't say, don't say brand…",
+   "transcript": "Don't say, don't say brand new You're a fine girl What a good wife you would be Such a fine girl Could steal a sailor From the sea Do do do do do do Brand new Such a fine Brand new Such a fine Brand new What a good wife you would be Such a fine Brand new Such a fine",
+   "status": "ok",
+   "head_ok": false,
+   "tail_ok": true
   }
  ],
  "skipped": [
