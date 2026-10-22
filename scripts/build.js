@@ -22,6 +22,7 @@ const stories = read("data/stories.json").items;
 const ideas = read("data/ideas.json").items;
 const audio = []; // old audio page retired Oct 13 2026; clips live on /soundboard/ (data/soundboard.json + Netlify Blobs)
 const seen = read("data/seen-blocks.json");
+const farmed = fs.existsSync(path.join(ROOT, "data/farmed.json")) ? read("data/farmed.json").items : [];
 const legacy = fs.existsSync(path.join(ROOT, "data/legacy.json")) ? read("data/legacy.json").items : [];
 
 /* ---------- helpers ---------- */
@@ -58,7 +59,7 @@ ${extraHead}</head>
 <body>
 <header class="top"><div class="wrap">
 <a class="brand" href="/today/">JB &amp; Sandy <span>· Show prep</span></a>
-<nav class="main" aria-label="Main">${n("today", "Today", "/today/#today")}${n("ideas", "Ideas", "/today/#ideas")}${n("audio", "Audio", "/soundboard/")}${n("archive", "Archive", "/archive/")}</nav>
+<nav class="main" aria-label="Main">${n("today", "Today", "/today/#today")}${n("ideas", "Ideas", "/today/#ideas")}${n("farmed", "Farmed From Other Shows", "/farmed/")}${n("audio", "Audio", "/soundboard/")}${n("archive", "Archive", "/archive/")}</nav>
 </div></header>
 <main class="wrap">
 ${body}
@@ -101,6 +102,16 @@ for (const c of clipsIdeas) {
   else if (c.added < CUTOFF) why = "Older than 7 days";
   if (why) archived.push({ date: c.added, kind: "Audio", title: c.title, html: clipHtml(c, false), why, audio: true });
   else clipCurrent.push(c);
+}
+
+const farmBody = (f) => `<p><b>${esc(f.show)}</b>: ${esc(f.how)}</p><p class="hook"><b>Our version</b>${esc(f.ours)}</p><p class="meta">Added ${fmt(f.added)}${f.url ? ` · <a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(host(f.url))}</a>` : ""}</p>`;
+const farmCurrent = [];
+for (const f of farmed) {
+  let why = null;
+  if (f.stale) why = "Stale: " + f.stale;
+  else if (f.added < CUTOFF) why = "Older than 7 days (added " + fmt(f.added) + ")";
+  if (why) archived.push({ date: f.added, kind: "Farmed", title: f.show + ": " + f.title, html: farmBody(f), why });
+  else farmCurrent.push(f);
 }
 
 /* legacy cards from the old single page: all archived; dupes of doc ideas skipped */
@@ -214,11 +225,21 @@ const indexHtml = page({
 write("today/index.html", indexHtml);
 write("jb-sandy-showprep.html", indexHtml.replace("<head>", '<head>\n<link rel="canonical" href="/today/">'));
 
+/* ---------- farmed page ---------- */
+{
+  const shows = [...new Set(farmCurrent.map((f) => f.show))];
+  let fh = `<section id="farmed"><p class="stamp">${esc(STAMP)}</p><h1>Farmed From Other Shows</h1><p class="sub">Bits other morning shows ran this week, with a JB &amp; Sandy Austin version. Older ones are in the <a href="/archive/">archive</a>.</p>`;
+  if (!farmCurrent.length) fh += `<p class="note">Nothing farmed in the last 7 days.</p>`;
+  for (const sh of shows) fh += `<h4>${esc(sh)}</h4>` + farmCurrent.filter((f) => f.show === sh).map((f) => `<article><h3>${esc(f.title)}${f.added >= NEW_SINCE ? '<span class="badge">New</span>' : ""}</h3>${farmBody(f)}</article>`).join("\n");
+  fh += `</section>`;
+  write("farmed/index.html", page({ title: "Farmed From Other Shows · JB & Sandy", nav: "farmed", body: fh }));
+}
+
 /* ---------- archive ---------- */
 const byWeek = {};
 for (const a of archived) (byWeek[mondayOf(a.date)] = byWeek[mondayOf(a.date)] || []).push(a);
 const weeks = Object.keys(byWeek).sort().reverse();
-const KIND_ORDER = ["Stories", "Show ideas", "Audio", "From the old page"];
+const KIND_ORDER = ["Stories", "Show ideas", "Farmed", "Audio", "From the old page"];
 function archiveList(items) {
   let h = "";
   for (const kind of KIND_ORDER) {
