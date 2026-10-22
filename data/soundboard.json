@@ -871,6 +871,23 @@
    "status": "ok",
    "head_ok": false,
    "tail_ok": true
+  },
+  {
+   "id": "doc-505d03b3a7",
+   "url": "https://www.instagram.com/reel/DexpAeNM3-2/?obrf=MWd3bWpscHAweThlcg%3D%3D",
+   "tag": "",
+   "doc_desc": "Stephen Presley hilarious vid is worth a mention",
+   "title": "Stephen Presley hilarious vid is worth a mention",
+   "desc": "Stephen Presley hilarious vid is worth a mention",
+   "added": "2026-10-22",
+   "file": "sb-audio/doc-505d03b3a7.mp3",
+   "duration": 27.9,
+   "outcue": "…You have arrived at your destination.",
+   "incue": "Music You have arrived at…",
+   "transcript": "Music You have arrived at your destination.",
+   "status": "ok",
+   "head_ok": true,
+   "tail_ok": true
   }
  ],
  "skipped": [
