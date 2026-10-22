@@ -228,11 +228,23 @@ write("jb-sandy-showprep.html", indexHtml.replace("<head>", '<head>\n<link rel="
 /* ---------- farmed page ---------- */
 {
   const shows = [...new Set(farmCurrent.map((f) => f.show))];
-  let fh = `<section id="farmed"><p class="stamp">${esc(STAMP)}</p><h1>Farmed From Other Shows</h1><p class="sub">Bits other morning shows ran this week, with a JB &amp; Sandy Austin version. Older ones are in the <a href="/archive/">archive</a>.</p>`;
+  const showsFile = fs.existsSync(path.join(ROOT, "data/farmed_shows.json")) ? read("data/farmed_shows.json").shows : [];
+  const pick = read("data/farmed.json").pick;
+  const banned = new Set(showsFile.filter((x) => x.status === "banned").map((x) => x.show.toLowerCase()));
+  const isBanned = (n) => /bobby\s*bones/i.test(n) || banned.has(String(n).toLowerCase());
+  let pickHtml = "";
+  if (pick && !isBanned(pick.show)) {
+    const ds = esc(pick.show);
+    pickHtml = `<article class="pick"><h3>🎲 Grok's Random Pick · ${esc(fmt(pick.date, true))}</h3><p><b>${ds}</b>${pick.market ? ` <span class="meta">(${esc(pick.market)})</span>` : ""}</p><p><b>${esc(pick.title)}.</b> ${esc(pick.how)}</p><p class="hook"><b>Our version</b>${esc(pick.ours)}</p>${pick.url ? `<p class="meta"><a href="${esc(pick.url)}" target="_blank" rel="noopener">${esc(host(pick.url))}</a></p>` : ""}
+<p class="farm-btns"><button type="button" data-farm-act="keep" data-show="${ds}">Keep Farming From Them</button> <button type="button" data-farm-act="pause" data-show="${ds}">Try Again in 2 Weeks</button> <button type="button" data-farm-act="ban" data-show="${ds}">This Show Sucks Ass</button></p><p class="meta" id="pick-status"></p></article>`;
+  }
+  let fh = `<section id="farmed"><p class="stamp">${esc(STAMP)}</p><h1>Farmed From Other Shows</h1><p class="sub">Bits other morning shows ran this week, with a JB &amp; Sandy Austin version. Older ones are in the <a href="/archive/">archive</a>.</p><p class="meta" id="farm-who"></p><p class="note" id="farm-undo" hidden></p>` + pickHtml;
   if (!farmCurrent.length) fh += `<p class="note">Nothing farmed in the last 7 days.</p>`;
   for (const sh of shows) fh += `<h4>${esc(sh)}</h4>` + farmCurrent.filter((f) => f.show === sh).map((f) => `<article><h3>${esc(f.title)}${f.added >= NEW_SINCE ? '<span class="badge">New</span>' : ""}</h3>${farmBody(f)}</article>`).join("\n");
-  fh += `</section>`;
-  write("farmed/index.html", page({ title: "Farmed From Other Shows · JB & Sandy", nav: "farmed", body: fh }));
+  fh += `<h2>Shows we farm</h2><p class="sub">Rotation, paused until a date, or banned. Change any show here. Bobby Bones stays banned.</p><ul class="compact" id="farm-shows"></ul></section>`;
+  const farmData = JSON.stringify({ pick: pick || null, shows: showsFile }).replace(/</g, "\\u003c");
+  const farmCss = `<style>.farm-btns button,.who{font:inherit;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid #ccc;background:#fff;cursor:pointer;margin:2px}.farm-btns button[data-farm-act=keep]{background:#1f9d55;color:#fff;border-color:#1f9d55}.farm-btns button[data-farm-act=pause]{background:#f0b429;border-color:#f0b429}.farm-btns button[data-farm-act=ban]{background:#8b5a2b;color:#fff;border-color:#8b5a2b}.who.on{background:#ff6b2c;color:#fff;border-color:#ff6b2c}article.pick{border:2px solid #ff6b2c;border-radius:12px;padding:12px 14px}</style>`;
+  write("farmed/index.html", page({ title: "Farmed From Other Shows · JB & Sandy", nav: "farmed", body: fh, extraHead: farmCss, scripts: `<script>window.FARM=${farmData}</script><script src="/assets/farmed.js"></script>` }));
 }
 
 /* ---------- archive ---------- */

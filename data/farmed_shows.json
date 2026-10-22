@@ -1,0 +1,84 @@
+{
+ "note": "status: rotation (farm daily), paused (skip until 'until', then eligible again), banned (never). The routine applies clicks from /api/farm/clicks here each morning. Random Pick must be a show NOT listed here.",
+ "shows": [
+  {
+   "show": "Bobby Bones Show",
+   "status": "banned",
+   "since": "2026-10-21",
+   "by": "Sandy"
+  },
+  {
+   "show": "The Kidd Kraddick Morning Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Elvis Duran and the Morning Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Brooke & Jeffrey",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Mojo in the Morning",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "The Joe Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Morton in the Morning",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Smiley Morning Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Daly Migs",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Dwyer & Michaels",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Heidi & Frank",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Miguel & Holly",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "On Air with Ryan Seacrest",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  }
+ ],
+ "banned_forever_note": "Bobby Bones is permanently banned. Never farm from it or pick it."
+}
