@@ -4,7 +4,7 @@
   var DAY = 864e5, TZ = "America/Chicago";
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
-  var state = { overrides: {}, uploads: [] }, docClips = [], tab = "daily", q = "", audios = {}, current = null, toastT = null;
+  var state = { overrides: {}, uploads: [] }, docClips = [], PAGES = null, tab = "daily", q = "", audios = {}, current = null, toastT = null;
 
   /* ---------- dates (America/Chicago) ---------- */
   function ctParts(t) { var p = {}; new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date(t)).forEach(function (x) { p[x.type] = +x.value; }); return p; }
@@ -16,7 +16,8 @@
   function dailyStart(added) { var p = ctParts(addedTs(added)); return ctTime(p.year, p.month, p.day + 1, 0, 1); }
   function rel(ms) { var h = Math.max(0, ms) / 36e5; return h >= 48 ? Math.ceil(h / 24) + "d" : h >= 1 ? Math.ceil(h) + "h" : Math.max(1, Math.ceil(h * 60)) + "m"; }
 
-  /* ---------- holidays: tab shows 4 weeks before, hides after the day ---------- */
+  /* ---------- holidays: pages + visibility come from /soundboard/holidays.json (built from data/holidays.json at build time:
+     shows 14 days before, hides the day after; hidden pages are archived in the repo and return next year). HOL below is only a fallback. ---------- */
   function nthDow(y, m, dow, n) { var d = new Date(Date.UTC(y, m - 1, 1)); var first = (dow - d.getUTCDay() + 7) % 7 + 1; return [y, m, first + (n - 1) * 7]; }
   function lastDow(y, m, dow) { var last = new Date(Date.UTC(y, m, 0)); return [y, m, last.getUTCDate() - (last.getUTCDay() - dow + 7) % 7]; }
   function easter(y) { var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), mo = Math.floor((h + l - 7 * m + 114) / 31), da = (h + l - 7 * m + 114) % 31 + 1; return [y, mo, da]; }
@@ -40,8 +41,13 @@
     for (var yy = y; yy <= y + 1; yy++) { var d = h[2](yy); var end = ctTime(d[0], d[1], d[2] + 1, 0, 0); if (now < end) return { start: end - DAY - 28 * DAY, end: end, date: d }; }
     return null;
   }
-  function holVisible(key, now) { var w = holWindow(key, now); return !!w && now >= w.start && now < w.end; }
-  function holLabel(key) { var h = HOL.filter(function (x) { return x[0] === key; })[0]; return h ? h[1] : key; }
+  function ctDay(now) { var p = ctParts(now); return p.year + "-" + ("0" + p.month).slice(-2) + "-" + ("0" + p.day).slice(-2); }
+  function page(key) { return (PAGES || []).filter(function (p) { return p.key === key; })[0]; }
+  function holVisible(key, now) {
+    if (PAGES) { var p = page(key); var d = ctDay(now); return !!p && p.visible && d >= p.show_from && d < p.hide_from; } // backstop: hides on the day even without a rebuild
+    var w = holWindow(key, now); return !!w && now >= w.end - DAY - 14 * DAY && now < w.end;
+  }
+  function holLabel(key) { var pg = page(key); if (pg) return pg.label; var h = HOL.filter(function (x) { return x[0] === key; })[0]; return h ? h[1] : key; }
 
   /* ---------- clip model ---------- */
   function tagBoard(tag) {
@@ -66,7 +72,8 @@
       c.base = base;
       if (o.gone) { c.board = null; return c; }
       if (o.trashedAt) { var left = o.trashedAt + 7 * DAY - now; c.board = left > 0 ? "trash" : null; c.chip = "Gone in " + rel(left); return c; }
-      if (base === "daily") {
+      if (/^holiday-/.test(base) && !holVisible(base.slice(8), now)) { c.board = null; return c; }
+    if (base === "daily") {
         var end = dailyStart(c.added) + DAY;
         if (now < end) { c.board = "daily"; c.chip = "Expires in " + rel(end - now); }
         else if (now < end + 7 * DAY) { c.board = "archive"; c.chip = "Deletes in " + rel(end + 7 * DAY - now); }
@@ -78,7 +85,7 @@
   function tabs(clips) {
     var now = Date.now();
     var t = [["daily", "Daily"], ["mon", "Mon"], ["tue", "Tue"], ["wed", "Wed"], ["thu", "Thu"], ["fri", "Fri"], ["evergreen", "Evergreen"], ["beds", "Beds"]];
-    HOL.forEach(function (h) { if (holVisible(h[0], now)) t.push(["holiday-" + h[0], h[1], 1]); });
+    (PAGES ? PAGES.map(function (p) { return [p.key, p.label]; }) : HOL).forEach(function (h) { if (holVisible(h[0], now)) t.push(["holiday-" + h[0], h[1], 1]); });
     t.push(["archive", "Archive"], ["trash", "🗑 Trash"]);
     return t.map(function (x) { return { id: x[0], label: x[1], hol: !!x[2], n: clips.filter(function (c) { return c.board === x[0]; }).length }; });
   }
@@ -87,6 +94,7 @@
   function fmtDur(s) { if (!s && s !== 0) return "–:––"; s = Math.round(s); return Math.floor(s / 60) + ":" + ("0" + s % 60).slice(-2); }
   function boardOptions(includeDaily) {
     var now = Date.now(), o = [["daily", "Daily (#1day)"], ["mon", "Monday"], ["tue", "Tuesday"], ["wed", "Wednesday"], ["thu", "Thursday"], ["fri", "Friday"], ["evergreen", "Evergreen"], ["beds", "Beds & stingers"]];
+    if (PAGES) { PAGES.forEach(function (p) { if (holVisible(p.key, now)) { var s = p.date.split("-").map(Number); o.push(["holiday-" + p.key, "Holiday – " + p.label.replace(/^\S+\s/, "") + " (" + new Date(Date.UTC(s[0], s[1] - 1, s[2])).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }) + ")"]); } }); return o; }
     HOL.forEach(function (h) { var w = holWindow(h[0], now); var d = w ? new Date(Date.UTC(w.date[0], w.date[1] - 1, w.date[2])).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }) : ""; o.push(["holiday-" + h[0], "Holiday – " + h[1].replace(/^\S+\s/, "") + (d ? " (" + d + ")" : "")]); });
     return o;
   }
@@ -98,7 +106,7 @@
     $("tabs").innerHTML = T.map(function (t) { return '<button type="button" class="tab' + (t.id === tab ? " on" : "") + (t.hol ? " hol" : "") + '" data-tab="' + t.id + '">' + esc(t.label) + '<span class="n">' + t.n + "</span></button>"; }).join("");
     var cur = T.filter(function (t) { return t.id === tab; })[0];
     $("boardtitle").textContent = WD[tab] || cur.label.replace(/^🗑 /, "");
-    $("boardnote").textContent = NOTES[tab] || (cur.hol ? "Shows 4 weeks before the holiday and hides after it. Clips are kept for next year." : "");
+    $("boardnote").textContent = NOTES[tab] || (cur.hol ? "Shows 2 weeks before the holiday and hides the day after. Clips are archived and come back next year." : "");
     var favs = clips.filter(function (c) { return c.fav && c.board !== "trash"; });
     $("favwrap").hidden = !favs.length;
     $("favs").innerHTML = favs.map(function (c) { return '<button type="button" class="fav' + (current && current.id === c.id ? " playing" : "") + '" data-play="' + esc(c.id) + '">' + esc(c.title) + "<small>" + esc(fmtDur(c.duration)) + "</small></button>"; }).join("");
@@ -191,8 +199,9 @@
   function load() {
     return Promise.all([
       fetch("/data/soundboard.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : { clips: [] }; }).catch(function () { return { clips: [] }; }),
-      api("state").catch(function () { return { overrides: {}, uploads: [] }; })
-    ]).then(function (r) { docClips = (r[0].clips || []).filter(function (c) { return c.file || c.status === "needs_recording"; }); state = r[1]; render(); });
+      api("state").catch(function () { return { overrides: {}, uploads: [] }; }),
+      fetch("/soundboard/holidays.json", { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+    ]).then(function (r) { PAGES = r[2] && r[2].pages ? r[2].pages : null; docClips = (r[0].clips || []).filter(function (c) { return c.file || c.status === "needs_recording"; }); state = r[1]; render(); });
   }
 
   /* ---------- upload / edit form ---------- */

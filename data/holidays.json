@@ -1,0 +1,17 @@
+{
+ "note": "Soundboard holiday pages. A page exists once 'page' is true (Halloween from the start; others are created on first holiday cut). Visible from show_before_days before the date through the day itself (America/Chicago); hidden from the next day when hide_after_day is true. Hidden pages keep their clips in data/holiday-archive/<key>.json and their audio in sb-audio/ (never deleted); they come back with that archive the next year. Rules: fixed {month,day} | nth {month,dow(0=Sun),n} | last {month,dow} | easter.",
+ "holidays": [
+  { "key": "newyears", "label": "🎆 New Year's", "rule": { "type": "fixed", "month": 1, "day": 1 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["new year", "new years", "nye", "auld lang syne", "resolution"] },
+  { "key": "valentines", "label": "💘 Valentine's", "rule": { "type": "fixed", "month": 2, "day": 14 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["valentine", "valentines"] },
+  { "key": "stpatricks", "label": "☘️ St. Patrick's", "rule": { "type": "fixed", "month": 3, "day": 17 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["st patrick", "st. patrick", "st patty", "st paddy", "leprechaun", "shamrock"] },
+  { "key": "easter", "label": "🐣 Easter", "rule": { "type": "easter" }, "show_before_days": 14, "hide_after_day": true, "keywords": ["easter"] },
+  { "key": "mothersday", "label": "💐 Mother's Day", "rule": { "type": "nth", "month": 5, "dow": 0, "n": 2 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["mother's day", "mothers day"] },
+  { "key": "memorialday", "label": "🇺🇸 Memorial Day", "rule": { "type": "last", "month": 5, "dow": 1 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["memorial day"] },
+  { "key": "fathersday", "label": "👔 Father's Day", "rule": { "type": "nth", "month": 6, "dow": 0, "n": 3 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["father's day", "fathers day"] },
+  { "key": "july4th", "label": "🎇 July 4th", "rule": { "type": "fixed", "month": 7, "day": 4 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["july 4th", "fourth of july", "4th of july", "independence day"] },
+  { "key": "laborday", "label": "🛠 Labor Day", "rule": { "type": "nth", "month": 9, "dow": 1, "n": 1 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["labor day"] },
+  { "key": "halloween", "label": "🎃 Halloween", "page": true, "rule": { "type": "fixed", "month": 10, "day": 31 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["halloween", "trick or treat", "trick-or-treat", "jack-o-lantern", "haunted", "spooky", "monster mash"] },
+  { "key": "thanksgiving", "label": "🦃 Thanksgiving", "rule": { "type": "nth", "month": 11, "dow": 4, "n": 4 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["thanksgiving", "turkey day"] },
+  { "key": "christmas", "label": "🎄 Christmas", "rule": { "type": "fixed", "month": 12, "day": 25 }, "show_before_days": 14, "hide_after_day": true, "keywords": ["christmas", "xmas", "santa", "jingle bell", "sleigh", "mistletoe", "holly jolly", "rudolph", "frosty", "silent night", "noel"] }
+ ]
+}

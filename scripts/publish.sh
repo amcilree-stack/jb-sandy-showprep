@@ -42,7 +42,8 @@ echo "== 1-2) export docs + detect new stories and ideas"
 node scripts/sync-docs.js "${TODAY_ARGS[@]}"
 echo "== 3) soundboard: doc tags + audio from new social video links (extraction gated by data/soundboard-config.json)"
 node scripts/soundboard-sync.js "${TODAY_ARGS[@]}"
-echo "== 4) regenerate pages"
+echo "== 4) regenerate pages (holiday soundboard pages first: show/hide + archive by today's date)"
+node scripts/soundboard-holidays.js "${TODAY_ARGS[@]}"
 node scripts/build.js "${TODAY_ARGS[@]}"
 # Note: scripts/apply-basic-auth.js is Netlify's build step. Don't run it here; it would write credentials into _headers.
 
