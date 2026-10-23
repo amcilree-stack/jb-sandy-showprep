@@ -2,6 +2,87 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-solo-christmas-card",
+   "added": "2026-10-23",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Christmas card of just you (or just you and the dog)",
+   "how": "They debate whether it is weird to send out a Christmas card that is only you, or only you and your pet.",
+   "ours": "JB and Sandy rule on it, Tricia brings the receipts from cards we got. Phones: what is the weirdest Christmas card you ever got in Austin?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-22-270-kpod-the-kidd-kraddick-mor-christmas-cards-and-college-choices/"
+  },
+  {
+   "id": "kk-halloween-decor-side-hustle",
+   "added": "2026-10-23",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Halloween decorating is the new side hustle",
+   "how": "Story that people are now getting paid to decorate other folks' houses for Halloween, plus a phone-battery overcharging warning.",
+   "ours": "Would you pay someone to do your yard, and what would you charge? Phones: Austin, who has the over-the-top Halloween house on your street?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-22-270-kpod-the-kidd-kraddick-mor-phone-battery-and-halloween-side-hustle/"
+  },
+  {
+   "id": "kk-hard-kisser-date",
+   "added": "2026-10-23",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Worst date: the hard kisser",
+   "how": "A listener calls in to describe a date who was way too hard of a kisser.",
+   "ours": "Keep it PG: what is the one move on a first date that ended it for you instantly? Phones open, Tricia scores the calls.",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-22-270-kpod-the-kidd-kraddick-mor-worst-date-anna-and-brisket-smell/"
+  },
+  {
+   "id": "bj-hoa-candy-king",
+   "added": "2026-10-23",
+   "show": "Brooke & Jeffrey",
+   "title": "Awkward Thursday Phone Call: HOA vs. the Candy King",
+   "how": "A caller's HOA is threatening to fine him hundreds of dollars if he goes through with his favorite Halloween tradition, so the show calls on his behalf.",
+   "ours": "Austin HOA horror stories for Halloween week. Phones: what did your HOA try to fine you for, and did you fight it?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-22-awkward-thursday-phone-call-candy-king-of-the-neighborhood/"
+  },
+  {
+   "id": "mojo-wont-let-anna-drive-truck",
+   "added": "2026-10-23",
+   "show": "Mojo in the Morning",
+   "title": "Kev won't let Anna drive his truck",
+   "how": "Anna asks to drive Kevin's F-150, he hesitates, and it turns into a debate about who is the worst driver on the show.",
+   "ours": "Who is the worst driver among JB, Sandy and Tricia? We each make the case. Phones: who in your family is never allowed to drive your truck?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/kev-wont-let-anna-drive-his-truck"
+  },
+  {
+   "id": "mojo-airbnb-chores-ban",
+   "added": "2026-10-23",
+   "show": "Mojo in the Morning",
+   "title": "Airbnb is banning unreasonable checkout chores",
+   "how": "News that Airbnb is cracking down on hosts who pile chores on guests at checkout, opened up to texts and calls.",
+   "ours": "Lake Travis and Fredericksburg rental stories. Phones: what is the most ridiculous checkout chore a rental ever made you do?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/airbnb-is-banning-unreasonable-chores"
+  },
+  {
+   "id": "mojo-5-at-655-streak",
+   "added": "2026-10-23",
+   "show": "Mojo in the Morning",
+   "title": "5 @ 6:55: going for 15 in a row",
+   "how": "Daily five-question trivia game; a listener on a 14-win streak goes head to head against co-host Shannon.",
+   "ours": "A five-question KVET country trivia game where a caller tries to beat Tricia, with a running win streak. Phones: who thinks they can take her?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/5-6-55-0e87c7e7-e31e-4627-b1bb-21d9e13b4df8"
+  },
+  {
+   "id": "elvis-1000-dollar-tip",
+   "added": "2026-10-23",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Her waiter boyfriend got a $1,000 tip from a smitten customer",
+   "how": "The guys debate how a woman reacted after finding out a customer who had a crush on her waiter boyfriend tipped him $1,000.",
+   "ours": "Do you let him keep it, or is that crush money? Phones: what is the biggest tip you ever got (or gave), and what was the story?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-22-1014-elvis-duran-and-the-morni-394-a-big-tip-for-your-big-tip/"
+  },
+  {
+   "id": "elvis-three-wishes-genie",
+   "added": "2026-10-23",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "What would your three wishes be?",
+   "how": "Sherri Shepherd, Broadway's first female genie in Aladdin, joins and the show gets into everyone's three wishes.",
+   "ours": "JB, Sandy and Tricia each get three wishes, no wishing for more wishes. Phones: Austin, what is your first wish and why?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-22-1014-elvis-duran-and-the-morni-full-show-the-day-we-wished-from-a-female-ge/"
+  },
+  {
    "id": "kk-arm-hypothetical",
    "added": "2026-10-22",
    "show": "The Kidd Kraddick Morning Show",
@@ -147,13 +228,13 @@
   }
  ],
  "pick": {
-  "date": "2026-10-22",
-  "show": "Fitzy, Wippa & Kate",
-  "market": "Sydney (Nova 96.9), Australia, Hot AC",
-  "title": "Moth invasion: when will they finally leave?",
-  "how": "Australia is overrun with moths showing up where nobody wants them; the show digs into why and when the relief comes.",
-  "ours": "Austin's version: our seasonal invaders (crickets, grackles, cedar fever, June bugs). Phones: what's the worst critter invasion you've had in your house, and how did you get rid of it?",
-  "url": "https://omny.fm/shows/fitzy-wippa-kate/when-the-moths-will-finally-head-where-they-are-supposed-to-be"
+  "date": "2026-10-23",
+  "show": "The BOB & TOM Show",
+  "market": "Indianapolis-based, syndicated on rock stations nationwide",
+  "title": "A refrigerator from the 1950s is still running",
+  "how": "A listener letter brags about a 1950s refrigerator that still works, and the crew riffs on old stuff that outlasts everything new.",
+  "ours": "Oldest thing in your house that still works. JB, Sandy and Tricia each name theirs. Phones: what's the oldest appliance or truck you're still using in Austin?",
+  "url": "https://podcasts.apple.com/us/podcast/the-bob-tom-show-free-podcast/id784889506"
  },
  "pick_history": [
   {
@@ -167,6 +248,12 @@
    "show": "Fitzy, Wippa & Kate",
    "format": "International (Australia) Hot AC",
    "market": "Sydney, Australia"
+  },
+  {
+   "date": "2026-10-23",
+   "show": "The BOB & TOM Show",
+   "format": "Rock",
+   "market": "Indianapolis, syndicated"
   }
  ]
 }
