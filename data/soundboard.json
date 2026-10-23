@@ -1052,6 +1052,23 @@
    "status": "ok",
    "head_ok": true,
    "tail_ok": true
+  },
+  {
+   "id": "doc-70bf608770",
+   "url": "https://www.instagram.com/reel/Dc5_0HNRbEK/?xtok=NTc4MTIwNjQ2YQ%3D%3D",
+   "tag": "",
+   "doc_desc": "Shademap is now a thing",
+   "title": "Shademap is now a thing",
+   "desc": "Shademap is now a thing",
+   "added": "2026-10-23",
+   "file": "sb-audio/doc-70bf608770.mp3",
+   "duration": 9.1,
+   "outcue": "…explain Talkin' to my s -",
+   "incue": "Walkin' on a dream How…",
+   "transcript": "Walkin' on a dream How can I explain Talkin' to my s -",
+   "status": "ok",
+   "head_ok": true,
+   "tail_ok": true
   }
  ],
  "skipped": [
