@@ -1069,6 +1069,23 @@
    "status": "ok",
    "head_ok": true,
    "tail_ok": true
+  },
+  {
+   "id": "doc-489d531aab",
+   "url": "https://www.instagram.com/reel/De0RpojjclH/?vrfl=ZWp6aGtoOHB6N3A1",
+   "tag": "",
+   "doc_desc": "Brendan Ryle on Marshalls",
+   "title": "Brendan Ryle on Marshalls",
+   "desc": "Brendan Ryle on Marshalls",
+   "added": "2026-10-24",
+   "file": "sb-audio/doc-489d531aab.mp3",
+   "duration": 105.6,
+   "outcue": "…in touch with my brother, TJ.",
+   "incue": "Marshall's has all the top…",
+   "transcript": "Marshall's has all the top name brands just in the wrong product. Have you ever noticed that? Just like, yeah, we got Puma, luggage. Like I told you, we have Tommy Hilfig. Like, dude, this is a casserole dish. What are you talking about? And they got the suggested retail price and then the Marshall's price on the price. They play fast and loose with that suggestion. They lie about like, you bought those pants? Of course I bought these pants. They're originally $900. Marked down to $12 .99. Marshall will sell you anything, right? That guy doesn't care. Just like, I need a painting of a sailboat, a dress shirt that comes in a box with two ties included, some Adidas barbecue tongs. And on the way out, there better be some gourmet popcorn flavored jelly beans. Welcome to Marshall's. What about an area rug, Marshall? Oh, hey man, slow down. You know what? I put you in touch with my brother, TJ.",
+   "status": "ok",
+   "head_ok": false,
+   "tail_ok": true
   }
  ],
  "skipped": [
