@@ -2,6 +2,26 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "atx-hood-driver",
+   "title": "ATX hood driver",
+   "body": null,
+   "doc_text": "ATX hood driver",
+   "added": "2026-10-25",
+   "links": [
+    {
+     "url": "https://www.instagram.com/reel/DcJwMQLIMQ9/?exln=MWl5eWx3MGs2NmY3Ng%3D%3D",
+     "label": "driver"
+    }
+   ],
+   "social": [
+    "https://www.instagram.com/reel/DcJwMQLIMQ9/?exln=MWl5eWx3MGs2NmY3Ng%3D%3D"
+   ],
+   "doc_lines": [
+    "6f70af644e75"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "brendan-ryle-on-marshalls",
    "title": "Brendan Ryle on Marshalls",
    "body": null,
