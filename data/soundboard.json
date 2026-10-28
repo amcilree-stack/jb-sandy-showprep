@@ -536,6 +536,23 @@
    "head_ok": false,
    "tail_ok": true,
    "status": "ok"
+  },
+  {
+   "id": "doc-9d859d0d01",
+   "url": "https://www.instagram.com/reel/De_8vyvxiSw/?obrf=MTZscDg3azBxaXM2cQ%3D%3D",
+   "tag": "",
+   "doc_desc": "Should this woman have been arrested? I think we were home alone with four kids at this age.",
+   "title": "Should this woman have been arrested? I think we were home alone with four kids ",
+   "desc": "Should this woman have been arrested? I think we were home alone with four kids at this age.",
+   "added": "2026-10-28",
+   "file": "sb-audio/doc-9d859d0d01.mp3",
+   "duration": 38.5,
+   "outcue": "…what I have at this point.",
+   "incue": "Yes, ma 'am, that's what…",
+   "transcript": "Yes, ma 'am, that's what I have at this point. Yes, ma 'am, that's what I have at this point. Yes, ma 'am, that's what I have at this point.",
+   "status": "ok",
+   "head_ok": true,
+   "tail_ok": true
   }
  ],
  "skipped": [
