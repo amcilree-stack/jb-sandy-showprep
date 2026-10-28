@@ -847,6 +847,23 @@
    "head_ok": true,
    "tail_ok": true,
    "status": "ok"
+  },
+  {
+   "id": "doc-ad42570254",
+   "url": "https://www.facebook.com/share/v/1PtjErQha6/",
+   "tag": "",
+   "doc_desc": "Austin used to have APD vs. AFD football game in full pads",
+   "title": "Austin used to have APD vs. AFD football game in full pads",
+   "desc": "Austin used to have APD vs. AFD football game in full pads",
+   "added": "2026-10-28",
+   "file": "sb-audio/doc-ad42570254.mp3",
+   "duration": 56.5,
+   "outcue": "…is put our team on you.",
+   "incue": "All we want to do…",
+   "transcript": "All we want to do is put our team on you. All we want to do is put our team on you.",
+   "status": "ok",
+   "head_ok": false,
+   "tail_ok": true
   }
  ],
  "skipped": [
