@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-learn-to-say-no",
+   "added": "2026-10-28",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "PT Justin learns how to say no",
+   "how": "PT Justin, the guy who can't turn anybody down, gets coached on the air on how to finally say \"no.\"",
+   "ours": "Put JB on the spot with a run of rapid-fire favors and see if he can say no to even one. Phones: Austin, what did you say yes to that you totally should have said no to?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-27-270-kpod-the-kidd-kraddick-mor-smelly-feet-and-say-no-retreat/"
+  },
+  {
+   "id": "kk-love-letters-family-time",
+   "added": "2026-10-28",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Love Letters: boyfriend hates how much time she spends with family",
+   "how": "Kellie, the show's love expert, answers a listener whose boyfriend doesn't like how much time she spends with her family.",
+   "ours": "Tricia reads the letter and the room weighs in on where the line is. Phones: Austin, how much family time is too much in a relationship?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-27-270-kpod-the-kidd-kraddick-mor-love-letters-to-kellie/"
+  },
+  {
+   "id": "kk-misunderstood-villains",
+   "added": "2026-10-28",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Audrey's list of misunderstood villains",
+   "how": "Audrey brings a list of movie and TV villains she thinks got a bad rap, and the room argues over each one.",
+   "ours": "JB, Sandy and Tricia each defend one famous villain just in time for Halloween. Phones: Austin, which movie bad guy was actually right?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-27-270-kpod-the-kidd-kraddick-mor-love-is-blind/"
+  },
+  {
+   "id": "kk-forgot-to-eat-on-date",
+   "added": "2026-10-28",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Worst date: she never got fed",
+   "how": "Kaylin tells the story of a date where she somehow never got anything to eat.",
+   "ours": "Share the worst first-date food fails in the room. Phones: Austin, what's the worst thing that happened with the food on a first date?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-27-270-kpod-the-kidd-kraddick-mor-worst-date-kaylin-and-fairies/"
+  },
+  {
+   "id": "bj-masked-speaker-camping-secret",
+   "added": "2026-10-28",
+   "show": "Brooke & Jeffrey",
+   "title": "Masked Speaker: the camping trip secret",
+   "how": "A listener breaks a five-year pact with his buddies to tell, anonymously, what really happened on a camping trip.",
+   "ours": "Open the phones for anonymous \"we swore we'd never tell\" stories, voices disguised. Phones: Austin, what's the story your friends made you promise never to tell?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-27-masked-speaker-ghostly-gift/"
+  },
+  {
+   "id": "bj-sinister-sing-along",
+   "added": "2026-10-28",
+   "show": "Brooke & Jeffrey",
+   "title": "Plenty of Twenty: Sinister Sing Along",
+   "how": "They play their Plenty of Twenty game in a spooky Halloween sing-along edition.",
+   "ours": "Play the intro of a Halloween-ish song and make callers finish the lyric to win. Phones: Austin, call in and sing the next line to win.",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-27-shock-collar-question-102726/"
+  },
+  {
+   "id": "ed-remembering-pets",
+   "added": "2026-10-28",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Around the room: remembering our pets",
+   "how": "Elvis goes around the room as the crew remembers the pets they've lost, along with a birthday for Sam's dog.",
+   "ours": "JB, Sandy and Tricia each tell a story about a pet they still miss. Phones: Austin, tell us about the pet you'll never forget.",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-27-1014-elvis-duran-and-the-morni-around-the-room-remembering-out-pets/"
+  },
+  {
+   "id": "ed-refuse-to-learn",
+   "added": "2026-10-28",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Things we refuse to learn",
+   "how": "The crew lists the everyday skills they flat-out refuse to ever learn.",
+   "ours": "Everybody admits the skill they'll never bother with, like parallel parking or folding a fitted sheet. Phones: Austin, what's the one thing you refuse to learn how to do?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-27-1014-elvis-duran-and-the-morni-things-we-refuse-to-learn-after-party-podcas/"
+  },
+  {
+   "id": "mojo-aita-going-out-after-birth",
+   "added": "2026-10-28",
+   "show": "Mojo in the Morning",
+   "title": "Am I the A-hole: going out two weeks after giving birth",
+   "how": "They take an \"Am I the a-hole\" story from a new mom who went out two weeks after giving birth and let listeners judge.",
+   "ours": "Read the dilemma and let the phones vote it out. Phones: Austin, how soon after a baby is too soon to go out with friends?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/am-i-the-a-hole-going-out-2-weeks-after-giving-birth"
+  },
+  {
+   "id": "mojo-chivalry-offended",
+   "added": "2026-10-28",
+   "show": "Mojo in the Morning",
+   "title": "Anna offended Mojo: is chivalry still a thing?",
+   "how": "Anna and Mojo get into it about chivalry and what being a good partner or friend means now.",
+   "ours": "Settle it on the air: doors, check, coat, who walks curbside. Phones: Austin, what's one old-school manners rule you still expect?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/anna-offended-mojo"
+  },
+  {
    "id": "kk-holiday-chips-review",
    "added": "2026-10-27",
    "show": "The Kidd Kraddick Morning Show",
@@ -408,13 +498,13 @@
   }
  ],
  "pick": {
-  "date": "2026-10-27",
-  "show": "The Dan Patrick Show",
-  "market": "Syndicated nationally (Fox Sports Radio / Peacock), sports talk",
-  "title": "Best and worst moments of the weekend",
-  "how": "On Monday's show, Dan and the Danettes go around the room with their best and worst moments from the weekend, alongside the NFL Sunday recap.",
-  "ours": "Monday-morning round robin: JB, Sandy and Tricia each give one best and one worst moment from the weekend. Phones: Austin, what was your weekend's high point and low point?",
-  "url": "https://podcasts.apple.com/us/podcast/the-best-of-the-dan-patrick-show/id279241099?i=1000798208160"
+  "date": "2026-10-28",
+  "show": "Hawkeye in the Morning",
+  "market": "Dallas-Fort Worth (New Country 96.3 KSCS), country",
+  "title": "Your funny \"I wear Uggs slip-ons\" confessions",
+  "how": "Hawkeye and Michelle open the phones for listeners' funny confessions about wearing Ugg slip-ons.",
+  "ours": "Fashion confession call-in: JB, Sandy and Tricia each own up to the comfy thing they wear in public and swore they never would. Phones: Austin, what's your embarrassing comfort-wear confession?",
+  "url": "https://podcasts.apple.com/us/podcast/your-funny-i-wear-uggs-slip-ons-confessions/id1042352244?i=1000798346766"
  },
  "pick_history": [
   {
@@ -446,6 +536,12 @@
    "show": "The Dan Patrick Show",
    "format": "Sports talk",
    "market": "National syndication"
+  },
+  {
+   "date": "2026-10-28",
+   "show": "Hawkeye in the Morning",
+   "format": "Country",
+   "market": "Dallas-Fort Worth (KSCS 96.3)"
   }
  ]
 }
