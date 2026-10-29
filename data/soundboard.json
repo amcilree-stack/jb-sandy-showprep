@@ -881,6 +881,27 @@
    "status": "ok",
    "head_ok": true,
    "tail_ok": true
+  },
+  {
+   "id": "johnny-d20d19554f",
+   "source_name": "Johnny",
+   "url": "",
+   "tag": "day-thu",
+   "air_day": "thu",
+   "filed": "2026-10-29",
+   "title": "We're all all right!",
+   "raw_title": "Brewers: Hello wisconsin – that 70s show theme – we're all alright",
+   "desc": "",
+   "added": "2026-10-29",
+   "file": "sb-audio/johnny-d20d19554f.mp3",
+   "filename": "brewers_hello wisconsin   that 70s show theme  we're all alright.mp3",
+   "md5": "d20d19554f78ea9d55faa6468e956590",
+   "duration": 7.6,
+   "outcue": "…all all right! Hello, it's Yahtzee!",
+   "transcript": "We're all all right! We're all all right! Hello, it's Yahtzee!",
+   "head_ok": false,
+   "tail_ok": true,
+   "status": "ok"
   }
  ],
  "skipped": [
