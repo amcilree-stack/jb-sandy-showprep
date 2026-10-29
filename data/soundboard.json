@@ -864,6 +864,23 @@
    "status": "ok",
    "head_ok": false,
    "tail_ok": true
+  },
+  {
+   "id": "doc-6232d9994d",
+   "url": "https://www.instagram.com/reel/DfBGo6sxBy3/?cplk=MWVzcnA1Y3Qxb2ZyZw%3D%3D",
+   "tag": "",
+   "doc_desc": "A pedal party and Robotaxi collided in downtown Austin.",
+   "title": "A pedal party and Robotaxi collided in downtown Austin.",
+   "desc": "A pedal party and Robotaxi collided in downtown Austin.",
+   "added": "2026-10-29",
+   "file": "sb-audio/doc-6232d9994d.mp3",
+   "duration": 18,
+   "outcue": "…won't be able to back her.",
+   "incue": "No, you won't be able…",
+   "transcript": "No, you won't be able to back her.",
+   "status": "ok",
+   "head_ok": true,
+   "tail_ok": true
   }
  ],
  "skipped": [
