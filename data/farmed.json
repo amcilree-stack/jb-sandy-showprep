@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-popular-halloween-candy",
+   "added": "2026-10-29",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Instacart's most popular Halloween candy list",
+   "how": "The crew runs through Instacart's list of the most popular Halloween candy and argues over the rankings.",
+   "ours": "JB, Sandy and Tricia each rank their top three trick-or-treat candies two days before Halloween. Phones: Austin, what's the best candy in the bowl, and what's the one you leave at the bottom?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-28-270-kpod-the-kidd-kraddick-mor-halloween-candy-and-kiddnation-confession/"
+  },
+  {
+   "id": "kk-embarrassing-for-no-reason",
+   "added": "2026-10-29",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Things that are embarrassing for no reason",
+   "how": "Ana brings a list of everyday things that feel embarrassing even though they shouldn't, and the room adds their own.",
+   "ours": "Each of us confesses the totally normal thing that still makes us cringe, like waving back at someone who wasn't waving at you. Phones: Austin, what's embarrassing for you for absolutely no reason?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-28-270-kpod-the-kidd-kraddick-mor-dating-big-al-and-embarrassing-things/"
+  },
+  {
+   "id": "kk-new-homeowner-hosting",
+   "added": "2026-10-29",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "New homeowner needs help hosting guests",
+   "how": "Ana just bought a house and asks the show for help figuring out how to host guests for the first time.",
+   "ours": "Tricia and Sandy give JB a crash course in being a good host before the holidays hit. Phones: Austin, what's the one thing a great host always does?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-28-270-kpod-the-kidd-kraddick-mor-homeowner-and-ai/"
+  },
+  {
+   "id": "kk-parents-help-resumes",
+   "added": "2026-10-29",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Gen Z gets parents' help with their resumes",
+   "how": "The show reacts to a report that Gen Z job hunters are getting their parents to help write their resumes.",
+   "ours": "We compare how we got our first jobs with how kids get them now. Phones: Austin, did your parents help you land your first job, and how?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-28-270-kpod-the-kidd-kraddick-mor-worst-date-nicole-and-job-hunting/"
+  },
+  {
+   "id": "bj-whats-on-your-mind-scare-family",
+   "added": "2026-10-29",
+   "show": "Brooke & Jeffrey",
+   "title": "What's On Our Minds: Brooke wants to scare her family",
+   "how": "They go around the room: Brooke is determined to scare her family this Halloween, Jose overspent at a football game, and Jeffrey has a gripe with how his cleaners clean.",
+   "ours": "Around the room Austin-style: JB, Sandy and Tricia each bring one thing that's bugging them this week. Phones: Austin, what's on your mind this morning?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-28-whats-on-your-mind-102826/"
+  },
+  {
+   "id": "bj-battle-tinder-dates-halloween",
+   "added": "2026-10-29",
+   "show": "Brooke & Jeffrey",
+   "title": "Battle of the Tinder Dates: Halloween edition",
+   "how": "Two listeners go head to head over who has the worst Tinder dating life, in a Halloween edition of the segment.",
+   "ours": "Two Austin callers battle over the scariest first date they've been on, and the room picks a winner. Phones: Austin, what's your worst Halloween-season date?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-28-battle-of-the-tinder-dates-halloween-edition-amy-and-nikki/"
+  },
+  {
+   "id": "ed-haunted-house-first-date",
+   "added": "2026-10-29",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Is a haunted house the ultimate first-date test?",
+   "how": "Gandhi explains why a haunted house might expose someone's true colors on a first date, and the room debates it.",
+   "ours": "We debate whether a haunted house tells you everything you need to know about a date. Phones: Austin, what did a scary date reveal about someone?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-28-1014-elvis-duran-and-the-morni-around-the-room-is-a-haunted-house-the-ultim/"
+  },
+  {
+   "id": "mojo-bathroom-etiquette",
+   "added": "2026-10-29",
+   "show": "Mojo in the Morning",
+   "title": "Bathroom etiquette",
+   "how": "The guys trade their unfiltered opinions on public bathroom etiquette and the rules people break.",
+   "ours": "JB and Sandy lay out their public restroom rules and Tricia rules on who's right. Phones: Austin, what's the bathroom etiquette rule people break that drives you crazy?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/bathroom-etiquette"
+  },
+  {
+   "id": "mojo-overshared-with-boss",
+   "added": "2026-10-29",
+   "show": "Mojo in the Morning",
+   "title": "Shannon overshared with the boss",
+   "how": "Shannon tells the story of oversharing with her boss and having to apologize for it.",
+   "ours": "Each of us admits the time we told a boss way too much. Phones: Austin, what's the worst thing you ever overshared at work?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/shannon-over-shared-with-the-boss"
+  },
+  {
+   "id": "mojo-last-minute-costumes",
+   "added": "2026-10-29",
+   "show": "Mojo in the Morning",
+   "title": "Anna's last-minute Halloween costumes",
+   "how": "Anna and callers pitch easy last-minute Halloween costume ideas, from simple to DIY.",
+   "ours": "Last-minute costume rescue: callers pitch costumes you can make from stuff already in your house, and we pick the best. Phones: Austin, what's your best costume made in under ten minutes?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/annas-last-minute-halloween-costumes"
+  },
+  {
    "id": "kk-learn-to-say-no",
    "added": "2026-10-28",
    "show": "The Kidd Kraddick Morning Show",
@@ -498,13 +588,13 @@
   }
  ],
  "pick": {
-  "date": "2026-10-28",
-  "show": "Hawkeye in the Morning",
-  "market": "Dallas-Fort Worth (New Country 96.3 KSCS), country",
-  "title": "Your funny \"I wear Uggs slip-ons\" confessions",
-  "how": "Hawkeye and Michelle open the phones for listeners' funny confessions about wearing Ugg slip-ons.",
-  "ours": "Fashion confession call-in: JB, Sandy and Tricia each own up to the comfy thing they wear in public and swore they never would. Phones: Austin, what's your embarrassing comfort-wear confession?",
-  "url": "https://podcasts.apple.com/us/podcast/your-funny-i-wear-uggs-slip-ons-confessions/id1042352244?i=1000798346766"
+  "date": "2026-10-29",
+  "show": "Murphy, Sam & Jodi",
+  "market": "Charlotte (WLNK 107.9 The Link), AC",
+  "title": "The cookie tray problem",
+  "how": "After a family gathering at Murphy and Jodi's house, Murphy airs his problem with the cookie tray and asks if anyone else can relate.",
+  "ours": "Holiday-season gripe: Sandy, JB and Tricia each name the thing about family gathering food that drives them nuts, like the picked-over cookie tray. Phones: Austin, what's your family gathering pet peeve?",
+  "url": "https://omny.fm/shows/murphy-sam-jodi/the-cookie-tray-problem-after-the-show-10-28"
  },
  "pick_history": [
   {
@@ -542,6 +632,12 @@
    "show": "Hawkeye in the Morning",
    "format": "Country",
    "market": "Dallas-Fort Worth (KSCS 96.3)"
+  },
+  {
+   "date": "2026-10-29",
+   "show": "Murphy, Sam & Jodi",
+   "format": "AC",
+   "market": "Charlotte (WLNK 107.9 The Link)"
   }
  ]
 }
