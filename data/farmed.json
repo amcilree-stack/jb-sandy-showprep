@@ -2,6 +2,105 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-uber-for-a-date",
+   "added": "2026-10-30",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Is sending an Uber to pick up your date acceptable?",
+   "how": "The crew debates whether sending a rideshare to pick up a date is thoughtful or a red flag.",
+   "ours": "JB, Sandy and Tricia rule on whether an Uber pickup counts as a real date move or a cop-out. Phones: Austin, would you get in the Uber, or is that a dealbreaker?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-29-270-kpod-the-kidd-kraddick-mor-happy-thursday-friday-eve/"
+  },
+  {
+   "id": "kk-paletero-and-old-friends",
+   "added": "2026-10-30",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Running into the paletero man and reconnecting with an old friend",
+   "how": "Ana has her first run-in with the paletero man since she was a kid, and Audrey tells the story of reconnecting with an old friend.",
+   "ours": "We trade the childhood thing that still makes us feel ten years old when we see it, and the old friend we reconnected with out of nowhere. Phones: Austin, who's the friend you found again after years?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-29-270-kpod-the-kidd-kraddick-mor-paletero-man-and-old-friends/"
+  },
+  {
+   "id": "kk-robot-dog-walker",
+   "added": "2026-10-30",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Weird jobs: could you walk a robot dog?",
+   "how": "The room reacts to a list of strange new jobs, starting with getting paid to walk a robot dog.",
+   "ours": "Sandy reads a few real oddball job listings and JB and Tricia say which one they'd actually take. Phones: Austin, what's the weirdest job you've ever been paid to do?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-29-270-kpod-the-kidd-kraddick-mor-weird-jobs-and-new-feature-for-instagram/"
+  },
+  {
+   "id": "kk-looks-like-his-ex",
+   "added": "2026-10-30",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Love Letters: she looks just like her boyfriend's ex",
+   "how": "The Love Expert answers a listener who found out she looks a lot like her boyfriend's ex.",
+   "ours": "Tricia reads the letter and we each say whether that's a compliment, a coincidence, or a reason to worry. Phones: Austin, have you ever found out you were someone's type a little too exactly?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-29-270-kpod-the-kidd-kraddick-mor-love-letters-to-kellie/"
+  },
+  {
+   "id": "bj-haunted-house-line",
+   "added": "2026-10-30",
+   "show": "Brooke & Jeffrey",
+   "title": "Whatcha doin' at the haunted house?",
+   "how": "They send two producers to a scary haunted house to ask the people waiting in line one simple question and play back the answers.",
+   "ours": "Austin haunted-house season edition: we ask who in the studio is the first one to bail out of a haunted house. Phones: Austin, have you ever had to be walked out of a haunted house?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-29-whatcha-doin-at-the-haunted-house-102926/"
+  },
+  {
+   "id": "bj-yard-haunt-arms-race",
+   "added": "2026-10-30",
+   "show": "Brooke & Jeffrey",
+   "title": "Shock Collar Question: the front-yard graveyard arms race",
+   "how": "They riff on neighbors spending thousands to turn front lawns into graveyards and garages into haunted torture chambers, then ask the question of the day.",
+   "ours": "JB, Sandy and Tricia guess how much their own neighbors spent on Halloween yard decor this year. Phones: Austin, who's got the over-the-top Halloween house on your street?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-29-shock-collar-question-102926/"
+  },
+  {
+   "id": "ed-dad-elopement-surprise",
+   "added": "2026-10-30",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Dad plans a surprise for his daughter's elopement",
+   "how": "A listener whose daughter is eloping to save the family money calls in about his plan to surprise her so he can still walk her down the aisle.",
+   "ours": "Feel-good story setup, then we each share the best family surprise we've ever pulled off or been on the receiving end of. Phones: Austin, what's the surprise that made you cry?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-29-1014-elvis-duran-and-the-morni-dad-plans-emotional-surprise-for-daughters-e/"
+  },
+  {
+   "id": "mojo-accidentally-posted-it",
+   "added": "2026-10-30",
+   "show": "Mojo in the Morning",
+   "title": "Accidentally posted it",
+   "how": "The crew trades stories about posting something online by accident that they wish they could take back.",
+   "ours": "We confess our worst accidental post, text or reply-all. Phones: Austin, what did you accidentally post, and who saw it?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/accidentally-posted-it"
+  },
+  {
+   "id": "mojo-plans-get-canceled",
+   "added": "2026-10-30",
+   "show": "Mojo in the Morning",
+   "title": "Shannon loves when plans get canceled",
+   "how": "Shannon admits the best feeling in the world is when plans fall through, and the room argues about it.",
+   "ours": "Sandy, JB and Tricia each say whether a canceled plan is a disappointment or a gift. Phones: Austin, are you secretly hoping your Friday plans get canceled?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/shannon-loves-when-plans-get-canceled"
+  },
+  {
+   "id": "mojo-not-my-baby-anymore",
+   "added": "2026-10-30",
+   "show": "Mojo in the Morning",
+   "title": "Not my baby anymore",
+   "how": "Parents in the room share the moments that made them realize their kids weren't little anymore.",
+   "ours": "Tricia and Sandy share the moment it hit them that a kid grew up. Phones: Austin, what was the moment you realized your baby wasn't a baby anymore?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/not-my-baby-anymore"
+  },
+  {
+   "id": "mojo-shut-up-dad",
+   "added": "2026-10-30",
+   "show": "Mojo in the Morning",
+   "title": "Shut up, Dad: sideline parents",
+   "how": "The show talks about that parent in the stands yelling 'get him out of the game' at kids' sports.",
+   "ours": "JB and Sandy describe the loudest sideline parent they've ever seen at a youth game. Phones: Austin, are you the yelling parent, or do you sit as far from them as you can?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/shut-up-dad"
+  },
+  {
    "id": "kk-popular-halloween-candy",
    "added": "2026-10-29",
    "show": "The Kidd Kraddick Morning Show",
@@ -588,13 +687,13 @@
   }
  ],
  "pick": {
-  "date": "2026-10-29",
-  "show": "Murphy, Sam & Jodi",
-  "market": "Charlotte (WLNK 107.9 The Link), AC",
-  "title": "The cookie tray problem",
-  "how": "After a family gathering at Murphy and Jodi's house, Murphy airs his problem with the cookie tray and asks if anyone else can relate.",
-  "ours": "Holiday-season gripe: Sandy, JB and Tricia each name the thing about family gathering food that drives them nuts, like the picked-over cookie tray. Phones: Austin, what's your family gathering pet peeve?",
-  "url": "https://omny.fm/shows/murphy-sam-jodi/the-cookie-tray-problem-after-the-show-10-28"
+  "date": "2026-10-30",
+  "show": "Jonesy & Amanda",
+  "market": "Sydney, Australia (WSFM 101.7 Gold), classic hits",
+  "title": "Lick your shoe or chew the mystery desk gum?",
+  "how": "On the Friday show Jonesy and Amanda debate which is worse: licking the bottom of your shoe or chewing a piece of mystery gum stuck under a desk.",
+  "ours": "Gross-out would-you-rather: JB, Sandy and Tricia each pick their poison and defend it, then we throw out a couple more Austin versions. Phones: Austin, which one are you doing, and what's your own worse-is-worse question?",
+  "url": "https://omny.fm/shows/jam-nation-with-jonesy-amanda/full-show-in-the-summertime"
  },
  "pick_history": [
   {
@@ -638,6 +737,12 @@
    "show": "Murphy, Sam & Jodi",
    "format": "AC",
    "market": "Charlotte (WLNK 107.9 The Link)"
+  },
+  {
+   "date": "2026-10-30",
+   "show": "Jonesy & Amanda",
+   "format": "International (Australia) classic hits",
+   "market": "Sydney, Australia (WSFM 101.7 Gold)"
   }
  ]
 }
