@@ -2,6 +2,105 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-side-hustle-idea",
+   "added": "2026-11-02",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Pitch us your side hustle idea",
+   "how": "On the Friday show the crew kicks around a side hustle idea and whether it could actually make money.",
+   "ours": "Each of us pitches a side hustle we'd really try, and the room votes on which one would make rent. Phones: Austin, what's your side hustle, and does it actually pay?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-30-270-kpod-the-kidd-kraddick-mor-side-hustle-idea-and-love-letters-to-kellie/"
+  },
+  {
+   "id": "kk-unnecessary-lying",
+   "added": "2026-11-02",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Lies you tell for no reason",
+   "how": "The crew talks about unnecessary lying, the little fibs people tell when the truth would have been fine.",
+   "ours": "JB, Sandy and Tricia confess the pointless lie each of us tells all the time, like saying 'almost there' from the couch. Phones: Austin, what's the totally unnecessary lie you tell?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-30-270-kpod-the-kidd-kraddick-mor-unnecessary-lying-and-kiddnation-confession/"
+  },
+  {
+   "id": "kk-worst-date-lexi",
+   "added": "2026-11-02",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Worst Date: a listener's nightmare first date",
+   "how": "A listener named Lexi shares her worst date story in the show's recurring Worst Date segment.",
+   "ours": "Open the phones for Austin's worst first dates and let Tricia rule on who wins the worst one. Phones: Austin, what's the worst first date you've ever been on?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-10-30-270-kpod-the-kidd-kraddick-mor-worst-date-lexi-and-kellie-costume/"
+  },
+  {
+   "id": "bj-halloween-costume-reveal",
+   "added": "2026-11-02",
+   "show": "Brooke & Jeffrey",
+   "title": "Halloween costume reveal",
+   "how": "On Halloween eve the show reveals the costumes the cast picked for the holiday.",
+   "ours": "Do the day-after version: JB, Sandy and Tricia reveal what we really wore (or wanted to wear) for Halloween. Phones: Austin, what did you go as, and did anybody get it?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-30-halloween-costume-reveal-103026/"
+  },
+  {
+   "id": "bj-halloween-shock-collar",
+   "added": "2026-11-02",
+   "show": "Brooke & Jeffrey",
+   "title": "Halloween Shock Collar Question",
+   "how": "The show runs its Shock Collar Question bit with a Halloween theme: get the answer wrong and you get zapped.",
+   "ours": "Sandy runs a quick holiday trivia gauntlet on JB and Tricia, with a buzzer or squirt bottle standing in for the shock collar. Phones: Austin, call in and play for the penalty seat.",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-30-halloween-shock-collar-question-103026/"
+  },
+  {
+   "id": "bj-hoa-docked-me-parody",
+   "added": "2026-11-02",
+   "show": "Brooke & Jeffrey",
+   "title": "Song of the Week: my lame HOA just docked me",
+   "how": "Young Jeffrey's Song of the Week is a pop-song parody about getting fined by the HOA.",
+   "ours": "Austin is HOA country, so we trade the dumbest HOA letter we've ever gotten, from trash cans to paint colors. Phones: Austin, what did your HOA fine you for?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-10-30-my-lame-hoa-just-docked-me-ariana-grande-parody-jeffreys-song-of-the-week/"
+  },
+  {
+   "id": "ed-outgrow-your-old-self",
+   "added": "2026-11-02",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "You're allowed to outgrow your old self",
+   "how": "In Tommy Talk the show discusses giving yourself permission to outgrow who you used to be.",
+   "ours": "Each of us names the old version of ourselves we're glad we left behind, from hairstyles to habits. Phones: Austin, what's something about the old you that you've totally outgrown?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-30-1014-elvis-duran-and-the-morni-tommy-talk-youre-allowed-to-outgrow-your-old/"
+  },
+  {
+   "id": "ed-no-halloween-party-at-my-hall",
+   "added": "2026-11-02",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "No Halloween party at MY hall",
+   "how": "The show takes up a story about someone refusing to allow a Halloween party at their venue.",
+   "ours": "Talk about the time somebody shut down your party, whether it was a landlord, a neighbor or a parent. Phones: Austin, who killed your party and how?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-30-1014-elvis-duran-and-the-morni-no-halloween-party-at-my-hall/"
+  },
+  {
+   "id": "ed-halloween-match-game",
+   "added": "2026-11-02",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Daily Game: Halloween Match Game",
+   "how": "The show plays a Halloween version of Match Game, with the room trying to match each other's answers to fill-in-the-blank prompts.",
+   "ours": "Sandy reads Austin-flavored Halloween blanks and JB and Tricia try to match. Phones: Austin, play along and try to match the most popular answer.",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-10-30-1014-elvis-duran-and-the-morni-daily-game-halloween-match-game/"
+  },
+  {
+   "id": "mojo-dont-come-over-if-sick",
+   "added": "2026-11-02",
+   "show": "Mojo in the Morning",
+   "title": "Don't come over if you're sick",
+   "how": "The show debates people who show up to get-togethers sick, and using 'I'm not feeling well' to bail.",
+   "ours": "Flu-season rules: when do you stay home, and who in our lives always shows up coughing? Phones: Austin, should a sick friend skip the party, or is 'I'm sick' just an excuse?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/dont-come-over-if-youre-sick"
+  },
+  {
+   "id": "mojo-pay-for-playdate",
+   "added": "2026-11-02",
+   "show": "Mojo in the Morning",
+   "title": "Should you pay for a playdate?",
+   "how": "The show asks listeners whether parents should chip in or pay when their kid goes on a playdate, and takes texts.",
+   "ours": "JB, Sandy and Tricia rule on who pays for snacks, pizza and outings when the kids hang out. Phones: Austin parents, do you split the playdate costs or is that weird?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/pay-for-playdate"
+  },
+  {
    "id": "kk-uber-for-a-date",
    "added": "2026-10-30",
    "show": "The Kidd Kraddick Morning Show",
@@ -687,13 +786,13 @@
   }
  ],
  "pick": {
-  "date": "2026-10-30",
-  "show": "Jonesy & Amanda",
-  "market": "Sydney, Australia (WSFM 101.7 Gold), classic hits",
-  "title": "Lick your shoe or chew the mystery desk gum?",
-  "how": "On the Friday show Jonesy and Amanda debate which is worse: licking the bottom of your shoe or chewing a piece of mystery gum stuck under a desk.",
-  "ours": "Gross-out would-you-rather: JB, Sandy and Tricia each pick their poison and defend it, then we throw out a couple more Austin versions. Phones: Austin, which one are you doing, and what's your own worse-is-worse question?",
-  "url": "https://omny.fm/shows/jam-nation-with-jonesy-amanda/full-show-in-the-summertime"
+  "date": "2026-11-02",
+  "show": "The Chris Moyles Show",
+  "market": "London, UK (Radio X), rock/alternative",
+  "title": "Finding out you're in someone's will",
+  "how": "On the Friday Oct 30 show F1's Christian Horner came in and revealed how he found out Chris is supposed to be in Geri Halliwell's will, and the room ran with it.",
+  "ours": "JB, Sandy and Tricia say who we secretly hope has us in their will and what we'd want left to us, then who's getting what from us. Phones: Austin, are you in anybody's will, and what's the weirdest thing you've been promised?",
+  "url": "https://podcasts.apple.com/us/podcast/the-chris-moyles-show-on-radio-x-podcast/id1042635536"
  },
  "pick_history": [
   {
@@ -743,6 +842,12 @@
    "show": "Jonesy & Amanda",
    "format": "International (Australia) classic hits",
    "market": "Sydney, Australia (WSFM 101.7 Gold)"
+  },
+  {
+   "date": "2026-11-02",
+   "show": "The Chris Moyles Show",
+   "format": "International (UK) rock/alternative",
+   "market": "London, UK (Radio X)"
   }
  ]
 }
