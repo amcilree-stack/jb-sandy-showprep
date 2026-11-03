@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-last-car-wash",
+   "added": "2026-11-03",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "When's the last time you washed your car?",
+   "how": "On Monday's show the crew got into unlimited car wash memberships and admitted how long it's really been since they washed their cars.",
+   "ours": "JB, Sandy and Tricia each confess how long since our cars got a real wash and what's living in the cupholders. Phones: Austin, when's the last time you washed your car, honestly?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-02-270-kpod-the-kidd-kraddick-mor-food-companies-and-unlimited-car-wash/"
+  },
+  {
+   "id": "kk-last-check-written",
+   "added": "2026-11-03",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "When's the last time you wrote a check?",
+   "how": "The crew asked when anybody last actually wrote a paper check, and who still carries a checkbook.",
+   "ours": "We each try to remember our last paper check and who we wrote it to, then Tricia checks if anybody here even owns checks. Phones: Austin, when did you last write a check, and who still makes you pay that way?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-02-270-kpod-the-kidd-kraddick-mor-fraud-alert-and-money-songs/"
+  },
+  {
+   "id": "kk-money-songs",
+   "added": "2026-11-03",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "The songs that made the most money",
+   "how": "PT Justin researched and counted down the top 5 songs that have earned the most money ever.",
+   "ours": "Sandy reads the top-earning songs ever and JB and Tricia guess the order before the reveal, then we pick the one song we'd want the royalties on. Phones: Austin, which song would you want the royalty checks from?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-02-270-kpod-the-kidd-kraddick-mor-fraud-alert-and-money-songs/"
+  },
+  {
+   "id": "kk-parenting-is-hard",
+   "added": "2026-11-03",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Parenting is harder than you thought",
+   "how": "Ana talked about starting to realize just how hard parenting actually is, and the room chimed in.",
+   "ours": "We each name the moment parenting (or babysitting, or raising a dog) hit harder than we expected. Phones: Austin parents, what's the part nobody warned you about?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-02-270-kpod-the-kidd-kraddick-mor-rage-bait-and-parenting-is-hard/"
+  },
+  {
+   "id": "bj-born-in-november",
+   "added": "2026-11-03",
+   "show": "Brooke & Jeffrey",
+   "title": "Shock Collar Question: famous things that debuted in November",
+   "how": "For the first Monday of November they quizzed the room on products, movies and TV shows that debuted in November, with the shock collar on the line for wrong answers.",
+   "ours": "Sandy quizzes JB and Tricia on famous products, movies and shows that came out in November, loser does a penalty of the room's choosing. Phones: Austin, call in and play against JB.",
+   "url": "https://www.brookeandjeffrey.com/content/2026-11-02-shock-collar-question-11226/"
+  },
+  {
+   "id": "bj-laser-stories-1102",
+   "added": "2026-11-03",
+   "show": "Brooke & Jeffrey",
+   "title": "Laser Stories: weird news with lasers",
+   "how": "The crew read weird news from around the world and added laser sound effects for no reason at all.",
+   "ours": "Sandy reads three weird headlines from around the country and JB and Tricia guess which one is fake, with our own silly sound effect on every story. Phones: Austin, what's the weirdest thing you've seen in the news lately?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-11-02-laser-stories-11226/"
+  },
+  {
+   "id": "ed-disappear-without-trace",
+   "added": "2026-11-03",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Could you disappear and start over?",
+   "how": "After Elvis said a longtime friend seemingly vanished, listeners shared bizarre disappearance stories and the room debated what it would take to leave everything and start a new life.",
+   "ours": "JB, Sandy and Tricia say where we'd go and what our new name would be if we started over, and who'd notice first. Phones: Austin, do you know somebody who just vanished out of your life one day?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-02-1014-elvis-duran-and-the-morni-daily-highlight-could-you-disappear-without-/"
+  },
+  {
+   "id": "ed-scotty-marathon",
+   "added": "2026-11-03",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Scotty ran the marathon",
+   "how": "Scotty recapped running the NYC Marathon over the weekend, from training to the finish line.",
+   "ours": "We each name the hardest physical thing we've ever finished and whether we'd do it again. Phones: Austin, what's the toughest race or challenge you've ever finished?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-02-1014-elvis-duran-and-the-morni-full-show-the-day-scotty-ran-a-marathon/"
+  },
+  {
+   "id": "mojo-bianca-no-friends",
+   "added": "2026-11-03",
+   "show": "Mojo in the Morning",
+   "title": "Do you still have your own friends?",
+   "how": "Mojo told Bianca she has no friends, and the room talked about keeping your own friendships while you're in a relationship.",
+   "ours": "JB and Sandy debate whether couples lose their own friends over time, and Tricia rules on who in the room has the most friends of their own. Phones: Austin, did you keep your friends when you got serious with someone?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/mojo-says-bianca-has-no-friends"
+  },
+  {
+   "id": "mojo-wife-dresses-me",
+   "added": "2026-11-03",
+   "show": "Mojo in the Morning",
+   "title": "My wife dresses me",
+   "how": "A guy on the show admitted his wife picks out his clothes, and the room shared funny stories about who really chooses the outfits.",
+   "ours": "Tricia rates whether JB and Sandy could dress themselves without help, and we admit who picks our clothes. Phones: Austin, does somebody else pick out your clothes?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/wife-dresses-me"
+  },
+  {
    "id": "kk-side-hustle-idea",
    "added": "2026-11-02",
    "show": "The Kidd Kraddick Morning Show",
@@ -786,13 +876,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-02",
-  "show": "The Chris Moyles Show",
-  "market": "London, UK (Radio X), rock/alternative",
-  "title": "Finding out you're in someone's will",
-  "how": "On the Friday Oct 30 show F1's Christian Horner came in and revealed how he found out Chris is supposed to be in Geri Halliwell's will, and the room ran with it.",
-  "ours": "JB, Sandy and Tricia say who we secretly hope has us in their will and what we'd want left to us, then who's getting what from us. Phones: Austin, are you in anybody's will, and what's the weirdest thing you've been promised?",
-  "url": "https://podcasts.apple.com/us/podcast/the-chris-moyles-show-on-radio-x-podcast/id1042635536"
+  "date": "2026-11-03",
+  "show": "The Bert Show",
+  "market": "Atlanta (WWWQ Q99.7), Hot AC",
+  "title": "What's your strategy for always being right?",
+  "how": "In a Vault segment posted Monday Nov 2, the crew grilled a guy about his strategy for always being right in every argument.",
+  "ours": "JB, Sandy and Tricia reveal our go-to moves for winning an argument at home, and Tricia rules on whose strategy actually works. Phones: Austin, what's your secret for always winning the argument?",
+  "url": "https://audioboom.com/posts/8971889"
  },
  "pick_history": [
   {
@@ -848,6 +938,12 @@
    "show": "The Chris Moyles Show",
    "format": "International (UK) rock/alternative",
    "market": "London, UK (Radio X)"
+  },
+  {
+   "date": "2026-11-03",
+   "show": "The Bert Show",
+   "format": "Hot AC",
+   "market": "Atlanta (WWWQ Q99.7)"
   }
  ]
 }
