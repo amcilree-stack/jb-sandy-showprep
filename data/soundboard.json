@@ -692,6 +692,23 @@
    "head_ok": false,
    "tail_ok": true,
    "status": "ok"
+  },
+  {
+   "id": "doc-21f5118338",
+   "url": "https://www.instagram.com/reel/DdxZMlZRZyB/?srtk=NTc4MTIwNjQ2YQ%3D%3D",
+   "tag": "",
+   "doc_desc": "Dolly 9 to 5 in Japanese",
+   "title": "Dolly 9 to 5 in Japanese",
+   "desc": "Dolly 9 to 5 in Japanese",
+   "added": "2026-11-04",
+   "file": "sb-audio/doc-21f5118338.mp3",
+   "duration": 41.4,
+   "outcue": "…Five by Dolly Parton in Japanese?",
+   "incue": "Have you heard Nine to…",
+   "transcript": "Have you heard Nine to Five by Dolly Parton in Japanese? Have you heard Nine to Five by Dolly Parton in Japanese?",
+   "status": "ok",
+   "head_ok": false,
+   "tail_ok": true
   }
  ],
  "skipped": [
