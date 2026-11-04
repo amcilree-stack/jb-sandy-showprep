@@ -56,19 +56,12 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-# Skip pushes that only refresh the "Updated … AM CT" stamp. During-show runs
-# every 6 minutes would otherwise flood the repo with empty commits.
-STAGED=$(git diff --cached --name-only)
-if [ "$(printf '%s\n' "$STAGED" | grep -cvE '^(today/index\.html|jb-sandy-showprep\.html)$' || true)" = "0" ] \
-   && [ -n "$STAGED" ]; then
-  NONSTAMP=$(git diff --cached -U0 -- today/index.html jb-sandy-showprep.html 2>/dev/null \
-    | grep -E '^[+-]' | grep -vE '^(--- |\+\+\+ )' \
-    | grep -cvE '^[+-]<p class="stamp">Updated ' || true)
-  if [ "${NONSTAMP:-0}" = "0" ]; then
-    echo "Only the page timestamp changed; skipping commit."
-    git reset --quiet
-    exit 0
-  fi
+# Skip pushes that only refresh "Updated … CT" stamps (any page, incl. farmed/).
+# During-show runs every 6 minutes would otherwise burn Netlify build credits.
+if bash scripts/stamp-only.sh HEAD INDEX; then
+  echo "Only page timestamps changed; skipping commit."
+  git reset --quiet
+  exit 0
 fi
 
 SUMMARY=$(node -e '

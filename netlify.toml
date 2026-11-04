@@ -4,6 +4,8 @@
 [build]
   command = "node scripts/apply-basic-auth.js"
   publish = "."
+  # Skip builds when only "Updated … CT" stamps changed (saves build credits).
+  ignore = "bash scripts/netlify-ignore.sh"
 
 [[edge_functions]]
   path = "/*"
