@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-rude-questions",
+   "added": "2026-11-04",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Rude questions people get asked",
+   "how": "Audrey brought in a list of the rude questions people get asked and the crew reacted to the ones they hear the most.",
+   "ours": "JB, Sandy and Tricia each share the rude question we get asked way too often and how we really want to answer it. Phones: Austin, what rude question do people keep asking you?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-03-270-kpod-the-kidd-kraddick-mor-kiddnation-confession-and-rude-questions/"
+  },
+  {
+   "id": "kk-visit-old-house",
+   "added": "2026-11-04",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Going back to your old house",
+   "how": "J-Si went back to his old neighborhood on Halloween and visited the house he used to live in.",
+   "ours": "We each describe the house we grew up in and whether we've ever driven by to see what the new owners did to it. Phones: Austin, have you gone back to your old house, and what did they change?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-03-270-kpod-the-kidd-kraddick-mor-this-old-house/"
+  },
+  {
+   "id": "kk-grandkid-in-trouble",
+   "added": "2026-11-04",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Grandkid got in trouble on our watch",
+   "how": "Big Al told the story of his granddaughter getting in trouble the weekend before Halloween and how he handled it.",
+   "ours": "Sandy and JB compare how strict our parents were versus how soft they are as grandparents now, and Tricia rules on who's the pushover. Phones: Austin, are your parents way easier on your kids than they ever were on you?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-03-270-kpod-the-kidd-kraddick-mor-big-als-parenting/"
+  },
+  {
+   "id": "bj-porch-halloween-scare",
+   "added": "2026-11-04",
+   "show": "Brooke & Jeffrey",
+   "title": "What I saw on my porch on Halloween",
+   "how": "A Masked Speaker called in to tell what she saw on her front porch on Halloween night that still terrifies her.",
+   "ours": "JB, Sandy and Tricia share the creepiest thing that ever showed up at our door, then we take your stories. Phones: Austin, what's the scariest thing you ever saw on your front porch?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-11-03-masked-speaker-turn-off-your-porch-light/"
+  },
+  {
+   "id": "ed-claude-maximize-life",
+   "added": "2026-11-04",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "An AI's tips for your next 10 years",
+   "how": "Elvis read a list of suggestions an AI chatbot gave for how to make the most of the next 10 years of your life, and the room weighed in.",
+   "ours": "Sandy reads the AI's best life tips and JB and Tricia say which ones we'd actually do and which ones are never happening. Phones: Austin, what's the one change that made your life better?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-03-1014-elvis-duran-and-the-morni-full-show-the-day-we-let-claude-maximize-our/"
+  },
+  {
+   "id": "ed-desk-clutter",
+   "added": "2026-11-04",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Is your desk clutter a problem?",
+   "how": "An office cleanup turned into chaos when Danielle refused to part with her collectibles and the crew debated whether clutter gives a workspace personality.",
+   "ours": "Tricia tours JB's and Sandy's studio clutter and we each defend the one thing we'll never throw out. Phones: Austin, what's on your desk that you refuse to get rid of?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-03-1014-elvis-duran-and-the-morni-daily-highlight-danielle-refuses-to-give-up-/"
+  },
+  {
+   "id": "ed-more-social",
+   "added": "2026-11-04",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Do we need to be more social?",
+   "how": "Lee Schrager stopped by and gave his take on why people aren't socializing anymore.",
+   "ours": "We each admit when we last went out with friends on a weeknight and what keeps us on the couch. Phones: Austin, when's the last time you actually went out with friends, and what keeps you home?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-03-1014-elvis-duran-and-the-morni-do-we-need-to-be-more-social-after-party-pod/"
+  },
+  {
+   "id": "mojo-cant-take-compliments",
+   "added": "2026-11-04",
+   "show": "Mojo in the Morning",
+   "title": "Can't take a compliment",
+   "how": "The crew got into people who can't take a compliment and how that plays out in relationships.",
+   "ours": "Tricia pays JB and Sandy a compliment live and we see who squirms the most. Phones: Austin, who in your life can't just say thank you to a compliment?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/cant-take-compliments"
+  },
+  {
+   "id": "mojo-plus-one-without-you",
+   "added": "2026-11-04",
+   "show": "Mojo in the Morning",
+   "title": "Can your plus-one go without you?",
+   "how": "They opened the phones on whether a plus-one can still show up to a wedding or party if the person who invited them can't go.",
+   "ours": "JB, Sandy and Tricia rule on whether a plus-one can fly solo, and whether we'd let our spouse go without us. Phones: Austin, can a plus-one show up without the person who invited them?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/can-your-plus-one-show-up-without-you"
+  },
+  {
+   "id": "mojo-maid-of-honor-friend",
+   "added": "2026-11-04",
+   "show": "Mojo in the Morning",
+   "title": "Best friend over sister for maid of honor?",
+   "how": "In Am I the A**hole, they judged a bride who chose her best friend instead of her sister as maid of honor.",
+   "ours": "We each say who we'd pick, sibling or best friend, and Tricia shares how her own wedding party got decided. Phones: Austin, did you pick family or your best friend for your wedding party, and did anybody get mad?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/am-i-the-a-hole-chose-friend-instead-of-her-sister"
+  },
+  {
    "id": "kk-last-car-wash",
    "added": "2026-11-03",
    "show": "The Kidd Kraddick Morning Show",
@@ -876,13 +966,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-03",
-  "show": "The Bert Show",
-  "market": "Atlanta (WWWQ Q99.7), Hot AC",
-  "title": "What's your strategy for always being right?",
-  "how": "In a Vault segment posted Monday Nov 2, the crew grilled a guy about his strategy for always being right in every argument.",
-  "ours": "JB, Sandy and Tricia reveal our go-to moves for winning an argument at home, and Tricia rules on whose strategy actually works. Phones: Austin, what's your secret for always winning the argument?",
-  "url": "https://audioboom.com/posts/8971889"
+  "date": "2026-11-04",
+  "show": "The Woody Show",
+  "market": "Los Angeles (KYSR Alt 98.7), alternative",
+  "title": "Is eating lunch alone at work sad?",
+  "how": "On Tuesday's show (Nov 3) the crew debated whether eating lunch alone at work is actually sad or the best part of the day.",
+  "ours": "JB, Sandy and Tricia confess where and how we eat lunch on a workday, and Tricia rules on whether eating alone is sad or smart. Phones: Austin, do you eat lunch alone at work, and is that sad or the best part of your day?",
+  "url": "https://omny.fm/shows/the-woody-show/full-show-pod-the-woody-show-november-3rd-2026-podcast"
  },
  "pick_history": [
   {
@@ -944,6 +1034,12 @@
    "show": "The Bert Show",
    "format": "Hot AC",
    "market": "Atlanta (WWWQ Q99.7)"
+  },
+  {
+   "date": "2026-11-04",
+   "show": "The Woody Show",
+   "format": "Rock/alternative",
+   "market": "Los Angeles (KYSR Alt 98.7)"
   }
  ]
 }
