@@ -2,6 +2,26 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "mack-brown-in-missouri",
+   "title": "Mack Brown in Missouri",
+   "body": null,
+   "doc_text": "Mack Brown in Missouri",
+   "added": "2026-11-05",
+   "links": [
+    {
+     "url": "https://www.instagram.com/reel/DfU8bMblaYA/?rpxt=cDB0MndzNHB2c3Bu",
+     "label": "Missouri"
+    }
+   ],
+   "social": [
+    "https://www.instagram.com/reel/DfU8bMblaYA/?rpxt=cDB0MndzNHB2c3Bu"
+   ],
+   "doc_lines": [
+    "687ea3d60444"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "jim-franklin-bringing-back-the-pumpkin-stomp",
    "title": "Jim Franklin bringing back the Pumpkin Stomp",
    "body": null,
