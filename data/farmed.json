@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-cant-start-new-show",
+   "added": "2026-11-05",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Can't start a new TV show",
+   "how": "Ana admitted she can't commit to starting a new TV show because there are too many options, and the crew talked through streaming burnout.",
+   "ours": "We each confess the show we keep meaning to start and the comfort show we rewatch instead. Phones: Austin, what show have you been 'about to start' for months?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-04-270-kpod-the-kidd-kraddick-mor-cant-start-something-new-syndrome/"
+  },
+  {
+   "id": "kk-wwyd-pet-edition",
+   "added": "2026-11-05",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "What Would You Do: pet edition",
+   "how": "The show played 'What Would You Do' with pet dilemmas and talked about moving into their new studio.",
+   "ours": "Tricia reads a few pet dilemmas, like the dog that eats the neighbor's packages, and JB and Sandy say what they'd really do. Phones: Austin, what's the toughest call your pet ever forced you to make?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-04-270-kpod-the-kidd-kraddick-mor-what-would-you-do-and-new-studio/"
+  },
+  {
+   "id": "kk-never-been-to-costco",
+   "added": "2026-11-05",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Never been to Costco",
+   "how": "Audrey revealed she has never been to Costco, and Ana tried Kellie's advice for her bathroom.",
+   "ours": "We each name the store everybody loves that we've never set foot in, and our Costco must-buys. Phones: Austin, what's the one thing you always buy at Costco, or have you never been?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-04-270-kpod-the-kidd-kraddick-mor-happy-hump-day-wednesday/"
+  },
+  {
+   "id": "kk-left-behind-old-studio",
+   "added": "2026-11-05",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "What you left behind at the old place",
+   "how": "After the move to the new studio, they caught up with Shannon about something she left behind in the old one.",
+   "ours": "We talk about the stuff that gets left behind when you move offices or houses, and what we still miss. Phones: Austin, what did you leave behind at an old job or house that you still think about?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-04-270-kpod-the-kidd-kraddick-mor-worst-date-brittney-and-psycho-shannon/"
+  },
+  {
+   "id": "bj-ominous-fortune-cookie",
+   "added": "2026-11-05",
+   "show": "Brooke & Jeffrey",
+   "title": "An ominous fortune cookie",
+   "how": "In What's On Our Minds, Jeffrey shared a fortune cookie with an ominous message he's now worried about, while the rest of the room went around with their own updates.",
+   "ours": "Sandy reads the strangest fortunes we've ever gotten and we decide whether we actually believe them. Phones: Austin, what's the creepiest or most accurate fortune cookie you've ever opened?",
+   "url": "https://www.brookeandjeffrey.com/content/2026-11-04-whats-on-your-mind-11426/"
+  },
+  {
+   "id": "ed-controversial-icks",
+   "added": "2026-11-05",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Our controversial icks",
+   "how": "Skeery shared a controversial ick and the whole room went around with their own icks.",
+   "ours": "JB, Sandy and Tricia each reveal one ick and the others rule whether it's fair or ridiculous. Phones: Austin, what's an ick you have that nobody else understands?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-04-1014-elvis-duran-and-the-morni-skeery-has-a-controversial-ick/"
+  },
+  {
+   "id": "ed-backhanded-compliment",
+   "added": "2026-11-05",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Backhanded compliments",
+   "how": "Nate gave Scotty B a questionable compliment about his weight loss, and Froggy talked about struggling to get Lisa to go on their nightly walks.",
+   "ours": "We each share the worst backhanded compliment we've ever gotten and how we answered it. Phones: Austin, what's the backhanded compliment you still can't get over?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-04-1014-elvis-duran-and-the-morni-around-the-room-nate-gives-scotty-b-a-backha/"
+  },
+  {
+   "id": "mj-another-mans-sauna",
+   "added": "2026-11-05",
+   "show": "Mojo in the Morning",
+   "title": "Won't use another man's sauna",
+   "how": "Kev explained why he refuses to use another man's sauna, and the show got into sauna and gym etiquette.",
+   "ours": "We go through the gym and locker room rules we live by and the ones that make us squirm. Phones: Austin, what's the gym or locker room etiquette rule people keep breaking?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/kev-will-not-use-another-mans-sauna"
+  },
+  {
+   "id": "mj-employee-said-ugly",
+   "added": "2026-11-05",
+   "show": "Mojo in the Morning",
+   "title": "The employee said my purchase was ugly",
+   "how": "Shannon told the story of a sales associate who told her the thing she was buying was ugly.",
+   "ours": "We share the rudest thing a store employee has ever said to us at the register. Phones: Austin, has a salesperson ever insulted what you were buying?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/the-employee-told-shannon-her-purchase-was-ugly"
+  },
+  {
+   "id": "mj-calling-girlfriends-dad",
+   "added": "2026-11-05",
+   "show": "Mojo in the Morning",
+   "title": "Calling your kid's girlfriend's dad",
+   "how": "Mojo told the story of calling his son's girlfriend's dad, a man he'd never met, and realizing he's still scared of dads.",
+   "ours": "We talk about meeting the parents, from both sides, and the dad who scared us most. Phones: Austin, what's your best meet-the-parents story?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/mojo-thought-he-was-done-being-scared-of-dads"
+  },
+  {
    "id": "kk-rude-questions",
    "added": "2026-11-04",
    "show": "The Kidd Kraddick Morning Show",
@@ -966,13 +1056,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-04",
-  "show": "The Woody Show",
-  "market": "Los Angeles (KYSR Alt 98.7), alternative",
-  "title": "Is eating lunch alone at work sad?",
-  "how": "On Tuesday's show (Nov 3) the crew debated whether eating lunch alone at work is actually sad or the best part of the day.",
-  "ours": "JB, Sandy and Tricia confess where and how we eat lunch on a workday, and Tricia rules on whether eating alone is sad or smart. Phones: Austin, do you eat lunch alone at work, and is that sad or the best part of your day?",
-  "url": "https://omny.fm/shows/the-woody-show/full-show-pod-the-woody-show-november-3rd-2026-podcast"
+  "date": "2026-11-05",
+  "show": "New Country Mornings with John & Leah",
+  "market": "Springfield, Illinois (WFMB 104.5), country",
+  "title": "Would you buy a barstool a star sat on?",
+  "how": "In Wednesday's Morning Music Buzz (Nov 4), Leah told listeners someone is selling a barstool that Ella Langley and a few other stars used on stage, and revealed the asking price.",
+  "ours": "Sandy reveals the asking price and JB and Tricia guess it, then we each name the piece of celebrity junk we'd actually pay for. Phones: Austin, what's the weirdest celebrity memorabilia you own or would buy?",
+  "url": "https://omny.fm/shows/new-country-mornings-1/wednesday-morning-music-buzz-11-4-26"
  },
  "pick_history": [
   {
@@ -1040,6 +1130,12 @@
    "show": "The Woody Show",
    "format": "Rock/alternative",
    "market": "Los Angeles (KYSR Alt 98.7)"
+  },
+  {
+   "date": "2026-11-05",
+   "show": "New Country Mornings with John & Leah",
+   "format": "Country",
+   "market": "Springfield, Illinois (WFMB 104.5)"
   }
  ]
 }
