@@ -8,46 +8,16 @@
    "by": "Sandy"
   },
   {
-   "show": "The Kidd Kraddick Morning Show",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
-  },
-  {
-   "show": "Elvis Duran and the Morning Show",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
-  },
-  {
    "show": "Brooke & Jeffrey",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
+   "status": "banned",
+   "since": "2026-10-22",
+   "by": "Sandy"
   },
   {
-   "show": "Mojo in the Morning",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
-  },
-  {
-   "show": "The Joe Show",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
-  },
-  {
-   "show": "Morton in the Morning",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
-  },
-  {
-   "show": "Smiley Morning Show",
-   "status": "rotation",
-   "since": "2026-10-21",
-   "by": "default"
+   "show": "Fitzy, Wippa & Kate",
+   "status": "banned",
+   "since": "2026-10-22",
+   "by": "Sandy"
   },
   {
    "show": "Daly Migs",
@@ -62,19 +32,55 @@
    "by": "default"
   },
   {
+   "show": "Elvis Duran and the Morning Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
    "show": "Heidi & Frank",
    "status": "rotation",
    "since": "2026-10-21",
    "by": "default"
   },
   {
-   "show": "Miguel & Holly",
+   "show": "Johnjay & Rich",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "Sandy"
+  },
+  {
+   "show": "Mojo in the Morning",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Morton in the Morning",
    "status": "rotation",
    "since": "2026-10-21",
    "by": "default"
   },
   {
    "show": "On Air with Ryan Seacrest",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "Smiley Morning Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "The Joe Show",
+   "status": "rotation",
+   "since": "2026-10-21",
+   "by": "default"
+  },
+  {
+   "show": "The Kidd Kraddick Morning Show",
    "status": "rotation",
    "since": "2026-10-21",
    "by": "default"
