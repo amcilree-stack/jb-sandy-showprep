@@ -2,6 +2,105 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-keep-or-delete-contacts",
+   "added": "2026-11-09",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Keep or delete",
+   "how": "Justin went through Big Al's phone contacts again, and they called Denise to find out if she should be kept or deleted.",
+   "ours": "JB, Sandy and Tricia scroll our own contacts and rule keep or delete on the names we can't place. Phones: Austin, who's the mystery contact you're scared to delete?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-06-270-kpod-the-kidd-kraddick-mor-keep-or-delete-denise-and-not-so-happy-birth/"
+  },
+  {
+   "id": "kk-weird-saying-origins",
+   "added": "2026-11-09",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Where do weird sayings come from?",
+   "how": "The cast went through the origins of the weird sayings they use, and who in their family they got them from.",
+   "ours": "We each share the odd phrase we picked up from a parent or grandparent and guess where it really came from. Phones: Austin, what's the strange saying your family uses that nobody else gets?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-06-270-kpod-the-kidd-kraddick-mor-kiddnation-confession-susan-and-world-origin/"
+  },
+  {
+   "id": "kk-couldnt-be-mean-old-lady",
+   "added": "2026-11-09",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Couldn't be mean to the nice old lady",
+   "how": "Jsi called customer service ready to fight, but couldn't be mean once the rep turned out to be a sweet old lady.",
+   "ours": "JB, Sandy and Tricia admit the time we were ready to complain and folded the second the person was nice. Phones: Austin, when did your angry phone call melt into a thank-you?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-06-270-kpod-the-kidd-kraddick-mor-wedding-stuff-and-nice-old-lady/"
+  },
+  {
+   "id": "kk-hot-air-balloon-highway",
+   "added": "2026-11-09",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Hot air balloon on the highway",
+   "how": "Jsi spotted a hot air balloon on the highway, and the show talked about the strangest things people have seen on the road.",
+   "ours": "We each name the weirdest thing we've seen on MoPac or I-35. Phones: Austin, what's the craziest thing you've spotted on your commute?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-06-270-kpod-the-kidd-kraddick-mor-world-record-and-hot-air-balloon/"
+  },
+  {
+   "id": "ed-rich-people-lottery",
+   "added": "2026-11-09",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Should rich people win the lottery?",
+   "how": "Skeery argued people from wealthy towns shouldn't be allowed to play the lottery, and the room debated it.",
+   "ours": "JB, Sandy and Tricia rule on whether a millionaire winning Powerball should have to give it back. Phones: Austin, should the rich be allowed to play the lottery?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-06-1014-elvis-duran-and-the-morni-full-show-the-day-michelle-branch-stopped-by/"
+  },
+  {
+   "id": "ed-solo-dinner-spot",
+   "added": "2026-11-09",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Favorite solo dinner spot",
+   "how": "In Around the Room, Froggy revealed his favorite place to eat dinner alone, and Gandhi argued it's time to bring back shame.",
+   "ours": "We each name our go-to Austin spot for a table for one. Phones: Austin, where do you love to eat by yourself?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-06-1014-elvis-duran-and-the-morni-around-the-room-skeerys-credit-card-thief-ha/"
+  },
+  {
+   "id": "mojo-you-arent-on-mute",
+   "added": "2026-11-09",
+   "show": "Mojo in the Morning",
+   "title": "You aren't on mute",
+   "how": "The show traded the most epic Zoom fails, from people who thought they were on mute to cameras left on.",
+   "ours": "JB, Sandy and Tricia confess our worst hot-mic or camera-on moment. Phones: Austin, what's your most embarrassing video call fail?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/you-arent-on-mute"
+  },
+  {
+   "id": "mojo-move-in-with-kev",
+   "added": "2026-11-09",
+   "show": "Mojo in the Morning",
+   "title": "Asked to move in",
+   "how": "Kev got asked to let a family member move in, and the show and callers weighed in on hosting relatives.",
+   "ours": "We each say how long we could stand a relative living with us before we'd crack. Phones: Austin, did you ever let family move in, and how did it end?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/asked-to-move-in-with-kev"
+  },
+  {
+   "id": "mojo-bianca-grinch",
+   "added": "2026-11-09",
+   "show": "Mojo in the Morning",
+   "title": "Who's the Grinch?",
+   "how": "The show named Bianca its Grinch and pitched ideas for a Christmas station takeover.",
+   "ours": "JB, Sandy and Tricia out the Grinch in the room and say when it's too early for Christmas music. Phones: Austin, who's the Grinch in your house?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/bianca-is-our-grinch"
+  },
+  {
+   "id": "joe-best-slogans-ever",
+   "added": "2026-11-09",
+   "show": "The Joe Show",
+   "title": "The best slogans ever",
+   "how": "Joe and the crew debated which ad slogans belong on the list of best slogans ever.",
+   "ours": "We each nominate the greatest slogan of all time and the jingle we can't get out of our heads. Phones: Austin, what's the best slogan ever?",
+   "url": "https://omny.fm/shows/the-joe-show/the-best-slogans-ever"
+  },
+  {
+   "id": "joe-should-he-still-go-on-the-date",
+   "added": "2026-11-09",
+   "show": "The Joe Show",
+   "title": "Should he still go on the date?",
+   "how": "Ashley's friend made plans with a girl earlier in the week, then heard nothing but crickets, and the show debated whether he should still show up.",
+   "ours": "JB, Sandy and Tricia rule on whether you still show up when your date's gone quiet. Phones: Austin, what's your rule when the other person goes silent before a date?",
+   "url": "https://omny.fm/shows/the-joe-show/should-he-still-go-on-the-date"
+  },
+  {
    "id": "kk-things-never-done",
    "added": "2026-11-06",
    "show": "The Kidd Kraddick Morning Show",
@@ -1164,13 +1263,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-06",
-  "show": "Boomer & Gio",
-  "market": "New York (WFAN), sports talk",
-  "title": "Leaving concerts early",
-  "how": "In Thursday's Hour 4 (Nov 5), Jerry Recco defended leaving concerts early, and Boomer & Gio debated whether ducking out before the encore is smart or rude.",
-  "ours": "JB, Sandy and Tricia each confess the last concert we bailed on early and why. Phones: Austin, do you stay for the encore or beat the traffic?",
-  "url": "https://www.audacy.com/podcasts/boomer__gio/episodes/jerry_recco_loves_to_leave_a_c-8949273"
+  "date": "2026-11-09",
+  "show": "The Fred Show",
+  "market": "Chicago (WKSC 103.5 KISS FM), CHR/pop",
+  "title": "What life skill did you not learn until adulthood?",
+  "how": "On Friday's show (Nov 6), Fred asked listeners what life skill they had to learn on their own as adults, and the room confessed theirs.",
+  "ours": "JB, Sandy and Tricia each admit the basic life skill we didn't figure out until embarrassingly late. Phones: Austin, what did you have to teach yourself as a grown-up?",
+  "url": "https://omny.fm/shows/the-fred-show-on-demand/what-life-skill-did-you-not-know"
  },
  "pick_history": [
   {
@@ -1250,6 +1349,12 @@
    "show": "Boomer & Gio",
    "format": "Sports talk",
    "market": "New York (WFAN)"
+  },
+  {
+   "date": "2026-11-09",
+   "show": "The Fred Show",
+   "format": "CHR/pop",
+   "market": "Chicago (WKSC 103.5 KISS FM)"
   }
  ]
 }
