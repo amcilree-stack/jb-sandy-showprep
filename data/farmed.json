@@ -2,6 +2,105 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-odds-falling-in-love",
+   "added": "2026-11-11",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Odds of falling in love today",
+   "how": "They ran a science stat that the odds of falling in love on any given day are 1 in 562, and the cast talked about how they met their people.",
+   "ours": "We read the 1-in-562 stat and each tell how fast we knew with our person. Phones: Austin, how long did it take you to know?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-10-270-kpod-the-kidd-kraddick-mor-kiddnation-confession-and-odds-of-falling-in/"
+  },
+  {
+   "id": "kk-dumpster-diving-side-hustle",
+   "added": "2026-11-11",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Dumpster diving side hustle",
+   "how": "They talked about a man who made about $140,000 in sales from stuff he found dumpster diving.",
+   "ours": "JB, Sandy and Tricia share the best thing we ever found curbside or in a free pile. Phones: Austin, what's the best thing you've pulled out of the trash?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-10-270-kpod-the-kidd-kraddick-mor-burn-queen-and-side-hustle/"
+  },
+  {
+   "id": "kk-wife-speaks-in-quotes",
+   "added": "2026-11-11",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "My wife speaks in quotes",
+   "how": "In Love Letters, the Love Expert gave advice to a husband whose wife talks in movie and TV quotes.",
+   "ours": "We confess the quotes and catchphrases we can't stop saying around the house. Phones: Austin, what line does your partner quote way too much?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-10-270-kpod-the-kidd-kraddick-mor-love-letters-to-kellie/"
+  },
+  {
+   "id": "kk-skims-advent-calendar",
+   "added": "2026-11-11",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Advent calendar outrage",
+   "how": "The cast talked about people getting upset over the pricey Skims Advent calendar.",
+   "ours": "We rate this year's weirdest and priciest Advent calendars and pick which one we'd actually buy. Phones: Austin, what would be in your perfect Advent calendar?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-10-270-kpod-the-kidd-kraddick-mor-birdie-gift-and-advent-calendar/"
+  },
+  {
+   "id": "ed-expose-search-history",
+   "added": "2026-11-11",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Expose our search history",
+   "how": "The whole crew read their recent search histories out loud, except two who got called shady for refusing.",
+   "ours": "JB, Sandy and Tricia each read our last five searches on air, no deleting. Phones: Austin, what's the weirdest thing in your search history?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-10-1014-elvis-duran-and-the-morni-we-expose-our-search-history-after-party-pod/"
+  },
+  {
+   "id": "ed-dinner-for-breakfast",
+   "added": "2026-11-11",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Is dinner for breakfast weird?",
+   "how": "Elvis asked if it's weird to eat dinner food for breakfast, and the room weighed in.",
+   "ours": "We admit our strangest breakfasts, cold pizza to leftover brisket. Phones: Austin, what's the weirdest thing you eat for breakfast?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-10-1014-elvis-duran-and-the-morni-full-show-the-day-we-piped-cannolis/"
+  },
+  {
+   "id": "mojo-grown-up-christmas-list",
+   "added": "2026-11-11",
+   "show": "Mojo in the Morning",
+   "title": "Grown-up Christmas list",
+   "how": "The show went around with the boring, practical things adults actually want for Christmas.",
+   "ours": "JB, Sandy and Tricia share our grown-up Christmas lists: tires, a new mattress, a quiet weekend. Phones: Austin, what's the most adult thing on your list?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/grown-up-christmas-list"
+  },
+  {
+   "id": "mojo-bad-friend-holidays",
+   "added": "2026-11-11",
+   "show": "Mojo in the Morning",
+   "title": "I've been a bad friend",
+   "how": "Kev opened up about falling behind with friends while juggling work and family during the holidays.",
+   "ours": "We own up to the friend we've been neglecting and call them on air. Phones: Austin, who's the friend you owe a call?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/kev-says-hes-been-a-bad-friend"
+  },
+  {
+   "id": "mojo-chatgpt-casino",
+   "added": "2026-11-11",
+   "show": "Mojo in the Morning",
+   "title": "Used ChatGPT to win at the casino",
+   "how": "Bianca told how she asked ChatGPT for help at the casino and came out ahead.",
+   "ours": "We ask AI for advice on something silly live on air and see if it works. Phones: Austin, what's the oddest thing you've asked AI to help with?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/bianca-used-chat-gpt-to-win-at-the-casino"
+  },
+  {
+   "id": "joe-dropped-in-toilet",
+   "added": "2026-11-11",
+   "show": "The Joe Show",
+   "title": "What did you drop in the toilet?",
+   "how": "A cast member dropped something in the toilet, and listeners called in with what they've lost down there.",
+   "ours": "JB, Sandy and Tricia confess the worst thing we've dropped in the toilet. Phones: Austin, what did you drop in, and did you fish it out?",
+   "url": "https://omny.fm/shows/the-joe-show/hey-toilet-face"
+  },
+  {
+   "id": "joe-cash-only-places",
+   "added": "2026-11-11",
+   "show": "The Joe Show",
+   "title": "Is cash still king?",
+   "how": "Ashley was shocked her hair salon was cash only, and the show debated who still pays in cash.",
+   "ours": "We count how much cash we're each carrying right now. Phones: Austin, where do you still have to pay cash, and do you carry it?",
+   "url": "https://omny.fm/shows/the-joe-show/cash-is-always-king"
+  },
+  {
    "id": "kk-hill-to-die-on-pineapple",
    "added": "2026-11-10",
    "show": "The Kidd Kraddick Morning Show",
@@ -1362,13 +1461,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-10",
-  "show": "The Christian O'Connell Show",
-  "market": "Melbourne, Australia (Gold 104.3), classic hits",
-  "title": "Weakest claim to fame",
-  "how": "On Monday's show, producer Caitlin kicked off Weakest Claim to Fame with her flimsy link to former Prime Minister Julia Gillard, and listeners called in with their own brushes with fame.",
-  "ours": "JB, Sandy and Tricia each share our flimsiest brush with a celebrity. Phones: Austin, what's your weakest claim to fame?",
-  "url": "https://omny.fm/shows/the-christian-o-connell-show/mini-weakest-claim-to-fame-7"
+  "date": "2026-11-11",
+  "show": "Free Beer and Hot Wings",
+  "market": "Grand Rapids (WGRD 97.9) and syndicated, rock",
+  "title": "Dumber Than The Show Trivia",
+  "how": "Every morning a caller plays Dumber Than The Show Trivia against a cast member for a growing cash pot; on Tuesday's show Paul in Northeast PA took on Hot Wings for a $3,500 round (question: what river separates Oregon and Washington?).",
+  "ours": "A caller plays one easy trivia question against JB, Sandy or Tricia, and the pot grows every day nobody beats us. Phones: Austin, think you're smarter than the show?",
+  "url": "https://www.freebeerandhotwings.com/2026/11/10/what-river-separates-oregon-and-washington/"
  },
  "pick_history": [
   {
@@ -1460,6 +1559,12 @@
    "show": "The Christian O'Connell Show",
    "format": "International (Australia) classic hits",
    "market": "Melbourne, Australia (Gold 104.3)"
+  },
+  {
+   "date": "2026-11-11",
+   "show": "Free Beer and Hot Wings",
+   "format": "Rock",
+   "market": "Grand Rapids (WGRD 97.9), syndicated"
   }
  ]
 }
