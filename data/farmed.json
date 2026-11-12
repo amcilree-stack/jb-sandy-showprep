@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-pet-communicators",
+   "added": "2026-11-12",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "What is your pet trying to tell you?",
+   "how": "They talked about pet communicators who believe our pets are trying to tell us something, and the cast weighed in on what their animals might be saying.",
+   "ours": "JB, Sandy and Tricia each translate what our pets are really thinking about us. Phones: Austin, what is your dog or cat trying to tell you?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-11-270-kpod-the-kidd-kraddick-mor-pet-communication-and-mom-mvp/"
+  },
+  {
+   "id": "kk-rudest-cities",
+   "added": "2026-11-12",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Rudest cities list",
+   "how": "They read through a new list of the rudest cities in America and reacted to who made it.",
+   "ours": "We read the rudest-cities list and argue whether Austin drivers, line-cutters or patio hogs should get us on it. Phones: Austin, what's the rudest thing that happens here?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-11-270-kpod-the-kidd-kraddick-mor-rudest-cities-and-entertainment-report/"
+  },
+  {
+   "id": "kk-bearista-cup-video-game-vacation",
+   "added": "2026-11-12",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Bearista cup sellout and video game vacation days",
+   "how": "They talked about the Starbucks Bearista cup selling out and employees taking vacation days just to play new video games coming out.",
+   "ours": "We confess the silliest thing we ever took a day off for or stood in line to buy. Phones: Austin, what's the dumbest reason you've ever burned a vacation day?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-11-270-kpod-the-kidd-kraddick-mor-starbucks-bearista-cup-and-video-games/"
+  },
+  {
+   "id": "ed-dog-towels-debate",
+   "added": "2026-11-12",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Washing the dog's towels with yours",
+   "how": "In Around the Room, Froggy sparked a household debate over washing the dog's towels in the same load as his own.",
+   "ours": "Sandy reveals the house laundry rules and JB and Tricia vote on the dog towel question. Phones: Austin, do the dog's towels go in with yours, gross or fine?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-11-1014-elvis-duran-and-the-morni-around-the-room-why-today-is-the-best-day-to/"
+  },
+  {
+   "id": "ed-holey-underwear",
+   "added": "2026-11-12",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Caught throwing out holey underwear",
+   "how": "Elvis got caught throwing out his 'holey' underwear, and the show talked about how long people hang on to worn-out stuff.",
+   "ours": "We each own up to the one ratty thing we refuse to throw away. Phones: Austin, what worn-out item are you still hanging on to?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-11-1014-elvis-duran-and-the-morni-full-show-the-day-we-threw-out-underwear/"
+  },
+  {
+   "id": "mojo-storage-unit-stories",
+   "added": "2026-11-12",
+   "show": "Mojo in the Morning",
+   "title": "Weird stuff at storage units",
+   "how": "Mojo told how he went to his storage unit for the Christmas stuff, the third floor smelled awful, and he asked listeners for the weirdest things they've seen or found at storage units.",
+   "ours": "Sandy pulls out the Christmas decorations story and we ask about storage unit surprises. Phones: Austin, what's the weirdest thing you've seen at a storage unit?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/storage-wars"
+  },
+  {
+   "id": "mojo-too-embarrassed-to-introduce",
+   "added": "2026-11-12",
+   "show": "Mojo in the Morning",
+   "title": "Too embarrassed to introduce herself",
+   "how": "Shannon skipped introducing herself to a stunning mom she'd never met because she was in sweatpants and no makeup, then the mom texted her anyway.",
+   "ours": "Tricia, JB and Sandy share the times we hid from someone because of how we looked. Phones: Austin, who have you ducked behind a grocery aisle to avoid?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/shannon-was-too-embarrassed-to-introduce-herself"
+  },
+  {
+   "id": "mojo-finally-fit-the-pants",
+   "added": "2026-11-12",
+   "show": "Mojo in the Morning",
+   "title": "Finally fit into the pants",
+   "how": "Kev told how he bought pants four years ago that never fit, kept them anyway, and this week he could finally button them.",
+   "ours": "We each name the 'someday' clothes still hanging in our closet. Phones: Austin, what are you keeping until it fits again?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/thanksgiving-dress-code"
+  },
+  {
+   "id": "joe-airbnb-roommate",
+   "added": "2026-11-12",
+   "show": "The Joe Show",
+   "title": "JUDGEjoeSHOW: roommate rented out his room",
+   "how": "On JUDGEjoeSHOW, a guy came back from a two-week vacation to find his roommate had rented his bedroom out on Airbnb for holiday cash, and listeners called in to rule.",
+   "ours": "JB plays judge on the roommate who Airbnb'd your bedroom while you were gone, and Austin decides the verdict. Phones: Austin, what's the worst thing a roommate did while you were away?",
+   "url": "https://omny.fm/shows/the-joe-show/judgejoeshow-airbnb-roommate"
+  },
+  {
+   "id": "joe-most-wholesome-video",
+   "added": "2026-11-12",
+   "show": "The Joe Show",
+   "title": "Most wholesome kind of video",
+   "how": "After a Veterans Day surprise homecoming on the field, the cast debated the most wholesome type of video, from military homecomings to strangers paying for groceries.",
+   "ours": "We each name the video type that makes us cry every time. Phones: Austin, what video always gets you?",
+   "url": "https://omny.fm/shows/the-joe-show/heartfelt-veteran-moment"
+  },
+  {
    "id": "kk-odds-falling-in-love",
    "added": "2026-11-11",
    "show": "The Kidd Kraddick Morning Show",
@@ -1461,13 +1551,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-11",
-  "show": "Free Beer and Hot Wings",
-  "market": "Grand Rapids (WGRD 97.9) and syndicated, rock",
-  "title": "Dumber Than The Show Trivia",
-  "how": "Every morning a caller plays Dumber Than The Show Trivia against a cast member for a growing cash pot; on Tuesday's show Paul in Northeast PA took on Hot Wings for a $3,500 round (question: what river separates Oregon and Washington?).",
-  "ours": "A caller plays one easy trivia question against JB, Sandy or Tricia, and the pot grows every day nobody beats us. Phones: Austin, think you're smarter than the show?",
-  "url": "https://www.freebeerandhotwings.com/2026/11/10/what-river-separates-oregon-and-washington/"
+  "date": "2026-11-12",
+  "show": "Joey and Nancy",
+  "market": "Knoxville (WIVK 107.7), country",
+  "title": "Jobs that ruined fun things",
+  "how": "Joey brought up actors who refuse to watch their own work, which turned into a conversation about jobs that ruin fun things for people, from nurses who can't watch medical dramas to hotel employees who can't enjoy a hotel stay.",
+  "ours": "JB, Sandy and Tricia admit what radio ruined for us (hello, car radio), then open it up. Phones: Austin, what did your job ruin for you?",
+  "url": "https://omny.fm/shows/joey-and-nancy-on-wivk/joey-and-nancy-full-show-11-11-26"
  },
  "pick_history": [
   {
@@ -1565,6 +1655,12 @@
    "show": "Free Beer and Hot Wings",
    "format": "Rock",
    "market": "Grand Rapids (WGRD 97.9), syndicated"
+  },
+  {
+   "date": "2026-11-12",
+   "show": "Joey and Nancy",
+   "format": "Country",
+   "market": "Knoxville (WIVK 107.7)"
   }
  ]
 }
