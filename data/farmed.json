@@ -2,6 +2,114 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "kk-dishwasher-dirty-dishes",
+   "added": "2026-11-13",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "The person who puts dirty dishes in the dishwasher",
+   "how": "Big Al's granddaughter keeps loading dirty dishes into his dishwasher, and Big Al doesn't even use the dishwasher, so the room weighed in on house kitchen rules.",
+   "ours": "We each confess our dishwasher crimes (pre-rinse or not, who never runs it) and pick a side. Phones: Austin, what's the dish rule fight at your house?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-12-270-kpod-the-kidd-kraddick-mor-dishwasher-fail-and-choir-concert/"
+  },
+  {
+   "id": "kk-plane-bunker",
+   "added": "2026-11-13",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Man turns a plane into a backyard bunker",
+   "how": "They talked about a man in the UK who bought a plane to turn into a bunker in his backyard.",
+   "ours": "We dream up the weirdest thing we'd park in the backyard and turn into a hideout. Phones: Austin, what's the strangest thing in your neighbor's yard?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-12-270-kpod-the-kidd-kraddick-mor-backyard-bunker-and-entertainment-report60th/"
+  },
+  {
+   "id": "kk-hates-coworker-office",
+   "added": "2026-11-13",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "Hating a coworker's office",
+   "how": "Kinsey made it clear she hates Jsi's office, and the cast picked apart what makes a workspace unbearable.",
+   "ours": "JB, Sandy and Tricia rate each other's corner of the studio and what drives us nuts. Phones: Austin, what's the worst thing about a coworker's desk?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-12-270-kpod-the-kidd-kraddick-mor-happy-thursdayno-horses-allowed/"
+  },
+  {
+   "id": "kk-pregnancy-super-bowl-superstition",
+   "added": "2026-11-13",
+   "show": "The Kidd Kraddick Morning Show",
+   "title": "The weirdest sports superstition",
+   "how": "They noticed that every time Brittany Mahomes is pregnant the Chiefs have won the Super Bowl and had fun with the odd luck charm.",
+   "ours": "We swap the silly superstitions we swear by for the Longhorns, Spurs or our own lives. Phones: Austin, what's the superstition you won't break on game day?",
+   "url": "https://wfmf.iheart.com/featured/kidd-kraddick-morning-show/content/2026-11-12-270-kpod-the-kidd-kraddick-mor-pajama-marketing-and-celebrity-gossipare-the/"
+  },
+  {
+   "id": "ed-reusable-bag-collection",
+   "added": "2026-11-13",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "The growing pile of reusable bags",
+   "how": "In Around the Room, Skeery revealed his growing collection of reusable shopping bags.",
+   "ours": "We count how many reusable bags are in our cars and closets right now (and how many we forget at H-E-B). Phones: Austin, how many bags are you hoarding?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-12-1014-elvis-duran-and-the-morni-around-the-room-skeery-thinks-reusable-bags-/"
+  },
+  {
+   "id": "ed-retrograde-blame",
+   "added": "2026-11-13",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Retrograde is finally over",
+   "how": "They celebrated Mercury retrograde ending and how much they had blamed on it.",
+   "ours": "We list everything that went wrong this month and decide if retrograde gets the blame. Phones: Austin, what are you blaming on retrograde?",
+   "url": "https://www.elvisduran.com/featured/elvis-duran/content/2026-11-12-1014-elvis-duran-and-the-morni-full-show-the-day-retrograde-ended/"
+  },
+  {
+   "id": "mojo-friendsgiving-food",
+   "added": "2026-11-13",
+   "show": "Mojo in the Morning",
+   "title": "Friendsgiving food fights",
+   "how": "Mojo explained his food preferences and the crew took a funny look at what people bring (and refuse to eat) at Friendsgiving.",
+   "ours": "We each name the Friendsgiving dish we'd never touch and the one we'd fight over. Phones: Austin, what's the worst thing someone brought to Friendsgiving?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/friendsgiving-me-the-shts"
+  },
+  {
+   "id": "mojo-lost-it-at-therapist",
+   "added": "2026-11-13",
+   "show": "Mojo in the Morning",
+   "title": "Losing it in front of the therapist",
+   "how": "Shannon told the story of losing it in front of her therapist, and they talked about what therapy is really like.",
+   "ours": "We share the place we least expected to break down crying (Tricia, the dentist chair counts). Phones: Austin, where did you totally lose it in public?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/shannon-lost-it-in-front-of-her-therapist"
+  },
+  {
+   "id": "mojo-more-women-want-prenups",
+   "added": "2026-11-13",
+   "show": "Mojo in the Morning",
+   "title": "More women want prenups",
+   "how": "They talked about a trend of more women asking for prenups and what the crew would put in one.",
+   "ours": "We write the silly clauses for our own prenups (who gets the good parking spot, the thermostat). Phones: Austin, what would you put in your prenup?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/more-women-want-prenups"
+  },
+  {
+   "id": "joe-shops-differently",
+   "added": "2026-11-13",
+   "show": "The Joe Show",
+   "title": "You shop differently at different stores",
+   "how": "Jed revealed that he becomes a different shopper depending on the store he walks into.",
+   "ours": "We admit who we become at Costco vs. H-E-B vs. Target. Phones: Austin, how does a store change the way you shop?",
+   "url": "https://omny.fm/shows/the-joe-show/jed-shops-differently-at-different-stores"
+  },
+  {
+   "id": "joe-gym-dress-code",
+   "added": "2026-11-13",
+   "show": "The Joe Show",
+   "title": "Should the gym have a dress code?",
+   "how": "Jed argued that gyms need dress codes for both men and women, and the room pushed back.",
+   "ours": "We debate what should be banned at the gym, from cutoff tanks to jeans. Phones: Austin, should your gym have a dress code?",
+   "url": "https://omny.fm/shows/the-joe-show/jed-thinks-the-gym-needs-dress-code"
+  },
+  {
+   "id": "joe-worst-roads",
+   "added": "2026-11-13",
+   "show": "The Joe Show",
+   "title": "The worst roads in town",
+   "how": "They went all around Tampa Bay surveying listeners on the worst roads in the area.",
+   "ours": "We crown the worst road in Austin (I-35, MoPac or that one pothole on South Lamar). Phones: Austin, what's the worst road you drive?",
+   "url": "https://omny.fm/shows/the-joe-show/the-worst-roads-in-tampa-bay"
+  },
+  {
    "id": "kk-pet-communicators",
    "added": "2026-11-12",
    "show": "The Kidd Kraddick Morning Show",
@@ -1551,13 +1659,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-12",
-  "show": "Joey and Nancy",
-  "market": "Knoxville (WIVK 107.7), country",
-  "title": "Jobs that ruined fun things",
-  "how": "Joey brought up actors who refuse to watch their own work, which turned into a conversation about jobs that ruin fun things for people, from nurses who can't watch medical dramas to hotel employees who can't enjoy a hotel stay.",
-  "ours": "JB, Sandy and Tricia admit what radio ruined for us (hello, car radio), then open it up. Phones: Austin, what did your job ruin for you?",
-  "url": "https://omny.fm/shows/joey-and-nancy-on-wivk/joey-and-nancy-full-show-11-11-26"
+  "date": "2026-11-13",
+  "show": "George FM Breakfast",
+  "market": "Auckland, New Zealand (George FM), dance/electronic",
+  "title": "The team gives each other awards",
+  "how": "After DJ Carl Cox was given an award, the breakfast team handed out awards to each other, some heartfelt and some... not so much.",
+  "ours": "JB, Sandy and Tricia hand out our own end-of-year awards to each other, nice ones and roasts. Phones: Austin, what award would you give your coworker?",
+  "url": "https://omny.fm/shows/george-fm-breakfast/highlights-november-12-2026"
  },
  "pick_history": [
   {
@@ -1661,6 +1769,12 @@
    "show": "Joey and Nancy",
    "format": "Country",
    "market": "Knoxville (WIVK 107.7)"
+  },
+  {
+   "date": "2026-11-13",
+   "show": "George FM Breakfast",
+   "format": "International (New Zealand) dance/electronic",
+   "market": "Auckland, New Zealand (George FM)"
   }
  ]
 }
