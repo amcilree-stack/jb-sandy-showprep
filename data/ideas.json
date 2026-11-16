@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "micro-center-opening",
+   "title": "Micro Center opening.",
+   "body": null,
+   "doc_text": "Micro Center opening. People waiting 4 hours",
+   "added": "2026-11-16",
+   "links": [
+    {
+     "url": "https://www.mysanantonio.com/business/article/austin-micro-center-grand-opening-22528018.php",
+     "label": "Micro Center opening. People waiting 4 hours"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "22feee64734c"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "mathew-mccaunaughey-pretty-spot-on-with-his-prediction",
    "title": "Mathew McCaunaughey pretty spot on with his prediction",
    "body": null,
