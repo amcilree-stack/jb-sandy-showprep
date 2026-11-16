@@ -2,6 +2,24 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "i-think-you-can-buy-your-cybercab-now",
+   "title": "I think you can buy your cybercab now",
+   "body": null,
+   "doc_text": "I think you can buy your cybercab now",
+   "added": "2026-11-16",
+   "links": [
+    {
+     "url": "https://www.motor1.com/news/815563/tesla-cybercab-robotaxi-limits/",
+     "label": "I think you can buy your cybercab now"
+    }
+   ],
+   "social": [],
+   "doc_lines": [
+    "54133f00a261"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "a-new-study-says-you-can-t-be-friends-with-coworkers",
    "title": "A New Study Says You Can't Be Friends With Coworkers",
    "body": null,
