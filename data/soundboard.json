@@ -357,6 +357,23 @@
    "status": "ok",
    "head_ok": false,
    "tail_ok": true
+  },
+  {
+   "id": "doc-abde1a622e",
+   "url": "https://www.instagram.com/reel/Df2mvqDhru-/?lqvp=djZqMzd0ZTd4MzZz",
+   "tag": "",
+   "doc_desc": "Ryan Hamilton on cancelling gym memberships",
+   "title": "Ryan Hamilton on cancelling gym memberships",
+   "desc": "Ryan Hamilton on cancelling gym memberships",
+   "added": "2026-11-18",
+   "file": "sb-audio/doc-abde1a622e.mp3",
+   "duration": 69.9,
+   "outcue": "…out. Sincerely, Private Ryan T. Hamilton.",
+   "incue": "He said, if you don't…",
+   "transcript": "He said, if you don't want to come in and cancel in person, there's a second way. Oh, I'm on pins and needles over here. Do tell. I can't wait to hear about the second way to cancel my gym membership. Here's what he said. You can write a letter. He didn't laugh after he said that. Write a letter? I got upset. You know why? Because I didn't sign this contract during the Civil War. We don't write letters anymore. I don't even know how. I was at home googling, how do you write a letter? Dear my gym, I feel the time has come. For us to part ways. Although your neck machine has proven challenging, I fear the cost has become exorbitant. Furthermore, we spoke on the phone on Tuesday. And this letter rings redundant, sir. Please let me out. Sincerely, Private Ryan T. Hamilton.",
+   "status": "ok",
+   "head_ok": false,
+   "tail_ok": true
   }
  ],
  "skipped": [
