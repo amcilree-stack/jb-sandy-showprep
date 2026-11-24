@@ -60,8 +60,8 @@
   }
   function allClips() {
     var out = [];
-    docClips.forEach(function (c) { out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: c.file ? "/" + c.file.replace(/^\//, "") : "", needsRec: !c.file, sourceName: c.source_name || "", source: c.url, tag: c.tag || "", added: c.added }); });
-    state.uploads.forEach(function (u) { out.push({ id: u.id, kind: "upload", title: u.title, desc: u.desc, outcue: u.outcue, duration: u.duration, src: u.empty ? "" : "/api/sb/audio/" + u.id + (u.size ? "?v=" + u.size : ""), empty: !!u.empty, source: "", tag: u.board, uploadBoard: u.board, added: u.added }); });
+    docClips.forEach(function (c) { var fn = c.file ? c.file.split("/").pop() : ""; out.push({ id: c.id, kind: "doc", title: c.title, desc: c.desc, outcue: c.outcue, duration: c.duration, src: c.file ? "/" + c.file.replace(/^\//, "") : "", fileName: fn, needsRec: !c.file, sourceName: c.source_name || "", source: c.url, tag: c.tag || "", added: c.added }); });
+    state.uploads.forEach(function (u) { out.push({ id: u.id, kind: "upload", title: u.title, desc: u.desc, outcue: u.outcue, duration: u.duration, src: u.empty ? "" : "/api/sb/audio/" + u.id + (u.size ? "?v=" + u.size : ""), fileName: u.name || u.title || "", empty: !!u.empty, source: "", tag: u.board, uploadBoard: u.board, added: u.added }); });
     var now = Date.now();
     return out.map(function (c) {
       var o = state.overrides[c.id] || {};
@@ -152,6 +152,7 @@
         (c.empty ? '<label class="ib emptydrop" data-fill="' + esc(c.id) + '" style="flex:1;text-align:center;border:2px dashed var(--or);cursor:pointer">⬆ Drop MP3/WAV or tap<input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav" hidden data-fillinput="' + esc(c.id) + '"></label>' : c.needsRec ? '<a class="ib" style="flex:1;text-align:center;text-decoration:none" href="' + esc(c.source) + '" target="_blank" rel="noopener">Open original ↗</a>' : '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button>') + '<button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
     return '<div class="pad' + (playing ? " playing" : "") + '" data-id="' + esc(c.id) + '"><div class="top">' + chips + '<button type="button" class="star' + (c.fav ? " on" : "") + '" data-fav="' + esc(c.id) + '" title="Favorite">★</button></div>' +
       (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>") + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
+      (c.fileName ? '<div class="meta file">' + esc(c.fileName) + "</div>" : "") +
       '<div class="meta">⏱ ' + fmtDur(c.duration) + (c.outcue ? ' · Out: <i>“' + esc(c.outcue) + "”</i>" : "") + "</div>" +
       (c.sourceName ? '<div class="meta">Source: ' + esc(c.sourceName) + '</div>' : "") + (c.source ? '<div class="meta"><a href="' + esc(c.source) + '" target="_blank" rel="noopener">' + esc(host(c.source)) + " ↗</a></div>" : "") +
       '<div class="act">' + acts + "</div></div>";
@@ -162,18 +163,37 @@
   /* ---------- audio ---------- */
   function audioFor(c) { if (!c.src) return { pause: function () {}, play: function () { return Promise.reject(); } }; var a = audios[c.id]; if (!a) { a = audios[c.id] = new Audio(); a.preload = "auto"; a.src = c.src; a.addEventListener("ended", function () { if (current && current.id === c.id) { current = null; nowUpdate(); render(); } }); } return a; }
   function preload(list) { list.filter(function (c) { return c.src; }).slice(0, 24).forEach(audioFor); }
-  function stopAll() { Object.keys(audios).forEach(function (k) { var a = audios[k]; a.pause(); a.currentTime = 0; a.volume = 1; }); current = null; nowUpdate(); render(); }
+  var fadeTimer = null;
+  function stopFade() { if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; } }
+  function stopAll() { stopFade(); Object.keys(audios).forEach(function (k) { var a = audios[k]; a.pause(); a.currentTime = 0; a.volume = 1; }); current = null; nowUpdate(); render(); }
   function play(id) {
     var c = find(id); if (!c || !c.src) return;
-    if (current && current.id === id) { stopAll(); return; }
+    if (current && current.id === id) { fade(id, 4000); return; }
+    stopFade();
     stopAll();
     var a = audioFor(c); a.volume = 1; a.currentTime = 0;
     a.play().catch(function () { toast("Couldn't play that clip."); });
     current = c; nowUpdate(); render();
   }
-  function fade(id) {
+  function fade(id, durationMs) {
+    durationMs = durationMs || 1250;
     var c = id ? find(id) : current; if (!c || !current || current.id !== c.id) return;
-    var a = audios[c.id], v = a.volume, t = setInterval(function () { v -= 0.08; if (v <= 0) { clearInterval(t); a.pause(); a.currentTime = 0; a.volume = 1; current = null; nowUpdate(); render(); } else a.volume = v; }, 100);
+    stopFade();
+    var a = audios[c.id];
+    if (!a || a.paused) return;
+    var startVol = a.volume, startTime = Date.now();
+    fadeTimer = setInterval(function () {
+      var elapsed = Date.now() - startTime;
+      var progress = Math.min(1, elapsed / durationMs);
+      var v = startVol * (1 - progress);
+      if (progress >= 1 || v <= 0.001) {
+        stopFade();
+        a.pause(); a.currentTime = 0; a.volume = 1;
+        current = null; nowUpdate(); render();
+      } else {
+        a.volume = v;
+      }
+    }, 30);
   }
   function nowUpdate() { $("nowt").textContent = current ? "▶ " + current.title : "Nothing playing"; $("nowcue").textContent = current && current.outcue ? "Out: “" + current.outcue + "”" : ""; }
   setInterval(function () { var w = 0; if (current && audios[current.id] && audios[current.id].duration) w = audios[current.id].currentTime / audios[current.id].duration * 100; $("nowbar").style.width = w + "%"; }, 200);
