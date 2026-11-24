@@ -16,7 +16,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)
 .favs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
 .fav{flex:0 0 auto;max-width:220px;background:linear-gradient(135deg,var(--or),var(--or2));border:0;color:#fff;border-radius:10px;padding:9px 13px;font-weight:700;text-align:left}
 .fav small{display:block;font-weight:400;opacity:.9}.fav.playing{outline:3px solid #fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
 .empty{grid-column:1/-1;border:2px dashed var(--line);border-radius:14px;padding:28px;text-align:center;color:var(--mut)}
 .pad{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:6px;min-height:180px}
 .pad.playing{border-color:var(--or);box-shadow:0 0 0 2px var(--or) inset}
