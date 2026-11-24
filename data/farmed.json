@@ -2,6 +2,96 @@
  "note": "Bits farmed from other morning shows, rewritten as JB & Sandy Austin versions. Items older than 7 days drop to the archive. Newest first.",
  "items": [
   {
+   "id": "mojo-tell-the-host",
+   "added": "2026-11-24",
+   "show": "Mojo in the Morning",
+   "title": "Should you tell the host who's coming?",
+   "how": "The show talked Thanksgiving etiquette: do you have to warn the host about every extra person you're bringing?",
+   "ours": "JB, Sandy and Tricia rule on surprise plus-ones at Thanksgiving, from new boyfriends to the neighbor kid. Phones: Austin, who showed up unannounced at your Thanksgiving?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/should-you-tell-the-host-who-is-coming"
+  },
+  {
+   "id": "mojo-tests-before-thanksgiving",
+   "added": "2026-11-24",
+   "show": "Mojo in the Morning",
+   "title": "Tests before Thanksgiving",
+   "how": "The show vented about kids (and grown-ups) still stuck studying and taking tests the week of Thanksgiving.",
+   "ours": "The crew asks if anyone should have a test the week of Thanksgiving, and Tricia shares her school-week horror stories. Phones: Austin, what's on your plate before the turkey this week?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/tests-before-thanksgiving"
+  },
+  {
+   "id": "mojo-cricket-invasion",
+   "added": "2026-11-24",
+   "show": "Mojo in the Morning",
+   "title": "Who or what lives next to Anna?",
+   "how": "A co-host's neighborhood got hit with a giant cricket invasion, and the show tried to figure out who or what was behind it.",
+   "ours": "Texas knows crickets. JB and Sandy swap stories of the bug invasions that took over their porches and garages. Phones: Austin, what critter invaded your house this year?",
+   "url": "https://omny.fm/shows/mojo-in-the-morning/who-or-what-lives-next-to-anna"
+  },
+  {
+   "id": "joe-milking-pto",
+   "added": "2026-11-24",
+   "show": "The Joe Show",
+   "title": "Milking that PTO",
+   "how": "The show asked whether there are things you shouldn't use PTO for, or shouldn't do while you're out on vacation.",
+   "ours": "JB and Sandy debate the right and wrong ways to burn a vacation day, from video game launches to waiting on the cable guy. Phones: Austin, what's the best thing you ever took a day off for?",
+   "url": "https://omny.fm/shows/the-joe-show/milking-that-pto"
+  },
+  {
+   "id": "joe-store-search-rescue",
+   "added": "2026-11-24",
+   "show": "The Joe Show",
+   "title": "Store search and rescue",
+   "how": "The show asked how far you'll go hunting through a store to find the exact item you came for.",
+   "ours": "The crew confesses how many H-E-Bs and Targets they'll hit to track down one thing before the holidays. Phones: Austin, what's the farthest you went to find one item?",
+   "url": "https://omny.fm/shows/the-joe-show/store-search-and-rescue"
+  },
+  {
+   "id": "elvis-crazy-wedding-stories",
+   "added": "2026-11-24",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Crazy wedding stories",
+   "how": "Listeners called in with the craziest things they've seen happen at weddings.",
+   "ours": "JB, Sandy and Tricia open the phones for the wildest wedding moments in Central Texas, from the cake to the reception. Phones: Austin, what's the craziest thing you saw at a wedding?",
+   "url": "https://omny.fm/shows/elvis-durans-daily-highlight/daily-highlight-crazy-wedding-stories"
+  },
+  {
+   "id": "elvis-thanksgiving-cook-off",
+   "added": "2026-11-24",
+   "show": "Elvis Duran and the Morning Show",
+   "title": "Thanksgiving cook-off",
+   "how": "Ahead of Thanksgiving, the show held a cook-off with a celebrity chef judging the crew's dishes, plus kindergarten concert stories.",
+   "ours": "The crew brings in one Thanksgiving dish each and lets a guest judge (or the listeners) crown a winner. Phones: Austin, what's the one dish you'd bring to win a Thanksgiving cook-off?",
+   "url": "https://omny.fm/shows/elvis-duran-and-the-morning-show-on-demand/full-show-the-day-we-had-a-thanksgiving-cook-off"
+  },
+  {
+   "id": "johnjay-rsvp-no",
+   "added": "2026-11-24",
+   "show": "Johnjay & Rich",
+   "title": "Do you have to RSVP if it's a no?",
+   "how": "The show debated whether you have to send back a 'no' RSVP, or if just not showing up is fine.",
+   "ours": "JB and Sandy settle it for holiday party season: RSVP no, or just stay home? Phones: Austin, do you RSVP no, and has a no-show ever ruined your party count?",
+   "url": "https://omny.fm/shows/johnjay-rich-on-demand/do-you-have-to-rsvp-if-its-a-no"
+  },
+  {
+   "id": "johnjay-dangerous-toys",
+   "added": "2026-11-24",
+   "show": "Johnjay & Rich",
+   "title": "Dangerous toys over the years",
+   "how": "The show looked back at toys over the years that turned out to be dangerous.",
+   "ours": "Just in time for Christmas shopping, the crew remembers the toys they had as kids that would never make the shelf today. Phones: Austin, what dangerous toy did you survive?",
+   "url": "https://omny.fm/shows/johnjay-rich-on-demand/dangerous-toys-over-the-years"
+  },
+  {
+   "id": "johnjay-wait-forever",
+   "added": "2026-11-24",
+   "show": "Johnjay & Rich",
+   "title": "What did you wait forever for?",
+   "how": "The show asked listeners about the thing they waited the longest for, and whether it was worth it.",
+   "ours": "JB, Sandy and Tricia share what they waited years for, from a first truck to concert tickets. Phones: Austin, what did you wait forever for, and was it worth it?",
+   "url": "https://omny.fm/shows/johnjay-rich-on-demand/what-did-wait-forever-for"
+  },
+  {
    "id": "mojo-family-photo-shoots",
    "added": "2026-11-23",
    "show": "Mojo in the Morning",
@@ -2217,13 +2307,13 @@
   }
  ],
  "pick": {
-  "date": "2026-11-23",
-  "show": "Danni & Country Cory",
-  "market": "Memphis (WXMX 98.1 The Max), Rock",
-  "title": "Bucket List Challenge: learning guitar at 61",
-  "how": "The show took a listener's bucket list wish (Greg, 61, wanted to learn guitar) and helped him mark it off the list.",
-  "ours": "JB and Sandy launch an Austin Bucket List Challenge and try to make one listener's wish come true. Phones: what's the one bucket list item you keep putting off?",
-  "url": "https://omny.fm/shows/danni-country-cory/bucket-list-challenge-greg-at-61-wants-to-learn-guitar"
+  "date": "2026-11-24",
+  "show": "Radio 1 Breakfast with Greg James",
+  "market": "London, UK (BBC Radio 1), CHR/pop",
+  "title": "Rent A Presenter heads to the farm",
+  "how": "In the show's Rent A Presenter feature, listeners 'rent' members of the breakfast team to help at their jobs; today two of them went to a dairy farm to milk 120 cows.",
+  "ours": "Rent-A-Sandy: an Austin listener books JB or Sandy to help at their job for a morning, and we report from the ranch, the taco truck or the car wash. Phones: what job would you rent JB and Sandy out to do?",
+  "url": "https://www.bbc.co.uk/programmes/m00348fc"
  },
  "pick_history": [
   {
@@ -2369,6 +2459,12 @@
    "show": "Danni & Country Cory",
    "format": "Rock",
    "market": "Memphis (WXMX 98.1 The Max)"
+  },
+  {
+   "date": "2026-11-24",
+   "show": "Radio 1 Breakfast with Greg James",
+   "format": "International (UK) CHR/pop",
+   "market": "London, UK (BBC Radio 1)"
   }
  ]
 }
