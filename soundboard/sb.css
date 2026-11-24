@@ -65,3 +65,8 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut)
 .grid.fit.tiny .pad .meta + .meta{display:none}.grid.fit.tiny .ib[data-fade],.grid.fit.tiny .ib[data-edit]{display:none}
 .grid.fit .addpad{font-size:15px}
 .runlink{display:block;margin-top:10px;text-align:center;background:var(--p2);border:1px solid var(--or);color:var(--tx);text-decoration:none;font-weight:700;padding:10px;border-radius:12px}
+
+/* Always show filename clearly */
+.meta.file { color: var(--or); font-weight: 700; font-size: 13px; }
+.grid.fit .meta.file { display: block !important; -webkit-line-clamp: 2; font-size: calc(13px * var(--fs,1)); }
+.grid.fit.tiny .meta.file { display: block !important; }
