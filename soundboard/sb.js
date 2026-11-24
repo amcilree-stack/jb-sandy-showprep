@@ -130,7 +130,7 @@
       var rows = Math.ceil(slots / cols), w = (W - gap * (cols - 1)) / cols, h = (H - gap * (rows - 1)) / rows;
       var score = Math.min(w / 1.05, h); if (!best || score > best.score) best = { cols: cols, h: h, w: w, score: score };
     }
-    var h = Math.max(96, Math.floor(best.h));
+    var h = Math.max(160, Math.floor(best.h));
     g.classList.add("fit"); g.style.gridTemplateColumns = "repeat(" + best.cols + ", minmax(0,1fr))"; g.style.gridAutoRows = h + "px";
     g.style.setProperty("--fs", Math.max(0.72, Math.min(1, h / 175)).toFixed(2));
     g.classList.toggle("tiny", h < 150);
@@ -151,7 +151,7 @@
       : (c.board === "archive" ? '<button type="button" class="keep" data-keep="' + esc(c.id) + '">Keep → Evergreen</button>' : "") +
         (c.empty ? '<label class="ib emptydrop" data-fill="' + esc(c.id) + '" style="flex:1;text-align:center;border:2px dashed var(--or);cursor:pointer">⬆ Drop MP3/WAV or tap<input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav" hidden data-fillinput="' + esc(c.id) + '"></label>' : c.needsRec ? '<a class="ib" style="flex:1;text-align:center;text-decoration:none" href="' + esc(c.source) + '" target="_blank" rel="noopener">Open original ↗</a>' : '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button>') + '<button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
     return '<div class="pad' + (playing ? " playing" : "") + '" data-id="' + esc(c.id) + '"><div class="top">' + chips + '<button type="button" class="star' + (c.fav ? " on" : "") + '" data-fav="' + esc(c.id) + '" title="Favorite">★</button></div>' +
-      (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>") + (c.fileName ? '<div class="meta file">' + esc(c.fileName) + "</div>" : "") + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
+      (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>" + (c.fileName ? '<div style="color:#ff6b2c;font-weight:700;font-size:14px;margin-top:2px">' + esc(c.fileName) + "</div>" : "")) + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
       '<div class="meta">⏱ ' + fmtDur(c.duration) + (c.outcue ? ' · Out: <i>“' + esc(c.outcue) + "”</i>" : "") + "</div>" +
       (c.sourceName ? '<div class="meta">Source: ' + esc(c.sourceName) + '</div>' : "") + (c.source ? '<div class="meta"><a href="' + esc(c.source) + '" target="_blank" rel="noopener">' + esc(host(c.source)) + " ↗</a></div>" : "") +
       '<div class="act">' + acts + "</div></div>";
