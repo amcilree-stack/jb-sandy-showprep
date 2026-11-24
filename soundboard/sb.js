@@ -151,8 +151,7 @@
       : (c.board === "archive" ? '<button type="button" class="keep" data-keep="' + esc(c.id) + '">Keep → Evergreen</button>' : "") +
         (c.empty ? '<label class="ib emptydrop" data-fill="' + esc(c.id) + '" style="flex:1;text-align:center;border:2px dashed var(--or);cursor:pointer">⬆ Drop MP3/WAV or tap<input type="file" accept=".mp3,.wav,audio/mpeg,audio/wav" hidden data-fillinput="' + esc(c.id) + '"></label>' : c.needsRec ? '<a class="ib" style="flex:1;text-align:center;text-decoration:none" href="' + esc(c.source) + '" target="_blank" rel="noopener">Open original ↗</a>' : '<button type="button" class="play" data-play="' + esc(c.id) + '">' + (playing ? "■ Stop" : "▶ Play") + '</button><button type="button" class="ib" data-fade="' + esc(c.id) + '">Fade</button>') + '<button type="button" class="ib" data-edit="' + esc(c.id) + '" title="Edit / move">✎</button><button type="button" class="ib" data-trash="' + esc(c.id) + '" title="Delete">🗑</button>';
     return '<div class="pad' + (playing ? " playing" : "") + '" data-id="' + esc(c.id) + '"><div class="top">' + chips + '<button type="button" class="star' + (c.fav ? " on" : "") + '" data-fav="' + esc(c.id) + '" title="Favorite">★</button></div>' +
-      (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>") + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
-      (c.fileName ? '<div class="meta file">' + esc(c.fileName) + "</div>" : "") +
+      (c.empty ? '<input class="padtitle" data-title="' + esc(c.id) + '" value="' + esc(c.title) + '" maxlength="120" aria-label="Pad title" style="background:var(--bg);border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:7px;font:inherit;font-weight:700">' : "<b>" + esc(c.title) + "</b>") + (c.fileName ? '<div class="meta file">' + esc(c.fileName) + "</div>" : "") + (c.desc ? '<div class="desc">' + esc(c.desc) + "</div>" : "") +
       '<div class="meta">⏱ ' + fmtDur(c.duration) + (c.outcue ? ' · Out: <i>“' + esc(c.outcue) + "”</i>" : "") + "</div>" +
       (c.sourceName ? '<div class="meta">Source: ' + esc(c.sourceName) + '</div>' : "") + (c.source ? '<div class="meta"><a href="' + esc(c.source) + '" target="_blank" rel="noopener">' + esc(host(c.source)) + " ↗</a></div>" : "") +
       '<div class="act">' + acts + "</div></div>";
@@ -301,6 +300,11 @@
 
   /* ---------- events ---------- */
   document.addEventListener("click", function (e) {
+    var pad = e.target.closest(".pad");
+    if (pad && !e.target.closest("button, a, input, label")) {
+      var id = pad.dataset.id;
+      if (id) { play(id); return; }
+    }
     var t = e.target.closest("button"); if (!t) return; var d = t.dataset;
     if (t.id === "addpad") { addEmpty(); return; }
     if (d.tab) { tab = d.tab; q = ""; $("q").value = ""; render(); }
