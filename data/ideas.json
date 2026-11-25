@@ -2,6 +2,40 @@
  "doc": "https://docs.google.com/document/d/1DT2dLgDE7Hg_TdkzAmNEQKpL1m89vXj6-RyxtHeQQvw/export?format=txt",
  "items": [
   {
+   "id": "this-is-interesting",
+   "title": "This is interesting.",
+   "body": null,
+   "doc_text": "This is interesting. The story behind Tx A&M song against texas.\nhttps://www.instagram.com/reel/DgHLE1gBj-G/?utm_source=ig_web_copy_link&knvt=NTc4MTIwNjQ2YQ==\nMy take on it. During war…. Fucking war… an Aggie is writing songs. WTF? Is that the guy you want in the trenches with you? Sorry I can’t help fight… I hate UT more than the Germans firing at us right now.",
+   "added": "2026-11-25",
+   "links": [
+    {
+     "url": "https://www.instagram.com/reel/DgHLE1gBj-G/?knvt=NTc4MTIwNjQ2YQ%3D%3D",
+     "label": "https://www.instagram.com/reel/DgHLE1gBj-G/?utm_source=ig_web_copy_link&knvt=NTc4MTIwNjQ2YQ=="
+    }
+   ],
+   "social": [
+    "https://www.instagram.com/reel/DgHLE1gBj-G/?knvt=NTc4MTIwNjQ2YQ%3D%3D"
+   ],
+   "doc_lines": [
+    "96c20c288636",
+    "4a5d0338bc0d",
+    "8002e62a3c5b"
+   ]
+  },
+  {
+   "id": "insta-got-me",
+   "title": "Insta got me.",
+   "body": null,
+   "doc_text": "Insta got me. Bathroom bladder.",
+   "added": "2026-11-25",
+   "links": [],
+   "social": [],
+   "doc_lines": [
+    "80e3bb0b17bb"
+   ],
+   "partial": "Added to an existing note in the doc"
+  },
+  {
    "id": "christmas-themed-bars-and-places",
    "title": "Christmas themed bars and places",
    "body": null,

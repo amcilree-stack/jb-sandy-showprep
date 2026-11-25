@@ -1,7 +1,7 @@
 {
  "note": "Fingerprints of doc content already handled. sync-docs.js treats anything not listed here as new.",
  "ideas": {
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "lines": [
    "0f5dcfec1caf",
    "e4f4aee52bbc",
@@ -355,15 +355,19 @@
    "73669f54b505",
    "38576176c7a6",
    "1622032d5ef5",
-   "8b5d314f8f39"
+   "8b5d314f8f39",
+   "96c20c288636",
+   "4a5d0338bc0d",
+   "8002e62a3c5b",
+   "80e3bb0b17bb"
   ],
-  "last_new": "2026-11-24"
+  "last_new": "2026-11-25"
  },
  "stories": {
   "updated": "2026-10-04",
   "doc_hash": "811260ed6667b43a",
   "last_changed": "2026-10-07",
-  "last_checked": "2026-11-24",
+  "last_checked": "2026-11-25",
   "unchanged_since_last_check": true,
   "headlines": [
    "407e21253882",
